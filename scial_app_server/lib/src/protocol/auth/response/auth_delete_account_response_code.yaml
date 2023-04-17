@@ -1,0 +1,7 @@
+enum: AuthDeleteAccountResponseCode
+
+values:
+  - notAuthenticated
+  - weakPassword
+  - accountNotFound
+  - wrongPassword

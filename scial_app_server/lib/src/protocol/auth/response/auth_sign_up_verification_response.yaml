@@ -1,0 +1,8 @@
+class: AuthSignUpVerificationResponse
+
+fields:
+  success: bool
+  code: AuthSignUpVerificationResponseCode?
+  keyId: int?
+  key: String?
+  userId: int?

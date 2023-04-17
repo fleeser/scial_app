@@ -1,0 +1,11 @@
+class: User
+
+table: users
+
+fields:
+  name: String?
+  created: DateTime
+  imageUrl: String?
+  verified: bool
+  private: bool
+  badges: List<UserBadge>

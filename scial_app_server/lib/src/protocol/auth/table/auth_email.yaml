@@ -1,0 +1,13 @@
+class: AuthEmail
+
+table: auth_email
+
+fields:
+  userId: int
+  email: String
+  hash: String
+  
+indexes:
+  auth_email_email_idx:
+    fields: email
+    unique: true

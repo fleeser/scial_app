@@ -18,7 +18,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.17.0 <3.0.0"
+  sdk: ">=2.19.0 <3.0.0"
   flutter: ">=3.3.0"
 
 dependencies:
@@ -27,6 +27,11 @@ dependencies:
   serverpod_flutter: ^1.0.1
   scial_app_client:
     path: ../scial_app_client
+
+  scial_app_shared:
+    path: ../scial_app_shared
+  scial_app_ui:
+    path: ../scial_app_ui
 
 
   # The following adds the Cupertino Icons font to your application.

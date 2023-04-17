@@ -42,7 +42,7 @@ packages:
     source: hosted
     version: "1.17.1"
   crypto:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: crypto
       sha256: aa274aa7774f8964e4f4f38cc994db7b6158dd36e9187aaceaddc994b35c6c67
@@ -169,6 +169,21 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.2"
+  scial_app_shared:
+    dependency: "direct main"
+    description:
+      path: "../scial_app_shared"
+      relative: true
+    source: path
+    version: "1.0.0"
+  sendgrid_mailer:
+    dependency: "direct main"
+    description:
+      name: sendgrid_mailer
+      sha256: "36e5d50094045f3ab13b6ed0212d5fccf9743e9948f283a2e1ecc6931c1213e7"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.3"
   serverpod:
     dependency: "direct main"
     description:
@@ -306,4 +321,4 @@ packages:
     source: hosted
     version: "3.1.1"
 sdks:
-  dart: ">=2.18.0 <3.0.0"
+  dart: ">=2.19.6 <3.0.0"

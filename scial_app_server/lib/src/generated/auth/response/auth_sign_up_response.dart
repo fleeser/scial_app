@@ -7,40 +7,43 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod/serverpod.dart' as _i1;
+import '../../protocol.dart' as _i2;
 
-class Example extends _i1.SerializableEntity {
-  Example({
-    required this.name,
-    required this.data,
+class AuthSignUpResponse extends _i1.SerializableEntity {
+  AuthSignUpResponse({
+    required this.success,
+    this.code,
   });
 
-  factory Example.fromJson(
+  factory AuthSignUpResponse.fromJson(
     Map<String, dynamic> jsonSerialization,
     _i1.SerializationManager serializationManager,
   ) {
-    return Example(
-      name: serializationManager.deserialize<String>(jsonSerialization['name']),
-      data: serializationManager.deserialize<int>(jsonSerialization['data']),
+    return AuthSignUpResponse(
+      success:
+          serializationManager.deserialize<bool>(jsonSerialization['success']),
+      code: serializationManager
+          .deserialize<_i2.AuthSignUpResponseCode?>(jsonSerialization['code']),
     );
   }
 
-  String name;
+  bool success;
 
-  int data;
+  _i2.AuthSignUpResponseCode? code;
 
   @override
   Map<String, dynamic> toJson() {
     return {
-      'name': name,
-      'data': data,
+      'success': success,
+      'code': code,
     };
   }
 
   @override
   Map<String, dynamic> allToJson() {
     return {
-      'name': name,
-      'data': data,
+      'success': success,
+      'code': code,
     };
   }
 }

@@ -1,0 +1,7 @@
+enum: AuthSignUpVerificationResponseCode
+
+values:
+  - invalidEmail
+  - invalidVerificationCode
+  - requestNotFound
+  - wrongVerificationCode
