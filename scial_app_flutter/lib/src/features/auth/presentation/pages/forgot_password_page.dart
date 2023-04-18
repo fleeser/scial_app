@@ -41,7 +41,7 @@ class _ForgotPasswordPageState extends ConsumerState<ForgotPasswordPage> {
             hint: AppLocalizations.of(context)!.forgot_password_email_hint_text,
             enabled: !state.isLoading
           ),
-          const AppGap.semiBig(),
+          const SCGap.semiBig(),
           SCButton.filled(
             onPressed: _forgotPassword,
             isLoading: state.isLoading,

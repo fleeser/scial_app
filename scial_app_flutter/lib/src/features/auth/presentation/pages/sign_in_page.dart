@@ -41,13 +41,13 @@ class _SignInPageState extends ConsumerState<SignInPage> {
             hint: AppLocalizations.of(context)!.sign_in_email_hint_text,
             enabled: !state.isLoading
           ),
-          const AppGap.semiBig(),
+          const SCGap.semiBig(),
           SCTextInputField.password(
             controller: _passwordController,
             hint: AppLocalizations.of(context)!.sign_in_password_hint_text,
             enabled: !state.isLoading
           ),
-          const AppGap.semiBig(),
+          const SCGap.semiBig(),
           Align(
             alignment: Alignment.centerRight,
             child: SCLightButton(
@@ -57,14 +57,14 @@ class _SignInPageState extends ConsumerState<SignInPage> {
               textAlign: TextAlign.right
             )
           ),
-          const AppGap.semiBig(),
+          const SCGap.semiBig(),
           SCButton.filled(
             onPressed: _signIn,
             title: AppLocalizations.of(context)!.sign_in_submit_button_title,
             isEnabled: !state.isLoading,
             isLoading: state.isLoading
           ),
-          const AppGap.semiBig(),
+          const SCGap.semiBig(),
           SCLightButton(
             title: AppLocalizations.of(context)!.sign_in_no_account_button_text,
             textAlign: TextAlign.center,

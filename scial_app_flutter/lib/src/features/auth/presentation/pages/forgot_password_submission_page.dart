@@ -48,7 +48,7 @@ class _ForgotPasswordSubmissionPageState extends ConsumerState<ForgotPasswordSub
             enabled: !state.isLoading,
             hint: AppLocalizations.of(context)!.forgot_password_submission_password_hint_text
           ),
-          const AppGap.semiBig(),
+          const SCGap.semiBig(),
           SCButton.filled(
             onPressed: _forgotPasswordSubmission,
             title: AppLocalizations.of(context)!.forgot_password_submission_submit_button_title,

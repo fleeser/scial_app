@@ -43,13 +43,13 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
             hint: AppLocalizations.of(context)!.sign_up_email_hint_text,
             enabled: !state.isLoading
           ),
-          const AppGap.semiBig(),
+          const SCGap.semiBig(),
           SCTextInputField.password(
             controller: _passwordController, 
             hint: AppLocalizations.of(context)!.sign_up_password_hint_text,
             enabled: !state.isLoading
           ),
-          const AppGap.semiBig(),
+          const SCGap.semiBig(),
           SCButton.filled(
             onPressed: _signUp,
             title: AppLocalizations.of(context)!.sign_up_submit_button_title,

@@ -47,7 +47,7 @@ class _SignUpVerificationPageState extends ConsumerState<SignUpVerificationPage>
             controller: _verificationCodeController,
             error: state.hasError
           ),
-          const AppGap.semiBig(),
+          const SCGap.semiBig(),
           SCButton.filled(
             onPressed: _signUpVerification,
             title: AppLocalizations.of(context)!.sign_up_verification_submit_button_title,

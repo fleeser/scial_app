@@ -34,9 +34,9 @@ class AuthBuilder extends StatelessWidget {
           child: Column(
             children: [
               SCText.title1(title),
-              const AppGap.semiBig(),
+              const SCGap.semiBig(),
               SCText.paragraph1(subtitle),
-              const AppGap.semiBig(),
+              const SCGap.semiBig(),
               Column(children: children)
             ]
           )

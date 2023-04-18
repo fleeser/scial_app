@@ -47,7 +47,7 @@ class _ForgotPasswordVerificationPageState extends ConsumerState<ForgotPasswordV
             controller: _verificationCodeController,
             error: state.hasError
           ),
-          const AppGap.semiBig(),
+          const SCGap.semiBig(),
           SCButton.filled(
             onPressed: _forgotPasswordVerification,
             title: AppLocalizations.of(context)!.forgot_password_verification_submit_button_title,
@@ -61,7 +61,7 @@ class _ForgotPasswordVerificationPageState extends ConsumerState<ForgotPasswordV
 
   Future<void> _forgotPasswordVerification() async {
     final controller = ref.read(forgotPasswordVerificationControllerProvider.notifier);
-    final bool success = await controller.forgotPasswordVerification(widget.email, _verificationCodeController.text); // TODO: Also try catch around?
+    final bool success = await controller.forgotPasswordVerification(widget.email, _verificationCodeController.text);
 
     if (success && context.mounted) {
       context.navigateToForgotPasswordSubmissionPage(widget.email!, _verificationCodeController.text);
