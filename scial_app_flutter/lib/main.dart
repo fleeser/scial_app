@@ -18,6 +18,8 @@ void main() async {
 
   await Hive.initFlutter();
   await KeyValueStorage.openAuthBox();
+  await KeyValueStorage.openThemeBox();
+  await KeyValueStorage.openLocalizationBox();
 
   client = Client(
     dotenv.env['SERVER_URL']!,
