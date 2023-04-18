@@ -32,34 +32,34 @@ extension SCGapSizeExtension on SCGapSize {
   }
 }
 
-class AppGap extends StatelessWidget {
+class SCGap extends StatelessWidget {
 
-  const AppGap.none({
+  const SCGap.none({
     super.key
   })
   : size = SCGapSize.none;
 
-  const AppGap.small({
+  const SCGap.small({
     super.key
   })
   : size = SCGapSize.small;
 
-  const AppGap.semiSmall({
+  const SCGap.semiSmall({
     super.key
   })
   : size = SCGapSize.semiSmall;
 
-  const AppGap.regular({
+  const SCGap.regular({
     super.key
   })
   : size = SCGapSize.regular;
 
-  const AppGap.semiBig({
+  const SCGap.semiBig({
     super.key
   })
   : size = SCGapSize.semiBig;
 
-  const AppGap.big({
+  const SCGap.big({
     super.key
   })
   : size = SCGapSize.big;

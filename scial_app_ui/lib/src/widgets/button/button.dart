@@ -80,7 +80,7 @@ class SCButton extends StatelessWidget {
                     : theme.colors.onAccent,
                   size: 20.0
                 ),
-                if (icon != null && title != null) const AppGap.semiBig(),
+                if (icon != null && title != null) const SCGap.semiBig(),
                 if (title != null) Flexible(
                   child: SCText.buttonTitle(
                     title!, 
