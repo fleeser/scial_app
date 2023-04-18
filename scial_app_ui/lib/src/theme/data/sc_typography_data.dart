@@ -19,55 +19,64 @@ class SCTypographyData {
       fontFamily: 'Poppins',
       fontWeight: FontWeight.bold,
       fontSize: 28.0,
-      decoration: TextDecoration.none
+      decoration: TextDecoration.none,
+      package: 'scial_app_ui'
     ),
     paragraph1: TextStyle(
       fontFamily: 'Poppins',
       fontWeight: FontWeight.w400,
       fontSize: 12.0,
-      decoration: TextDecoration.none
+      decoration: TextDecoration.none,
+      package: 'scial_app_ui'
     ),
     buttonTitle: TextStyle(
       fontFamily: 'Poppins',
       fontWeight: FontWeight.bold,
       fontSize: 14.0,
-      decoration: TextDecoration.none
+      decoration: TextDecoration.none,
+      package: 'scial_app_ui'
     ),
     ligthButtonTitle: TextStyle(
       fontFamily: 'Poppins',
       fontWeight: FontWeight.bold,
       fontSize: 14.0,
-      decoration: TextDecoration.none
+      decoration: TextDecoration.none,
+      package: 'scial_app_ui'
     ),
     appBarTitleCollapsed: TextStyle(
       fontFamily: 'Poppins',
       fontWeight: FontWeight.bold,
       fontSize: 18.0,
-      decoration: TextDecoration.none
+      decoration: TextDecoration.none,
+      package: 'scial_app_ui'
     ),
     appBarTitleExpanded: TextStyle(
       fontFamily: 'Poppins',
       fontWeight: FontWeight.bold,
       fontSize: 30.0,
-      decoration: TextDecoration.none
+      decoration: TextDecoration.none,
+      package: 'scial_app_ui'
     ),
     textInputFieldText: TextStyle(
       fontFamily: 'Poppins',
       fontWeight: FontWeight.w400,
       fontSize: 14.0,
-      decoration: TextDecoration.none
+      decoration: TextDecoration.none,
+      package: 'scial_app_ui'
     ),
     textInputFieldHint: TextStyle(
       fontFamily: 'Poppins',
       fontWeight: FontWeight.w400,
       fontSize: 14.0,
-      decoration: TextDecoration.none
+      decoration: TextDecoration.none,
+      package: 'scial_app_ui'
     ),
     pinInput: TextStyle(
       fontFamily: 'Poppins',
       fontSize: 22,
       fontWeight: FontWeight.w400,
-      decoration: TextDecoration.none
+      decoration: TextDecoration.none,
+      package: 'scial_app_ui'
     )
   );
 

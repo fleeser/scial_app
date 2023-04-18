@@ -30,7 +30,7 @@ class SCAppBarTitleText extends StatelessWidget {
       ),
       child: error || text == null
         ? const SizedBox.shrink()
-        : Flexible(child: SCText.appBarTitle(text!))
+        : SCText.appBarTitle(text!)
     );
   }
 }

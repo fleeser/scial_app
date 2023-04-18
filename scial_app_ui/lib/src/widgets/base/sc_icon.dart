@@ -310,7 +310,8 @@ class SCIcon extends StatelessWidget {
       icon.path,
       height: size,
       width: size,
-      colorFilter: ColorFilter.mode(color, BlendMode.srcIn)
+      colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
+      package: 'scial_app_ui'
     );
   }
 }
