@@ -1,0 +1,4 @@
+enum SCThemeColorMode {
+  light,
+  dark
+}

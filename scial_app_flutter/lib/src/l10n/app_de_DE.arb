@@ -1,0 +1,108 @@
+{
+    "sign_up_app_bar_title" : "Registrieren",
+    "sign_up_title" : "Na, wer bist du denn? 🧐",
+    "sign_up_subtitle" : "Erzähl mal ein wenig über dich.",
+    "sign_up_email_hint_text" : "E-Mail",
+    "sign_up_password_hint_text" : "Passwort",
+    "sign_up_submit_button_title" : "Bring mich rein!",
+
+    "sign_up_verification_app_bar_title" : "Verifizierung",
+    "sign_up_verification_title" : "Bist du es? 🤔",
+    "sign_up_verification_subtitle" : "Wir haben dir eine E-Mail geschickt. Gib bitte den Code hier ein.",
+    "sign_up_verification_submit_button_title" : "Ich bin es!",
+
+    "forgot_password_app_bar_title" : "Passwort vergessen",
+    "forgot_password_title" : "Wie ist dir das denn passiert? 😂",
+    "forgot_password_subtitle" : "Das passiert den Besten von uns. Sag mir einfach wo es passiert ist.",
+    "forgot_password_email_hint_text" : "E-Mail",
+    "forgot_password_submit_button_title" : "Hilf mir!",
+
+    "forgot_password_verification_app_bar_title" : "Verifizierung",
+    "forgot_password_verification_title" : "Bist du es? 🤔",
+    "forgot_password_verification_subtitle" : "Wir haben dir eine E-Mail geschickt. Gib bitte den Code hier ein.",
+    "forgot_password_verification_submit_button_title" : "Ich bin es!",
+
+    "forgot_password_submission_app_bar_title" : "Passwort festlegen",
+    "forgot_password_submission_title" : "Nicht nochmal vergessen! 😉",
+    "forgot_password_submission_subtitle" : "Gib dein neues Passwort ein und merke es dir dieses Mal.",
+    "forgot_password_submission_password_hint_text" : "Passwort",
+    "forgot_password_submission_submit_button_title" : "Das ist es!",
+
+    "sign_in_app_bar_title" : "Anmelden",
+    "sign_in_title" : "Da bist du ja wieder! 🤩",
+    "sign_in_subtitle" : "Um ehrlich zu sein, habe ich vergessen woher ich dich kennne.",
+    "sign_in_email_hint_text" : "E-Mail",
+    "sign_in_password_hint_text" : "Passwort",
+    "sign_in_forgot_password_button_text" : "Passwort vergessen?",
+    "sign_in_submit_button_title" : "Lass uns tanzen!",
+    "sign_in_no_account_button_text" : "Du hast kein Konto?",
+
+    "change_password_app_bar_title" : "Passwort ändern",
+    "change_password_title" : "Was ist denn passiert? 🤨",
+    "change_password_subtitle" : "Das müssen wir hoffentlich nur ein Mal machen.",
+    "change_password_old_password_hint_text" : "Altes Passwort",
+    "change_password_new_password_hint_text" : "Neues Passwort",
+    "change_password_forgot_password_button_text" : "Passwort vergessen?",
+    "change_password_submit_button_title" : "Ändern",
+
+    "delete_account_app_bar_title" : "Konto löschen",
+    "delete_account_title" : "Wie kommt's? 😮",
+    "delete_account_subtitle" : "Bitte beachte, dass wir auch hier nach unseren Prinzipien vorgehen und wirklich alle deine Daten für immer löschen werden.",
+    "delete_account_password_hint_text" : "Passwort",
+    "delete_account_submit_button_title" : "Auf Wiedersehen!",
+
+    "sign_out_dialog_title" : "Bist du sicher? 🤔",
+    "sign_out_dialog_text" : "Bist du sicher, dass du dich abmelden möchten?",
+    "sign_out_dialog_cancel_button_title" : "Abbrechen",
+    "sign_out_dialog_submit_button_title" : "Abmelden",
+
+    "auth_sign_up_invalid_email" : "Das scheint keine E-Mail-Adresse zu sein.",
+    "auth_sign_up_weak_password" : "Das Passwort muss zwischen 8 und 32 Zeichen lang sein.",
+    "auth_sign_up_account_already_exists" : "Ein Konto mit dieser E-Mail-Adresse existiert bereits.",
+
+    "auth_sign_up_verification_email_missing" : "Bitte registriere dich zunächst.",
+    "auth_sign_up_verification_invalid_email" : "Das scheint keine E-Mail-Adresse zu sein.",
+    "auth_sign_up_verification_invalid_verification_code" : "Das ist sicher kein Verifizierungscode.",
+    "auth_sign_up_verification_request_not_found" : "Bitte registriere dich zunächst.",
+    "auth_sign_up_verification_wrong_verification_code" : "Der Verifizierungscode ist falsch.",
+
+    "auth_forgot_password_invalid_email" : "Das scheint keine E-Mail-Adresse zu sein.",
+    "auth_forgot_password_account_not_found" : "Ein Konto mit dieser E-Mail-Adresse existiert nicht.",
+
+    "auth_forgot_password_verification_email_missing" : "Bitte gib uns zunächst deine E-Mail-Adresse.",
+    "auth_forgot_password_verification_invalid_email" : "Das scheint keine E-Mail-Adresse zu sein.",
+    "auth_forgot_password_verification_invalid_verification_code" : "Das ist sicher kein Verifizierungscode.",
+    "auth_forgot_password_verification_request_not_found" : "Keine Anfrage zum Zurücksetzen deines Passworts gefunden.",
+    "auth_forgot_password_verification_wrong_verification_code" : "Der Verifizierungscode ist falsch.",
+
+    "auth_forgot_password_submission_email_missing" : "Bitte gib uns zunächst deine E-Mail-Adresse.",
+    "auth_forgot_password_submission_verification_code_missing" : "Bitte gib uns zunächst deinen Verifizierungscode.",
+    "auth_forgot_password_submission_invalid_email" : "Das scheint keine E-Mail-Adresse zu sein.",
+    "auth_forgot_password_submission_invalid_verification_code" : "Das ist sicher kein Verifizierungscode.",
+    "auth_forgot_password_submission_weak_password" : "Das Passwort muss zwischen 8 und 32 Zeichen lang sein.",
+    "auth_forgot_password_submission_request_not_found" : "Keine Anfrage zum Zurücksetzen deines Passworts gefunden.",
+    "auth_forgot_password_submission_wrong_verification_code" : "Der Verifizierungscode ist falsch.",
+    "auth_forgot_password_submission_account_not_found" : "Ein Konto mit dieser E-Mail-Adresse existiert nicht.",
+    "auth_forgot_password_submission_same_password" : "Das neue Passwort darf nicht deinem alten Passwort entsprechen.",
+
+    "auth_sign_in_invalid_email" : "Das scheint keine E-Mail-Adresse zu sein.",
+    "auth_sign_in_weak_password" : "Ziemlich sicher, dass so kein Passwort aussieht.",
+    "auth_sign_in_account_not_found" : "Ein Konto mit dieser E-Mail-Adresse existiert nicht.",
+    "auth_sign_in_wrong_password" : "War das wirklich dein Passwort?",
+
+    "auth_change_password_weak_old_password" : "Ziemlich sicher, dass so nicht dein altes Passwort aussah.",
+    "auth_change_password_weak_new_password" : "Das neue Passwort muss zwischen 8 und 32 Zeichen lang sein.",
+    "auth_change_password_same_password" : "Das neue Passwort darf nicht deinem alten Passwort entsprechen.",
+    "auth_change_password_account_not_found" : "Dein Konto konnte nicht gefunden werden.",
+    "auth_change_password_old_password_wrong" : "Das alte Passwort ist falsch.",
+
+    "auth_delete_account_weak_password" : "Ziemlich sicher, dass so kein Passwort aussieht.",
+    "auth_delete_account_account_not_found" : "Dein Konto konnte nicht gefunden werden.",
+    "auth_delete_account_wrong_password" : "War das wirklich dein Passwort?",
+
+    "not_authenticated" : "Nicht authentifiziert.",
+
+    "no_internet_connection" : "Keine Internetverbindung möglich.",
+
+    "unknown_error" : "Unbekannter Fehler."
+}
