@@ -9,11 +9,13 @@ class SCScaffold extends StatelessWidget {
   const SCScaffold({
     super.key,
     this.appBar,
-    this.body
+    this.body,
+    this.bottomNavigationBar
   });
 
   final SCAppBar? appBar;
   final Widget? body;
+  final Widget? bottomNavigationBar;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +39,8 @@ class SCScaffold extends StatelessWidget {
       child: Scaffold(
         backgroundColor: theme.colors.background,
         appBar: appBar,
-        body: body
+        body: body,
+        bottomNavigationBar: bottomNavigationBar
       )
     );
   }

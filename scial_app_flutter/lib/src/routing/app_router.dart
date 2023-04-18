@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:scial_app_flutter/src/common/main_builder.dart';
 import 'package:scial_app_flutter/src/features/auth/presentation/pages/forgot_password_page.dart';
 import 'package:scial_app_flutter/src/features/auth/presentation/pages/forgot_password_submission_page.dart';
 import 'package:scial_app_flutter/src/features/auth/presentation/pages/forgot_password_verification_page.dart';
@@ -58,7 +59,12 @@ GoRouter appRouter(AppRouterRef ref) {
       ShellRoute(
         navigatorKey: _shellNavigatorKey,
         pageBuilder: (BuildContext context, GoRouterState state, Widget child) {
-          return NoTransitionPage(child: Container());
+          return NoTransitionPage(
+            child: MainBuilder(
+              location: state.location,
+              child: child
+            )
+          );
         },
         routes: [
           GoRoute(

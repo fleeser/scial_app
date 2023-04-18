@@ -9,6 +9,8 @@ export 'src/theme/sc_theme_data.dart';
 export 'src/widgets/responsive/sc_padding.dart';
 export 'src/widgets/responsive/sc_gap.dart';
 
+export 'src/widgets/base/sc_icon.dart';
+
 export 'src/widgets/text/sc_text.dart';
 
 export 'src/widgets/sc_scaffold.dart';
@@ -25,3 +27,6 @@ export 'src/widgets/button/light_button.dart';
 
 export 'src/widgets/input/text_input_field.dart';
 export 'src/widgets/input/pin_input_field.dart';
+
+export 'src/widgets/bottom_bar/sc_bottom_bar.dart';
+export 'src/widgets/bottom_bar/sc_bottom_bar_item.dart';
