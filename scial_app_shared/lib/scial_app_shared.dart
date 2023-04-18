@@ -1,8 +1,3 @@
-/// Support for doing something awesome.
-///
-/// More dartdocs go here.
-library scial_app_shared;
+library scial_shared;
 
-export 'src/scial_app_shared_base.dart';
-
-// TODO: Export any libraries intended for clients of this package.
+export 'src/validator.dart';

@@ -9,5 +9,11 @@ environment:
 dependencies:
   serverpod: ^1.0.1
 
+  scial_app_shared:
+    path: ../scial_app_shared
+
+  crypto: ^3.0.2
+  sendgrid_mailer: ^0.1.3
+
 dev_dependencies:
   lints: ^2.0.0

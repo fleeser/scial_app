@@ -1,0 +1,6 @@
+enum: AuthSignUpResponseCode
+
+values:
+  - invalidEmail
+  - weakPassword
+  - accountAlreadyExists

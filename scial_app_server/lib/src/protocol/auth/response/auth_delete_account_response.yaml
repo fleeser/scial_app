@@ -1,0 +1,5 @@
+class: AuthDeleteAccountResponse
+
+fields:
+  success: bool
+  code: AuthDeleteAccountResponseCode?

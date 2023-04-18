@@ -1,0 +1,5 @@
+class: AuthSignUpResponse
+
+fields:
+  success: bool
+  code: AuthSignUpResponseCode?

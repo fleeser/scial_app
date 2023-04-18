@@ -1,0 +1,8 @@
+class: AuthSignInResponse
+
+fields:
+  success: bool
+  code: AuthSignInResponseCode?
+  keyId: int?
+  key: String?
+  userId: int?

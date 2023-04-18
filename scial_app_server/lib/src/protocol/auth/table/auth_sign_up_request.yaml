@@ -1,0 +1,13 @@
+class: AuthSignUpRequest
+
+table: auth_sign_up_request
+
+fields:
+  email: String
+  hash: String
+  verificationCode: String
+  
+indexes:
+  auth_sign_up_request_email_idx:
+    fields: email
+    unique: true

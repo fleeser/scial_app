@@ -1,2 +1,9 @@
-example:
-  - hello:
+auth:
+  - signUp:
+  - signUpVerification:
+  - forgotPassword:
+  - forgotPasswordVerification:
+  - forgotPasswordSubmission:
+  - signIn:
+  - changePassword:
+  - deleteAccount:

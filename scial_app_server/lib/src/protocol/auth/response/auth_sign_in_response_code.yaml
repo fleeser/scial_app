@@ -1,0 +1,7 @@
+enum: AuthSignInResponseCode
+
+values:
+  - invalidEmail
+  - weakPassword
+  - accountNotFound
+  - wrongPassword
