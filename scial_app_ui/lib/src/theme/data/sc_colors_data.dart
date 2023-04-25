@@ -14,7 +14,7 @@ class SCColorsData {
     required this.appBarBackground,
     required this.appBarButtonBackground,
     required this.appBarButtonForeground,
-    required this.appBarTitleCollapsed,
+    required this.appBarTitle,
     required this.imageBackground,
     required this.imageIconForeground,
     required this.textInputBackground,
@@ -39,7 +39,7 @@ class SCColorsData {
     appBarBackground: Color(0xFFFFFFFF),
     appBarButtonBackground: Color(0xFFDFDFDF),
     appBarButtonForeground: Color(0xFF191919),
-    appBarTitleCollapsed: Color(0xFF191919),
+    appBarTitle: Color(0xFF191919),
     imageBackground: Color(0xFFEAEAEA),
     imageIconForeground: Color(0xFF191919),
     textInputBackground: Color(0xFFEAEAEA),
@@ -64,7 +64,7 @@ class SCColorsData {
     appBarBackground: Color(0xFF191919),
     appBarButtonBackground: Color(0xFF4C4C4C),
     appBarButtonForeground: Color(0xFFFBFBFB),
-    appBarTitleCollapsed: Color(0xFFFBFBFB),
+    appBarTitle: Color(0xFFFBFBFB),
     imageBackground: Color(0xFF333333),
     imageIconForeground: Color(0xFFFBFBFB),
     textInputBackground: Color(0xFF333333),
@@ -88,7 +88,7 @@ class SCColorsData {
   final Color appBarBackground;
   final Color appBarButtonBackground;
   final Color appBarButtonForeground;
-  final Color appBarTitleCollapsed;
+  final Color appBarTitle;
   final Color imageBackground;
   final Color imageIconForeground;
   final Color textInputBackground;

@@ -7,7 +7,7 @@ enum SCTextLevel {
   paragraph1,
   buttonTitle,
   lightButtonTitle,
-  appBarTitleCollapsed
+  appBarTitle
 }
 
 class SCText extends StatelessWidget {
@@ -61,7 +61,7 @@ class SCText extends StatelessWidget {
   {
     super.key,
     this.color,
-    this.level = SCTextLevel.appBarTitleCollapsed
+    this.level = SCTextLevel.appBarTitle
   })
   : textAlign = null,
     maxLines = 1,
@@ -94,8 +94,8 @@ class SCText extends StatelessWidget {
         case SCTextLevel.lightButtonTitle:
           newColor = theme.colors.ligthButtonTitle;
           break;
-        case SCTextLevel.appBarTitleCollapsed:
-          newColor = theme.colors.appBarTitleCollapsed;
+        case SCTextLevel.appBarTitle:
+          newColor = theme.colors.appBarTitle;
           break;
       }
     }
@@ -110,8 +110,8 @@ class SCText extends StatelessWidget {
           return theme.typography.buttonTitle;
         case SCTextLevel.lightButtonTitle:
           return theme.typography.ligthButtonTitle;
-        case SCTextLevel.appBarTitleCollapsed:
-          return theme.typography.appBarTitleCollapsed;
+        case SCTextLevel.appBarTitle:
+          return theme.typography.appBarTitle;
       }
     }();
 

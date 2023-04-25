@@ -7,8 +7,7 @@ class SCTypographyData {
     required this.paragraph1,
     required this.buttonTitle,
     required this.ligthButtonTitle,
-    required this.appBarTitleCollapsed,
-    required this.appBarTitleExpanded,
+    required this.appBarTitle,
     required this.textInputFieldText,
     required this.textInputFieldHint,
     required this.pinInput
@@ -43,17 +42,10 @@ class SCTypographyData {
       decoration: TextDecoration.none,
       package: 'scial_app_ui'
     ),
-    appBarTitleCollapsed: TextStyle(
+    appBarTitle: TextStyle(
       fontFamily: 'Poppins',
       fontWeight: FontWeight.bold,
       fontSize: 18.0,
-      decoration: TextDecoration.none,
-      package: 'scial_app_ui'
-    ),
-    appBarTitleExpanded: TextStyle(
-      fontFamily: 'Poppins',
-      fontWeight: FontWeight.bold,
-      fontSize: 30.0,
       decoration: TextDecoration.none,
       package: 'scial_app_ui'
     ),
@@ -84,8 +76,7 @@ class SCTypographyData {
   final TextStyle paragraph1;
   final TextStyle buttonTitle;
   final TextStyle ligthButtonTitle;
-  final TextStyle appBarTitleCollapsed;
-  final TextStyle appBarTitleExpanded;
+  final TextStyle appBarTitle;
   final TextStyle textInputFieldText;
   final TextStyle textInputFieldHint;
   final TextStyle pinInput;

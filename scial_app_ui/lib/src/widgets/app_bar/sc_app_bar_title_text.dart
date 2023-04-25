@@ -24,13 +24,14 @@ class SCAppBarTitleText extends StatelessWidget {
 
     return SCShimmerLoading(
       isLoading: loading, 
-      loadingChild: SCShimmerLoadingBox(
-        size: Size(double.infinity, theme.typography.appBarTitleCollapsed.fontSize!),
-        borderRadius: theme.typography.appBarTitleCollapsed.fontSize! / 2.0
-      ),
-      child: error || text == null
-        ? const SizedBox.shrink()
-        : SCText.appBarTitle(text!)
+      child: loading
+        ? SCShimmerLoadingBox(
+          size: Size(double.infinity, theme.typography.appBarTitle.fontSize!),
+          borderRadius: theme.typography.appBarTitle.fontSize! / 2.0
+        )
+        : error || text == null
+          ? const SizedBox.shrink()
+          : SCText.appBarTitle(text!)
     );
   }
 }

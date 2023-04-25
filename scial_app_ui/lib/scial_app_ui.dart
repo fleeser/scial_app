@@ -11,6 +11,8 @@ export 'src/widgets/responsive/sc_gap.dart';
 
 export 'src/widgets/text/sc_text.dart';
 
+export 'src/widgets/base/sc_shimmer.dart';
+
 export 'src/widgets/sc_scaffold.dart';
 
 export 'src/widgets/app_bar/sc_app_bar.dart';

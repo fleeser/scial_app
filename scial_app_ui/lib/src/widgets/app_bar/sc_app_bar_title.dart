@@ -8,13 +8,11 @@ class SCAppBarTitle extends StatelessWidget {
   const SCAppBarTitle({
     super.key,
     this.title,
-    this.image,
-    this.extra
+    this.image
   });
 
   final SCAppBarTitleText? title;
   final SCAppBarTitleImage? image;
-  final Widget? extra;
 
   @override
   Widget build(BuildContext context) {
