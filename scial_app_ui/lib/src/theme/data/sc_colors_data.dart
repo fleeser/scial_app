@@ -15,6 +15,11 @@ class SCColorsData {
     required this.appBarButtonBackground,
     required this.appBarButtonForeground,
     required this.appBarTitle,
+    required this.bottomBarBackground,
+    required this.bottomBarPrimaryBackground,
+    required this.bottomBarPrimaryForeground,
+    required this.bottomBarSecondaryUnselectedForeground,
+    required this.bottomBarSecondarySelectedForeground,
     required this.imageBackground,
     required this.imageIconForeground,
     required this.textInputBackground,
@@ -40,6 +45,11 @@ class SCColorsData {
     appBarButtonBackground: Color(0xFFDFDFDF),
     appBarButtonForeground: Color(0xFF191919),
     appBarTitle: Color(0xFF191919),
+    bottomBarBackground: Color(0xFFFFFFFF),
+    bottomBarPrimaryBackground: Color(0xFF4299E1),
+    bottomBarPrimaryForeground: Color(0xFFFFFFFF),
+    bottomBarSecondaryUnselectedForeground: Color(0xFF7F7F7F),
+    bottomBarSecondarySelectedForeground: Color(0xFF191919),
     imageBackground: Color(0xFFEAEAEA),
     imageIconForeground: Color(0xFF191919),
     textInputBackground: Color(0xFFEAEAEA),
@@ -65,6 +75,11 @@ class SCColorsData {
     appBarButtonBackground: Color(0xFF4C4C4C),
     appBarButtonForeground: Color(0xFFFBFBFB),
     appBarTitle: Color(0xFFFBFBFB),
+    bottomBarBackground: Color(0xFF191919),
+    bottomBarPrimaryBackground: Color(0xFF3182CE),
+    bottomBarPrimaryForeground: Color(0xFFFFFFFF),
+    bottomBarSecondaryUnselectedForeground: Color(0xFF999999),
+    bottomBarSecondarySelectedForeground: Color(0xFFFBFBFB),
     imageBackground: Color(0xFF333333),
     imageIconForeground: Color(0xFFFBFBFB),
     textInputBackground: Color(0xFF333333),
@@ -89,6 +104,11 @@ class SCColorsData {
   final Color appBarButtonBackground;
   final Color appBarButtonForeground;
   final Color appBarTitle;
+  final Color bottomBarBackground;
+  final Color bottomBarPrimaryBackground;
+  final Color bottomBarPrimaryForeground;
+  final Color bottomBarSecondaryUnselectedForeground;
+  final Color bottomBarSecondarySelectedForeground;
   final Color imageBackground;
   final Color imageIconForeground;
   final Color textInputBackground;
