@@ -7,3 +7,5 @@ auth:
   - signIn:
   - changePassword:
   - deleteAccount:
+user:
+  - read:

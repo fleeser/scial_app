@@ -29,10 +29,19 @@ import 'auth/response/auth_sign_up_verification_response_code.dart' as _i17;
 import 'auth/table/auth_email.dart' as _i18;
 import 'auth/table/auth_forgot_password_request.dart' as _i19;
 import 'auth/table/auth_sign_up_request.dart' as _i20;
-import 'user/enum/user_badge.dart' as _i21;
-import 'user/table/user.dart' as _i22;
-import 'protocol.dart' as _i23;
-import 'package:serverpod/protocol.dart' as _i24;
+import 'friend_request/enum/friend_request_status.dart' as _i21;
+import 'friend_request/table/friend_request.dart' as _i22;
+import 'friendship/enum/friendship_badge.dart' as _i23;
+import 'friendship/table/friendship.dart' as _i24;
+import 'user/enum/user_badge.dart' as _i25;
+import 'user/model/public_user.dart' as _i26;
+import 'user/model/public_user_friend_request.dart' as _i27;
+import 'user/model/public_user_friendship_details.dart' as _i28;
+import 'user/response/user_read_response.dart' as _i29;
+import 'user/response/user_read_response_code.dart' as _i30;
+import 'user/table/user.dart' as _i31;
+import 'protocol.dart' as _i32;
+import 'package:serverpod/protocol.dart' as _i33;
 export 'auth/response/auth_change_password_response.dart';
 export 'auth/response/auth_change_password_response_code.dart';
 export 'auth/response/auth_delete_account_response.dart';
@@ -52,7 +61,16 @@ export 'auth/response/auth_sign_up_verification_response_code.dart';
 export 'auth/table/auth_email.dart';
 export 'auth/table/auth_forgot_password_request.dart';
 export 'auth/table/auth_sign_up_request.dart';
+export 'friend_request/enum/friend_request_status.dart';
+export 'friend_request/table/friend_request.dart';
+export 'friendship/enum/friendship_badge.dart';
+export 'friendship/table/friendship.dart';
 export 'user/enum/user_badge.dart';
+export 'user/model/public_user.dart';
+export 'user/model/public_user_friend_request.dart';
+export 'user/model/public_user_friendship_details.dart';
+export 'user/response/user_read_response.dart';
+export 'user/response/user_read_response_code.dart';
 export 'user/table/user.dart'; // ignore_for_file: equal_keys_in_map
 
 class Protocol extends _i1.SerializationManagerServer {
@@ -132,11 +150,38 @@ class Protocol extends _i1.SerializationManagerServer {
     if (t == _i20.AuthSignUpRequest) {
       return _i20.AuthSignUpRequest.fromJson(data, this) as T;
     }
-    if (t == _i21.UserBadge) {
-      return _i21.UserBadge.fromJson(data) as T;
+    if (t == _i21.FriendRequestStatus) {
+      return _i21.FriendRequestStatus.fromJson(data) as T;
     }
-    if (t == _i22.User) {
-      return _i22.User.fromJson(data, this) as T;
+    if (t == _i22.FriendRequest) {
+      return _i22.FriendRequest.fromJson(data, this) as T;
+    }
+    if (t == _i23.FriendshipBadge) {
+      return _i23.FriendshipBadge.fromJson(data) as T;
+    }
+    if (t == _i24.Friendship) {
+      return _i24.Friendship.fromJson(data, this) as T;
+    }
+    if (t == _i25.UserBadge) {
+      return _i25.UserBadge.fromJson(data) as T;
+    }
+    if (t == _i26.PublicUser) {
+      return _i26.PublicUser.fromJson(data, this) as T;
+    }
+    if (t == _i27.PublicUserFriendRequest) {
+      return _i27.PublicUserFriendRequest.fromJson(data, this) as T;
+    }
+    if (t == _i28.PublicUserFriendshipDetails) {
+      return _i28.PublicUserFriendshipDetails.fromJson(data, this) as T;
+    }
+    if (t == _i29.UserReadResponse) {
+      return _i29.UserReadResponse.fromJson(data, this) as T;
+    }
+    if (t == _i30.UserReadResponseCode) {
+      return _i30.UserReadResponseCode.fromJson(data) as T;
+    }
+    if (t == _i31.User) {
+      return _i31.User.fromJson(data, this) as T;
     }
     if (t == _i1.getType<_i2.AuthChangePasswordResponse?>()) {
       return (data != null
@@ -228,18 +273,61 @@ class Protocol extends _i1.SerializationManagerServer {
       return (data != null ? _i20.AuthSignUpRequest.fromJson(data, this) : null)
           as T;
     }
-    if (t == _i1.getType<_i21.UserBadge?>()) {
-      return (data != null ? _i21.UserBadge.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i21.FriendRequestStatus?>()) {
+      return (data != null ? _i21.FriendRequestStatus.fromJson(data) : null)
+          as T;
     }
-    if (t == _i1.getType<_i22.User?>()) {
-      return (data != null ? _i22.User.fromJson(data, this) : null) as T;
+    if (t == _i1.getType<_i22.FriendRequest?>()) {
+      return (data != null ? _i22.FriendRequest.fromJson(data, this) : null)
+          as T;
     }
-    if (t == List<_i23.UserBadge>) {
-      return (data as List).map((e) => deserialize<_i23.UserBadge>(e)).toList()
+    if (t == _i1.getType<_i23.FriendshipBadge?>()) {
+      return (data != null ? _i23.FriendshipBadge.fromJson(data) : null) as T;
+    }
+    if (t == _i1.getType<_i24.Friendship?>()) {
+      return (data != null ? _i24.Friendship.fromJson(data, this) : null) as T;
+    }
+    if (t == _i1.getType<_i25.UserBadge?>()) {
+      return (data != null ? _i25.UserBadge.fromJson(data) : null) as T;
+    }
+    if (t == _i1.getType<_i26.PublicUser?>()) {
+      return (data != null ? _i26.PublicUser.fromJson(data, this) : null) as T;
+    }
+    if (t == _i1.getType<_i27.PublicUserFriendRequest?>()) {
+      return (data != null
+          ? _i27.PublicUserFriendRequest.fromJson(data, this)
+          : null) as T;
+    }
+    if (t == _i1.getType<_i28.PublicUserFriendshipDetails?>()) {
+      return (data != null
+          ? _i28.PublicUserFriendshipDetails.fromJson(data, this)
+          : null) as T;
+    }
+    if (t == _i1.getType<_i29.UserReadResponse?>()) {
+      return (data != null ? _i29.UserReadResponse.fromJson(data, this) : null)
+          as T;
+    }
+    if (t == _i1.getType<_i30.UserReadResponseCode?>()) {
+      return (data != null ? _i30.UserReadResponseCode.fromJson(data) : null)
+          as T;
+    }
+    if (t == _i1.getType<_i31.User?>()) {
+      return (data != null ? _i31.User.fromJson(data, this) : null) as T;
+    }
+    if (t == List<int>) {
+      return (data as List).map((e) => deserialize<int>(e)).toList() as dynamic;
+    }
+    if (t == List<_i32.FriendshipBadge>) {
+      return (data as List)
+          .map((e) => deserialize<_i32.FriendshipBadge>(e))
+          .toList() as dynamic;
+    }
+    if (t == List<_i32.UserBadge>) {
+      return (data as List).map((e) => deserialize<_i32.UserBadge>(e)).toList()
           as dynamic;
     }
     try {
-      return _i24.Protocol().deserialize<T>(data, t);
+      return _i33.Protocol().deserialize<T>(data, t);
     } catch (_) {}
     return super.deserialize<T>(data, t);
   }
@@ -303,10 +391,37 @@ class Protocol extends _i1.SerializationManagerServer {
     if (data is _i20.AuthSignUpRequest) {
       return 'AuthSignUpRequest';
     }
-    if (data is _i21.UserBadge) {
+    if (data is _i21.FriendRequestStatus) {
+      return 'FriendRequestStatus';
+    }
+    if (data is _i22.FriendRequest) {
+      return 'FriendRequest';
+    }
+    if (data is _i23.FriendshipBadge) {
+      return 'FriendshipBadge';
+    }
+    if (data is _i24.Friendship) {
+      return 'Friendship';
+    }
+    if (data is _i25.UserBadge) {
       return 'UserBadge';
     }
-    if (data is _i22.User) {
+    if (data is _i26.PublicUser) {
+      return 'PublicUser';
+    }
+    if (data is _i27.PublicUserFriendRequest) {
+      return 'PublicUserFriendRequest';
+    }
+    if (data is _i28.PublicUserFriendshipDetails) {
+      return 'PublicUserFriendshipDetails';
+    }
+    if (data is _i29.UserReadResponse) {
+      return 'UserReadResponse';
+    }
+    if (data is _i30.UserReadResponseCode) {
+      return 'UserReadResponseCode';
+    }
+    if (data is _i31.User) {
       return 'User';
     }
     return super.getClassNameForObject(data);
@@ -375,11 +490,38 @@ class Protocol extends _i1.SerializationManagerServer {
     if (data['className'] == 'AuthSignUpRequest') {
       return deserialize<_i20.AuthSignUpRequest>(data['data']);
     }
+    if (data['className'] == 'FriendRequestStatus') {
+      return deserialize<_i21.FriendRequestStatus>(data['data']);
+    }
+    if (data['className'] == 'FriendRequest') {
+      return deserialize<_i22.FriendRequest>(data['data']);
+    }
+    if (data['className'] == 'FriendshipBadge') {
+      return deserialize<_i23.FriendshipBadge>(data['data']);
+    }
+    if (data['className'] == 'Friendship') {
+      return deserialize<_i24.Friendship>(data['data']);
+    }
     if (data['className'] == 'UserBadge') {
-      return deserialize<_i21.UserBadge>(data['data']);
+      return deserialize<_i25.UserBadge>(data['data']);
+    }
+    if (data['className'] == 'PublicUser') {
+      return deserialize<_i26.PublicUser>(data['data']);
+    }
+    if (data['className'] == 'PublicUserFriendRequest') {
+      return deserialize<_i27.PublicUserFriendRequest>(data['data']);
+    }
+    if (data['className'] == 'PublicUserFriendshipDetails') {
+      return deserialize<_i28.PublicUserFriendshipDetails>(data['data']);
+    }
+    if (data['className'] == 'UserReadResponse') {
+      return deserialize<_i29.UserReadResponse>(data['data']);
+    }
+    if (data['className'] == 'UserReadResponseCode') {
+      return deserialize<_i30.UserReadResponseCode>(data['data']);
     }
     if (data['className'] == 'User') {
-      return deserialize<_i22.User>(data['data']);
+      return deserialize<_i31.User>(data['data']);
     }
     return super.deserializeByClassName(data);
   }
@@ -387,7 +529,7 @@ class Protocol extends _i1.SerializationManagerServer {
   @override
   _i1.Table? getTableForType(Type t) {
     {
-      var table = _i24.Protocol().getTableForType(t);
+      var table = _i33.Protocol().getTableForType(t);
       if (table != null) {
         return table;
       }
@@ -399,8 +541,12 @@ class Protocol extends _i1.SerializationManagerServer {
         return _i19.AuthForgotPasswordRequest.t;
       case _i20.AuthSignUpRequest:
         return _i20.AuthSignUpRequest.t;
-      case _i22.User:
-        return _i22.User.t;
+      case _i22.FriendRequest:
+        return _i22.FriendRequest.t;
+      case _i24.Friendship:
+        return _i24.Friendship.t;
+      case _i31.User:
+        return _i31.User.t;
     }
     return null;
   }

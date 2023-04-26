@@ -1,0 +1,10 @@
+class: FriendRequest
+
+table: friend_requests
+
+fields:
+  sender: int
+  receiver: int
+  text: String?
+  status: FriendRequestStatus
+  created: DateTime

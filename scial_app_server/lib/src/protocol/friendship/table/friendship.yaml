@@ -1,0 +1,8 @@
+class: Friendship
+
+table: friendships
+
+fields:
+  users: List<int>
+  created: DateTime
+  badges: List<FriendshipBadge>

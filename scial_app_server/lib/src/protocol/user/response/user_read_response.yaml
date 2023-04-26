@@ -1,0 +1,6 @@
+class: UserReadResponse
+
+fields:
+  success: bool
+  code: UserReadResponseCode?
+  user: PublicUser?

@@ -8,6 +8,7 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod/serverpod.dart' as _i1;
 import '../endpoints/auth_endpoint.dart' as _i2;
+import '../endpoints/user_endpoint.dart' as _i3;
 
 class Endpoints extends _i1.EndpointDispatch {
   @override
@@ -18,7 +19,13 @@ class Endpoints extends _i1.EndpointDispatch {
           server,
           'auth',
           null,
-        )
+        ),
+      'user': _i3.UserEndpoint()
+        ..initialize(
+          server,
+          'user',
+          null,
+        ),
     };
     connectors['auth'] = _i1.EndpointConnector(
       name: 'auth',
@@ -211,6 +218,30 @@ class Endpoints extends _i1.EndpointDispatch {
             params['password'],
           ),
         ),
+      },
+    );
+    connectors['user'] = _i1.EndpointConnector(
+      name: 'user',
+      endpoint: endpoints['user']!,
+      methodConnectors: {
+        'read': _i1.MethodConnector(
+          name: 'read',
+          params: {
+            'userId': _i1.ParameterDescription(
+              name: 'userId',
+              type: _i1.getType<int>(),
+              nullable: false,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['user'] as _i3.UserEndpoint).read(
+            session,
+            params['userId'],
+          ),
+        )
       },
     );
   }

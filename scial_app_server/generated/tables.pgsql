@@ -50,6 +50,38 @@ CREATE UNIQUE INDEX auth_sign_up_request_email_idx ON "auth_sign_up_request" USI
 
 
 --
+-- Class FriendRequest as table friend_requests
+--
+
+CREATE TABLE "friend_requests" (
+  "id" serial,
+  "sender" integer NOT NULL,
+  "receiver" integer NOT NULL,
+  "text" text,
+  "status" integer NOT NULL,
+  "created" timestamp without time zone NOT NULL
+);
+
+ALTER TABLE ONLY "friend_requests"
+  ADD CONSTRAINT friend_requests_pkey PRIMARY KEY (id);
+
+
+--
+-- Class Friendship as table friendships
+--
+
+CREATE TABLE "friendships" (
+  "id" serial,
+  "users" json NOT NULL,
+  "created" timestamp without time zone NOT NULL,
+  "badges" json NOT NULL
+);
+
+ALTER TABLE ONLY "friendships"
+  ADD CONSTRAINT friendships_pkey PRIMARY KEY (id);
+
+
+--
 -- Class User as table users
 --
 

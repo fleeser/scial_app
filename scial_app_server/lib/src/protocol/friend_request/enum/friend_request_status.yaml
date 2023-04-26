@@ -1,0 +1,6 @@
+enum: FriendRequestStatus
+
+values:
+  - pending
+  - accepted
+  - denied

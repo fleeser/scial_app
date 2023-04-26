@@ -1,0 +1,4 @@
+enum: FriendshipBadge
+
+values:
+  - abc

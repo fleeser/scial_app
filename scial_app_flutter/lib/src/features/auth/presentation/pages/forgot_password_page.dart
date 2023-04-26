@@ -30,7 +30,7 @@ class _ForgotPasswordPageState extends ConsumerState<ForgotPasswordPage> {
       appBar: SCAppBar(
         context: context,
         backButton: SCAppBarBackButton(enabled: !state.isLoading),
-        title: SCAppBarTitle(title: SCAppBarTitleText(text: AppLocalizations.of(context)!.forgot_password_app_bar_title))
+        title: SCAppBarTitle(title: AppLocalizations.of(context)!.forgot_password_app_bar_title)
       ),
       body: AuthBuilder(
         title: AppLocalizations.of(context)!.forgot_password_title,

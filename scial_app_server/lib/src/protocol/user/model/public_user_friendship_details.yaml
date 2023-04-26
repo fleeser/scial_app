@@ -1,0 +1,5 @@
+class: PublicUserFriendshipDetails
+
+fields:
+  id: int
+  created: DateTime

@@ -24,8 +24,10 @@ import 'package:scial_app_client/src/protocol/auth/response/auth_change_password
     as _i9;
 import 'package:scial_app_client/src/protocol/auth/response/auth_delete_account_response.dart'
     as _i10;
-import 'dart:io' as _i11;
-import 'protocol.dart' as _i12;
+import 'package:scial_app_client/src/protocol/user/response/user_read_response.dart'
+    as _i11;
+import 'dart:io' as _i12;
+import 'protocol.dart' as _i13;
 
 class _EndpointAuth extends _i1.EndpointRef {
   _EndpointAuth(_i1.EndpointCaller caller) : super(caller);
@@ -129,24 +131,44 @@ class _EndpointAuth extends _i1.EndpointRef {
       );
 }
 
+class _EndpointUser extends _i1.EndpointRef {
+  _EndpointUser(_i1.EndpointCaller caller) : super(caller);
+
+  @override
+  String get name => 'user';
+
+  _i2.Future<_i11.UserReadResponse> read(int userId) =>
+      caller.callServerEndpoint<_i11.UserReadResponse>(
+        'user',
+        'read',
+        {'userId': userId},
+      );
+}
+
 class Client extends _i1.ServerpodClient {
   Client(
     String host, {
-    _i11.SecurityContext? context,
+    _i12.SecurityContext? context,
     _i1.AuthenticationKeyManager? authenticationKeyManager,
   }) : super(
           host,
-          _i12.Protocol(),
+          _i13.Protocol(),
           context: context,
           authenticationKeyManager: authenticationKeyManager,
         ) {
     auth = _EndpointAuth(this);
+    user = _EndpointUser(this);
   }
 
   late final _EndpointAuth auth;
 
+  late final _EndpointUser user;
+
   @override
-  Map<String, _i1.EndpointRef> get endpointRefLookup => {'auth': auth};
+  Map<String, _i1.EndpointRef> get endpointRefLookup => {
+        'auth': auth,
+        'user': user,
+      };
   @override
   Map<String, _i1.ModuleEndpointCaller> get moduleLookup => {};
 }
