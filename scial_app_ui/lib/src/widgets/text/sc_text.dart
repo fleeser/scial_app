@@ -12,95 +12,107 @@ enum SCTextLevel {
 
 class SCText extends StatelessWidget {
 
+  const SCText(
+    this.text,
+    {
+      super.key,
+      this.color,
+      this.maxLines,
+      this.overflow,
+      this.textAlign,
+      this.style
+    }
+  )
+  : level = null;
+
   const SCText.title1(
-    this.data,
-  {
-    super.key,
-    this.color,
-    this.maxLines,
-    this.overflow,
-    this.textAlign,
-    this.level = SCTextLevel.title1
-  });
+    this.text,
+    {
+      super.key,
+      this.color,
+      this.maxLines,
+      this.overflow,
+      this.textAlign
+    }
+  )
+  : style = null,
+    level = SCTextLevel.title1;
 
   const SCText.paragraph1(
-    this.data,
-  {
-    super.key,
-    this.color,
-    this.maxLines,
-    this.overflow,
-    this.textAlign,
-    this.level = SCTextLevel.paragraph1
-  });
+    this.text,
+    {
+      super.key,
+      this.color,
+      this.maxLines,
+      this.overflow,
+      this.textAlign
+    }
+  )
+  : style = null,
+    level = SCTextLevel.paragraph1;
 
   const SCText.buttonTitle(
-    this.data,
-  {
-    super.key,
-    this.color,
-    this.level = SCTextLevel.buttonTitle
-  })
-  : maxLines = 1,
-    overflow = TextOverflow.ellipsis,
-    textAlign = TextAlign.center;
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  )
+    : style = null,
+      maxLines = 1,
+      overflow = TextOverflow.ellipsis,
+      textAlign = TextAlign.center,
+      level = SCTextLevel.buttonTitle;
 
   const SCText.lightButtonTitle(
-    this.data,
+    this.text,
   {
     super.key,
     this.color,
     this.maxLines,
     this.overflow,
-    this.textAlign,
-    this.level = SCTextLevel.lightButtonTitle
-  });
+    this.textAlign
+  })
+  : style = null,
+    level = SCTextLevel.lightButtonTitle;
 
   const SCText.appBarTitle(
-    this.data,
+    this.text,
   {
     super.key,
-    this.color,
-    this.level = SCTextLevel.appBarTitle
+    this.color
   })
-  : textAlign = null,
+  : style = null,
+    textAlign = null,
     maxLines = 1,
-    overflow = TextOverflow.ellipsis;
+    overflow = TextOverflow.ellipsis,
+    level = SCTextLevel.appBarTitle;
 
-  final String data;
-  final SCTextLevel level;
+  final String text;
   final Color? color;
   final int? maxLines;
   final TextOverflow? overflow;
   final TextAlign? textAlign;
+  final TextStyle? style;
+  final SCTextLevel? level;
 
   @override
   Widget build(BuildContext context) {
+
     final SCThemeData theme = SCTheme.of(context);
 
-    late final Color newColor;
-
-    if (color == null) {
+    Color? color() {
       switch (level) {
-        case SCTextLevel.title1:
-          newColor = theme.colors.title1;
-          break;
-        case SCTextLevel.paragraph1:
-          newColor = theme.colors.paragraph1;
-          break;
-        case SCTextLevel.buttonTitle:
-          newColor = theme.colors.onAccent;
-          break;
-        case SCTextLevel.lightButtonTitle:
-          newColor = theme.colors.ligthButtonTitle;
-          break;
-        case SCTextLevel.appBarTitle:
-          newColor = theme.colors.appBarTitle;
-          break;
+        case SCTextLevel.title1: return theme.colors.title1;
+        case SCTextLevel.paragraph1: return theme.colors.paragraph1;
+        case SCTextLevel.buttonTitle: return theme.colors.onAccent;
+        case SCTextLevel.lightButtonTitle: return theme.colors.ligthButtonTitle;
+        case SCTextLevel.appBarTitle: return theme.colors.appBarTitle;
+        default: return null;
       }
     }
 
-    final style = () {
+    TextStyle? style() {
       switch (level) {
         case SCTextLevel.title1:
           return theme.typography.title1;
@@ -112,15 +124,18 @@ class SCText extends StatelessWidget {
           return theme.typography.ligthButtonTitle;
         case SCTextLevel.appBarTitle:
           return theme.typography.appBarTitle;
+        default: return null;
       }
-    }();
+    }
 
     return Text(
-      data,
+      text,
       maxLines: maxLines,
       overflow: overflow,
       textAlign: textAlign,
-      style: style.copyWith(color: color ?? newColor)
+      style: level != null
+        ? style()!.copyWith(color: this.color ?? color())
+        : this.style
     );
   }
 }

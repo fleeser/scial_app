@@ -20,8 +20,12 @@ export 'src/widgets/app_bar/sc_app_bar.dart';
 export 'src/widgets/app_bar/sc_app_bar_button.dart';
 export 'src/widgets/app_bar/sc_app_bar_back_button.dart';
 export 'src/widgets/app_bar/sc_app_bar_title.dart';
-export 'src/widgets/app_bar/sc_app_bar_title_image.dart';
-export 'src/widgets/app_bar/sc_app_bar_title_text.dart';
+export 'src/widgets/app_bar/sc_app_bar_image.dart';
+export 'src/widgets/app_bar/sc_sliver_app_bar.dart' hide SCSliverAppBarDelegate;
+export 'src/widgets/app_bar/sc_sliver_app_bar_button.dart';
+export 'src/widgets/app_bar/sc_sliver_app_bar_back_button.dart';
+export 'src/widgets/app_bar/sc_sliver_app_bar_image.dart' hide SCSliverAppBarImageBackgroundWidget, SCSliverAppBarImageWidget;
+export 'src/widgets/app_bar/sc_sliver_app_bar_title.dart' hide SCSliverAppBarTitleWidget;
 
 export 'src/widgets/bottom_bar/sc_bottom_bar.dart';
 export 'src/widgets/bottom_bar/sc_bottom_bar_item.dart' hide SCBottomBarItemWidget;

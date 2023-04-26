@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:scial_app_ui/src/widgets/base/sc_icon.dart';
 import 'package:scial_app_ui/src/widgets/base/sc_image.dart';
 
-class SCAppBarTitleImage extends StatelessWidget {
+class SCAppBarImage extends StatelessWidget {
 
-  const SCAppBarTitleImage({
+  const SCAppBarImage({
     super.key,
     this.file,
     this.url,
@@ -15,7 +15,7 @@ class SCAppBarTitleImage extends StatelessWidget {
     this.error = false
   });
 
-  const SCAppBarTitleImage.file({
+  const SCAppBarImage.file({
     super.key,
     this.file,
     this.icon,
@@ -24,7 +24,7 @@ class SCAppBarTitleImage extends StatelessWidget {
   })
   : url = null;
 
-  const SCAppBarTitleImage.url({
+  const SCAppBarImage.url({
     super.key,
     this.url,
     this.icon,

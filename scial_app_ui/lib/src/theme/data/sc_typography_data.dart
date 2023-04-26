@@ -8,6 +8,8 @@ class SCTypographyData {
     required this.buttonTitle,
     required this.ligthButtonTitle,
     required this.appBarTitle,
+    required this.sliverAppBarExpandedTitle,
+    required this.sliverAppBarCollapsedTitle,
     required this.textInputFieldText,
     required this.textInputFieldHint,
     required this.pinInput
@@ -49,6 +51,22 @@ class SCTypographyData {
       decoration: TextDecoration.none,
       package: 'scial_app_ui'
     ),
+    sliverAppBarExpandedTitle: TextStyle(
+      fontFamily: 'Poppins',
+      fontWeight: FontWeight.bold,
+      fontSize: 30.0,
+      decoration: TextDecoration.none,
+      height: 1.0,
+      package: 'scial_app_ui'
+    ),
+    sliverAppBarCollapsedTitle: TextStyle(
+      fontFamily: 'Poppins',
+      fontWeight: FontWeight.bold,
+      fontSize: 18.0,
+      decoration: TextDecoration.none,
+      height: 1.0,
+      package: 'scial_app_ui'
+    ),
     textInputFieldText: TextStyle(
       fontFamily: 'Poppins',
       fontWeight: FontWeight.w400,
@@ -77,6 +95,8 @@ class SCTypographyData {
   final TextStyle buttonTitle;
   final TextStyle ligthButtonTitle;
   final TextStyle appBarTitle;
+  final TextStyle sliverAppBarExpandedTitle;
+  final TextStyle sliverAppBarCollapsedTitle;
   final TextStyle textInputFieldText;
   final TextStyle textInputFieldHint;
   final TextStyle pinInput;

@@ -15,6 +15,10 @@ class SCColorsData {
     required this.appBarButtonBackground,
     required this.appBarButtonForeground,
     required this.appBarTitle,
+    required this.sliverAppBarExpandedBackground,
+    required this.sliverAppBarCollapsedBackground,
+    required this.sliverAppBarExpandedTitle,
+    required this.sliverAppBarCollapsedTitle,
     required this.bottomBarBackground,
     required this.bottomBarPrimaryBackground,
     required this.bottomBarPrimaryForeground,
@@ -45,6 +49,10 @@ class SCColorsData {
     appBarButtonBackground: Color(0xFFDFDFDF),
     appBarButtonForeground: Color(0xFF191919),
     appBarTitle: Color(0xFF191919),
+    sliverAppBarExpandedBackground: Color(0xFFEAEAEA),
+    sliverAppBarCollapsedBackground: Color(0xFFFFFFFF),
+    sliverAppBarExpandedTitle: Color(0xFFFFFFFF),
+    sliverAppBarCollapsedTitle: Color(0xFF191919),
     bottomBarBackground: Color(0xFFFFFFFF),
     bottomBarPrimaryBackground: Color(0xFF4299E1),
     bottomBarPrimaryForeground: Color(0xFFFFFFFF),
@@ -75,6 +83,10 @@ class SCColorsData {
     appBarButtonBackground: Color(0xFF4C4C4C),
     appBarButtonForeground: Color(0xFFFBFBFB),
     appBarTitle: Color(0xFFFBFBFB),
+    sliverAppBarExpandedBackground: Color(0xFF333333),
+    sliverAppBarCollapsedBackground: Color(0xFF191919),
+    sliverAppBarExpandedTitle: Color(0xFFFFFFFF),
+    sliverAppBarCollapsedTitle: Color(0xFFFBFBFB),
     bottomBarBackground: Color(0xFF191919),
     bottomBarPrimaryBackground: Color(0xFF3182CE),
     bottomBarPrimaryForeground: Color(0xFFFFFFFF),
@@ -104,6 +116,10 @@ class SCColorsData {
   final Color appBarButtonBackground;
   final Color appBarButtonForeground;
   final Color appBarTitle;
+  final Color sliverAppBarExpandedBackground;
+  final Color sliverAppBarCollapsedBackground;
+  final Color sliverAppBarExpandedTitle;
+  final Color sliverAppBarCollapsedTitle;
   final Color bottomBarBackground;
   final Color bottomBarPrimaryBackground;
   final Color bottomBarPrimaryForeground;
