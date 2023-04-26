@@ -1,10 +1,10 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:scial_app_ui/scial_app_ui.dart';
 import 'package:scial_app_ui/src/theme/sc_theme.dart';
 import 'package:scial_app_ui/src/theme/sc_theme_data.dart';
 import 'package:scial_app_ui/src/widgets/base/sc_shimmer.dart';
+import 'package:scial_app_ui/src/widgets/text/sc_text.dart';
 
 class SCSliverAppBarTitle {
 
