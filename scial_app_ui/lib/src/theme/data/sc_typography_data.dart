@@ -10,6 +10,8 @@ class SCTypographyData {
     required this.appBarTitle,
     required this.sliverAppBarExpandedTitle,
     required this.sliverAppBarCollapsedTitle,
+    required this.tabBarSelectedTitle,
+    required this.tabBarUnselectedTitle,
     required this.textInputFieldText,
     required this.textInputFieldHint,
     required this.pinInput
@@ -87,6 +89,20 @@ class SCTypographyData {
       fontWeight: FontWeight.w400,
       decoration: TextDecoration.none,
       package: 'scial_app_ui'
+    ),
+    tabBarSelectedTitle: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 14.0,
+      fontWeight: FontWeight.bold,
+      decoration: TextDecoration.none
+    ),
+    tabBarUnselectedTitle: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 14.0,
+      fontWeight: FontWeight.bold,
+      decoration: TextDecoration.none
     )
   );
 
@@ -97,6 +113,8 @@ class SCTypographyData {
   final TextStyle appBarTitle;
   final TextStyle sliverAppBarExpandedTitle;
   final TextStyle sliverAppBarCollapsedTitle;
+  final TextStyle tabBarSelectedTitle;
+  final TextStyle tabBarUnselectedTitle;
   final TextStyle textInputFieldText;
   final TextStyle textInputFieldHint;
   final TextStyle pinInput;

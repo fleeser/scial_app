@@ -56,6 +56,11 @@
     "sign_out_dialog_cancel_button_title" : "Abbrechen",
     "sign_out_dialog_submit_button_title" : "Abmelden",
 
+    "user_badges_empty" : "Keine Abzeichen",
+    "user_tab_bar_events" : "Veranstaltungen",
+    "user_tab_bar_friendships" : "Freundschaften",
+    "user_tab_bar_ratings" : "Bewertungen",
+
     "auth_sign_up_invalid_email" : "Das scheint keine E-Mail-Adresse zu sein.",
     "auth_sign_up_weak_password" : "Das Passwort muss zwischen 8 und 32 Zeichen lang sein.",
     "auth_sign_up_account_already_exists" : "Ein Konto mit dieser E-Mail-Adresse existiert bereits.",

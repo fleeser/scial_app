@@ -23,7 +23,8 @@ class SCText extends StatelessWidget {
       this.style
     }
   )
-  : level = null;
+  : level = null,
+    height = null;
 
   const SCText.title1(
     this.text,
@@ -32,7 +33,8 @@ class SCText extends StatelessWidget {
       this.color,
       this.maxLines,
       this.overflow,
-      this.textAlign
+      this.textAlign,
+      this.height
     }
   )
   : style = null,
@@ -45,7 +47,8 @@ class SCText extends StatelessWidget {
       this.color,
       this.maxLines,
       this.overflow,
-      this.textAlign
+      this.textAlign,
+      this.height
     }
   )
   : style = null,
@@ -55,7 +58,8 @@ class SCText extends StatelessWidget {
     this.text,
     {
       super.key,
-      this.color
+      this.color,
+      this.height
     }
   )
     : style = null,
@@ -71,7 +75,8 @@ class SCText extends StatelessWidget {
     this.color,
     this.maxLines,
     this.overflow,
-    this.textAlign
+    this.textAlign,
+    this.height
   })
   : style = null,
     level = SCTextLevel.lightButtonTitle;
@@ -80,7 +85,8 @@ class SCText extends StatelessWidget {
     this.text,
   {
     super.key,
-    this.color
+    this.color,
+    this.height
   })
   : style = null,
     textAlign = null,
@@ -95,6 +101,7 @@ class SCText extends StatelessWidget {
   final TextAlign? textAlign;
   final TextStyle? style;
   final SCTextLevel? level;
+  final double? height;
 
   @override
   Widget build(BuildContext context) {
@@ -134,7 +141,10 @@ class SCText extends StatelessWidget {
       overflow: overflow,
       textAlign: textAlign,
       style: level != null
-        ? style()!.copyWith(color: this.color ?? color())
+        ? style()!.copyWith(
+          color: this.color ?? color(),
+          height: height
+        )
         : this.style
     );
   }

@@ -30,6 +30,8 @@ export 'src/widgets/app_bar/sc_sliver_app_bar_title.dart' hide SCSliverAppBarTit
 export 'src/widgets/bottom_bar/sc_bottom_bar.dart';
 export 'src/widgets/bottom_bar/sc_bottom_bar_item.dart' hide SCBottomBarItemWidget;
 
+export 'src/widgets/tab_bar/sc_tab_bar.dart';
+
 export 'src/widgets/button/button.dart';
 export 'src/widgets/button/light_button.dart';
 

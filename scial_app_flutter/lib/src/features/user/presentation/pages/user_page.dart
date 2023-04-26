@@ -1,11 +1,15 @@
+import 'package:extended_nested_scroll_view/extended_nested_scroll_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:scial_app_client/scial_app_client.dart';
 import 'package:scial_app_flutter/src/features/user/presentation/controller/user_controller.dart';
+import 'package:scial_app_flutter/src/features/user/presentation/widgets/user_badges.dart';
 import 'package:scial_app_flutter/src/routing/app_router.dart';
 import 'package:scial_app_flutter/src/services/key_value_storage.dart';
 import 'package:scial_app_ui/scial_app_ui.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class UserPage extends StatefulHookConsumerWidget {
 
@@ -22,38 +26,66 @@ class UserPage extends StatefulHookConsumerWidget {
 
 class _UserPageState extends ConsumerState<UserPage> {
 
+  late TabController _tabController;
+
   @override
   Widget build(BuildContext context) {
 
-    final userAsync = ref.watch(userControllerProvider(widget.id));
+    final userController = ref.watch(userControllerProvider(widget.id));
+
+    _tabController = useTabController(initialLength: _tabBarTitles.length);
 
     return SCShimmer(
       linearGradient: scGradient(context),
       child: SCScaffold(
-        body: CustomScrollView(
-          slivers: [
+        body: ExtendedNestedScrollView(
+          pinnedHeaderSliverHeightBuilder: () => MediaQuery.of(context).padding.top + kToolbarHeight,
+          onlyOneScrollInBody: true,
+          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) => [
             SCSliverAppBar(
               context: context,
               backButton: _backButton,
               actionButtons: _actionButtons,
               image: SCSliverAppBarImage.url(
-                url: userAsync.whenOrNull(data: (PublicUser user) => user.imageUrl),
+                url: userController.whenOrNull(data: (PublicUser user) => user.imageUrl),
                 icon: SCIcons.user,
-                loading: userAsync.isLoading,
-                error: userAsync.hasError
+                loading: userController.isLoading,
+                error: userController.hasError
               ),
               title: SCSliverAppBarTitle(
-                title: userAsync.whenOrNull(data: (PublicUser user) => user.name ?? 'scial user'),
-                loading: userAsync.isLoading,
-                error: userAsync.hasError
+                title: userController.whenOrNull(data: (PublicUser user) => user.name ?? 'scial user'),
+                loading: userController.isLoading,
+                error: userController.hasError
               )
-            ),
-            SliverToBoxAdapter(child: Container(height: 10000))
-          ]
+            )
+          ],
+          body: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              UserBadges(
+                badges: userController.whenOrNull(data: (PublicUser user) => user.badges),
+                loading: userController.isLoading,
+                error: userController.hasError
+              ),
+              SCTabBar(
+                controller: _tabController, 
+                titles: _tabBarTitles
+              ),
+              Expanded(
+                child: Container()
+              )
+            ]
+          )
         )
       )
     );
   }
+
+  List<String> get _tabBarTitles => [
+    AppLocalizations.of(context)!.user_tab_bar_events,
+    AppLocalizations.of(context)!.user_tab_bar_friendships,
+    AppLocalizations.of(context)!.user_tab_bar_ratings
+  ];
 
   bool get _isSignedInUser => widget.id == KeyValueStorage.getUserId();
 

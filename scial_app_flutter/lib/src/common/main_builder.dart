@@ -25,7 +25,7 @@ class MainBuilder extends StatelessWidget {
           SCBottomBarItem.secondary(icon: SCIcons.search),
           SCBottomBarItem.primary(icon: SCIcons.plus),
           SCBottomBarItem.secondary(icon: SCIcons.bell),
-          SCBottomBarItem.secondary(icon: SCIcons.user),
+          SCBottomBarItem.secondary(icon: SCIcons.user)
         ]
       )
     );

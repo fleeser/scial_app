@@ -24,6 +24,10 @@ class SCColorsData {
     required this.bottomBarPrimaryForeground,
     required this.bottomBarSecondaryUnselectedForeground,
     required this.bottomBarSecondarySelectedForeground,
+    required this.tabBarBackground,
+    required this.tabBarSelectedBackground,
+    required this.tabBarUnselectedForeground,
+    required this.tabBarSelectedForeground,
     required this.imageBackground,
     required this.imageIconForeground,
     required this.textInputBackground,
@@ -58,6 +62,10 @@ class SCColorsData {
     bottomBarPrimaryForeground: Color(0xFFFFFFFF),
     bottomBarSecondaryUnselectedForeground: Color(0xFF7F7F7F),
     bottomBarSecondarySelectedForeground: Color(0xFF191919),
+    tabBarBackground: Color(0xFFFFFFFF),
+    tabBarSelectedBackground: Color(0xFF4299E1),
+    tabBarUnselectedForeground: Color(0xFF7F7F7F),
+    tabBarSelectedForeground: Color(0xFFFFFFFF),
     imageBackground: Color(0xFFEAEAEA),
     imageIconForeground: Color(0xFF191919),
     textInputBackground: Color(0xFFEAEAEA),
@@ -92,6 +100,10 @@ class SCColorsData {
     bottomBarPrimaryForeground: Color(0xFFFFFFFF),
     bottomBarSecondaryUnselectedForeground: Color(0xFF999999),
     bottomBarSecondarySelectedForeground: Color(0xFFFBFBFB),
+    tabBarBackground: Color(0xFF191919),
+    tabBarSelectedBackground: Color(0xFF3182CE),
+    tabBarUnselectedForeground: Color(0xFF999999),
+    tabBarSelectedForeground: Color(0xFFFFFFFF),
     imageBackground: Color(0xFF333333),
     imageIconForeground: Color(0xFFFBFBFB),
     textInputBackground: Color(0xFF333333),
@@ -125,6 +137,10 @@ class SCColorsData {
   final Color bottomBarPrimaryForeground;
   final Color bottomBarSecondaryUnselectedForeground;
   final Color bottomBarSecondarySelectedForeground;
+  final Color tabBarBackground;
+  final Color tabBarSelectedBackground;
+  final Color tabBarUnselectedForeground;
+  final Color tabBarSelectedForeground;
   final Color imageBackground;
   final Color imageIconForeground;
   final Color textInputBackground;

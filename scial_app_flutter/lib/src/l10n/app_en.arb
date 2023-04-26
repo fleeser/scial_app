@@ -56,6 +56,11 @@
     "sign_out_dialog_cancel_button_title" : "Cancel",
     "sign_out_dialog_submit_button_title" : "Sign out",
 
+    "user_badges_empty" : "No badges",
+    "user_tab_bar_events" : "Events",
+    "user_tab_bar_friendships" : "Friendships",
+    "user_tab_bar_ratings" : "Ratings",
+
     "auth_sign_up_invalid_email" : "This does not seem to be an E-Mail-Address..",
     "auth_sign_up_weak_password" : "The password has to be between 8 and 32 characters long.",
     "auth_sign_up_account_already_exists" : "An account with this E-Mail-Address already exists.",
