@@ -82,6 +82,24 @@ ALTER TABLE ONLY "friendships"
 
 
 --
+-- Class Rating as table ratings
+--
+
+CREATE TABLE "ratings" (
+  "id" serial,
+  "created" timestamp without time zone NOT NULL,
+  "type" integer NOT NULL,
+  "sender" integer NOT NULL,
+  "receiver" integer NOT NULL,
+  "stars" integer NOT NULL,
+  "text" text
+);
+
+ALTER TABLE ONLY "ratings"
+  ADD CONSTRAINT ratings_pkey PRIMARY KEY (id);
+
+
+--
 -- Class User as table users
 --
 

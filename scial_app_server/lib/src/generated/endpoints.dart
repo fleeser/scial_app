@@ -241,7 +241,37 @@ class Endpoints extends _i1.EndpointDispatch {
             session,
             params['userId'],
           ),
-        )
+        ),
+        'ratings': _i1.MethodConnector(
+          name: 'ratings',
+          params: {
+            'userId': _i1.ParameterDescription(
+              name: 'userId',
+              type: _i1.getType<int>(),
+              nullable: false,
+            ),
+            'limit': _i1.ParameterDescription(
+              name: 'limit',
+              type: _i1.getType<int?>(),
+              nullable: true,
+            ),
+            'offset': _i1.ParameterDescription(
+              name: 'offset',
+              type: _i1.getType<int?>(),
+              nullable: true,
+            ),
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['user'] as _i3.UserEndpoint).ratings(
+            session,
+            params['userId'],
+            limit: params['limit'],
+            offset: params['offset'],
+          ),
+        ),
       },
     );
   }

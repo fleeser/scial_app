@@ -26,8 +26,10 @@ import 'package:scial_app_client/src/protocol/auth/response/auth_delete_account_
     as _i10;
 import 'package:scial_app_client/src/protocol/user/response/user_read_response.dart'
     as _i11;
-import 'dart:io' as _i12;
-import 'protocol.dart' as _i13;
+import 'package:scial_app_client/src/protocol/user/response/user_ratings_response.dart'
+    as _i12;
+import 'dart:io' as _i13;
+import 'protocol.dart' as _i14;
 
 class _EndpointAuth extends _i1.EndpointRef {
   _EndpointAuth(_i1.EndpointCaller caller) : super(caller);
@@ -143,16 +145,31 @@ class _EndpointUser extends _i1.EndpointRef {
         'read',
         {'userId': userId},
       );
+
+  _i2.Future<_i12.UserRatingsResponse> ratings(
+    int userId, {
+    int? limit,
+    int? offset,
+  }) =>
+      caller.callServerEndpoint<_i12.UserRatingsResponse>(
+        'user',
+        'ratings',
+        {
+          'userId': userId,
+          'limit': limit,
+          'offset': offset,
+        },
+      );
 }
 
 class Client extends _i1.ServerpodClient {
   Client(
     String host, {
-    _i12.SecurityContext? context,
+    _i13.SecurityContext? context,
     _i1.AuthenticationKeyManager? authenticationKeyManager,
   }) : super(
           host,
-          _i13.Protocol(),
+          _i14.Protocol(),
           context: context,
           authenticationKeyManager: authenticationKeyManager,
         ) {

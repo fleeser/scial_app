@@ -33,14 +33,20 @@ import 'friend_request/enum/friend_request_status.dart' as _i21;
 import 'friend_request/table/friend_request.dart' as _i22;
 import 'friendship/enum/friendship_badge.dart' as _i23;
 import 'friendship/table/friendship.dart' as _i24;
-import 'user/enum/user_badge.dart' as _i25;
-import 'user/model/public_user.dart' as _i26;
-import 'user/model/public_user_friend_request.dart' as _i27;
-import 'user/model/public_user_friendship_details.dart' as _i28;
-import 'user/response/user_read_response.dart' as _i29;
-import 'user/response/user_read_response_code.dart' as _i30;
-import 'user/table/user.dart' as _i31;
-import 'protocol.dart' as _i32;
+import 'rating/enum/rating_type.dart' as _i25;
+import 'rating/table/rating.dart' as _i26;
+import 'user/enum/user_badge.dart' as _i27;
+import 'user/model/public_user.dart' as _i28;
+import 'user/model/public_user_friend_request.dart' as _i29;
+import 'user/model/public_user_friendship_details.dart' as _i30;
+import 'user/model/public_user_rating.dart' as _i31;
+import 'user/model/public_user_rating_user.dart' as _i32;
+import 'user/response/user_ratings_response.dart' as _i33;
+import 'user/response/user_ratings_response_code.dart' as _i34;
+import 'user/response/user_read_response.dart' as _i35;
+import 'user/response/user_read_response_code.dart' as _i36;
+import 'user/table/user.dart' as _i37;
+import 'protocol.dart' as _i38;
 export 'auth/response/auth_change_password_response.dart';
 export 'auth/response/auth_change_password_response_code.dart';
 export 'auth/response/auth_delete_account_response.dart';
@@ -64,10 +70,16 @@ export 'friend_request/enum/friend_request_status.dart';
 export 'friend_request/table/friend_request.dart';
 export 'friendship/enum/friendship_badge.dart';
 export 'friendship/table/friendship.dart';
+export 'rating/enum/rating_type.dart';
+export 'rating/table/rating.dart';
 export 'user/enum/user_badge.dart';
 export 'user/model/public_user.dart';
 export 'user/model/public_user_friend_request.dart';
 export 'user/model/public_user_friendship_details.dart';
+export 'user/model/public_user_rating.dart';
+export 'user/model/public_user_rating_user.dart';
+export 'user/response/user_ratings_response.dart';
+export 'user/response/user_ratings_response_code.dart';
 export 'user/response/user_read_response.dart';
 export 'user/response/user_read_response_code.dart';
 export 'user/table/user.dart';
@@ -162,26 +174,44 @@ class Protocol extends _i1.SerializationManager {
     if (t == _i24.Friendship) {
       return _i24.Friendship.fromJson(data, this) as T;
     }
-    if (t == _i25.UserBadge) {
-      return _i25.UserBadge.fromJson(data) as T;
+    if (t == _i25.RatingType) {
+      return _i25.RatingType.fromJson(data) as T;
     }
-    if (t == _i26.PublicUser) {
-      return _i26.PublicUser.fromJson(data, this) as T;
+    if (t == _i26.Rating) {
+      return _i26.Rating.fromJson(data, this) as T;
     }
-    if (t == _i27.PublicUserFriendRequest) {
-      return _i27.PublicUserFriendRequest.fromJson(data, this) as T;
+    if (t == _i27.UserBadge) {
+      return _i27.UserBadge.fromJson(data) as T;
     }
-    if (t == _i28.PublicUserFriendshipDetails) {
-      return _i28.PublicUserFriendshipDetails.fromJson(data, this) as T;
+    if (t == _i28.PublicUser) {
+      return _i28.PublicUser.fromJson(data, this) as T;
     }
-    if (t == _i29.UserReadResponse) {
-      return _i29.UserReadResponse.fromJson(data, this) as T;
+    if (t == _i29.PublicUserFriendRequest) {
+      return _i29.PublicUserFriendRequest.fromJson(data, this) as T;
     }
-    if (t == _i30.UserReadResponseCode) {
-      return _i30.UserReadResponseCode.fromJson(data) as T;
+    if (t == _i30.PublicUserFriendshipDetails) {
+      return _i30.PublicUserFriendshipDetails.fromJson(data, this) as T;
     }
-    if (t == _i31.User) {
-      return _i31.User.fromJson(data, this) as T;
+    if (t == _i31.PublicUserRating) {
+      return _i31.PublicUserRating.fromJson(data, this) as T;
+    }
+    if (t == _i32.PublicUserRatingUser) {
+      return _i32.PublicUserRatingUser.fromJson(data, this) as T;
+    }
+    if (t == _i33.UserRatingsResponse) {
+      return _i33.UserRatingsResponse.fromJson(data, this) as T;
+    }
+    if (t == _i34.UserRatingsResponseCode) {
+      return _i34.UserRatingsResponseCode.fromJson(data) as T;
+    }
+    if (t == _i35.UserReadResponse) {
+      return _i35.UserReadResponse.fromJson(data, this) as T;
+    }
+    if (t == _i36.UserReadResponseCode) {
+      return _i36.UserReadResponseCode.fromJson(data) as T;
+    }
+    if (t == _i37.User) {
+      return _i37.User.fromJson(data, this) as T;
     }
     if (t == _i1.getType<_i2.AuthChangePasswordResponse?>()) {
       return (data != null
@@ -287,44 +317,75 @@ class Protocol extends _i1.SerializationManager {
     if (t == _i1.getType<_i24.Friendship?>()) {
       return (data != null ? _i24.Friendship.fromJson(data, this) : null) as T;
     }
-    if (t == _i1.getType<_i25.UserBadge?>()) {
-      return (data != null ? _i25.UserBadge.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i25.RatingType?>()) {
+      return (data != null ? _i25.RatingType.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i26.PublicUser?>()) {
-      return (data != null ? _i26.PublicUser.fromJson(data, this) : null) as T;
+    if (t == _i1.getType<_i26.Rating?>()) {
+      return (data != null ? _i26.Rating.fromJson(data, this) : null) as T;
     }
-    if (t == _i1.getType<_i27.PublicUserFriendRequest?>()) {
+    if (t == _i1.getType<_i27.UserBadge?>()) {
+      return (data != null ? _i27.UserBadge.fromJson(data) : null) as T;
+    }
+    if (t == _i1.getType<_i28.PublicUser?>()) {
+      return (data != null ? _i28.PublicUser.fromJson(data, this) : null) as T;
+    }
+    if (t == _i1.getType<_i29.PublicUserFriendRequest?>()) {
       return (data != null
-          ? _i27.PublicUserFriendRequest.fromJson(data, this)
+          ? _i29.PublicUserFriendRequest.fromJson(data, this)
           : null) as T;
     }
-    if (t == _i1.getType<_i28.PublicUserFriendshipDetails?>()) {
+    if (t == _i1.getType<_i30.PublicUserFriendshipDetails?>()) {
       return (data != null
-          ? _i28.PublicUserFriendshipDetails.fromJson(data, this)
+          ? _i30.PublicUserFriendshipDetails.fromJson(data, this)
           : null) as T;
     }
-    if (t == _i1.getType<_i29.UserReadResponse?>()) {
-      return (data != null ? _i29.UserReadResponse.fromJson(data, this) : null)
+    if (t == _i1.getType<_i31.PublicUserRating?>()) {
+      return (data != null ? _i31.PublicUserRating.fromJson(data, this) : null)
           as T;
     }
-    if (t == _i1.getType<_i30.UserReadResponseCode?>()) {
-      return (data != null ? _i30.UserReadResponseCode.fromJson(data) : null)
+    if (t == _i1.getType<_i32.PublicUserRatingUser?>()) {
+      return (data != null
+          ? _i32.PublicUserRatingUser.fromJson(data, this)
+          : null) as T;
+    }
+    if (t == _i1.getType<_i33.UserRatingsResponse?>()) {
+      return (data != null
+          ? _i33.UserRatingsResponse.fromJson(data, this)
+          : null) as T;
+    }
+    if (t == _i1.getType<_i34.UserRatingsResponseCode?>()) {
+      return (data != null ? _i34.UserRatingsResponseCode.fromJson(data) : null)
           as T;
     }
-    if (t == _i1.getType<_i31.User?>()) {
-      return (data != null ? _i31.User.fromJson(data, this) : null) as T;
+    if (t == _i1.getType<_i35.UserReadResponse?>()) {
+      return (data != null ? _i35.UserReadResponse.fromJson(data, this) : null)
+          as T;
+    }
+    if (t == _i1.getType<_i36.UserReadResponseCode?>()) {
+      return (data != null ? _i36.UserReadResponseCode.fromJson(data) : null)
+          as T;
+    }
+    if (t == _i1.getType<_i37.User?>()) {
+      return (data != null ? _i37.User.fromJson(data, this) : null) as T;
     }
     if (t == List<int>) {
       return (data as List).map((e) => deserialize<int>(e)).toList() as dynamic;
     }
-    if (t == List<_i32.FriendshipBadge>) {
+    if (t == List<_i38.FriendshipBadge>) {
       return (data as List)
-          .map((e) => deserialize<_i32.FriendshipBadge>(e))
+          .map((e) => deserialize<_i38.FriendshipBadge>(e))
           .toList() as dynamic;
     }
-    if (t == List<_i32.UserBadge>) {
-      return (data as List).map((e) => deserialize<_i32.UserBadge>(e)).toList()
+    if (t == List<_i38.UserBadge>) {
+      return (data as List).map((e) => deserialize<_i38.UserBadge>(e)).toList()
           as dynamic;
+    }
+    if (t == _i1.getType<List<_i38.PublicUserRating>?>()) {
+      return (data != null
+          ? (data as List)
+              .map((e) => deserialize<_i38.PublicUserRating>(e))
+              .toList()
+          : null) as dynamic;
     }
     return super.deserialize<T>(data, t);
   }
@@ -400,25 +461,43 @@ class Protocol extends _i1.SerializationManager {
     if (data is _i24.Friendship) {
       return 'Friendship';
     }
-    if (data is _i25.UserBadge) {
+    if (data is _i25.RatingType) {
+      return 'RatingType';
+    }
+    if (data is _i26.Rating) {
+      return 'Rating';
+    }
+    if (data is _i27.UserBadge) {
       return 'UserBadge';
     }
-    if (data is _i26.PublicUser) {
+    if (data is _i28.PublicUser) {
       return 'PublicUser';
     }
-    if (data is _i27.PublicUserFriendRequest) {
+    if (data is _i29.PublicUserFriendRequest) {
       return 'PublicUserFriendRequest';
     }
-    if (data is _i28.PublicUserFriendshipDetails) {
+    if (data is _i30.PublicUserFriendshipDetails) {
       return 'PublicUserFriendshipDetails';
     }
-    if (data is _i29.UserReadResponse) {
+    if (data is _i31.PublicUserRating) {
+      return 'PublicUserRating';
+    }
+    if (data is _i32.PublicUserRatingUser) {
+      return 'PublicUserRatingUser';
+    }
+    if (data is _i33.UserRatingsResponse) {
+      return 'UserRatingsResponse';
+    }
+    if (data is _i34.UserRatingsResponseCode) {
+      return 'UserRatingsResponseCode';
+    }
+    if (data is _i35.UserReadResponse) {
       return 'UserReadResponse';
     }
-    if (data is _i30.UserReadResponseCode) {
+    if (data is _i36.UserReadResponseCode) {
       return 'UserReadResponseCode';
     }
-    if (data is _i31.User) {
+    if (data is _i37.User) {
       return 'User';
     }
     return super.getClassNameForObject(data);
@@ -499,26 +578,44 @@ class Protocol extends _i1.SerializationManager {
     if (data['className'] == 'Friendship') {
       return deserialize<_i24.Friendship>(data['data']);
     }
+    if (data['className'] == 'RatingType') {
+      return deserialize<_i25.RatingType>(data['data']);
+    }
+    if (data['className'] == 'Rating') {
+      return deserialize<_i26.Rating>(data['data']);
+    }
     if (data['className'] == 'UserBadge') {
-      return deserialize<_i25.UserBadge>(data['data']);
+      return deserialize<_i27.UserBadge>(data['data']);
     }
     if (data['className'] == 'PublicUser') {
-      return deserialize<_i26.PublicUser>(data['data']);
+      return deserialize<_i28.PublicUser>(data['data']);
     }
     if (data['className'] == 'PublicUserFriendRequest') {
-      return deserialize<_i27.PublicUserFriendRequest>(data['data']);
+      return deserialize<_i29.PublicUserFriendRequest>(data['data']);
     }
     if (data['className'] == 'PublicUserFriendshipDetails') {
-      return deserialize<_i28.PublicUserFriendshipDetails>(data['data']);
+      return deserialize<_i30.PublicUserFriendshipDetails>(data['data']);
+    }
+    if (data['className'] == 'PublicUserRating') {
+      return deserialize<_i31.PublicUserRating>(data['data']);
+    }
+    if (data['className'] == 'PublicUserRatingUser') {
+      return deserialize<_i32.PublicUserRatingUser>(data['data']);
+    }
+    if (data['className'] == 'UserRatingsResponse') {
+      return deserialize<_i33.UserRatingsResponse>(data['data']);
+    }
+    if (data['className'] == 'UserRatingsResponseCode') {
+      return deserialize<_i34.UserRatingsResponseCode>(data['data']);
     }
     if (data['className'] == 'UserReadResponse') {
-      return deserialize<_i29.UserReadResponse>(data['data']);
+      return deserialize<_i35.UserReadResponse>(data['data']);
     }
     if (data['className'] == 'UserReadResponseCode') {
-      return deserialize<_i30.UserReadResponseCode>(data['data']);
+      return deserialize<_i36.UserReadResponseCode>(data['data']);
     }
     if (data['className'] == 'User') {
-      return deserialize<_i31.User>(data['data']);
+      return deserialize<_i37.User>(data['data']);
     }
     return super.deserializeByClassName(data);
   }

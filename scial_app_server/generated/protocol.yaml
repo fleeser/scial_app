@@ -9,3 +9,4 @@ auth:
   - deleteAccount:
 user:
   - read:
+  - ratings:

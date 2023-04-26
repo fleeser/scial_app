@@ -8,7 +8,7 @@ import 'package:scial_app_flutter/src/features/auth/presentation/pages/forgot_pa
 import 'package:scial_app_flutter/src/features/auth/presentation/pages/sign_in_page.dart';
 import 'package:scial_app_flutter/src/features/auth/presentation/pages/sign_up_page.dart';
 import 'package:scial_app_flutter/src/features/auth/presentation/pages/sign_up_verification_page.dart';
-import 'package:scial_app_flutter/src/features/profile/presentation/pages/profile_page.dart';
+import 'package:scial_app_flutter/src/features/user/presentation/pages/user_page.dart';
 import 'package:scial_app_flutter/src/services/key_value_storage.dart';
 
 part 'app_router.g.dart';
@@ -93,7 +93,7 @@ GoRouter appRouter(AppRouterRef ref) {
             path: AppRoute.profile.path,
             parentNavigatorKey: _shellNavigatorKey,
             pageBuilder: (BuildContext context, GoRouterState state) {
-              return NoTransitionPage(child: ProfilePage(id: KeyValueStorage.getUserId()!));
+              return NoTransitionPage(child: UserPage(id: KeyValueStorage.getUserId()!));
             }
           )
         ]

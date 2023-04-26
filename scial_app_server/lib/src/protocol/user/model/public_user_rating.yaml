@@ -1,0 +1,9 @@
+class: PublicUserRating
+
+fields:
+  id: int
+  type: RatingType
+  created: DateTime
+  sender: PublicUserRatingUser?
+  stars: int
+  text: String?
