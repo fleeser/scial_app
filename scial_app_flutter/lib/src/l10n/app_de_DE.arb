@@ -102,6 +102,10 @@
 
     "not_authenticated" : "Nicht authentifiziert.",
 
+    "user_read_user_not_found" : "Benutzer nicht gefunden.",
+
+    "user_ratings_user_not_found" : "Benutzer nicht gefunden.",
+
     "no_internet_connection" : "Keine Internetverbindung möglich.",
 
     "unknown_error" : "Unbekannter Fehler."

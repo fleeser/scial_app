@@ -37,7 +37,7 @@ class _ForgotPasswordSubmissionPageState extends ConsumerState<ForgotPasswordSub
       appBar: SCAppBar(
         context: context,
         backButton: SCAppBarBackButton(enabled: !state.isLoading),
-        title: SCAppBarTitle(title: SCAppBarTitleText(text: AppLocalizations.of(context)!.forgot_password_submission_app_bar_title))
+        title: SCAppBarTitle(title: AppLocalizations.of(context)!.forgot_password_submission_app_bar_title)
       ),
       body: AuthBuilder(
         title: AppLocalizations.of(context)!.forgot_password_submission_title,

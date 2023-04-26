@@ -30,7 +30,7 @@ class _SignInPageState extends ConsumerState<SignInPage> {
     return SCScaffold(
       appBar: SCAppBar(
         context: context,
-        title: SCAppBarTitle(title: SCAppBarTitleText(text: AppLocalizations.of(context)!.sign_in_app_bar_title))
+        title: SCAppBarTitle(title: AppLocalizations.of(context)!.sign_in_app_bar_title)
       ),
       body: AuthBuilder(
         title: AppLocalizations.of(context)!.sign_in_title,
