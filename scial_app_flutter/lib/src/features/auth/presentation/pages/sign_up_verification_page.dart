@@ -42,7 +42,6 @@ class _SignUpVerificationPageState extends ConsumerState<SignUpVerificationPage>
         subtitle: AppLocalizations.of(context)!.sign_up_verification_subtitle,
         children: [
           SCPinInput.verification(
-            onCompleted: (String code) => _signUpVerification,
             enabled: !state.isLoading,
             controller: _verificationCodeController,
             error: state.hasError

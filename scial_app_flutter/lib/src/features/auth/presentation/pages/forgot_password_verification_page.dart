@@ -42,7 +42,6 @@ class _ForgotPasswordVerificationPageState extends ConsumerState<ForgotPasswordV
         subtitle: AppLocalizations.of(context)!.forgot_password_verification_subtitle,
         children: [
           SCPinInput.verification(
-            onCompleted: (String code) => _forgotPasswordVerification,
             enabled: !state.isLoading,
             controller: _verificationCodeController,
             error: state.hasError
