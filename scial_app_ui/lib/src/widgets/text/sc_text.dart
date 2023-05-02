@@ -7,7 +7,12 @@ enum SCTextLevel {
   paragraph1,
   buttonTitle,
   lightButtonTitle,
-  appBarTitle
+  appBarTitle,
+  ratingName,
+  ratingTime,
+  ratingText,
+  ratingRatingTitle,
+  ratingIndicator
 }
 
 class SCText extends StatelessWidget {
@@ -94,6 +99,76 @@ class SCText extends StatelessWidget {
     overflow = TextOverflow.ellipsis,
     level = SCTextLevel.appBarTitle;
 
+  const SCText.ratingName(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = 1,
+    overflow = TextOverflow.ellipsis,
+    textAlign = null,
+    level = SCTextLevel.ratingName;
+
+  const SCText.ratingTime(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = 1,
+    overflow = TextOverflow.ellipsis,
+    textAlign = null,
+    level = SCTextLevel.ratingTime;
+
+  const SCText.ratingText(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = null,
+    overflow = null,
+    textAlign = null,
+    level = SCTextLevel.ratingText;
+
+  const SCText.ratingRatingTitle(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = 1,
+    overflow = TextOverflow.ellipsis,
+    textAlign = null,
+    level = SCTextLevel.ratingRatingTitle;
+
+  const SCText.ratingIndicator(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = 1,
+    overflow = TextOverflow.ellipsis,
+    textAlign = TextAlign.center,
+    level = SCTextLevel.ratingIndicator;
+
   final String text;
   final Color? color;
   final int? maxLines;
@@ -115,6 +190,11 @@ class SCText extends StatelessWidget {
         case SCTextLevel.buttonTitle: return theme.colors.onAccent;
         case SCTextLevel.lightButtonTitle: return theme.colors.ligthButtonTitle;
         case SCTextLevel.appBarTitle: return theme.colors.appBarTitle;
+        case SCTextLevel.ratingName: return theme.colors.ratingNameForeground;
+        case SCTextLevel.ratingTime: return theme.colors.ratingTimeForeground;
+        case SCTextLevel.ratingText: return theme.colors.ratingTextForeground;
+        case SCTextLevel.ratingRatingTitle: return theme.colors.ratingRatingTitleForeground;
+        case SCTextLevel.ratingIndicator: return theme.colors.ratingIndicatorForeground;
         default: return null;
       }
     }
@@ -131,6 +211,16 @@ class SCText extends StatelessWidget {
           return theme.typography.ligthButtonTitle;
         case SCTextLevel.appBarTitle:
           return theme.typography.appBarTitle;
+        case SCTextLevel.ratingName:
+          return theme.typography.ratingName;
+        case SCTextLevel.ratingTime:
+          return theme.typography.ratingTime;
+        case SCTextLevel.ratingText:
+          return theme.typography.ratingText;
+        case SCTextLevel.ratingRatingTitle:
+          return theme.typography.ratingRatingTitle;
+        case SCTextLevel.ratingIndicator:
+          return theme.typography.ratingIndicator;
         default: return null;
       }
     }

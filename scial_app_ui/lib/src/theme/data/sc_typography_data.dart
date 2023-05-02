@@ -14,7 +14,12 @@ class SCTypographyData {
     required this.tabBarUnselectedTitle,
     required this.textInputFieldText,
     required this.textInputFieldHint,
-    required this.pinInput
+    required this.pinInput,
+    required this.ratingName,
+    required this.ratingTime,
+    required this.ratingText,
+    required this.ratingRatingTitle,
+    required this.ratingIndicator
   });
 
   factory SCTypographyData.regular() => const SCTypographyData(
@@ -103,6 +108,41 @@ class SCTypographyData {
       fontSize: 14.0,
       fontWeight: FontWeight.bold,
       decoration: TextDecoration.none
+    ),
+    ratingName: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 14.0,
+      fontWeight: FontWeight.bold,
+      decoration: TextDecoration.none
+    ),
+    ratingTime: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 12.0,
+      fontWeight: FontWeight.w400,
+      decoration: TextDecoration.none
+    ),
+    ratingText: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 14.0,
+      fontWeight: FontWeight.w400,
+      decoration: TextDecoration.none
+    ),
+    ratingRatingTitle: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 14.0,
+      fontWeight: FontWeight.bold,
+      decoration: TextDecoration.none
+    ),
+    ratingIndicator: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 12.0,
+      fontWeight: FontWeight.bold,
+      decoration: TextDecoration.none
     )
   );
 
@@ -118,4 +158,9 @@ class SCTypographyData {
   final TextStyle textInputFieldText;
   final TextStyle textInputFieldHint;
   final TextStyle pinInput;
+  final TextStyle ratingName;
+  final TextStyle ratingTime;
+  final TextStyle ratingText;
+  final TextStyle ratingRatingTitle;
+  final TextStyle ratingIndicator;
 }

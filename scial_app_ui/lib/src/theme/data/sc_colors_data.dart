@@ -37,7 +37,14 @@ class SCColorsData {
     required this.pinInputBackground,
     required this.pinInputFocusBorder,
     required this.pinInputErrorBorder,
-    required this.pinInputForeground
+    required this.pinInputForeground,
+    required this.ratingNameForeground,
+    required this.ratingTimeForeground,
+    required this.ratingTextForeground,
+    required this.ratingRatingTitleForeground,
+    required this.ratingIndicatorForeground,
+    required this.ratingIndicatorHostBackground,
+    required this.ratingIndicatorGuestBackground
   });
 
   factory SCColorsData.light() => const SCColorsData(
@@ -75,7 +82,14 @@ class SCColorsData {
     pinInputBackground: Color(0xFFEAEAEA),
     pinInputFocusBorder: Color(0xFF4299E1),
     pinInputErrorBorder: Color(0xFFFFEAEE),
-    pinInputForeground: Color(0xFF191919)
+    pinInputForeground: Color(0xFF191919),
+    ratingNameForeground: Color(0xFF191919),
+    ratingTimeForeground: Color(0xFF7F7F7F),
+    ratingTextForeground: Color(0xFF191919),
+    ratingRatingTitleForeground: Color(0xFF191919),
+    ratingIndicatorForeground: Color(0xFFFFFFFF),
+    ratingIndicatorHostBackground: Color(0xFF8D8DFF),
+    ratingIndicatorGuestBackground: Color(0xFFED8936)
   );
 
   factory SCColorsData.dark() => const SCColorsData(
@@ -113,7 +127,14 @@ class SCColorsData {
     pinInputBackground: Color(0xFF333333),
     pinInputFocusBorder: Color(0xFF3182CE),
     pinInputErrorBorder: Color(0xFFF3D4D9),
-    pinInputForeground: Color(0xFFFBFBFB)
+    pinInputForeground: Color(0xFFFBFBFB),
+    ratingNameForeground: Color(0xFFFBFBFB),
+    ratingTimeForeground: Color(0xFF999999),
+    ratingTextForeground: Color(0xFFFBFBFB),
+    ratingRatingTitleForeground: Color(0xFFFBFBFB),
+    ratingIndicatorForeground: Color(0xFFFFFFFF),
+    ratingIndicatorHostBackground: Color(0xFF5D5DFF),
+    ratingIndicatorGuestBackground: Color(0xFFDD6B20)
   );
 
   final Color accent;
@@ -151,4 +172,11 @@ class SCColorsData {
   final Color pinInputFocusBorder;
   final Color pinInputErrorBorder;
   final Color pinInputForeground;
+  final Color ratingNameForeground;
+  final Color ratingTimeForeground;
+  final Color ratingTextForeground;
+  final Color ratingRatingTitleForeground;
+  final Color ratingIndicatorForeground;
+  final Color ratingIndicatorHostBackground;
+  final Color ratingIndicatorGuestBackground;
 }

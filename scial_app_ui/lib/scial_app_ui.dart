@@ -13,6 +13,7 @@ export 'src/widgets/text/sc_text.dart';
 
 export 'src/widgets/base/sc_shimmer.dart';
 export 'src/widgets/base/sc_icon.dart';
+export 'src/widgets/base/sc_image.dart';
 
 export 'src/widgets/sc_scaffold.dart';
 
@@ -37,3 +38,6 @@ export 'src/widgets/button/light_button.dart';
 
 export 'src/widgets/input/text_input_field.dart';
 export 'src/widgets/input/pin_input_field.dart';
+
+export 'src/widgets/rating/sc_rating_list.dart';
+export 'src/widgets/rating/sc_rating_list_item.dart' hide SCRatingListItemWidget;
