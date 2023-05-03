@@ -11,7 +11,7 @@ class SCImage extends StatelessWidget {
 
   const SCImage({
     super.key,
-    this.size = const Size(double.infinity, double.infinity),
+    required this.size,
     this.borderRadius = 0.0,
     this.file,
     this.url,
@@ -22,7 +22,7 @@ class SCImage extends StatelessWidget {
 
   const SCImage.file({
     super.key,
-    this.size = const Size(double.infinity, double.infinity),
+    required this.size,
     this.borderRadius = 0.0,
     this.file,
     this.icon,
@@ -96,11 +96,13 @@ class SCImage extends StatelessWidget {
 
   Widget? _icon(Color color) {
     return icon != null
-      ? SCIcon(
-        icon: icon!, 
-        size: size.width / 2.0,
-        color: color
-      ) // TODO: Icon is maxed in size
+      ? Center(
+        child: SCIcon(
+          icon: icon!, 
+          size: size.width / 2.0,
+          color: color
+        )
+      )
       : null;
   }
 

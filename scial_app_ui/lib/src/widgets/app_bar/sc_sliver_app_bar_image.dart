@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:scial_app_ui/scial_app_ui.dart';
-import 'package:scial_app_ui/src/widgets/base/sc_image.dart';
 
 class SCSliverAppBarImage {
 
@@ -65,7 +64,8 @@ class SCSliverAppBarImageBackgroundWidget extends StatelessWidget {
         file: file,
         loading: loading,
         error: error,
-        icon: icon // TODO: Icon is full sized also in normal appbar image
+        icon: icon,
+        size: Size(MediaQuery.of(context).size.width, MediaQuery.of(context).size.height / 2.0)
       )
     );
   }
@@ -95,7 +95,7 @@ class SCSliverAppBarImageWidget extends StatelessWidget {
       file: file,
       loading: loading,
       error: error,
-      icon: icon, // TODO: Icon is full sized also in normal appbar image
+      icon: icon,
       size: const Size(kToolbarHeight - 10.0, kToolbarHeight - 10.0),
       borderRadius: (kToolbarHeight - 10.0) / 2.0
     );
