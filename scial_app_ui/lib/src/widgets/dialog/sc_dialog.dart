@@ -137,7 +137,7 @@ class _SCDialogState extends ConsumerState<SCDialog> {
       ref.read(isLoadingProvider.notifier).update((state) => state = Map.of(state)..update(index, (bool value) => true));
     }
 
-    bool success = await widget.buttons[index].onPressed!;
+    bool success = await widget.buttons[index].onPressed!.call();
 
     if (success && context.mounted) {
       return Navigator.pop(context);
@@ -148,5 +148,5 @@ class _SCDialogState extends ConsumerState<SCDialog> {
     }
   }
 
-  bool _isFuture(int index) => widget.buttons[index].onPressed!.runtimeType is! Future;
+  bool _isFuture(int index) => widget.buttons[index].onPressed!.runtimeType is! Future Function();
 }

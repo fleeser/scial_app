@@ -12,7 +12,7 @@ class SCDialogButton {
     this.isPrimary = false
   });
 
-  final FutureOr<bool>? onPressed;
+  final FutureOr<bool> Function()? onPressed;
   final String title;
   final bool isPrimary;
 }
@@ -24,7 +24,7 @@ class SCDialogYesNoButton {
     required this.title
   });
 
-  final FutureOr<bool>? onPressed;
+  final FutureOr<bool> Function()? onPressed;
   final String title;
 }
 
