@@ -24,12 +24,14 @@ import 'package:scial_app_client/src/protocol/auth/response/auth_change_password
     as _i9;
 import 'package:scial_app_client/src/protocol/auth/response/auth_delete_account_response.dart'
     as _i10;
-import 'package:scial_app_client/src/protocol/user/response/user_read_response.dart'
+import 'package:scial_app_client/src/protocol/friendship/response/friendship_remove_response.dart'
     as _i11;
-import 'package:scial_app_client/src/protocol/user/response/user_ratings_response.dart'
+import 'package:scial_app_client/src/protocol/user/response/user_read_response.dart'
     as _i12;
-import 'dart:io' as _i13;
-import 'protocol.dart' as _i14;
+import 'package:scial_app_client/src/protocol/user/response/user_ratings_response.dart'
+    as _i13;
+import 'dart:io' as _i14;
+import 'protocol.dart' as _i15;
 
 class _EndpointAuth extends _i1.EndpointRef {
   _EndpointAuth(_i1.EndpointCaller caller) : super(caller);
@@ -133,25 +135,59 @@ class _EndpointAuth extends _i1.EndpointRef {
       );
 }
 
+class _EndpointFriendRequest extends _i1.EndpointRef {
+  _EndpointFriendRequest(_i1.EndpointCaller caller) : super(caller);
+
+  @override
+  String get name => 'friendRequest';
+
+  _i2.Future<dynamic> answer(
+    int friendRequestId,
+    bool answer,
+  ) =>
+      caller.callServerEndpoint<dynamic>(
+        'friendRequest',
+        'answer',
+        {
+          'friendRequestId': friendRequestId,
+          'answer': answer,
+        },
+      );
+}
+
+class _EndpointFriendship extends _i1.EndpointRef {
+  _EndpointFriendship(_i1.EndpointCaller caller) : super(caller);
+
+  @override
+  String get name => 'friendship';
+
+  _i2.Future<_i11.FriendshipRemoveResponse> remove(int friendshipId) =>
+      caller.callServerEndpoint<_i11.FriendshipRemoveResponse>(
+        'friendship',
+        'remove',
+        {'friendshipId': friendshipId},
+      );
+}
+
 class _EndpointUser extends _i1.EndpointRef {
   _EndpointUser(_i1.EndpointCaller caller) : super(caller);
 
   @override
   String get name => 'user';
 
-  _i2.Future<_i11.UserReadResponse> read(int userId) =>
-      caller.callServerEndpoint<_i11.UserReadResponse>(
+  _i2.Future<_i12.UserReadResponse> read(int userId) =>
+      caller.callServerEndpoint<_i12.UserReadResponse>(
         'user',
         'read',
         {'userId': userId},
       );
 
-  _i2.Future<_i12.UserRatingsResponse> ratings(
+  _i2.Future<_i13.UserRatingsResponse> ratings(
     int userId, {
     int? limit,
     int? offset,
   }) =>
-      caller.callServerEndpoint<_i12.UserRatingsResponse>(
+      caller.callServerEndpoint<_i13.UserRatingsResponse>(
         'user',
         'ratings',
         {
@@ -165,25 +201,33 @@ class _EndpointUser extends _i1.EndpointRef {
 class Client extends _i1.ServerpodClient {
   Client(
     String host, {
-    _i13.SecurityContext? context,
+    _i14.SecurityContext? context,
     _i1.AuthenticationKeyManager? authenticationKeyManager,
   }) : super(
           host,
-          _i14.Protocol(),
+          _i15.Protocol(),
           context: context,
           authenticationKeyManager: authenticationKeyManager,
         ) {
     auth = _EndpointAuth(this);
+    friendRequest = _EndpointFriendRequest(this);
+    friendship = _EndpointFriendship(this);
     user = _EndpointUser(this);
   }
 
   late final _EndpointAuth auth;
+
+  late final _EndpointFriendRequest friendRequest;
+
+  late final _EndpointFriendship friendship;
 
   late final _EndpointUser user;
 
   @override
   Map<String, _i1.EndpointRef> get endpointRefLookup => {
         'auth': auth,
+        'friendRequest': friendRequest,
+        'friendship': friendship,
         'user': user,
       };
   @override

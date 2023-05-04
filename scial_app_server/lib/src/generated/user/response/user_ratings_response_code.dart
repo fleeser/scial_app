@@ -10,7 +10,8 @@ import 'package:serverpod/serverpod.dart' as _i1;
 
 enum UserRatingsResponseCode with _i1.SerializableEntity {
   notAuthenticated,
-  userNotFound;
+  userNotFound,
+  isPrivate;
 
   static UserRatingsResponseCode? fromJson(int index) {
     switch (index) {
@@ -18,6 +19,8 @@ enum UserRatingsResponseCode with _i1.SerializableEntity {
         return notAuthenticated;
       case 1:
         return userNotFound;
+      case 2:
+        return isPrivate;
       default:
         return null;
     }

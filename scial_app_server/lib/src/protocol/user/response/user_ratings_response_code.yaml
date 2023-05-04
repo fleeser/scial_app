@@ -3,3 +3,4 @@ enum: UserRatingsResponseCode
 values:
   - notAuthenticated
   - userNotFound
+  - isPrivate

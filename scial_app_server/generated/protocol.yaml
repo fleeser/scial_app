@@ -7,6 +7,10 @@ auth:
   - signIn:
   - changePassword:
   - deleteAccount:
+friendRequest:
+  - answer:
+friendship:
+  - remove:
 user:
   - read:
   - ratings:

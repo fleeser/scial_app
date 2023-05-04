@@ -99,7 +99,10 @@ class UserHandler {
         FriendRequest? friendRequestRow = await FriendRequest.findSingleRow(session, where: (t) => (t.sender.equals(userId) & t.receiver.equals(authUserId)) & t.status.equals(FriendRequestStatus.pending));
 
         if (friendRequestRow == null) {
-          return UserRatingsResponse(success: true);
+          return UserRatingsResponse(
+            success: false,
+            code: UserRatingsResponseCode.isPrivate
+          );
         }
       }
     }

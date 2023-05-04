@@ -6,21 +6,18 @@
 // ignore_for_file: implementation_imports
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:serverpod_client/serverpod_client.dart' as _i1;
+import 'package:serverpod/serverpod.dart' as _i1;
 
-enum UserRatingsResponseCode with _i1.SerializableEntity {
+enum FriendshipRemoveResponseCode with _i1.SerializableEntity {
   notAuthenticated,
-  userNotFound,
-  isPrivate;
+  friendshipNotFound;
 
-  static UserRatingsResponseCode? fromJson(int index) {
+  static FriendshipRemoveResponseCode? fromJson(int index) {
     switch (index) {
       case 0:
         return notAuthenticated;
       case 1:
-        return userNotFound;
-      case 2:
-        return isPrivate;
+        return friendshipNotFound;
       default:
         return null;
     }

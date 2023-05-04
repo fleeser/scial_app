@@ -8,7 +8,9 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod/serverpod.dart' as _i1;
 import '../endpoints/auth_endpoint.dart' as _i2;
-import '../endpoints/user_endpoint.dart' as _i3;
+import '../endpoints/friend_request_endpoint.dart' as _i3;
+import '../endpoints/friendship_endpoint.dart' as _i4;
+import '../endpoints/user_endpoint.dart' as _i5;
 
 class Endpoints extends _i1.EndpointDispatch {
   @override
@@ -20,7 +22,19 @@ class Endpoints extends _i1.EndpointDispatch {
           'auth',
           null,
         ),
-      'user': _i3.UserEndpoint()
+      'friendRequest': _i3.FriendRequestEndpoint()
+        ..initialize(
+          server,
+          'friendRequest',
+          null,
+        ),
+      'friendship': _i4.FriendshipEndpoint()
+        ..initialize(
+          server,
+          'friendship',
+          null,
+        ),
+      'user': _i5.UserEndpoint()
         ..initialize(
           server,
           'user',
@@ -220,6 +234,60 @@ class Endpoints extends _i1.EndpointDispatch {
         ),
       },
     );
+    connectors['friendRequest'] = _i1.EndpointConnector(
+      name: 'friendRequest',
+      endpoint: endpoints['friendRequest']!,
+      methodConnectors: {
+        'answer': _i1.MethodConnector(
+          name: 'answer',
+          params: {
+            'friendRequestId': _i1.ParameterDescription(
+              name: 'friendRequestId',
+              type: _i1.getType<int>(),
+              nullable: false,
+            ),
+            'answer': _i1.ParameterDescription(
+              name: 'answer',
+              type: _i1.getType<bool>(),
+              nullable: false,
+            ),
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['friendRequest'] as _i3.FriendRequestEndpoint).answer(
+            session,
+            params['friendRequestId'],
+            params['answer'],
+          ),
+        )
+      },
+    );
+    connectors['friendship'] = _i1.EndpointConnector(
+      name: 'friendship',
+      endpoint: endpoints['friendship']!,
+      methodConnectors: {
+        'remove': _i1.MethodConnector(
+          name: 'remove',
+          params: {
+            'friendshipId': _i1.ParameterDescription(
+              name: 'friendshipId',
+              type: _i1.getType<int>(),
+              nullable: false,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['friendship'] as _i4.FriendshipEndpoint).remove(
+            session,
+            params['friendshipId'],
+          ),
+        )
+      },
+    );
     connectors['user'] = _i1.EndpointConnector(
       name: 'user',
       endpoint: endpoints['user']!,
@@ -237,7 +305,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['user'] as _i3.UserEndpoint).read(
+              (endpoints['user'] as _i5.UserEndpoint).read(
             session,
             params['userId'],
           ),
@@ -265,7 +333,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['user'] as _i3.UserEndpoint).ratings(
+              (endpoints['user'] as _i5.UserEndpoint).ratings(
             session,
             params['userId'],
             limit: params['limit'],

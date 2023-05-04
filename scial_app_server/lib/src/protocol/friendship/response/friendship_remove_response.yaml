@@ -1,0 +1,5 @@
+class: FriendshipRemoveResponse
+
+fields:
+  success: bool
+  code: FriendshipRemoveResponseCode?
