@@ -19,7 +19,10 @@ class SCTypographyData {
     required this.ratingTime,
     required this.ratingText,
     required this.ratingRatingTitle,
-    required this.ratingIndicator
+    required this.ratingIndicator,
+    required this.dialogTitle,
+    required this.dialogText,
+    required this.dialogButton
   });
 
   factory SCTypographyData.regular() => const SCTypographyData(
@@ -143,6 +146,27 @@ class SCTypographyData {
       fontSize: 12.0,
       fontWeight: FontWeight.bold,
       decoration: TextDecoration.none
+    ),
+    dialogTitle: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 18.0,
+      fontWeight: FontWeight.bold,
+      decoration: TextDecoration.none
+    ),
+    dialogText: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 14.0,
+      fontWeight: FontWeight.w400,
+      decoration: TextDecoration.none
+    ),
+    dialogButton: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 14.0,
+      fontWeight: FontWeight.bold,
+      decoration: TextDecoration.none
     )
   );
 
@@ -163,4 +187,7 @@ class SCTypographyData {
   final TextStyle ratingText;
   final TextStyle ratingRatingTitle;
   final TextStyle ratingIndicator;
+  final TextStyle dialogTitle;
+  final TextStyle dialogText;
+  final TextStyle dialogButton;
 }

@@ -44,7 +44,14 @@ class SCColorsData {
     required this.ratingRatingTitleForeground,
     required this.ratingIndicatorForeground,
     required this.ratingIndicatorHostBackground,
-    required this.ratingIndicatorGuestBackground
+    required this.ratingIndicatorGuestBackground,
+    required this.dialogBackground,
+    required this.dialogButtonPrimaryBackground,
+    required this.dialogButtonPrimaryForeground,
+    required this.dialogButtonSecondaryBackground,
+    required this.dialogButtonSecondaryForeground,
+    required this.dialogTitleForeground,
+    required this.dialogTextForeground
   });
 
   factory SCColorsData.light() => const SCColorsData(
@@ -89,7 +96,14 @@ class SCColorsData {
     ratingRatingTitleForeground: Color(0xFF191919),
     ratingIndicatorForeground: Color(0xFFFFFFFF),
     ratingIndicatorHostBackground: Color(0xFF8D8DFF),
-    ratingIndicatorGuestBackground: Color(0xFFED8936)
+    ratingIndicatorGuestBackground: Color(0xFFED8936),
+    dialogBackground: Color(0xFFFFFFFF),
+    dialogButtonPrimaryBackground: Color(0xFF4299E1),
+    dialogButtonPrimaryForeground: Color(0xFFFFFFFF),
+    dialogButtonSecondaryBackground: Color(0xFFDFDFDF),
+    dialogButtonSecondaryForeground: Color(0xFF191919),
+    dialogTitleForeground: Color(0xFF191919),
+    dialogTextForeground: Color(0xFF7F7F7F)
   );
 
   factory SCColorsData.dark() => const SCColorsData(
@@ -134,7 +148,14 @@ class SCColorsData {
     ratingRatingTitleForeground: Color(0xFFFBFBFB),
     ratingIndicatorForeground: Color(0xFFFFFFFF),
     ratingIndicatorHostBackground: Color(0xFF5D5DFF),
-    ratingIndicatorGuestBackground: Color(0xFFDD6B20)
+    ratingIndicatorGuestBackground: Color(0xFFDD6B20),
+    dialogBackground: Color(0xFF191919),
+    dialogButtonPrimaryBackground: Color(0xFF3182CE),
+    dialogButtonPrimaryForeground: Color(0xFFFFFFFF),
+    dialogButtonSecondaryBackground: Color(0xFF4C4C4C),
+    dialogButtonSecondaryForeground: Color(0xFFFBFBFB),
+    dialogTitleForeground: Color(0xFFFBFBFB),
+    dialogTextForeground: Color(0xFF999999)
   );
 
   final Color accent;
@@ -179,4 +200,11 @@ class SCColorsData {
   final Color ratingIndicatorForeground;
   final Color ratingIndicatorHostBackground;
   final Color ratingIndicatorGuestBackground;
+  final Color dialogBackground;
+  final Color dialogButtonPrimaryBackground;
+  final Color dialogButtonPrimaryForeground;
+  final Color dialogButtonSecondaryBackground;
+  final Color dialogButtonSecondaryForeground;
+  final Color dialogTitleForeground;
+  final Color dialogTextForeground;
 }

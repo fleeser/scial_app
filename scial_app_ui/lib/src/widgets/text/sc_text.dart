@@ -12,7 +12,10 @@ enum SCTextLevel {
   ratingTime,
   ratingText,
   ratingRatingTitle,
-  ratingIndicator
+  ratingIndicator,
+  dialogTitle,
+  dialogText,
+  dialogButton
 }
 
 class SCText extends StatelessWidget {
@@ -168,6 +171,48 @@ class SCText extends StatelessWidget {
     overflow = TextOverflow.ellipsis,
     textAlign = TextAlign.center,
     level = SCTextLevel.ratingIndicator;
+  
+  const SCText.dialogTitle(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = null,
+    overflow = null,
+    textAlign = TextAlign.center,
+    level = SCTextLevel.dialogTitle;
+
+  const SCText.dialogText(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = null,
+    overflow = null,
+    textAlign = TextAlign.center,
+    level = SCTextLevel.dialogText;
+  
+  const SCText.dialogButton(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = 1,
+    overflow = TextOverflow.ellipsis,
+    textAlign = TextAlign.center,
+    level = SCTextLevel.dialogButton;
 
   final String text;
   final Color? color;
@@ -195,6 +240,8 @@ class SCText extends StatelessWidget {
         case SCTextLevel.ratingText: return theme.colors.ratingTextForeground;
         case SCTextLevel.ratingRatingTitle: return theme.colors.ratingRatingTitleForeground;
         case SCTextLevel.ratingIndicator: return theme.colors.ratingIndicatorForeground;
+        case SCTextLevel.dialogTitle: return theme.colors.dialogTitleForeground;
+        case SCTextLevel.dialogText: return theme.colors.dialogTextForeground;
         default: return null;
       }
     }
@@ -221,6 +268,12 @@ class SCText extends StatelessWidget {
           return theme.typography.ratingRatingTitle;
         case SCTextLevel.ratingIndicator:
           return theme.typography.ratingIndicator;
+        case SCTextLevel.dialogTitle:
+          return theme.typography.dialogTitle;
+        case SCTextLevel.dialogText:
+          return theme.typography.dialogText;
+        case SCTextLevel.dialogButton:
+          return theme.typography.dialogButton;
         default: return null;
       }
     }

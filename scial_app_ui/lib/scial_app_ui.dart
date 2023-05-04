@@ -41,3 +41,6 @@ export 'src/widgets/input/pin_input_field.dart';
 
 export 'src/widgets/rating/sc_rating_list.dart';
 export 'src/widgets/rating/sc_rating_list_item.dart' hide SCRatingListItemWidget;
+
+export 'src/widgets/dialog/sc_dialog.dart' hide SCDialog;
+export 'src/widgets/dialog/sc_dialog_button.dart' hide SCDialogButtonWidget;
