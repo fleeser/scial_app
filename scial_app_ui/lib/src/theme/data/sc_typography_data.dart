@@ -14,6 +14,8 @@ class SCTypographyData {
     required this.tabBarUnselectedTitle,
     required this.textInputFieldText,
     required this.textInputFieldHint,
+    required this.textInputBoxText,
+    required this.textInputBoxHint,
     required this.pinInput,
     required this.ratingName,
     required this.ratingTime,
@@ -22,7 +24,11 @@ class SCTypographyData {
     required this.ratingIndicator,
     required this.dialogTitle,
     required this.dialogText,
-    required this.dialogButton
+    required this.dialogButton,
+    required this.sheetTitle,
+    required this.userText,
+    required this.emptyBadges,
+    required this.editUserIsPrivate
   });
 
   factory SCTypographyData.regular() => const SCTypographyData(
@@ -85,6 +91,20 @@ class SCTypographyData {
       package: 'scial_app_ui'
     ),
     textInputFieldHint: TextStyle(
+      fontFamily: 'Poppins',
+      fontWeight: FontWeight.w400,
+      fontSize: 14.0,
+      decoration: TextDecoration.none,
+      package: 'scial_app_ui'
+    ),
+    textInputBoxText: TextStyle(
+      fontFamily: 'Poppins',
+      fontWeight: FontWeight.w400,
+      fontSize: 14.0,
+      decoration: TextDecoration.none,
+      package: 'scial_app_ui'
+    ),
+    textInputBoxHint: TextStyle(
       fontFamily: 'Poppins',
       fontWeight: FontWeight.w400,
       fontSize: 14.0,
@@ -167,6 +187,34 @@ class SCTypographyData {
       fontSize: 14.0,
       fontWeight: FontWeight.bold,
       decoration: TextDecoration.none
+    ),
+    sheetTitle: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 18.0,
+      fontWeight: FontWeight.bold,
+      decoration: TextDecoration.none
+    ),
+    userText: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 14.0,
+      fontWeight: FontWeight.w400,
+      decoration: TextDecoration.none
+    ),
+    emptyBadges: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 14.0,
+      fontWeight: FontWeight.bold,
+      decoration: TextDecoration.none
+    ),
+    editUserIsPrivate: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 14.0,
+      fontWeight: FontWeight.bold,
+      decoration: TextDecoration.none
     )
   );
 
@@ -181,6 +229,8 @@ class SCTypographyData {
   final TextStyle tabBarUnselectedTitle;
   final TextStyle textInputFieldText;
   final TextStyle textInputFieldHint;
+  final TextStyle textInputBoxText;
+  final TextStyle textInputBoxHint;
   final TextStyle pinInput;
   final TextStyle ratingName;
   final TextStyle ratingTime;
@@ -190,4 +240,8 @@ class SCTypographyData {
   final TextStyle dialogTitle;
   final TextStyle dialogText;
   final TextStyle dialogButton;
+  final TextStyle sheetTitle;
+  final TextStyle userText;
+  final TextStyle emptyBadges;
+  final TextStyle editUserIsPrivate;
 }

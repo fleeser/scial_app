@@ -1,0 +1,6 @@
+enum: FriendRequestTakeBackResponseCode
+  
+values:
+  - notAuthenticated
+  - friendRequestNotFound
+  - friendRequestAlreadyAnswered

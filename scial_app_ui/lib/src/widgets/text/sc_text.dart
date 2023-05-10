@@ -15,7 +15,11 @@ enum SCTextLevel {
   ratingIndicator,
   dialogTitle,
   dialogText,
-  dialogButton
+  dialogButton,
+  sheetTitle,
+  userText,
+  emptyBadges,
+  editUserIsPrivate
 }
 
 class SCText extends StatelessWidget {
@@ -214,6 +218,62 @@ class SCText extends StatelessWidget {
     textAlign = TextAlign.center,
     level = SCTextLevel.dialogButton;
 
+  const SCText.sheetTitle(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = null,
+    overflow = null,
+    textAlign = null,
+    level = SCTextLevel.sheetTitle;
+
+  const SCText.userText(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = null,
+    overflow = null,
+    textAlign = TextAlign.center,
+    level = SCTextLevel.userText;
+
+  const SCText.emptyBadges(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = 1,
+    overflow = TextOverflow.ellipsis,
+    textAlign = null,
+    level = SCTextLevel.emptyBadges;
+
+  const SCText.editUserIsPrivate(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = 1,
+    overflow = TextOverflow.ellipsis,
+    textAlign = null,
+    level = SCTextLevel.editUserIsPrivate;
+
   final String text;
   final Color? color;
   final int? maxLines;
@@ -242,6 +302,10 @@ class SCText extends StatelessWidget {
         case SCTextLevel.ratingIndicator: return theme.colors.ratingIndicatorForeground;
         case SCTextLevel.dialogTitle: return theme.colors.dialogTitleForeground;
         case SCTextLevel.dialogText: return theme.colors.dialogTextForeground;
+        case SCTextLevel.sheetTitle: return theme.colors.sheetTitleForeground;
+        case SCTextLevel.userText: return theme.colors.userText;
+        case SCTextLevel.emptyBadges: return theme.colors.emptyBadges;
+        case SCTextLevel.editUserIsPrivate: return theme.colors.editUserIsPrivate;
         default: return null;
       }
     }
@@ -274,6 +338,14 @@ class SCText extends StatelessWidget {
           return theme.typography.dialogText;
         case SCTextLevel.dialogButton:
           return theme.typography.dialogButton;
+        case SCTextLevel.sheetTitle:
+          return theme.typography.sheetTitle;
+        case SCTextLevel.userText:
+          return theme.typography.userText;
+        case SCTextLevel.emptyBadges:
+          return theme.typography.emptyBadges;
+        case SCTextLevel.editUserIsPrivate:
+          return theme.typography.editUserIsPrivate;
         default: return null;
       }
     }

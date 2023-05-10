@@ -1,0 +1,5 @@
+class: UserUpdateResponse
+
+fields:
+  success: bool
+  code: UserUpdateResponseCode?

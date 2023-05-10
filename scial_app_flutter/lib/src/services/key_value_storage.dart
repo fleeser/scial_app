@@ -78,7 +78,7 @@ class KeyValueStorage {
   }
 
   static Future<void> storeAuthInfo(int keyId, String key, int userId) async {
-    await _authBox.put(AuthBoxKeys.key.title, key);
+    await _authBox.put(AuthBoxKeys.key.title, '$keyId:$key');
     await _authBox.put(AuthBoxKeys.userId.title, userId);
   }
 

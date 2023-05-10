@@ -7,11 +7,13 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod/serverpod.dart' as _i1;
+import '../../protocol.dart' as _i2;
 
 class PublicUserFriendshipDetails extends _i1.SerializableEntity {
   PublicUserFriendshipDetails({
     required this.id,
     required this.created,
+    required this.badges,
   });
 
   factory PublicUserFriendshipDetails.fromJson(
@@ -22,6 +24,8 @@ class PublicUserFriendshipDetails extends _i1.SerializableEntity {
       id: serializationManager.deserialize<int>(jsonSerialization['id']),
       created: serializationManager
           .deserialize<DateTime>(jsonSerialization['created']),
+      badges: serializationManager
+          .deserialize<List<_i2.FriendshipBadge>>(jsonSerialization['badges']),
     );
   }
 
@@ -29,11 +33,14 @@ class PublicUserFriendshipDetails extends _i1.SerializableEntity {
 
   DateTime created;
 
+  List<_i2.FriendshipBadge> badges;
+
   @override
   Map<String, dynamic> toJson() {
     return {
       'id': id,
       'created': created,
+      'badges': badges,
     };
   }
 
@@ -42,6 +49,7 @@ class PublicUserFriendshipDetails extends _i1.SerializableEntity {
     return {
       'id': id,
       'created': created,
+      'badges': badges,
     };
   }
 }

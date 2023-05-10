@@ -30,7 +30,8 @@ class SCColorsData {
     required this.tabBarSelectedForeground,
     required this.imageBackground,
     required this.imageIconForeground,
-    required this.textInputBackground,
+    required this.textInputFieldBackground,
+    required this.textInputBoxBackground,
     required this.textInputIcon,
     required this.textInputText,
     required this.textInputHint,
@@ -51,7 +52,19 @@ class SCColorsData {
     required this.dialogButtonSecondaryBackground,
     required this.dialogButtonSecondaryForeground,
     required this.dialogTitleForeground,
-    required this.dialogTextForeground
+    required this.dialogTextForeground,
+    required this.sheetBackground,
+    required this.sheetTitleForeground,
+    required this.sheetCancelButtonBackground,
+    required this.sheetCancelButtonForeground,
+    required this.switchActiveBackground,
+    required this.switchInactiveBackground,
+    required this.switchActiveForeground,
+    required this.switchInactiveForeground,
+    required this.profileErrorForeground,
+    required this.userText,
+    required this.emptyBadges,
+    required this.editUserIsPrivate
   });
 
   factory SCColorsData.light() => const SCColorsData(
@@ -82,7 +95,8 @@ class SCColorsData {
     tabBarSelectedForeground: Color(0xFFFFFFFF),
     imageBackground: Color(0xFFEAEAEA),
     imageIconForeground: Color(0xFF191919),
-    textInputBackground: Color(0xFFEAEAEA),
+    textInputFieldBackground: Color(0xFFEAEAEA),
+    textInputBoxBackground: Color(0xFFEAEAEA),
     textInputIcon: Color(0xFF7F7F7F),
     textInputText: Color(0xFF191919),
     textInputHint: Color(0xFF7F7F7F),
@@ -103,7 +117,19 @@ class SCColorsData {
     dialogButtonSecondaryBackground: Color(0xFFDFDFDF),
     dialogButtonSecondaryForeground: Color(0xFF191919),
     dialogTitleForeground: Color(0xFF191919),
-    dialogTextForeground: Color(0xFF7F7F7F)
+    dialogTextForeground: Color(0xFF7F7F7F),
+    sheetBackground: Color(0xFFFFFFFF),
+    sheetTitleForeground: Color(0xFF191919),
+    sheetCancelButtonBackground: Color(0xFFDFDFDF),
+    sheetCancelButtonForeground: Color(0xFF191919),
+    switchActiveBackground: Color(0xFF4299E1),
+    switchInactiveBackground: Color(0xFFEAEAEA),
+    switchActiveForeground: Color(0xFFFFFFFF),
+    switchInactiveForeground: Color(0xff7F7F7F),
+    profileErrorForeground: Color(0xFF191919),
+    userText: Color(0xFF191919),
+    emptyBadges: Color(0xFF191919),
+    editUserIsPrivate: Color(0xFF191919)
   );
 
   factory SCColorsData.dark() => const SCColorsData(
@@ -134,7 +160,8 @@ class SCColorsData {
     tabBarSelectedForeground: Color(0xFFFFFFFF),
     imageBackground: Color(0xFF333333),
     imageIconForeground: Color(0xFFFBFBFB),
-    textInputBackground: Color(0xFF333333),
+    textInputFieldBackground: Color(0xFF333333),
+    textInputBoxBackground: Color(0xFF333333),
     textInputIcon: Color(0xFF999999),
     textInputText: Color(0xFFFBFBFB),
     textInputHint: Color(0xFF999999),
@@ -155,7 +182,19 @@ class SCColorsData {
     dialogButtonSecondaryBackground: Color(0xFF4C4C4C),
     dialogButtonSecondaryForeground: Color(0xFFFBFBFB),
     dialogTitleForeground: Color(0xFFFBFBFB),
-    dialogTextForeground: Color(0xFF999999)
+    dialogTextForeground: Color(0xFF999999),
+    sheetBackground: Color(0xFF191919),
+    sheetTitleForeground: Color(0xFFFBFBFB),
+    sheetCancelButtonBackground: Color(0xFF4C4C4C),
+    sheetCancelButtonForeground: Color(0xFFFBFBFB),
+    switchActiveBackground: Color(0xFF3182CE),
+    switchInactiveBackground: Color(0xFF333333),
+    switchActiveForeground: Color(0xFFFFFFFF),
+    switchInactiveForeground: Color(0xFF999999),
+    profileErrorForeground: Color(0xFFFBFBFB),
+    userText: Color(0xFFFBFBFB),
+    emptyBadges: Color(0xFFFBFBFB),
+    editUserIsPrivate: Color(0xFFFBFBFB)
   );
 
   final Color accent;
@@ -185,7 +224,8 @@ class SCColorsData {
   final Color tabBarSelectedForeground;
   final Color imageBackground;
   final Color imageIconForeground;
-  final Color textInputBackground;
+  final Color textInputFieldBackground;
+  final Color textInputBoxBackground;
   final Color textInputIcon;
   final Color textInputText;
   final Color textInputHint;
@@ -207,4 +247,16 @@ class SCColorsData {
   final Color dialogButtonSecondaryForeground;
   final Color dialogTitleForeground;
   final Color dialogTextForeground;
+  final Color sheetBackground;
+  final Color sheetTitleForeground;
+  final Color sheetCancelButtonBackground;
+  final Color sheetCancelButtonForeground;
+  final Color switchActiveBackground;
+  final Color switchInactiveBackground;
+  final Color switchActiveForeground;
+  final Color switchInactiveForeground;
+  final Color profileErrorForeground;
+  final Color userText;
+  final Color emptyBadges;
+  final Color editUserIsPrivate;
 }

@@ -37,6 +37,7 @@ export 'src/widgets/button/button.dart';
 export 'src/widgets/button/light_button.dart';
 
 export 'src/widgets/input/text_input_field.dart';
+export 'src/widgets/input/text_input_box.dart';
 export 'src/widgets/input/pin_input_field.dart';
 
 export 'src/widgets/rating/sc_rating_list.dart';
@@ -44,3 +45,8 @@ export 'src/widgets/rating/sc_rating_list_item.dart' hide SCRatingListItemWidget
 
 export 'src/widgets/dialog/sc_dialog.dart' hide SCDialog;
 export 'src/widgets/dialog/sc_dialog_button.dart' hide SCDialogButtonWidget;
+
+export 'src/widgets/sheet/sc_sheet.dart';
+export 'src/widgets/sheet/sc_sheet_button.dart' hide SCSheetButtonWidget;
+
+export 'src/widgets/switch/sc_switch.dart';

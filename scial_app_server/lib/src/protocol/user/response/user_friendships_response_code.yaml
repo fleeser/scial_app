@@ -1,0 +1,6 @@
+enum: UserFriendshipsResponseCode
+  
+values:
+  - notAuthenticated
+  - userNotFound
+  - isPrivate

@@ -17,19 +17,6 @@ class SCDialogButton {
   final bool isPrimary;
 }
 
-class SCDialogYesNoButton {
-
-  const SCDialogYesNoButton({
-    this.onPressed,
-    required this.title
-  });
-
-  final FutureOr<bool> Function()? onPressed;
-  final String title;
-}
-
-// TODO Stop closing and also only one button should be clickable 
-
 class SCDialogButtonWidget extends StatelessWidget {
 
   const SCDialogButtonWidget({

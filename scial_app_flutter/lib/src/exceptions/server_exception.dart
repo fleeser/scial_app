@@ -49,7 +49,23 @@ class ServerException with _$ServerException {
 
   const factory ServerException.userReadUserNotFound() = UserReadUserNotFound;
 
+  const factory ServerException.userFriendshipsUserNotFound() = UserFriendshipsUserNotFound;
+  const factory ServerException.userFriendshipsIsPrivate() = UserFriendshipsIsPrivate;
+
   const factory ServerException.userRatingsUserNotFound() = UserRatingsUserNotFound;
+  const factory ServerException.userRatingsIsPrivate() = UserRatingsIsPrivate;
+
+  const factory ServerException.userRemoveFriendshipFriendshipNotFound() = UserRemoveFriendshipFriendshipNotFound;
+
+  const factory ServerException.userAnswerFriendRequestFriendRequestNotFound() = UserAnswerFriendRequestFriendRequestNotFound;
+  const factory ServerException.userAnswerFriendRequestFriendRequestAlreadyAnswered() = UserAnswerFriendRequestFriendRequestAlreadyAnswered;
+
+  const factory ServerException.userTakeBackFriendRequestFriendRequestNotFound() = UserTakeBackFriendRequestFriendRequestNotFound;
+  const factory ServerException.userTakeBackFriendRequestFriendRequestAlreadyAnswered() = UserTakeBackFriendRequestFriendRequestAlreadyAnswered;
+
+  const factory ServerException.userCreateFriendRequestFriendRequestAlreadyExists() = UserCreateFriendRequestFriendRequestAlreadyExists;
+
+  const factory ServerException.userUpdateUserNotFound() = UserUpdateUserNotFound;
 
   const factory ServerException.notAuthenticated() = NotAuthenticated;
 
@@ -101,8 +117,24 @@ extension ServerExceptionExtension on ServerException {
       authDeleteAccountWrongPassword: () => AppLocalizations.of(context)!.auth_delete_account_wrong_password,
 
       userReadUserNotFound: () => AppLocalizations.of(context)!.user_read_user_not_found,
+
+      userFriendshipsUserNotFound: () => AppLocalizations.of(context)!.user_friendships_user_not_found,
+      userFriendshipsIsPrivate: () => AppLocalizations.of(context)!.user_friendships_is_private,
       
       userRatingsUserNotFound: () => AppLocalizations.of(context)!.user_ratings_user_not_found,
+      userRatingsIsPrivate: () => AppLocalizations.of(context)!.user_ratings_is_private,
+
+      userRemoveFriendshipFriendshipNotFound: () => AppLocalizations.of(context)!.user_remove_friendship_friendship_not_found,
+
+      userAnswerFriendRequestFriendRequestNotFound: () => AppLocalizations.of(context)!.user_answer_friend_request_friend_request_not_found,
+      userAnswerFriendRequestFriendRequestAlreadyAnswered: () => AppLocalizations.of(context)!.user_answer_friend_request_friend_request_already_answered,
+
+      userTakeBackFriendRequestFriendRequestNotFound: () => AppLocalizations.of(context)!.user_take_back_friend_request_friend_request_not_found,
+      userTakeBackFriendRequestFriendRequestAlreadyAnswered: () => AppLocalizations.of(context)!.user_take_back_friend_request_friend_request_already_answered,
+
+      userCreateFriendRequestFriendRequestAlreadyExists: () => AppLocalizations.of(context)!.user_create_friend_request_friend_request_already_exists,
+
+      userUpdateUserNotFound: () => AppLocalizations.of(context)!.user_update_user_not_found,
 
       notAuthenticated: () => AppLocalizations.of(context)!.not_authenticated,
 

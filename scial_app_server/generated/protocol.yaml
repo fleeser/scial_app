@@ -8,9 +8,15 @@ auth:
   - changePassword:
   - deleteAccount:
 friendRequest:
+  - create:
   - answer:
+  - takeBack:
 friendship:
   - remove:
+test:
+  - test:
 user:
   - read:
+  - update:
+  - friendships:
   - ratings:

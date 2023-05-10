@@ -1,4 +1,23 @@
 {
+    "date_time_today" : "Heute",
+    "date_time_yesterday" : "Gestern",
+    "date_time_tomorrow" : "Morgen",
+
+    "date_time_monday" : "Montag",
+    "date_time_tuesday" : "Dienstag",
+    "date_time_wednesday" : "Mittwoch",
+    "date_time_thursday" : "Donnerstag",
+    "date_time_friday" : "Freitag",
+    "date_time_saturday" : "Samstag",
+    "date_time_sunday" : "Sonntag",
+
+    "rating_type_host" : "Gastgeber",
+    "rating_type_guest" : "Gast",
+
+    "user_name" : "scial Benutzer",
+
+    "friend_request_text" : "Lass uns Freunde sein! 😎",
+
     "sign_up_app_bar_title" : "Registrieren",
     "sign_up_title" : "Na, wer bist du denn? 🧐",
     "sign_up_subtitle" : "Erzähl mal ein wenig über dich.",
@@ -61,6 +80,32 @@
     "user_tab_bar_friendships" : "Freundschaften",
     "user_tab_bar_ratings" : "Bewertungen",
 
+    "user_friendship_dialog_title" : "Freund entfernen",
+    "user_friendship_dialog_text" : "Bist du sicher, dass du diesen Freund entfernen möchtest?",
+    "user_friendship_dialog_remove" : "Entfernen",
+    "user_friendship_dialog_cancel" : "Abbrechen",
+
+    "user_answer_friend_request_dialog_title" : "Freundschaftsanfrage",
+    "user_answer_friend_request_dialog_accept" : "Annehmen",
+    "user_answer_friend_request_dialog_deny" : "Ablehnen",
+    "user_answer_friend_request_dialog_cancel" : "Abbrechen",
+
+    "user_create_friend_request_title" : "Freundschaftsanfrage",
+    "user_create_friend_request_send_button_title" : "Senden",
+
+    "user_update_user_title" : "Profil bearbeiten",
+    "user_update_user_private" : "Privates Profil",
+    "user_update_user_save_button_title" : "Speichern",
+
+    "user_take_back_friend_request_dialog_title" : "Freundschaftsanfrage zurücknehmen",
+    "user_take_back_friend_request_dialog_take_back" : "Zurücknehmen",
+    "user_take_back_friend_request_dialog_cancel" : "Abbrechen",
+
+    "user_ratings_rating_title" : "Bewertung",
+    "user_ratings_empty_text" : "Keine Bewertungen gefunden.",
+
+    "user_friendships_empty_text" : "Keine Freundschaften gefunden.",
+
     "auth_sign_up_invalid_email" : "Das scheint keine E-Mail-Adresse zu sein.",
     "auth_sign_up_weak_password" : "Das Passwort muss zwischen 8 und 32 Zeichen lang sein.",
     "auth_sign_up_account_already_exists" : "Ein Konto mit dieser E-Mail-Adresse existiert bereits.",
@@ -109,7 +154,23 @@
 
     "user_read_user_not_found" : "Benutzer nicht gefunden.",
 
+    "user_friendships_user_not_found" : "Benutzer nicht gefunden.",
+    "user_friendships_is_private" : "Dieser Benutzer ist privat.",
+
     "user_ratings_user_not_found" : "Benutzer nicht gefunden.",
+    "user_ratings_is_private" : "Dieser Benutzer ist privat.",
+
+    "user_remove_friendship_friendship_not_found" : "Freundschaft nicht gefunden.",
+
+    "user_answer_friend_request_friend_request_not_found" : "Freundschaftsanfrage nicht gefunden.",
+    "user_answer_friend_request_friend_request_already_answered" : "Freundschaftsanfrage bereits beantwortet.",
+
+    "user_take_back_friend_request_friend_request_not_found" : "Freundschaftsanfrage nicht gefunden.",
+    "user_take_back_friend_request_friend_request_already_answered" : "Freundschaftsanfrage bereits beantwortet.",
+
+    "user_create_friend_request_friend_request_already_exists" : "Es existiert bereits eine Freundschaftsanfrage zwischen euch.",
+
+    "user_update_user_not_found" : "Benutzer nicht gefunden.",
 
     "no_internet_connection" : "Keine Internetverbindung möglich.",
 

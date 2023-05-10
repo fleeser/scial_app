@@ -1,17 +1,4 @@
-import 'package:scial_app_server/src/generated/friend_request/enum/friend_request_status.dart';
-import 'package:scial_app_server/src/generated/friend_request/table/friend_request.dart';
-import 'package:scial_app_server/src/generated/friendship/table/friendship.dart';
-import 'package:scial_app_server/src/generated/rating/table/rating.dart';
-import 'package:scial_app_server/src/generated/user/model/public_user.dart';
-import 'package:scial_app_server/src/generated/user/model/public_user_friend_request.dart';
-import 'package:scial_app_server/src/generated/user/model/public_user_friendship_details.dart';
-import 'package:scial_app_server/src/generated/user/model/public_user_rating.dart';
-import 'package:scial_app_server/src/generated/user/model/public_user_rating_user.dart';
-import 'package:scial_app_server/src/generated/user/response/user_ratings_response.dart';
-import 'package:scial_app_server/src/generated/user/response/user_ratings_response_code.dart';
-import 'package:scial_app_server/src/generated/user/response/user_read_response.dart';
-import 'package:scial_app_server/src/generated/user/response/user_read_response_code.dart';
-import 'package:scial_app_server/src/generated/user/table/user.dart';
+import 'package:scial_app_server/src/generated/protocol.dart';
 import 'package:serverpod/serverpod.dart';
 
 class UserHandler {
@@ -49,7 +36,8 @@ class UserHandler {
       if (friendshipRow != null) {
         user.friendship = PublicUserFriendshipDetails(
           id: friendshipRow.id!, 
-          created: friendshipRow.created
+          created: friendshipRow.created,
+          badges: friendshipRow.badges
         );
       } else {
         FriendRequest? friendRequestRow = await FriendRequest.findSingleRow(session, where: (t) => ((t.sender.equals(userId) & t.receiver.equals(authUserId)) | (t.sender.equals(authUserId) & t.receiver.equals(userId))) & t.status.equals(FriendRequestStatus.pending));
@@ -71,8 +59,108 @@ class UserHandler {
     );
   }
 
-  static Future<UserRatingsResponse> ratings(Session session, int userId, { int? limit, int? offset }) async {
-    
+  static Future<UserUpdateResponse> update(Session session, String? name, bool? isPrivate, bool updateName, bool updateIsPrivate) async {
+    int? authUserId = await session.auth.authenticatedUserId;
+    if (authUserId == null) {
+      return UserUpdateResponse(
+        success: false,
+        code: UserUpdateResponseCode.notAuthenticated
+      );
+    }
+
+    User? userRow = await User.findById(session, authUserId);
+
+    if (userRow == null) {
+      return UserUpdateResponse(
+        success: false,
+        code: UserUpdateResponseCode.userNotFound
+      );
+    }
+
+    if (updateName) {
+      userRow.name = name;
+    }
+
+    if (updateIsPrivate) {
+      userRow.private = isPrivate!;
+    }
+
+    await User.update(session, userRow);
+
+    // TODO transaction
+
+    return UserUpdateResponse(success: true);
+  }
+
+  static Future<UserFriendshipsResponse> friendships(Session session, int userId, int? limit, int? offset) async {
+    int? authUserId = await session.auth.authenticatedUserId;
+    if (authUserId == null) {
+      return UserFriendshipsResponse(
+        success: false,
+        code: UserFriendshipsResponseCode.notAuthenticated
+      );
+    }
+
+    User? userRow = await User.findById(session, userId);
+
+    if (userRow == null) {
+      return UserFriendshipsResponse(
+        success: false,
+        code: UserFriendshipsResponseCode.userNotFound
+      );
+    }
+
+    if (userId != authUserId && userRow.private) {
+
+      List<int> users = [ userId, authUserId ]..sort();
+      Friendship? friendshipRow = await Friendship.findSingleRow(session, where: (t) => Expression("${t.users.columnName}::json::text = '$users'"));
+
+      if (friendshipRow == null) {
+        FriendRequest? friendRequestRow = await FriendRequest.findSingleRow(session, where: (t) => (t.sender.equals(userId) & t.receiver.equals(authUserId)) & t.status.equals(FriendRequestStatus.pending));
+
+        if (friendRequestRow == null) {
+          return UserFriendshipsResponse(
+            success: false,
+            code: UserFriendshipsResponseCode.isPrivate
+          );
+        }
+      }
+    }
+
+    List<PublicUserFriendship> friendships = [];
+
+    List<Friendship> friendshipRows = await Friendship.find(session, where: (t) => Expression("${t.users.columnName}::json::text = '${ [ userId, authUserId ] } OR ${t.users.columnName}::json::text = '${ [ authUserId, userId ] }'"), limit: limit, offset: offset);
+
+    for (Friendship friendshipRow in friendshipRows) {
+      User? friendshipUserRow = await User.findById(session, friendshipRow.users.firstWhere((element) => element != userId));
+
+      PublicUserFriendshipUser? friendshipUser;
+      if (friendshipUserRow != null) {
+        friendshipUser = PublicUserFriendshipUser(
+          id: friendshipUserRow.id!, 
+          name: friendshipUserRow.name,
+          imageUrl: friendshipUserRow.imageUrl,
+          verified: friendshipUserRow.verified
+        );
+      }
+
+      PublicUserFriendship friendship = PublicUserFriendship(
+        id: friendshipRow.id!,
+        created: friendshipRow.created, 
+        user: friendshipUser,
+        badges: friendshipRow.badges
+      );
+
+      friendships.add(friendship);
+    }
+
+    return UserFriendshipsResponse(
+      success: true,
+      friendships: friendships
+    );
+  }
+
+  static Future<UserRatingsResponse> ratings(Session session, int userId, int? limit, int? offset) async {
     int? authUserId = await session.auth.authenticatedUserId;
     if (authUserId == null) {
       return UserRatingsResponse(

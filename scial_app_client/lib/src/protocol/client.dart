@@ -24,14 +24,24 @@ import 'package:scial_app_client/src/protocol/auth/response/auth_change_password
     as _i9;
 import 'package:scial_app_client/src/protocol/auth/response/auth_delete_account_response.dart'
     as _i10;
-import 'package:scial_app_client/src/protocol/friendship/response/friendship_remove_response.dart'
+import 'package:scial_app_client/src/protocol/friend_request/response/friend_request_create_response.dart'
     as _i11;
-import 'package:scial_app_client/src/protocol/user/response/user_read_response.dart'
+import 'package:scial_app_client/src/protocol/friend_request/response/friend_request_answer_response.dart'
     as _i12;
-import 'package:scial_app_client/src/protocol/user/response/user_ratings_response.dart'
+import 'package:scial_app_client/src/protocol/friend_request/response/friend_request_take_back_response.dart'
     as _i13;
-import 'dart:io' as _i14;
-import 'protocol.dart' as _i15;
+import 'package:scial_app_client/src/protocol/friendship/response/friendship_remove_response.dart'
+    as _i14;
+import 'package:scial_app_client/src/protocol/user/response/user_read_response.dart'
+    as _i15;
+import 'package:scial_app_client/src/protocol/user/response/user_update_response.dart'
+    as _i16;
+import 'package:scial_app_client/src/protocol/user/response/user_friendships_response.dart'
+    as _i17;
+import 'package:scial_app_client/src/protocol/user/response/user_ratings_response.dart'
+    as _i18;
+import 'dart:io' as _i19;
+import 'protocol.dart' as _i20;
 
 class _EndpointAuth extends _i1.EndpointRef {
   _EndpointAuth(_i1.EndpointCaller caller) : super(caller);
@@ -141,17 +151,38 @@ class _EndpointFriendRequest extends _i1.EndpointRef {
   @override
   String get name => 'friendRequest';
 
-  _i2.Future<dynamic> answer(
+  _i2.Future<_i11.FriendRequestCreateResponse> create(
+    int userId,
+    String? text,
+  ) =>
+      caller.callServerEndpoint<_i11.FriendRequestCreateResponse>(
+        'friendRequest',
+        'create',
+        {
+          'userId': userId,
+          'text': text,
+        },
+      );
+
+  _i2.Future<_i12.FriendRequestAnswerResponse> answer(
     int friendRequestId,
     bool answer,
   ) =>
-      caller.callServerEndpoint<dynamic>(
+      caller.callServerEndpoint<_i12.FriendRequestAnswerResponse>(
         'friendRequest',
         'answer',
         {
           'friendRequestId': friendRequestId,
           'answer': answer,
         },
+      );
+
+  _i2.Future<_i13.FriendRequestTakeBackResponse> takeBack(
+          int friendRequestId) =>
+      caller.callServerEndpoint<_i13.FriendRequestTakeBackResponse>(
+        'friendRequest',
+        'takeBack',
+        {'friendRequestId': friendRequestId},
       );
 }
 
@@ -161,11 +192,24 @@ class _EndpointFriendship extends _i1.EndpointRef {
   @override
   String get name => 'friendship';
 
-  _i2.Future<_i11.FriendshipRemoveResponse> remove(int friendshipId) =>
-      caller.callServerEndpoint<_i11.FriendshipRemoveResponse>(
+  _i2.Future<_i14.FriendshipRemoveResponse> remove(int friendshipId) =>
+      caller.callServerEndpoint<_i14.FriendshipRemoveResponse>(
         'friendship',
         'remove',
         {'friendshipId': friendshipId},
+      );
+}
+
+class _EndpointTest extends _i1.EndpointRef {
+  _EndpointTest(_i1.EndpointCaller caller) : super(caller);
+
+  @override
+  String get name => 'test';
+
+  _i2.Future<void> test() => caller.callServerEndpoint<void>(
+        'test',
+        'test',
+        {},
       );
 }
 
@@ -175,19 +219,51 @@ class _EndpointUser extends _i1.EndpointRef {
   @override
   String get name => 'user';
 
-  _i2.Future<_i12.UserReadResponse> read(int userId) =>
-      caller.callServerEndpoint<_i12.UserReadResponse>(
+  _i2.Future<_i15.UserReadResponse> read(int userId) =>
+      caller.callServerEndpoint<_i15.UserReadResponse>(
         'user',
         'read',
         {'userId': userId},
       );
 
-  _i2.Future<_i13.UserRatingsResponse> ratings(
+  _i2.Future<_i16.UserUpdateResponse> update({
+    String? name,
+    bool? isPrivate,
+    required bool updateName,
+    required bool updateIsPrivate,
+  }) =>
+      caller.callServerEndpoint<_i16.UserUpdateResponse>(
+        'user',
+        'update',
+        {
+          'name': name,
+          'isPrivate': isPrivate,
+          'updateName': updateName,
+          'updateIsPrivate': updateIsPrivate,
+        },
+      );
+
+  _i2.Future<_i17.UserFriendshipsResponse> friendships(
     int userId, {
     int? limit,
     int? offset,
   }) =>
-      caller.callServerEndpoint<_i13.UserRatingsResponse>(
+      caller.callServerEndpoint<_i17.UserFriendshipsResponse>(
+        'user',
+        'friendships',
+        {
+          'userId': userId,
+          'limit': limit,
+          'offset': offset,
+        },
+      );
+
+  _i2.Future<_i18.UserRatingsResponse> ratings(
+    int userId, {
+    int? limit,
+    int? offset,
+  }) =>
+      caller.callServerEndpoint<_i18.UserRatingsResponse>(
         'user',
         'ratings',
         {
@@ -201,17 +277,18 @@ class _EndpointUser extends _i1.EndpointRef {
 class Client extends _i1.ServerpodClient {
   Client(
     String host, {
-    _i14.SecurityContext? context,
+    _i19.SecurityContext? context,
     _i1.AuthenticationKeyManager? authenticationKeyManager,
   }) : super(
           host,
-          _i15.Protocol(),
+          _i20.Protocol(),
           context: context,
           authenticationKeyManager: authenticationKeyManager,
         ) {
     auth = _EndpointAuth(this);
     friendRequest = _EndpointFriendRequest(this);
     friendship = _EndpointFriendship(this);
+    test = _EndpointTest(this);
     user = _EndpointUser(this);
   }
 
@@ -221,6 +298,8 @@ class Client extends _i1.ServerpodClient {
 
   late final _EndpointFriendship friendship;
 
+  late final _EndpointTest test;
+
   late final _EndpointUser user;
 
   @override
@@ -228,6 +307,7 @@ class Client extends _i1.ServerpodClient {
         'auth': auth,
         'friendRequest': friendRequest,
         'friendship': friendship,
+        'test': test,
         'user': user,
       };
   @override

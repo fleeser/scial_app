@@ -15,39 +15,9 @@ Future<void> showSCDialog(BuildContext context, { required String title, require
   );
 }
 
-Future<void> showSCDialogYesNo(BuildContext context, { required String title, required String text, required SCDialogYesNoButton yesButton, required SCDialogYesNoButton noButton }) async {
-  await showDialog(
-    context: context,
-    barrierDismissible: false,
-    builder: (BuildContext context) => SCDialog.yesNo(
-      title: title, 
-      text: text,
-      buttons: [ 
-        SCDialogButton(
-          onPressed: yesButton.onPressed,
-          title: yesButton.title,
-          isPrimary: true
-        ),
-        SCDialogButton(
-          onPressed: noButton.onPressed,
-          title: noButton.title,
-          isPrimary: false
-        )
-      ]
-    )
-  );
-}
-
 class SCDialog extends ConsumerStatefulWidget {
 
   const SCDialog({
-    super.key,
-    required this.title,
-    required this.text,
-    required this.buttons
-  });
-
-  const SCDialog.yesNo({
     super.key,
     required this.title,
     required this.text,

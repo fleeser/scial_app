@@ -47,12 +47,7 @@ class UserBadges extends StatelessWidget {
                   left: SCGapSize.semiBig.getSpacing(theme),
                   right: SCGapSize.semiBig.getSpacing(theme)
                 ),
-                child: SCText.paragraph1(
-                  AppLocalizations.of(context)!.user_badges_empty,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  height: 1.0
-                )
+                child: SCText.emptyBadges(AppLocalizations.of(context)!.user_badges_empty)
               )
             : const SizedBox()
       )

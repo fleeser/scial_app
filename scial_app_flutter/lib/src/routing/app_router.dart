@@ -139,6 +139,15 @@ GoRouter appRouter(AppRouterRef ref) {
             verificationCode: data?.verificationCode
           );
         }
+      ),
+      GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
+        path: '/user/:id',
+        builder: (BuildContext context, GoRouterState state) {
+          // TODO: What if is not a number in params
+          int userId = int.parse(state.params['id']!);
+          return UserPage(id: userId);
+        }
       )
     ],
     errorBuilder: (BuildContext context, GoRouterState state) => Container() // TODO add error
@@ -181,5 +190,9 @@ extension AppRouterExtension on BuildContext {
 
   void navigateToProfilePage() {
     go(AppRoute.profile.path);
+  }
+
+  void navigateToUserPage(int userId) {
+    push('/user/$userId');
   }
 }

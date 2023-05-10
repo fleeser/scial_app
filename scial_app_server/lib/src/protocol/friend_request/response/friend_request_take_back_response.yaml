@@ -1,0 +1,5 @@
+class: FriendRequestTakeBackResponse
+
+fields:
+  success: bool
+  code: FriendRequestTakeBackResponseCode?

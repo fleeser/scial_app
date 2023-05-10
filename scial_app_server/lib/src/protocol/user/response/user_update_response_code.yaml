@@ -1,0 +1,5 @@
+enum: UserUpdateResponseCode
+  
+values:
+  - notAuthenticated
+  - userNotFound

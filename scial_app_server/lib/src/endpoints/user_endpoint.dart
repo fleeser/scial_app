@@ -1,4 +1,6 @@
 import 'package:scial_app_server/src/business/user_handler.dart';
+import 'package:scial_app_server/src/generated/user/response/user_friendships_response.dart';
+import 'package:scial_app_server/src/generated/user/response/user_update_response.dart';
 import 'package:scial_app_server/src/generated/user/response/user_ratings_response.dart';
 import 'package:scial_app_server/src/generated/user/response/user_read_response.dart';
 import 'package:serverpod/serverpod.dart';
@@ -9,7 +11,15 @@ class UserEndpoint extends Endpoint {
     return await UserHandler.read(session, userId);
   }
 
+  Future<UserUpdateResponse> update(Session session, { String? name, bool? isPrivate, required bool updateName, required bool updateIsPrivate }) async {
+    return await UserHandler.update(session, name, isPrivate, updateName, updateIsPrivate);
+  }
+
+  Future<UserFriendshipsResponse> friendships(Session session, int userId, { int? limit, int? offset }) async {
+    return await UserHandler.friendships(session, userId, limit, offset);
+  }
+
   Future<UserRatingsResponse> ratings(Session session, int userId, { int? limit, int? offset }) async {
-    return await UserHandler.ratings(session, userId, limit: limit, offset: offset);
+    return await UserHandler.ratings(session, userId, limit, offset);
   }
 }

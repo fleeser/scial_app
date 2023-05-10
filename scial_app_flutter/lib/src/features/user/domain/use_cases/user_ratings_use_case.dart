@@ -17,7 +17,7 @@ class UserRatingsUseCase implements FutureUseCase<void, UserRatingsUseCaseParams
   final UserRepository repository;
 
   @override
-  Future<List<PublicUserRating>?> call(UserRatingsUseCaseParams params) async {
+  Future<List<PublicUserRating>> call(UserRatingsUseCaseParams params) async {
     return await repository.ratings(params.userId);
   }
 }

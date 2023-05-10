@@ -8,11 +8,11 @@ part 'ratings_controller.g.dart';
 class RatingsController extends _$RatingsController {
 
   @override
-  FutureOr<List<PublicUserRating>?> build(int userId) async {
+  FutureOr<List<PublicUserRating>> build(int userId) async {
     return await _read(userId);
   }
 
-  Future<List<PublicUserRating>?> _read(int userId) async {
+  Future<List<PublicUserRating>> _read(int userId) async {
     return await ref.read(userRatingsUseCaseProvider).call(UserRatingsUseCaseParams(userId: userId));
   }
 }

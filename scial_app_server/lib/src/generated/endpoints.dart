@@ -10,7 +10,8 @@ import 'package:serverpod/serverpod.dart' as _i1;
 import '../endpoints/auth_endpoint.dart' as _i2;
 import '../endpoints/friend_request_endpoint.dart' as _i3;
 import '../endpoints/friendship_endpoint.dart' as _i4;
-import '../endpoints/user_endpoint.dart' as _i5;
+import '../endpoints/test_endpoint.dart' as _i5;
+import '../endpoints/user_endpoint.dart' as _i6;
 
 class Endpoints extends _i1.EndpointDispatch {
   @override
@@ -34,7 +35,13 @@ class Endpoints extends _i1.EndpointDispatch {
           'friendship',
           null,
         ),
-      'user': _i5.UserEndpoint()
+      'test': _i5.TestEndpoint()
+        ..initialize(
+          server,
+          'test',
+          null,
+        ),
+      'user': _i6.UserEndpoint()
         ..initialize(
           server,
           'user',
@@ -238,6 +245,30 @@ class Endpoints extends _i1.EndpointDispatch {
       name: 'friendRequest',
       endpoint: endpoints['friendRequest']!,
       methodConnectors: {
+        'create': _i1.MethodConnector(
+          name: 'create',
+          params: {
+            'userId': _i1.ParameterDescription(
+              name: 'userId',
+              type: _i1.getType<int>(),
+              nullable: false,
+            ),
+            'text': _i1.ParameterDescription(
+              name: 'text',
+              type: _i1.getType<String?>(),
+              nullable: true,
+            ),
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['friendRequest'] as _i3.FriendRequestEndpoint).create(
+            session,
+            params['userId'],
+            params['text'],
+          ),
+        ),
         'answer': _i1.MethodConnector(
           name: 'answer',
           params: {
@@ -261,7 +292,26 @@ class Endpoints extends _i1.EndpointDispatch {
             params['friendRequestId'],
             params['answer'],
           ),
-        )
+        ),
+        'takeBack': _i1.MethodConnector(
+          name: 'takeBack',
+          params: {
+            'friendRequestId': _i1.ParameterDescription(
+              name: 'friendRequestId',
+              type: _i1.getType<int>(),
+              nullable: false,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['friendRequest'] as _i3.FriendRequestEndpoint)
+                  .takeBack(
+            session,
+            params['friendRequestId'],
+          ),
+        ),
       },
     );
     connectors['friendship'] = _i1.EndpointConnector(
@@ -288,6 +338,21 @@ class Endpoints extends _i1.EndpointDispatch {
         )
       },
     );
+    connectors['test'] = _i1.EndpointConnector(
+      name: 'test',
+      endpoint: endpoints['test']!,
+      methodConnectors: {
+        'test': _i1.MethodConnector(
+          name: 'test',
+          params: {},
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['test'] as _i5.TestEndpoint).test(session),
+        )
+      },
+    );
     connectors['user'] = _i1.EndpointConnector(
       name: 'user',
       endpoint: endpoints['user']!,
@@ -305,9 +370,75 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['user'] as _i5.UserEndpoint).read(
+              (endpoints['user'] as _i6.UserEndpoint).read(
             session,
             params['userId'],
+          ),
+        ),
+        'update': _i1.MethodConnector(
+          name: 'update',
+          params: {
+            'name': _i1.ParameterDescription(
+              name: 'name',
+              type: _i1.getType<String?>(),
+              nullable: true,
+            ),
+            'isPrivate': _i1.ParameterDescription(
+              name: 'isPrivate',
+              type: _i1.getType<bool?>(),
+              nullable: true,
+            ),
+            'updateName': _i1.ParameterDescription(
+              name: 'updateName',
+              type: _i1.getType<bool>(),
+              nullable: false,
+            ),
+            'updateIsPrivate': _i1.ParameterDescription(
+              name: 'updateIsPrivate',
+              type: _i1.getType<bool>(),
+              nullable: false,
+            ),
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['user'] as _i6.UserEndpoint).update(
+            session,
+            name: params['name'],
+            isPrivate: params['isPrivate'],
+            updateName: params['updateName'],
+            updateIsPrivate: params['updateIsPrivate'],
+          ),
+        ),
+        'friendships': _i1.MethodConnector(
+          name: 'friendships',
+          params: {
+            'userId': _i1.ParameterDescription(
+              name: 'userId',
+              type: _i1.getType<int>(),
+              nullable: false,
+            ),
+            'limit': _i1.ParameterDescription(
+              name: 'limit',
+              type: _i1.getType<int?>(),
+              nullable: true,
+            ),
+            'offset': _i1.ParameterDescription(
+              name: 'offset',
+              type: _i1.getType<int?>(),
+              nullable: true,
+            ),
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['user'] as _i6.UserEndpoint).friendships(
+            session,
+            params['userId'],
+            limit: params['limit'],
+            offset: params['offset'],
           ),
         ),
         'ratings': _i1.MethodConnector(
@@ -333,7 +464,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['user'] as _i5.UserEndpoint).ratings(
+              (endpoints['user'] as _i6.UserEndpoint).ratings(
             session,
             params['userId'],
             limit: params['limit'],
