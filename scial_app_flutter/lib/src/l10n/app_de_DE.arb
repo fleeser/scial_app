@@ -105,6 +105,8 @@
     "user_ratings_empty_text" : "Keine Bewertungen gefunden.",
 
     "user_friendships_empty_text" : "Keine Freundschaften gefunden.",
+    "user_friendships_friendship_since" : "Befreundet seit",
+    "user_friendships_empty_badges_text" : "Keine Abzeichen",
 
     "auth_sign_up_invalid_email" : "Das scheint keine E-Mail-Adresse zu sein.",
     "auth_sign_up_weak_password" : "Das Passwort muss zwischen 8 und 32 Zeichen lang sein.",

@@ -108,6 +108,8 @@
     "user_ratings_empty_text" : "No ratings found",
 
     "user_friendships_empty_text" : "No friendships found.",
+    "user_friendships_friendship_since" : "Friends since",
+    "user_friendships_empty_badges_text" : "No badges",
 
     "auth_sign_up_invalid_email" : "This does not seem to be an E-Mail-Address..",
     "auth_sign_up_weak_password" : "The password has to be between 8 and 32 characters long.",

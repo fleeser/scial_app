@@ -28,7 +28,10 @@ class SCTypographyData {
     required this.sheetTitle,
     required this.userText,
     required this.emptyBadges,
-    required this.editUserIsPrivate
+    required this.editUserIsPrivate,
+    required this.userFriendshipsUserName,
+    required this.userFriendshipsSince,
+    required this.userFriendshipsEmptyBadges
   });
 
   factory SCTypographyData.regular() => const SCTypographyData(
@@ -215,6 +218,27 @@ class SCTypographyData {
       fontSize: 14.0,
       fontWeight: FontWeight.bold,
       decoration: TextDecoration.none
+    ),
+    userFriendshipsUserName: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 16.0,
+      fontWeight: FontWeight.bold,
+      decoration: TextDecoration.none
+    ),
+    userFriendshipsSince: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 12.0,
+      fontWeight: FontWeight.w400,
+      decoration: TextDecoration.none
+    ),
+    userFriendshipsEmptyBadges: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 12.0,
+      fontWeight: FontWeight.bold,
+      decoration: TextDecoration.none
     )
   );
 
@@ -244,4 +268,7 @@ class SCTypographyData {
   final TextStyle userText;
   final TextStyle emptyBadges;
   final TextStyle editUserIsPrivate;
+  final TextStyle userFriendshipsUserName;
+  final TextStyle userFriendshipsSince;
+  final TextStyle userFriendshipsEmptyBadges;
 }

@@ -19,7 +19,10 @@ enum SCTextLevel {
   sheetTitle,
   userText,
   emptyBadges,
-  editUserIsPrivate
+  editUserIsPrivate,
+  userFriendshipsUserName,
+  userFriendshipsSince,
+  userFriendshipsEmptyBadges
 }
 
 class SCText extends StatelessWidget {
@@ -274,6 +277,48 @@ class SCText extends StatelessWidget {
     textAlign = null,
     level = SCTextLevel.editUserIsPrivate;
 
+  const SCText.userFriendshipsUserName(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = 1,
+    overflow = TextOverflow.ellipsis,
+    textAlign = null,
+    level = SCTextLevel.userFriendshipsUserName;
+
+  const SCText.userFriendshipsEmptyBadges(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = 1,
+    overflow = TextOverflow.ellipsis,
+    textAlign = null,
+    level = SCTextLevel.userFriendshipsEmptyBadges;
+
+  const SCText.userFriendshipsSince(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = 1,
+    overflow = TextOverflow.ellipsis,
+    textAlign = null,
+    level = SCTextLevel.userFriendshipsSince;
+
   final String text;
   final Color? color;
   final int? maxLines;
@@ -306,6 +351,9 @@ class SCText extends StatelessWidget {
         case SCTextLevel.userText: return theme.colors.userText;
         case SCTextLevel.emptyBadges: return theme.colors.emptyBadges;
         case SCTextLevel.editUserIsPrivate: return theme.colors.editUserIsPrivate;
+        case SCTextLevel.userFriendshipsUserName: return theme.colors.userFriendshipsUserName;
+        case SCTextLevel.userFriendshipsSince: return theme.colors.userFriendshipsSince;
+        case SCTextLevel.userFriendshipsEmptyBadges: return theme.colors.userFriendshipsEmptyBadges;
         default: return null;
       }
     }
@@ -346,6 +394,12 @@ class SCText extends StatelessWidget {
           return theme.typography.emptyBadges;
         case SCTextLevel.editUserIsPrivate:
           return theme.typography.editUserIsPrivate;
+        case SCTextLevel.userFriendshipsUserName:
+          return theme.typography.userFriendshipsUserName;
+        case SCTextLevel.userFriendshipsSince:
+          return theme.typography.userFriendshipsSince;
+        case SCTextLevel.userFriendshipsEmptyBadges:
+          return theme.typography.userFriendshipsEmptyBadges;
         default: return null;
       }
     }

@@ -64,7 +64,10 @@ class SCColorsData {
     required this.profileErrorForeground,
     required this.userText,
     required this.emptyBadges,
-    required this.editUserIsPrivate
+    required this.editUserIsPrivate,
+    required this.userFriendshipsUserName,
+    required this.userFriendshipsSince,
+    required this.userFriendshipsEmptyBadges
   });
 
   factory SCColorsData.light() => const SCColorsData(
@@ -129,7 +132,10 @@ class SCColorsData {
     profileErrorForeground: Color(0xFF191919),
     userText: Color(0xFF191919),
     emptyBadges: Color(0xFF191919),
-    editUserIsPrivate: Color(0xFF191919)
+    editUserIsPrivate: Color(0xFF191919),
+    userFriendshipsUserName: Color(0xFF191919),
+    userFriendshipsSince: Color(0xff7F7F7F),
+    userFriendshipsEmptyBadges: Color(0xFF191919)
   );
 
   factory SCColorsData.dark() => const SCColorsData(
@@ -194,7 +200,10 @@ class SCColorsData {
     profileErrorForeground: Color(0xFFFBFBFB),
     userText: Color(0xFFFBFBFB),
     emptyBadges: Color(0xFFFBFBFB),
-    editUserIsPrivate: Color(0xFFFBFBFB)
+    editUserIsPrivate: Color(0xFFFBFBFB),
+    userFriendshipsUserName: Color(0xFFFBFBFB),
+    userFriendshipsSince: Color(0xFF999999),
+    userFriendshipsEmptyBadges: Color(0xFFFBFBFB)
   );
 
   final Color accent;
@@ -259,4 +268,7 @@ class SCColorsData {
   final Color userText;
   final Color emptyBadges;
   final Color editUserIsPrivate;
+  final Color userFriendshipsUserName;
+  final Color userFriendshipsSince;
+  final Color userFriendshipsEmptyBadges;
 }

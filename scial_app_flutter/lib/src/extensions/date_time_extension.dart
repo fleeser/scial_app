@@ -9,10 +9,10 @@ extension DateTimeExtension on DateTime {
     bool isEnglishUS = <Locale>[ const Locale('en'), const Locale('en', 'US') ].contains(locale);
 
     if (isEnglishUS) {
-      return '${_padZeros(month, 2)}/${_padZeros(day, 2)}/$year}';
+      return '${_padZeros(month, 2)}/${_padZeros(day, 2)}/$year';
     }
 
-    return '${_padZeros(day, 2)}.${_padZeros(month, 2)}.$year}';
+    return '${_padZeros(day, 2)}.${_padZeros(month, 2)}.$year';
   }
 
   String toDynamicDateText(BuildContext context) {

@@ -76,4 +76,5 @@ flutter:
   assets:
     - .env
 
-    - assets/badges/
+    - assets/badges/user/
+    - assets/badges/friendship/

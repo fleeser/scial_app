@@ -4,8 +4,8 @@ extension UserBadgeExtension on UserBadge {
 
   String get path {
     switch (this) {
-      case UserBadge.beta: return 'assets/badges/beta.svg';
-      case UserBadge.one: return 'assets/badges/one.svg';
+      case UserBadge.beta: return 'assets/badges/user/beta.svg';
+      case UserBadge.one: return 'assets/badges/user/one.svg';
     }
   }
 }

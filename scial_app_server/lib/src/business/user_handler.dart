@@ -129,7 +129,7 @@ class UserHandler {
 
     List<PublicUserFriendship> friendships = [];
 
-    List<Friendship> friendshipRows = await Friendship.find(session, where: (t) => Expression("${t.users.columnName}::json::text = '${ [ userId, authUserId ] } OR ${t.users.columnName}::json::text = '${ [ authUserId, userId ] }'"), limit: limit, offset: offset);
+    List<Friendship> friendshipRows = await Friendship.find(session, where: (t) => Expression("${t.users.columnName}::json::text LIKE '[$userId,%' OR ${t.users.columnName}::json::text LIKE '%,$userId]'"), limit: limit, offset: offset);
 
     for (Friendship friendshipRow in friendshipRows) {
       User? friendshipUserRow = await User.findById(session, friendshipRow.users.firstWhere((element) => element != userId));
