@@ -22,7 +22,7 @@ class UserFriendshipsListItem extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SCGap.semiBig(),
+        const SCGap.regular(),
         SCPadding(
           padding: const SCEdgeInsets.symmetric(horizontal: SCGapSize.semiBig),
           child: Row(
@@ -40,7 +40,7 @@ class UserFriendshipsListItem extends StatelessWidget {
                   children: [
                     SCText.userFriendshipsUserName(friendship.user?.name ?? AppLocalizations.of(context)!.user_name),
                     const SCGap.semiSmall(),
-                    SCText.userFriendshipsSince('${ AppLocalizations.of(context)!.user_friendships_friendship_since }: ${ friendship.created.toStaticDateText(context) }')
+                    SCText.userFriendshipsSince('${ AppLocalizations.of(context)!.user_friendships_friendship_since }: ${ friendship.created.toDynamicDateText(context) }')
                   ]
                 )
               )
@@ -59,7 +59,7 @@ class UserFriendshipsListItem extends StatelessWidget {
             ),
             child: SCText.userFriendshipsEmptyBadges(AppLocalizations.of(context)!.user_friendships_empty_badges_text)
           ),
-        SizedBox(height: SCGapSize.semiBig.getSpacing(theme) - SCGapSize.regular.getSpacing(theme))
+        const SCGap.regular()
       ]
     );
   }

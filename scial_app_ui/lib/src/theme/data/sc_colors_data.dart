@@ -67,7 +67,14 @@ class SCColorsData {
     required this.editUserIsPrivate,
     required this.userFriendshipsUserName,
     required this.userFriendshipsSince,
-    required this.userFriendshipsEmptyBadges
+    required this.userFriendshipsEmptyBadges,
+    required this.eventListIcon,
+    required this.eventListTitle,
+    required this.eventListDistance,
+    required this.eventListLocation,
+    required this.eventListTime,
+    required this.imageStackExtraCount,
+    required this.eventNoGuests
   });
 
   factory SCColorsData.light() => const SCColorsData(
@@ -128,14 +135,21 @@ class SCColorsData {
     switchActiveBackground: Color(0xFF4299E1),
     switchInactiveBackground: Color(0xFFEAEAEA),
     switchActiveForeground: Color(0xFFFFFFFF),
-    switchInactiveForeground: Color(0xff7F7F7F),
+    switchInactiveForeground: Color(0xFF7F7F7F),
     profileErrorForeground: Color(0xFF191919),
     userText: Color(0xFF191919),
     emptyBadges: Color(0xFF191919),
     editUserIsPrivate: Color(0xFF191919),
     userFriendshipsUserName: Color(0xFF191919),
-    userFriendshipsSince: Color(0xff7F7F7F),
-    userFriendshipsEmptyBadges: Color(0xFF191919)
+    userFriendshipsSince: Color(0xFF7F7F7F),
+    userFriendshipsEmptyBadges: Color(0xFF191919),
+    eventListIcon: Color(0xFF7F7F7F),
+    eventListTitle: Color(0xFF191919),
+    eventListDistance: Color(0xFF7F7F7F),
+    eventListLocation: Color(0xFF7F7F7F),
+    eventListTime: Color(0xFF7F7F7F),
+    imageStackExtraCount: Color(0xFF191919),
+    eventNoGuests: Color(0xFF191919)
   );
 
   factory SCColorsData.dark() => const SCColorsData(
@@ -203,7 +217,14 @@ class SCColorsData {
     editUserIsPrivate: Color(0xFFFBFBFB),
     userFriendshipsUserName: Color(0xFFFBFBFB),
     userFriendshipsSince: Color(0xFF999999),
-    userFriendshipsEmptyBadges: Color(0xFFFBFBFB)
+    userFriendshipsEmptyBadges: Color(0xFFFBFBFB),
+    eventListIcon: Color(0xFF999999),
+    eventListTitle: Color(0xFFFBFBFB),
+    eventListDistance: Color(0xFF999999),
+    eventListLocation: Color(0xFF999999),
+    eventListTime: Color(0xFF999999),
+    imageStackExtraCount: Color(0xFFFBFBFB),
+    eventNoGuests: Color(0xFFFBFBFB)
   );
 
   final Color accent;
@@ -271,4 +292,11 @@ class SCColorsData {
   final Color userFriendshipsUserName;
   final Color userFriendshipsSince;
   final Color userFriendshipsEmptyBadges;
+  final Color eventListIcon;
+  final Color eventListTitle;
+  final Color eventListDistance;
+  final Color eventListLocation;
+  final Color eventListTime;
+  final Color imageStackExtraCount;
+  final Color eventNoGuests;
 }

@@ -31,7 +31,13 @@ class SCTypographyData {
     required this.editUserIsPrivate,
     required this.userFriendshipsUserName,
     required this.userFriendshipsSince,
-    required this.userFriendshipsEmptyBadges
+    required this.userFriendshipsEmptyBadges,
+    required this.eventListTitle,
+    required this.eventListDistance,
+    required this.eventListLocation,
+    required this.eventListTime,
+    required this.imageStackExtraCount,
+    required this.eventNoGuests
   });
 
   factory SCTypographyData.regular() => const SCTypographyData(
@@ -239,6 +245,48 @@ class SCTypographyData {
       fontSize: 12.0,
       fontWeight: FontWeight.bold,
       decoration: TextDecoration.none
+    ),
+    eventListTitle: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 16.0,
+      fontWeight: FontWeight.bold,
+      decoration: TextDecoration.none
+    ),
+    eventListDistance: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 12.0,
+      fontWeight: FontWeight.w400,
+      decoration: TextDecoration.none
+    ),
+    eventListLocation: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 12.0,
+      fontWeight: FontWeight.w400,
+      decoration: TextDecoration.none
+    ),
+    eventListTime: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 12.0,
+      fontWeight: FontWeight.w400,
+      decoration: TextDecoration.none
+    ),
+    imageStackExtraCount: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 12.0,
+      fontWeight: FontWeight.w400,
+      decoration: TextDecoration.none
+    ),
+    eventNoGuests: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 12.0,
+      fontWeight: FontWeight.w400,
+      decoration: TextDecoration.none
     )
   );
 
@@ -271,4 +319,10 @@ class SCTypographyData {
   final TextStyle userFriendshipsUserName;
   final TextStyle userFriendshipsSince;
   final TextStyle userFriendshipsEmptyBadges;
+  final TextStyle eventListTitle;
+  final TextStyle eventListDistance;
+  final TextStyle eventListLocation;
+  final TextStyle eventListTime;
+  final TextStyle imageStackExtraCount;
+  final TextStyle eventNoGuests;
 }

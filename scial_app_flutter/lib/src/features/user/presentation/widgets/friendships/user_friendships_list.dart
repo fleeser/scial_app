@@ -19,7 +19,11 @@ class UserFriendshipsList extends StatelessWidget {
       // TODO: Page key
       itemCount: friendships.length,
       shrinkWrap: true,
-      padding: EdgeInsets.only(bottom: addBottomPadding ? MediaQuery.of(context).padding.bottom : 0.0),
+      padding: EdgeInsets.only(
+        bottom: addBottomPadding 
+          ? MediaQuery.of(context).padding.bottom 
+          : 0.0
+        ),
       itemBuilder: (BuildContext context, int index) => UserFriendshipsListItem(friendship: friendships[index])
     );
   }

@@ -25,6 +25,20 @@ class UserDataSourceImpl implements UserDataSource {
   }
 
   @override
+  Future<List<PublicUserEvent>> events(int userId, double? lat, double? long) async {
+    UserEventsResponse response = await client.user.events(userId, lat, long);
+
+    if (response.success) return response.events!;
+
+    switch (response.code) {
+      case UserEventsResponseCode.notAuthenticated: throw const ServerException.notAuthenticated();
+      case UserEventsResponseCode.userNotFound: throw const ServerException.userEventsUserNotFound();
+      case UserEventsResponseCode.isPrivate: throw const ServerException.userEventsIsPrivate();
+      default: throw const ServerException.unknownError();
+    }
+  }
+
+  @override
   Future<List<PublicUserFriendship>> friendships(int userId) async {
     UserFriendshipsResponse response = await client.user.friendships(userId);
 

@@ -1,4 +1,6 @@
+import 'package:mapbox_search/mapbox_search.dart';
 import 'package:scial_app_server/src/generated/protocol.dart';
+import 'package:scial_app_server/src/util/calculate_distance.dart';
 import 'package:serverpod/serverpod.dart';
 
 class UserHandler {
@@ -90,6 +92,127 @@ class UserHandler {
     // TODO transaction
 
     return UserUpdateResponse(success: true);
+  }
+
+  static Future<UserEventsResponse> events(Session session, int userId, double? lat, double? long, int? limit, int? offset) async {
+    int? authUserId = await session.auth.authenticatedUserId;
+    if (authUserId == null) {
+      return UserEventsResponse(
+        success: false,
+        code: UserEventsResponseCode.notAuthenticated
+      );
+    }
+
+    User? userRow = await User.findById(session, userId);
+
+    if (userRow == null) {
+      return UserEventsResponse(
+        success: false,
+        code: UserEventsResponseCode.userNotFound
+      );
+    }
+
+    if (userId != authUserId && userRow.private) {
+
+      List<int> users = [ userId, authUserId ]..sort();
+      Friendship? friendshipRow = await Friendship.findSingleRow(session, where: (t) => Expression("${t.users.columnName}::json::text = '$users'"));
+
+      if (friendshipRow == null) {
+        FriendRequest? friendRequestRow = await FriendRequest.findSingleRow(session, where: (t) => (t.sender.equals(userId) & t.receiver.equals(authUserId)) & t.status.equals(FriendRequestStatus.pending));
+
+        if (friendRequestRow == null) {
+          return UserEventsResponse(
+            success: false,
+            code: UserEventsResponseCode.isPrivate
+          );
+        }
+      }
+    }
+
+    List<PublicUserEvent> events = [];
+
+    List<Event> eventRows = await Event.find(session, where: (t) => Expression("(events.hosts::jsonb @> '[$userId]' OR EXISTS (SELECT 1 FROM event_guests WHERE event_guests.event = events.id AND event_guests.user = $userId)) AND (NOT (events.visibility = 2) OR events.hosts::jsonb @> '[$authUserId]' OR EXISTS (SELECT 1 FROM event_guests WHERE event_guests.event = events.id AND event_guests.user = $authUserId) OR EXISTS (SELECT 1 FROM event_invitations WHERE event_invitations.event = events.id AND event_invitations.user = $authUserId AND status = 2))"));
+
+    for (Event eventRow in eventRows) {
+      List<PublicUserEventHost?> hosts = [];
+
+      for (int hostId in eventRow.hosts) {
+        User? hostRow = await User.findById(session, hostId);
+
+        if (hostRow == null) {
+          hosts.add(null);
+          continue;
+        }
+
+        PublicUserEventHost host = PublicUserEventHost(
+          id: hostRow.id!, 
+          verified: hostRow.verified,
+          name: hostRow.name,
+          imageUrl: hostRow.imageUrl
+        );
+
+        hosts.add(host);
+      }
+
+      int guestCount = await EventGuest.count(session, where: (t) => t.event.equals(eventRow.id));
+
+      List<String?> guestImages = [];
+
+      List<EventGuest> eventGuestRows = await EventGuest.find(session, where: (t) => t.event.equals(eventRow.id), limit: 5);
+
+      for (EventGuest eventGuestRow in eventGuestRows) {
+        User? eventGuestUserRow = await User.findById(session, eventGuestRow.user);
+
+        String? eventGuestImageUrl = eventGuestUserRow?.imageUrl;
+        guestImages.add(eventGuestImageUrl);
+      }
+
+      PublicUserEvent event = PublicUserEvent(
+        id: eventRow.id!, 
+        type: eventRow.type, 
+        visibility: eventRow.visibility, 
+        created: eventRow.created, 
+        title: eventRow.title, 
+        verified: eventRow.verified, 
+        start: eventRow.start, 
+        end: eventRow.end, 
+        hosts: hosts,
+        guestCount: guestCount, 
+        guestImages: guestImages
+      );
+
+      if (eventRow.visibility == EventVisibility.public || eventRow.hosts.contains(authUserId) || (await EventGuest.findSingleRow(session, where: (t) => t.event.equals(eventRow.id) & t.user.equals(authUserId))) != null || (await EventInvitation.findSingleRow(session, where: (t) => t.event.equals(eventRow.id) & t.user.equals(authUserId))) != null) {
+        print('looool');
+
+        
+        PublicUserEventLocation location = PublicUserEventLocation(
+          lat: eventRow.lat, 
+          long: eventRow.long
+        );
+
+        Serverpod.instance!.getPassword('mapboxApiKey')!;
+
+        ReverseGeoCoding reverseGeoCoding = ReverseGeoCoding(apiKey: Serverpod.instance!.getPassword('mapboxApiKey')!);
+        List<MapBoxPlace>? places = await reverseGeoCoding.getAddress(Location(lat: eventRow.lat, lng: eventRow.long));
+
+        if (places != null && places.isNotEmpty) {
+          location.name = places.first.placeName;
+        }
+
+        event.location = location;
+      }
+
+      if (lat != null && long != null && (eventRow.visibility != EventVisibility.private || eventRow.hosts.contains(authUserId) || (await EventGuest.findSingleRow(session, where: (t) => t.event.equals(eventRow.id) & t.user.equals(authUserId))) != null || (await EventInvitation.findSingleRow(session, where: (t) => t.event.equals(eventRow.id) & t.user.equals(authUserId))) != null)) {
+        event.distance = calculateDistance(lat, long, eventRow.lat, eventRow.long);
+      }
+
+      events.add(event);
+    }
+
+    return UserEventsResponse(
+      success: true,
+      events: events
+    );
   }
 
   static Future<UserFriendshipsResponse> friendships(Session session, int userId, int? limit, int? offset) async {

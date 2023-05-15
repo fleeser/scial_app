@@ -1,0 +1,17 @@
+class: Event
+
+table: events
+
+fields:
+  type: EventType
+  visibility: EventVisibility
+  created: DateTime
+  title: String
+  verified: bool
+  hosts: List<int>
+  lat: double
+  long: double
+  description: String?
+  start: DateTime
+  end: DateTime
+  imageUrl: String?

@@ -25,6 +25,11 @@ class UserRepositoryImpl implements UserRepository {
   }
 
   @override
+  Future<List<PublicUserEvent>> events(int userId, double? lat, double? long) async {
+    return await dataSource.events(userId, lat, long);
+  }
+
+  @override
   Future<List<PublicUserFriendship>> friendships(int userId) async {
     return await dataSource.friendships(userId);
   }

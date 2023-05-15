@@ -18,6 +18,9 @@
 
     "friend_request_text" : "Let's be friends! 😎",
 
+    "no_address" : "No address",
+    "no_guests" : "No guests",
+
     "sign_up_app_bar_title" : "Sign Up",
     "sign_up_title" : "Well, who are you? 🧐",
     "sign_up_subtitle" : "Tell us a little bit about yourself.",
@@ -108,6 +111,8 @@
     "user_friendships_friendship_since" : "Friends since",
     "user_friendships_empty_badges_text" : "No badges",
 
+    "user_events_empty_text" : "No events found.",
+
     "auth_sign_up_invalid_email" : "This does not seem to be an E-Mail-Address..",
     "auth_sign_up_weak_password" : "The password has to be between 8 and 32 characters long.",
     "auth_sign_up_account_already_exists" : "An account with this E-Mail-Address already exists.",
@@ -156,6 +161,9 @@
 
     "user_read_user_not_found" : "User not found.",
 
+    "user_events_user_not_found" : "User not found.",
+    "user_events_is_private" : "This user is private.",
+
     "user_friendships_user_not_found" : "User not found.",
     "user_friendships_is_private" : "This user is private.",
 
@@ -173,6 +181,12 @@
     "user_create_friend_request_friend_request_already_exists" : "There is already a pending friend request.",
 
     "user_update_user_not_found" : "User not found.",
+
+    "location_service_disabled" : "Location functionality not available.",
+    "location_denied_forever" : "Location permission is denied in devices settings.",
+    "location_denied" : "Location permission denied.",
+    "location_point_not_found" : "Location not found.",
+    "location_name_not_found" : "Location name not found.",
 
     "no_internet_connection" : "No connection to the internet possible.",
 

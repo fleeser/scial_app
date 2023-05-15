@@ -35,6 +35,12 @@ class AppException with _$AppException {
 
   const factory AppException.authDeleteAccountWeakPassword() = AuthDeleteAccountWeakPassword;
 
+  const factory AppException.locationServiceDisabled() = LocationServiceDisabled;
+  const factory AppException.locationDeniedForever() = LocationDeniedForever;
+  const factory AppException.locationDenied() = LocationDenied;
+  const factory AppException.locationPointNotFound() = LocationPointNotFound;
+  const factory AppException.locationNameNotFound() = LocationNameNotFound;
+
   const factory AppException.noInternetConnection() = NoInternetConnection;
 
   const factory AppException.unknownError() = UnknownError;
@@ -71,6 +77,12 @@ extension AppExceptionExtension on AppException {
       authChangePasswordWeakNewPassword: () => AppLocalizations.of(context)!.auth_change_password_weak_new_password,
 
       authDeleteAccountWeakPassword: () => AppLocalizations.of(context)!.auth_delete_account_weak_password,
+
+      locationServiceDisabled: () => AppLocalizations.of(context)!.location_service_disabled,
+      locationDeniedForever: () => AppLocalizations.of(context)!.location_denied_forever,
+      locationDenied: () => AppLocalizations.of(context)!.location_denied,
+      locationPointNotFound: () => AppLocalizations.of(context)!.location_point_not_found,
+      locationNameNotFound: () => AppLocalizations.of(context)!.location_name_not_found,
 
       noInternetConnection: () => AppLocalizations.of(context)!.no_internet_connection,
 

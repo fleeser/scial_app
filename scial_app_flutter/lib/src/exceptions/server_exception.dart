@@ -49,6 +49,9 @@ class ServerException with _$ServerException {
 
   const factory ServerException.userReadUserNotFound() = UserReadUserNotFound;
 
+  const factory ServerException.userEventsUserNotFound() = UserEventsUserNotFound;
+  const factory ServerException.userEventsIsPrivate() = UserEventsIsPrivate;
+
   const factory ServerException.userFriendshipsUserNotFound() = UserFriendshipsUserNotFound;
   const factory ServerException.userFriendshipsIsPrivate() = UserFriendshipsIsPrivate;
 
@@ -117,6 +120,9 @@ extension ServerExceptionExtension on ServerException {
       authDeleteAccountWrongPassword: () => AppLocalizations.of(context)!.auth_delete_account_wrong_password,
 
       userReadUserNotFound: () => AppLocalizations.of(context)!.user_read_user_not_found,
+
+      userEventsUserNotFound: () => AppLocalizations.of(context)!.user_events_user_not_found,
+      userEventsIsPrivate: () => AppLocalizations.of(context)!.user_events_is_private,
 
       userFriendshipsUserNotFound: () => AppLocalizations.of(context)!.user_friendships_user_not_found,
       userFriendshipsIsPrivate: () => AppLocalizations.of(context)!.user_friendships_is_private,

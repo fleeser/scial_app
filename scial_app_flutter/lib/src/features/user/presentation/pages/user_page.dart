@@ -4,11 +4,15 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:scial_app_client/scial_app_client.dart';
-import 'package:scial_app_flutter/src/extensions/date_time_extension.dart';
+import 'package:scial_app_flutter/src/features/user/presentation/controller/events_controller.dart';
 import 'package:scial_app_flutter/src/features/user/presentation/controller/friendships_controller.dart';
 import 'package:scial_app_flutter/src/features/user/presentation/controller/ratings_controller.dart';
 import 'package:scial_app_flutter/src/features/user/presentation/controller/user_controller.dart';
+import 'package:scial_app_flutter/src/features/user/presentation/widgets/events/user_events_list.dart';
+import 'package:scial_app_flutter/src/features/user/presentation/widgets/events/user_events_loading.dart';
 import 'package:scial_app_flutter/src/features/user/presentation/widgets/friendships/user_friendships_loading.dart';
+import 'package:scial_app_flutter/src/features/user/presentation/widgets/ratings/user_ratings_list.dart';
+import 'package:scial_app_flutter/src/features/user/presentation/widgets/ratings/user_ratings_loading.dart';
 import 'package:scial_app_flutter/src/features/user/presentation/widgets/user_badges.dart';
 import 'package:scial_app_flutter/src/features/user/presentation/widgets/friendships/user_friendships_list.dart';
 import 'package:scial_app_flutter/src/features/user/presentation/widgets/user_text.dart';
@@ -16,7 +20,6 @@ import 'package:scial_app_flutter/src/routing/app_router.dart';
 import 'package:scial_app_flutter/src/services/key_value_storage.dart';
 import 'package:scial_app_ui/scial_app_ui.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:scial_app_flutter/src/extensions/rating_type_extension.dart';
 
 class UserPage extends StatefulHookConsumerWidget {
 
@@ -39,6 +42,7 @@ class _UserPageState extends ConsumerState<UserPage> {
   Widget build(BuildContext context) {
 
     final userController = ref.watch(userControllerProvider(widget.id));
+    final eventsController = ref.watch(eventsControllerProvider(widget.id));
     final friendshipsController = ref.watch(friendshipsControllerProvider(widget.id));
     final ratingsController = ref.watch(ratingsControllerProvider(widget.id));
 
@@ -92,7 +96,22 @@ class _UserPageState extends ConsumerState<UserPage> {
                 child: TabBarView(
                   controller: _tabController,
                   children: [
-                    Container(color: Colors.blue),
+                    eventsController.when(
+                      data: (List<PublicUserEvent> events) => events.isNotEmpty
+                        ? UserEventsList(
+                          addBottomPadding: !_isProfile,
+                          events: events
+                        )
+                        : UserText(
+                          addBottomPadding: _isProfile,
+                          text: AppLocalizations.of(context)!.user_events_empty_text
+                        ),
+                      error: (Object e, StackTrace s) => UserText(
+                        addBottomPadding: _isProfile,
+                        text: 'Fehler nh', // TODO
+                      ),
+                      loading: () => UserEventsLoading(addBottomPadding: !_isProfile)
+                    ),
                     friendshipsController.when(
                       data: (List<PublicUserFriendship> friendships) => friendships.isNotEmpty
                         ? UserFriendshipsList(
@@ -109,24 +128,21 @@ class _UserPageState extends ConsumerState<UserPage> {
                       ),
                       loading: () => UserFriendshipsLoading(addBottomPadding: !_isProfile)
                     ),
-                    SCRatingList(
-                      shouldAddBottomPadding: !_isProfile,
-                      isLoading: ratingsController.isLoading,
-                      hasError: ratingsController.hasError,
-                      errorText: 'Fehler nh', // TODO
-                      emptyText: AppLocalizations.of(context)!.user_ratings_empty_text,
-                      ratingTitle: AppLocalizations.of(context)!.user_ratings_rating_title,
-                      ratings: ratingsController.whenOrNull(data: (List<PublicUserRating> ratings) => List.generate(ratings.length, (int index) => SCRatingListItem(
-                        image: SCRatingListItemImage.url(url: ratings[index].sender?.imageUrl),
-                        name: ratings[index].sender?.name ?? AppLocalizations.of(context)!.user_name,
-                        time: ratings[index].created.toDynamicDateText(context),
-                        text: ratings[index].text,
-                        rating: ratings[index].stars,
-                        indicator: SCRatingListItemIndicator(
-                          title: ratings[index].type.toText(context), 
-                          backgroundColor: ratings[index].type.toBackgroundColor(context)
+                    ratingsController.when(
+                      data: (List<PublicUserRating> ratings) => ratings.isNotEmpty
+                        ? UserRatingsList(
+                          addBottomPadding: !_isProfile, 
+                          ratings: ratings
                         )
-                      )))
+                        : UserText(
+                          addBottomPadding: !_isProfile,
+                          text: AppLocalizations.of(context)!.user_ratings_empty_text
+                        ),
+                      error: (Object e, StackTrace s) => UserText(
+                        addBottomPadding: !_isProfile, 
+                        text: 'Fehler nh' // TODO
+                      ),
+                      loading: () => UserRatingsLoading(addBottomPadding: !_isProfile)
                     )
                   ]
                 )

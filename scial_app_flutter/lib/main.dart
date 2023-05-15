@@ -28,5 +28,7 @@ void main() async {
     authenticationKeyManager: AuthKeyManager()
   )..connectivityMonitor = FlutterConnectivityMonitor();
 
+  //await client.test.test();
+
   runApp(const ProviderScope(child: App()));
 }

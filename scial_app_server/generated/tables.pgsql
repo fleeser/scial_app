@@ -50,6 +50,98 @@ CREATE UNIQUE INDEX auth_sign_up_request_email_idx ON "auth_sign_up_request" USI
 
 
 --
+-- Class EventGuestSuggestion as table event_guest_suggestions
+--
+
+CREATE TABLE "event_guest_suggestions" (
+  "id" serial,
+  "sender" integer NOT NULL,
+  "user" integer NOT NULL,
+  "event" integer NOT NULL,
+  "created" timestamp without time zone NOT NULL,
+  "text" text
+);
+
+ALTER TABLE ONLY "event_guest_suggestions"
+  ADD CONSTRAINT event_guest_suggestions_pkey PRIMARY KEY (id);
+
+
+--
+-- Class EventGuest as table event_guests
+--
+
+CREATE TABLE "event_guests" (
+  "id" serial,
+  "user" integer NOT NULL,
+  "event" integer NOT NULL,
+  "created" timestamp without time zone NOT NULL
+);
+
+ALTER TABLE ONLY "event_guests"
+  ADD CONSTRAINT event_guests_pkey PRIMARY KEY (id);
+
+
+--
+-- Class EventInvitation as table event_invitations
+--
+
+CREATE TABLE "event_invitations" (
+  "id" serial,
+  "user" integer NOT NULL,
+  "sender" integer NOT NULL,
+  "event" integer NOT NULL,
+  "created" timestamp without time zone NOT NULL,
+  "text" text,
+  "status" integer NOT NULL
+);
+
+ALTER TABLE ONLY "event_invitations"
+  ADD CONSTRAINT event_invitations_pkey PRIMARY KEY (id);
+
+
+--
+-- Class EventRequest as table event_requests
+--
+
+CREATE TABLE "event_requests" (
+  "id" serial,
+  "user" integer NOT NULL,
+  "companions" json NOT NULL,
+  "event" integer NOT NULL,
+  "created" timestamp without time zone NOT NULL,
+  "text" text,
+  "status" integer NOT NULL
+);
+
+ALTER TABLE ONLY "event_requests"
+  ADD CONSTRAINT event_requests_pkey PRIMARY KEY (id);
+
+
+--
+-- Class Event as table events
+--
+
+CREATE TABLE "events" (
+  "id" serial,
+  "type" integer NOT NULL,
+  "visibility" integer NOT NULL,
+  "created" timestamp without time zone NOT NULL,
+  "title" text NOT NULL,
+  "verified" boolean NOT NULL,
+  "hosts" json NOT NULL,
+  "lat" double precision NOT NULL,
+  "long" double precision NOT NULL,
+  "description" text,
+  "start" timestamp without time zone NOT NULL,
+  "end" timestamp without time zone NOT NULL,
+  "imageUrl" text
+);
+
+ALTER TABLE ONLY "events"
+  ADD CONSTRAINT events_pkey PRIMARY KEY (id);
+
+
+--
 -- Class FriendRequest as table friend_requests
 --
 

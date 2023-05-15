@@ -18,6 +18,9 @@
 
     "friend_request_text" : "Lass uns Freunde sein! 😎",
 
+    "no_address" : "Keine Adresse",
+    "no_guests" : "Keine Gäste",
+
     "sign_up_app_bar_title" : "Registrieren",
     "sign_up_title" : "Na, wer bist du denn? 🧐",
     "sign_up_subtitle" : "Erzähl mal ein wenig über dich.",
@@ -108,6 +111,8 @@
     "user_friendships_friendship_since" : "Befreundet seit",
     "user_friendships_empty_badges_text" : "Keine Abzeichen",
 
+    "user_events_empty_text" : "Keine Veranstaltungen gefunden.",
+
     "auth_sign_up_invalid_email" : "Das scheint keine E-Mail-Adresse zu sein.",
     "auth_sign_up_weak_password" : "Das Passwort muss zwischen 8 und 32 Zeichen lang sein.",
     "auth_sign_up_account_already_exists" : "Ein Konto mit dieser E-Mail-Adresse existiert bereits.",
@@ -156,6 +161,9 @@
 
     "user_read_user_not_found" : "Benutzer nicht gefunden.",
 
+    "user_events_user_not_found" : "Benutzer nicht gefunden.",
+    "user_events_is_private" : "Dieser Benutzer ist privat.",
+
     "user_friendships_user_not_found" : "Benutzer nicht gefunden.",
     "user_friendships_is_private" : "Dieser Benutzer ist privat.",
 
@@ -173,6 +181,12 @@
     "user_create_friend_request_friend_request_already_exists" : "Es existiert bereits eine Freundschaftsanfrage zwischen euch.",
 
     "user_update_user_not_found" : "Benutzer nicht gefunden.",
+
+    "location_service_disabled" : "Standort-Funktion nicht verfügbar.",
+    "location_denied_forever" : "Standort-Erlaubnis ist in den Geräteeinstellungen deaktiviert.",
+    "location_denied" : "Standorterlaubnis nicht erteilt.",
+    "location_point_not_found" : "Standort wurde nicht gefunden.",
+    "location_name_not_found" : "Name des Standorts nicht gefunden.",
 
     "no_internet_connection" : "Keine Internetverbindung möglich.",
 

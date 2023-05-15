@@ -22,7 +22,13 @@ enum SCTextLevel {
   editUserIsPrivate,
   userFriendshipsUserName,
   userFriendshipsSince,
-  userFriendshipsEmptyBadges
+  userFriendshipsEmptyBadges,
+  eventListTitle,
+  eventListDistance,
+  eventListLocation,
+  eventListTime,
+  imageStackExtraCount,
+  eventNoGuests
 }
 
 class SCText extends StatelessWidget {
@@ -319,6 +325,90 @@ class SCText extends StatelessWidget {
     textAlign = null,
     level = SCTextLevel.userFriendshipsSince;
 
+  const SCText.eventListTitle(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = 1,
+    overflow = TextOverflow.ellipsis,
+    textAlign = null,
+    level = SCTextLevel.eventListTitle;
+
+  const SCText.eventListDistance(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = 1,
+    overflow = TextOverflow.ellipsis,
+    textAlign = null,
+    level = SCTextLevel.eventListDistance;
+
+  const SCText.eventListLocation(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = 1,
+    overflow = TextOverflow.ellipsis,
+    textAlign = null,
+    level = SCTextLevel.eventListLocation;
+
+  const SCText.eventListTime(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = 1,
+    overflow = TextOverflow.ellipsis,
+    textAlign = null,
+    level = SCTextLevel.eventListTime;
+
+  const SCText.imageStackExtraCount(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = 1,
+    overflow = TextOverflow.ellipsis,
+    textAlign = null,
+    level = SCTextLevel.imageStackExtraCount;
+
+  const SCText.eventNoGuests(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = 1,
+    overflow = TextOverflow.ellipsis,
+    textAlign = null,
+    level = SCTextLevel.eventNoGuests;
+
   final String text;
   final Color? color;
   final int? maxLines;
@@ -354,6 +444,12 @@ class SCText extends StatelessWidget {
         case SCTextLevel.userFriendshipsUserName: return theme.colors.userFriendshipsUserName;
         case SCTextLevel.userFriendshipsSince: return theme.colors.userFriendshipsSince;
         case SCTextLevel.userFriendshipsEmptyBadges: return theme.colors.userFriendshipsEmptyBadges;
+        case SCTextLevel.eventListTitle: return theme.colors.eventListTitle;
+        case SCTextLevel.eventListDistance: return theme.colors.eventListDistance;
+        case SCTextLevel.eventListLocation: return theme.colors.eventListLocation;
+        case SCTextLevel.eventListTime: return theme.colors.eventListTime;
+        case SCTextLevel.imageStackExtraCount: return theme.colors.imageStackExtraCount;
+        case SCTextLevel.eventNoGuests: return theme.colors.eventNoGuests;
         default: return null;
       }
     }
@@ -400,6 +496,18 @@ class SCText extends StatelessWidget {
           return theme.typography.userFriendshipsSince;
         case SCTextLevel.userFriendshipsEmptyBadges:
           return theme.typography.userFriendshipsEmptyBadges;
+        case SCTextLevel.eventListTitle:
+          return theme.typography.eventListTitle;
+        case SCTextLevel.eventListDistance:
+          return theme.typography.eventListDistance;
+        case SCTextLevel.eventListLocation:
+          return theme.typography.eventListLocation;
+        case SCTextLevel.eventListTime:
+          return theme.typography.eventListTime;
+        case SCTextLevel.imageStackExtraCount:
+          return theme.typography.imageStackExtraCount;
+        case SCTextLevel.eventNoGuests:
+          return theme.typography.eventNoGuests;
         default: return null;
       }
     }

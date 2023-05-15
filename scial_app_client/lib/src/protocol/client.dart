@@ -36,12 +36,14 @@ import 'package:scial_app_client/src/protocol/user/response/user_read_response.d
     as _i15;
 import 'package:scial_app_client/src/protocol/user/response/user_update_response.dart'
     as _i16;
-import 'package:scial_app_client/src/protocol/user/response/user_friendships_response.dart'
+import 'package:scial_app_client/src/protocol/user/response/user_events_response.dart'
     as _i17;
-import 'package:scial_app_client/src/protocol/user/response/user_ratings_response.dart'
+import 'package:scial_app_client/src/protocol/user/response/user_friendships_response.dart'
     as _i18;
-import 'dart:io' as _i19;
-import 'protocol.dart' as _i20;
+import 'package:scial_app_client/src/protocol/user/response/user_ratings_response.dart'
+    as _i19;
+import 'dart:io' as _i20;
+import 'protocol.dart' as _i21;
 
 class _EndpointAuth extends _i1.EndpointRef {
   _EndpointAuth(_i1.EndpointCaller caller) : super(caller);
@@ -243,12 +245,31 @@ class _EndpointUser extends _i1.EndpointRef {
         },
       );
 
-  _i2.Future<_i17.UserFriendshipsResponse> friendships(
+  _i2.Future<_i17.UserEventsResponse> events(
+    int userId,
+    double? lat,
+    double? long, {
+    int? limit,
+    int? offset,
+  }) =>
+      caller.callServerEndpoint<_i17.UserEventsResponse>(
+        'user',
+        'events',
+        {
+          'userId': userId,
+          'lat': lat,
+          'long': long,
+          'limit': limit,
+          'offset': offset,
+        },
+      );
+
+  _i2.Future<_i18.UserFriendshipsResponse> friendships(
     int userId, {
     int? limit,
     int? offset,
   }) =>
-      caller.callServerEndpoint<_i17.UserFriendshipsResponse>(
+      caller.callServerEndpoint<_i18.UserFriendshipsResponse>(
         'user',
         'friendships',
         {
@@ -258,12 +279,12 @@ class _EndpointUser extends _i1.EndpointRef {
         },
       );
 
-  _i2.Future<_i18.UserRatingsResponse> ratings(
+  _i2.Future<_i19.UserRatingsResponse> ratings(
     int userId, {
     int? limit,
     int? offset,
   }) =>
-      caller.callServerEndpoint<_i18.UserRatingsResponse>(
+      caller.callServerEndpoint<_i19.UserRatingsResponse>(
         'user',
         'ratings',
         {
@@ -277,11 +298,11 @@ class _EndpointUser extends _i1.EndpointRef {
 class Client extends _i1.ServerpodClient {
   Client(
     String host, {
-    _i19.SecurityContext? context,
+    _i20.SecurityContext? context,
     _i1.AuthenticationKeyManager? authenticationKeyManager,
   }) : super(
           host,
-          _i20.Protocol(),
+          _i21.Protocol(),
           context: context,
           authenticationKeyManager: authenticationKeyManager,
         ) {

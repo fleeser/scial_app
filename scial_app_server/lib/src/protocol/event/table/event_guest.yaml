@@ -1,0 +1,8 @@
+class: EventGuest
+
+table: event_guests
+
+fields:
+  user: int
+  event: int
+  created: DateTime

@@ -411,6 +411,48 @@ class Endpoints extends _i1.EndpointDispatch {
             updateIsPrivate: params['updateIsPrivate'],
           ),
         ),
+        'events': _i1.MethodConnector(
+          name: 'events',
+          params: {
+            'userId': _i1.ParameterDescription(
+              name: 'userId',
+              type: _i1.getType<int>(),
+              nullable: false,
+            ),
+            'lat': _i1.ParameterDescription(
+              name: 'lat',
+              type: _i1.getType<double?>(),
+              nullable: true,
+            ),
+            'long': _i1.ParameterDescription(
+              name: 'long',
+              type: _i1.getType<double?>(),
+              nullable: true,
+            ),
+            'limit': _i1.ParameterDescription(
+              name: 'limit',
+              type: _i1.getType<int?>(),
+              nullable: true,
+            ),
+            'offset': _i1.ParameterDescription(
+              name: 'offset',
+              type: _i1.getType<int?>(),
+              nullable: true,
+            ),
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['user'] as _i6.UserEndpoint).events(
+            session,
+            params['userId'],
+            params['lat'],
+            params['long'],
+            limit: params['limit'],
+            offset: params['offset'],
+          ),
+        ),
         'friendships': _i1.MethodConnector(
           name: 'friendships',
           params: {

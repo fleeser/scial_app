@@ -1,0 +1,11 @@
+class: EventInvitation
+
+table: event_invitations
+
+fields:
+  user: int
+  sender: int
+  event: int
+  created: DateTime
+  text: String?
+  status: EventInvitationStatus
