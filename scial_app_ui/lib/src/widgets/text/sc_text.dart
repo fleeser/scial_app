@@ -28,7 +28,8 @@ enum SCTextLevel {
   eventListLocation,
   eventListTime,
   imageStackExtraCount,
-  eventNoGuests
+  eventNoGuests,
+  notificationsText
 }
 
 class SCText extends StatelessWidget {
@@ -409,6 +410,20 @@ class SCText extends StatelessWidget {
     textAlign = null,
     level = SCTextLevel.eventNoGuests;
 
+  const SCText.notificationsText(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = null,
+    overflow = null,
+    textAlign = TextAlign.center,
+    level = SCTextLevel.notificationsText;
+
   final String text;
   final Color? color;
   final int? maxLines;
@@ -450,6 +465,7 @@ class SCText extends StatelessWidget {
         case SCTextLevel.eventListTime: return theme.colors.eventListTime;
         case SCTextLevel.imageStackExtraCount: return theme.colors.imageStackExtraCount;
         case SCTextLevel.eventNoGuests: return theme.colors.eventNoGuests;
+        case SCTextLevel.notificationsText: return theme.colors.notificationsText;
         default: return null;
       }
     }
@@ -508,6 +524,8 @@ class SCText extends StatelessWidget {
           return theme.typography.imageStackExtraCount;
         case SCTextLevel.eventNoGuests:
           return theme.typography.eventNoGuests;
+        case SCTextLevel.notificationsText:
+          return theme.typography.notificationsText;
         default: return null;
       }
     }

@@ -1,0 +1,5 @@
+enum: NotificationSetReadResponseCode
+  
+values:
+  - notAuthenticated
+  - notificationNotFound

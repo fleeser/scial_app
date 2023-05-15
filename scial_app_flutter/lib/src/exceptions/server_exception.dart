@@ -47,6 +47,8 @@ class ServerException with _$ServerException {
   const factory ServerException.authDeleteAccountAccountNotFound() = AuthDeleteAccountAccountNotFound;
   const factory ServerException.authDeleteAccountWrongPassword() = AuthDeleteAccountWrongPassword;
 
+  const factory ServerException.notificationsNotificationNotFound() = NotificationsNotificationNotFound;
+
   const factory ServerException.userReadUserNotFound() = UserReadUserNotFound;
 
   const factory ServerException.userEventsUserNotFound() = UserEventsUserNotFound;
@@ -118,6 +120,8 @@ extension ServerExceptionExtension on ServerException {
       authDeleteAccountWeakPassword: () => AppLocalizations.of(context)!.auth_delete_account_weak_password,
       authDeleteAccountAccountNotFound: () => AppLocalizations.of(context)!.auth_delete_account_account_not_found,
       authDeleteAccountWrongPassword: () => AppLocalizations.of(context)!.auth_delete_account_wrong_password,
+
+      notificationsNotificationNotFound: () => AppLocalizations.of(context)!.notifications_notification_not_found,
 
       userReadUserNotFound: () => AppLocalizations.of(context)!.user_read_user_not_found,
 

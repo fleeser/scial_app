@@ -1,0 +1,6 @@
+class: NotificationReadResponse
+
+fields:
+  success: bool
+  code: NotificationReadResponseCode?
+  notifications: List<PublicNotification>?

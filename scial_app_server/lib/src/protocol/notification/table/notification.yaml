@@ -1,0 +1,10 @@
+class: Notification
+
+table: notifications
+
+fields:
+  created: DateTime
+  type: NotificationType
+  read: bool
+  ref: int
+  receiver: int

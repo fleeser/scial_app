@@ -78,6 +78,10 @@
     "sign_out_dialog_cancel_button_title" : "Abbrechen",
     "sign_out_dialog_submit_button_title" : "Abmelden",
 
+    "notifications_app_bar_title" : "Benachrichtigungen",
+    "notifications_tab_bar_all" : "Alle",
+    "notifications_empty_notifications" : "Keine Benachrichtigungen",
+
     "user_badges_empty" : "Keine Abzeichen",
     "user_tab_bar_events" : "Veranstaltungen",
     "user_tab_bar_friendships" : "Freundschaften",
@@ -157,7 +161,7 @@
     "auth_delete_account_account_not_found" : "Dein Konto konnte nicht gefunden werden.",
     "auth_delete_account_wrong_password" : "War das wirklich dein Passwort?",
 
-    "not_authenticated" : "Nicht authentifiziert.",
+    "notifications_notification_not_found" : "Benachrichtigung nicht gefunden.",
 
     "user_read_user_not_found" : "Benutzer nicht gefunden.",
 
@@ -189,6 +193,8 @@
     "location_name_not_found" : "Name des Standorts nicht gefunden.",
 
     "no_internet_connection" : "Keine Internetverbindung möglich.",
+
+    "not_authenticated" : "Nicht authentifiziert.",
 
     "unknown_error" : "Unbekannter Fehler."
 }

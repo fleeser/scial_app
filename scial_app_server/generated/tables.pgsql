@@ -174,6 +174,23 @@ ALTER TABLE ONLY "friendships"
 
 
 --
+-- Class Notification as table notifications
+--
+
+CREATE TABLE "notifications" (
+  "id" serial,
+  "created" timestamp without time zone NOT NULL,
+  "type" integer NOT NULL,
+  "read" boolean NOT NULL,
+  "ref" integer NOT NULL,
+  "receiver" integer NOT NULL
+);
+
+ALTER TABLE ONLY "notifications"
+  ADD CONSTRAINT notifications_pkey PRIMARY KEY (id);
+
+
+--
 -- Class Rating as table ratings
 --
 

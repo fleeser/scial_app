@@ -1,0 +1,4 @@
+enum: NotificationSetAllReadResponseCode
+  
+values:
+  - notAuthenticated

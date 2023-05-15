@@ -1,0 +1,5 @@
+class: NotificationSetAllReadResponse
+
+fields:
+  success: bool
+  code: NotificationSetAllReadResponseCode?

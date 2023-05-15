@@ -1,0 +1,6 @@
+enum: NotificationType
+
+values:
+  - friendRequestCreated
+  - friendRequestAccepted
+  - friendRequestDenied

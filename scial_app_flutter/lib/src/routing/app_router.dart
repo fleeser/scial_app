@@ -8,6 +8,7 @@ import 'package:scial_app_flutter/src/features/auth/presentation/pages/forgot_pa
 import 'package:scial_app_flutter/src/features/auth/presentation/pages/sign_in_page.dart';
 import 'package:scial_app_flutter/src/features/auth/presentation/pages/sign_up_page.dart';
 import 'package:scial_app_flutter/src/features/auth/presentation/pages/sign_up_verification_page.dart';
+import 'package:scial_app_flutter/src/features/notifications/presentation/pages/notifications_page.dart';
 import 'package:scial_app_flutter/src/features/user/presentation/pages/user_page.dart';
 import 'package:scial_app_flutter/src/services/key_value_storage.dart';
 
@@ -86,7 +87,7 @@ GoRouter appRouter(AppRouterRef ref) {
             path: AppRoute.notifications.path,
             parentNavigatorKey: _shellNavigatorKey,
             pageBuilder: (BuildContext context, GoRouterState state) {
-              return NoTransitionPage(child: Container());
+              return const NoTransitionPage(child: NotificationsPage());
             }
           ),
           GoRoute(

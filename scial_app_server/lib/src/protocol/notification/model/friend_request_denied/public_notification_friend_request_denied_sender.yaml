@@ -1,0 +1,7 @@
+class: PublicNotificationFriendRequestDeniedSender
+
+fields:
+  id: int
+  name: String?
+  imageUrl: String?
+  verified: bool

@@ -13,6 +13,10 @@ friendRequest:
   - takeBack:
 friendship:
   - remove:
+notification:
+  - read:
+  - setRead:
+  - setAllRead:
 test:
   - test:
 user:

@@ -74,7 +74,8 @@ class SCColorsData {
     required this.eventListLocation,
     required this.eventListTime,
     required this.imageStackExtraCount,
-    required this.eventNoGuests
+    required this.eventNoGuests,
+    required this.notificationsText
   });
 
   factory SCColorsData.light() => const SCColorsData(
@@ -149,7 +150,8 @@ class SCColorsData {
     eventListLocation: Color(0xFF7F7F7F),
     eventListTime: Color(0xFF7F7F7F),
     imageStackExtraCount: Color(0xFF191919),
-    eventNoGuests: Color(0xFF191919)
+    eventNoGuests: Color(0xFF191919),
+    notificationsText: Color(0xFF191919)
   );
 
   factory SCColorsData.dark() => const SCColorsData(
@@ -224,7 +226,8 @@ class SCColorsData {
     eventListLocation: Color(0xFF999999),
     eventListTime: Color(0xFF999999),
     imageStackExtraCount: Color(0xFFFBFBFB),
-    eventNoGuests: Color(0xFFFBFBFB)
+    eventNoGuests: Color(0xFFFBFBFB),
+    notificationsText: Color(0xFFFBFBFB)
   );
 
   final Color accent;
@@ -299,4 +302,5 @@ class SCColorsData {
   final Color eventListTime;
   final Color imageStackExtraCount;
   final Color eventNoGuests;
+  final Color notificationsText;
 }

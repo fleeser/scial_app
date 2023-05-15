@@ -1,0 +1,7 @@
+class: PublicNotification
+
+fields:
+  id: int
+  type: NotificationType
+  created: DateTime
+  data: dynamic

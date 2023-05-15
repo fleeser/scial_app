@@ -1,0 +1,4 @@
+class: PublicNotificationFriendRequestCreated
+
+fields:
+  friendRequest: PublicNotificationFriendRequestCreatedFriendRequest?

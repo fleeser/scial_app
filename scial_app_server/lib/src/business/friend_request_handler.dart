@@ -31,6 +31,16 @@ class FriendRequestHandler {
 
     await FriendRequest.insert(session, friendRequest);
 
+    Notification notification = Notification(
+      created: DateTime.now(), 
+      type: NotificationType.friendRequestCreated, 
+      read: false, 
+      ref: friendRequest.id!, 
+      receiver: userId
+    );
+
+    await Notification.insert(session, notification);
+
     return FriendRequestCreateResponse(success: true);
   }
 
@@ -77,6 +87,18 @@ class FriendRequestHandler {
       await Friendship.insert(session, friendship);
     }
 
+    Notification notification = Notification(
+      created: DateTime.now(), 
+      type: answer
+        ? NotificationType.friendRequestAccepted
+        : NotificationType.friendRequestDenied, 
+      read: false, 
+      ref: friendRequestId, 
+      receiver: friendRequestRow.sender
+    );
+
+    await Notification.insert(session, notification);
+
     return FriendRequestAnswerResponse(success: true);
   }
 
@@ -106,6 +128,8 @@ class FriendRequestHandler {
     }
 
     await FriendRequest.deleteRow(session, friendRequestRow);
+
+    await Notification.delete(session, where: (t) => t.ref.equals(friendRequestId) & t.type.equals(NotificationType.friendRequestCreated));
 
     return FriendRequestTakeBackResponse(success: true);
   }

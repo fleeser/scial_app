@@ -10,13 +10,11 @@ export 'src/widgets/responsive/sc_padding.dart';
 export 'src/widgets/responsive/sc_gap.dart';
 
 export 'src/widgets/base/sc_icon.dart';
-
-export 'src/widgets/text/sc_text.dart';
-
 export 'src/widgets/base/sc_shimmer.dart';
-export 'src/widgets/base/sc_icon.dart';
 export 'src/widgets/base/sc_image.dart';
 export 'src/widgets/base/sc_image_stack.dart';
+
+export 'src/widgets/text/sc_text.dart';
 
 export 'src/widgets/sc_scaffold.dart';
 

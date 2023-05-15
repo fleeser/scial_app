@@ -37,7 +37,8 @@ class SCTypographyData {
     required this.eventListLocation,
     required this.eventListTime,
     required this.imageStackExtraCount,
-    required this.eventNoGuests
+    required this.eventNoGuests,
+    required this.notificationsText
   });
 
   factory SCTypographyData.regular() => const SCTypographyData(
@@ -287,6 +288,13 @@ class SCTypographyData {
       fontSize: 12.0,
       fontWeight: FontWeight.w400,
       decoration: TextDecoration.none
+    ),
+    notificationsText: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 14.0,
+      fontWeight: FontWeight.w400,
+      decoration: TextDecoration.none
     )
   );
 
@@ -325,4 +333,5 @@ class SCTypographyData {
   final TextStyle eventListTime;
   final TextStyle imageStackExtraCount;
   final TextStyle eventNoGuests;
+  final TextStyle notificationsText;
 }
