@@ -27,7 +27,8 @@ void main() async {
     dotenv.env['SERVER_URL']!,
     authenticationKeyManager: AuthKeyManager()
   )..connectivityMonitor = FlutterConnectivityMonitor();
-  await client.openStreamingConnection();
+
+  //await client.test.test();
 
   runApp(const ProviderScope(child: App()));
 }

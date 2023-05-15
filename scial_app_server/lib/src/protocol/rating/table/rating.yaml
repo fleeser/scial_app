@@ -1,0 +1,11 @@
+class: Rating
+
+table: ratings
+
+fields:
+  created: DateTime
+  type: RatingType
+  sender: int
+  receiver: int
+  stars: int
+  text: String?

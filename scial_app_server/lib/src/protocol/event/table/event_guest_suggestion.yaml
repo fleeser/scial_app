@@ -1,0 +1,10 @@
+class: EventGuestSuggestion
+
+table: event_guest_suggestions
+
+fields:
+  sender: int
+  user: int
+  event: int
+  created: DateTime
+  text: String?

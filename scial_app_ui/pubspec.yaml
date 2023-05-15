@@ -4,16 +4,17 @@ version: 0.0.1
 homepage:
 
 environment:
-  sdk: '>=2.19.6 <3.0.0'
-  flutter: ">=1.17.0"
+  sdk: '>=3.0.0 <4.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
 
+  flutter_riverpod: ^2.3.6
+  
   gap: ^2.0.1
   flutter_svg: ^2.0.5
-  extended_image: ^7.0.2
+  extended_image: ^8.0.1
   pinput: ^2.2.31
 
 dev_dependencies:

@@ -1,0 +1,6 @@
+enum: EventVisibility
+
+values:
+  - public
+  - protected
+  - private

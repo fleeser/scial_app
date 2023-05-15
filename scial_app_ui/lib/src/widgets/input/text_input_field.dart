@@ -27,6 +27,16 @@ class SCTextInputField extends StatelessWidget {
     obscure = true,
     keyboardType = TextInputType.text;
 
+  const SCTextInputField.name({
+    super.key,
+    this.controller,
+    required this.hint,
+    this.enabled = true
+  })
+  : icon = SCIcons.tag,
+    obscure = false,
+    keyboardType = TextInputType.name;
+
   final TextEditingController? controller;
   final bool obscure;
   final SCIcons icon;
@@ -42,7 +52,7 @@ class SCTextInputField extends StatelessWidget {
     return Container(
       height: 48.0,
       decoration: BoxDecoration(
-        color: theme.colors.textInputBackground,
+        color: theme.colors.textInputFieldBackground,
         borderRadius: BorderRadius.circular(12.0)
       ),
       child: Row(

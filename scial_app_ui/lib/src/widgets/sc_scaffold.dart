@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:scial_app_ui/src/theme/sc_theme.dart';
 import 'package:scial_app_ui/src/theme/sc_theme_data.dart';
 import 'package:scial_app_ui/src/widgets/app_bar/sc_app_bar.dart';
+import 'package:scial_app_ui/src/widgets/bottom_bar/sc_bottom_bar.dart';
 
 class SCScaffold extends StatelessWidget {
 
@@ -10,12 +11,12 @@ class SCScaffold extends StatelessWidget {
     super.key,
     this.appBar,
     this.body,
-    this.bottomNavigationBar
+    this.bottomBar
   });
 
   final SCAppBar? appBar;
   final Widget? body;
-  final Widget? bottomNavigationBar;
+  final SCBottomBar? bottomBar;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +41,7 @@ class SCScaffold extends StatelessWidget {
         backgroundColor: theme.colors.background,
         appBar: appBar,
         body: body,
-        bottomNavigationBar: bottomNavigationBar
+        bottomNavigationBar: bottomBar
       )
     );
   }

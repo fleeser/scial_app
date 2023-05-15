@@ -1,0 +1,11 @@
+class: PublicUser
+
+fields:
+  id: int
+  name: String?
+  imageUrl: String?
+  verified: bool
+  private: bool
+  badges: List<UserBadge>
+  friendship: PublicUserFriendshipDetails?
+  friendRequest: PublicUserFriendRequest?

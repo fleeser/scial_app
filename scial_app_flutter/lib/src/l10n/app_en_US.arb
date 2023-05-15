@@ -1,4 +1,26 @@
 {
+    "date_time_today" : "Today",
+    "date_time_yesterday" : "Yesterday",
+    "date_time_tomorrow" : "Tomorrow",
+
+    "date_time_monday" : "Monday",
+    "date_time_tuesday" : "Tuesday",
+    "date_time_wednesday" : "Wednesday",
+    "date_time_thursday" : "Thursday",
+    "date_time_friday" : "Friday",
+    "date_time_saturday" : "Saturday",
+    "date_time_sunday" : "Sunday",
+
+    "rating_type_host" : "Host",
+    "rating_type_guest" : "Guest",
+
+    "user_name" : "scial user",
+
+    "friend_request_text" : "Let's be friends! 😎",
+
+    "no_address" : "No address",
+    "no_guests" : "No guests",
+
     "sign_up_app_bar_title" : "Sign Up",
     "sign_up_title" : "Well, who are you? 🧐",
     "sign_up_subtitle" : "Tell us a little bit about yourself.",
@@ -56,6 +78,41 @@
     "sign_out_dialog_cancel_button_title" : "Cancel",
     "sign_out_dialog_submit_button_title" : "Sign out",
 
+    "user_badges_empty" : "No badges",
+    "user_tab_bar_events" : "Events",
+    "user_tab_bar_friendships" : "Friendships",
+    "user_tab_bar_ratings" : "Ratings",
+
+    "user_friendship_dialog_title" : "Remove friend",
+    "user_friendship_dialog_text" : "Are you sure you want to remove this friend?",
+    "user_friendship_dialog_remove" : "Remove",
+    "user_friendship_dialog_cancel" : "Cancel",
+
+    "user_answer_friend_request_dialog_title" : "Friend Request",
+    "user_answer_friend_request_dialog_accept" : "Accept",
+    "user_answer_friend_request_dialog_deny" : "Deny",
+    "user_answer_friend_request_dialog_cancel" : "Cancel",
+
+    "user_create_friend_request_title" : "Friend request",
+    "user_create_friend_request_send_button_title" : "Send",
+
+    "user_update_user_title" : "Edit profile",
+    "user_update_user_private" : "Private Profile",
+    "user_update_user_save_button_title" : "Save",
+
+    "user_take_back_friend_request_dialog_title" : "Take back friend request",
+    "user_take_back_friend_request_dialog_take_back" : "Take back",
+    "user_take_back_friend_request_dialog_cancel" : "Cancel",
+
+    "user_ratings_rating_title" : "Rating",
+    "user_ratings_empty_text" : "No ratings found",
+
+    "user_friendships_empty_text" : "No friendships found.",
+    "user_friendships_friendship_since" : "Friends since",
+    "user_friendships_empty_badges_text" : "No badges",
+
+    "user_events_empty_text" : "No events found.",
+
     "auth_sign_up_invalid_email" : "This does not seem to be an E-Mail-Address..",
     "auth_sign_up_weak_password" : "The password has to be between 8 and 32 characters long.",
     "auth_sign_up_account_already_exists" : "An account with this E-Mail-Address already exists.",
@@ -101,6 +158,35 @@
     "auth_delete_account_wrong_password" : "Was this really your password?",
 
     "not_authenticated" : "Not authenticated.",
+
+    "user_read_user_not_found" : "User not found.",
+
+    "user_events_user_not_found" : "User not found.",
+    "user_events_is_private" : "This user is private.",
+
+    "user_friendships_user_not_found" : "User not found.",
+    "user_friendships_is_private" : "This user is private.",
+
+    "user_ratings_user_not_found" : "User not found.",
+    "user_ratings_is_private" : "This user is private.",
+
+    "user_remove_friendship_friendship_not_found" : "Friendship not found",
+
+    "user_answer_friend_request_friend_request_not_found" : "Friend request not found.",
+    "user_answer_friend_request_friend_request_already_answered" : "Friend request already answered.",
+
+    "user_take_back_friend_request_friend_request_not_found" : "Friend request not found.",
+    "user_take_back_friend_request_friend_request_already_answered" : "Friend request already answered.",
+
+    "user_create_friend_request_friend_request_already_exists" : "There is already a pending friend request.",
+
+    "user_update_user_not_found" : "User not found.",
+
+    "location_service_disabled" : "Location functionality not available.",
+    "location_denied_forever" : "Location permission is denied in devices settings.",
+    "location_denied" : "Location permission denied.",
+    "location_point_not_found" : "Location not found.",
+    "location_name_not_found" : "Location name not found.",
 
     "no_internet_connection" : "No connection to the internet possible.",
 

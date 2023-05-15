@@ -1,0 +1,6 @@
+enum: FriendRequestAnswerResponseCode
+  
+values:
+  - notAuthenticated
+  - friendRequestNotFound
+  - friendRequestAlreadyAnswered

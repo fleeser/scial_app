@@ -7,3 +7,17 @@ auth:
   - signIn:
   - changePassword:
   - deleteAccount:
+friendRequest:
+  - create:
+  - answer:
+  - takeBack:
+friendship:
+  - remove:
+test:
+  - test:
+user:
+  - read:
+  - update:
+  - events:
+  - friendships:
+  - ratings:

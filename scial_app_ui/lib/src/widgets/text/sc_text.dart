@@ -7,100 +7,454 @@ enum SCTextLevel {
   paragraph1,
   buttonTitle,
   lightButtonTitle,
-  appBarTitleCollapsed
+  appBarTitle,
+  ratingName,
+  ratingTime,
+  ratingText,
+  ratingRatingTitle,
+  ratingIndicator,
+  dialogTitle,
+  dialogText,
+  dialogButton,
+  sheetTitle,
+  userText,
+  emptyBadges,
+  editUserIsPrivate,
+  userFriendshipsUserName,
+  userFriendshipsSince,
+  userFriendshipsEmptyBadges,
+  eventListTitle,
+  eventListDistance,
+  eventListLocation,
+  eventListTime,
+  imageStackExtraCount,
+  eventNoGuests
 }
 
 class SCText extends StatelessWidget {
 
+  const SCText(
+    this.text,
+    {
+      super.key,
+      this.color,
+      this.maxLines,
+      this.overflow,
+      this.textAlign,
+      this.style
+    }
+  )
+  : level = null,
+    height = null;
+
   const SCText.title1(
-    this.data,
-  {
-    super.key,
-    this.color,
-    this.maxLines,
-    this.overflow,
-    this.textAlign,
-    this.level = SCTextLevel.title1
-  });
+    this.text,
+    {
+      super.key,
+      this.color,
+      this.maxLines,
+      this.overflow,
+      this.textAlign,
+      this.height
+    }
+  )
+  : style = null,
+    level = SCTextLevel.title1;
 
   const SCText.paragraph1(
-    this.data,
-  {
-    super.key,
-    this.color,
-    this.maxLines,
-    this.overflow,
-    this.textAlign,
-    this.level = SCTextLevel.paragraph1
-  });
+    this.text,
+    {
+      super.key,
+      this.color,
+      this.maxLines,
+      this.overflow,
+      this.textAlign,
+      this.height
+    }
+  )
+  : style = null,
+    level = SCTextLevel.paragraph1;
 
   const SCText.buttonTitle(
-    this.data,
-  {
-    super.key,
-    this.color,
-    this.level = SCTextLevel.buttonTitle
-  })
-  : maxLines = 1,
-    overflow = TextOverflow.ellipsis,
-    textAlign = TextAlign.center;
+    this.text,
+    {
+      super.key,
+      this.color,
+      this.height
+    }
+  )
+    : style = null,
+      maxLines = 1,
+      overflow = TextOverflow.ellipsis,
+      textAlign = TextAlign.center,
+      level = SCTextLevel.buttonTitle;
 
   const SCText.lightButtonTitle(
-    this.data,
+    this.text,
   {
     super.key,
     this.color,
     this.maxLines,
     this.overflow,
     this.textAlign,
-    this.level = SCTextLevel.lightButtonTitle
-  });
+    this.height
+  })
+  : style = null,
+    level = SCTextLevel.lightButtonTitle;
 
   const SCText.appBarTitle(
-    this.data,
+    this.text,
   {
     super.key,
     this.color,
-    this.level = SCTextLevel.appBarTitleCollapsed
+    this.height
   })
-  : textAlign = null,
+  : style = null,
+    textAlign = null,
     maxLines = 1,
-    overflow = TextOverflow.ellipsis;
+    overflow = TextOverflow.ellipsis,
+    level = SCTextLevel.appBarTitle;
 
-  final String data;
-  final SCTextLevel level;
+  const SCText.ratingName(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = 1,
+    overflow = TextOverflow.ellipsis,
+    textAlign = null,
+    level = SCTextLevel.ratingName;
+
+  const SCText.ratingTime(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = 1,
+    overflow = TextOverflow.ellipsis,
+    textAlign = null,
+    level = SCTextLevel.ratingTime;
+
+  const SCText.ratingText(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = null,
+    overflow = null,
+    textAlign = null,
+    level = SCTextLevel.ratingText;
+
+  const SCText.ratingRatingTitle(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = 1,
+    overflow = TextOverflow.ellipsis,
+    textAlign = null,
+    level = SCTextLevel.ratingRatingTitle;
+
+  const SCText.ratingIndicator(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = 1,
+    overflow = TextOverflow.ellipsis,
+    textAlign = TextAlign.center,
+    level = SCTextLevel.ratingIndicator;
+  
+  const SCText.dialogTitle(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = null,
+    overflow = null,
+    textAlign = TextAlign.center,
+    level = SCTextLevel.dialogTitle;
+
+  const SCText.dialogText(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = null,
+    overflow = null,
+    textAlign = TextAlign.center,
+    level = SCTextLevel.dialogText;
+  
+  const SCText.dialogButton(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = 1,
+    overflow = TextOverflow.ellipsis,
+    textAlign = TextAlign.center,
+    level = SCTextLevel.dialogButton;
+
+  const SCText.sheetTitle(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = null,
+    overflow = null,
+    textAlign = null,
+    level = SCTextLevel.sheetTitle;
+
+  const SCText.userText(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = null,
+    overflow = null,
+    textAlign = TextAlign.center,
+    level = SCTextLevel.userText;
+
+  const SCText.emptyBadges(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = 1,
+    overflow = TextOverflow.ellipsis,
+    textAlign = null,
+    level = SCTextLevel.emptyBadges;
+
+  const SCText.editUserIsPrivate(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = 1,
+    overflow = TextOverflow.ellipsis,
+    textAlign = null,
+    level = SCTextLevel.editUserIsPrivate;
+
+  const SCText.userFriendshipsUserName(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = 1,
+    overflow = TextOverflow.ellipsis,
+    textAlign = null,
+    level = SCTextLevel.userFriendshipsUserName;
+
+  const SCText.userFriendshipsEmptyBadges(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = 1,
+    overflow = TextOverflow.ellipsis,
+    textAlign = null,
+    level = SCTextLevel.userFriendshipsEmptyBadges;
+
+  const SCText.userFriendshipsSince(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = 1,
+    overflow = TextOverflow.ellipsis,
+    textAlign = null,
+    level = SCTextLevel.userFriendshipsSince;
+
+  const SCText.eventListTitle(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = 1,
+    overflow = TextOverflow.ellipsis,
+    textAlign = null,
+    level = SCTextLevel.eventListTitle;
+
+  const SCText.eventListDistance(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = 1,
+    overflow = TextOverflow.ellipsis,
+    textAlign = null,
+    level = SCTextLevel.eventListDistance;
+
+  const SCText.eventListLocation(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = 1,
+    overflow = TextOverflow.ellipsis,
+    textAlign = null,
+    level = SCTextLevel.eventListLocation;
+
+  const SCText.eventListTime(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = 1,
+    overflow = TextOverflow.ellipsis,
+    textAlign = null,
+    level = SCTextLevel.eventListTime;
+
+  const SCText.imageStackExtraCount(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = 1,
+    overflow = TextOverflow.ellipsis,
+    textAlign = null,
+    level = SCTextLevel.imageStackExtraCount;
+
+  const SCText.eventNoGuests(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = 1,
+    overflow = TextOverflow.ellipsis,
+    textAlign = null,
+    level = SCTextLevel.eventNoGuests;
+
+  final String text;
   final Color? color;
   final int? maxLines;
   final TextOverflow? overflow;
   final TextAlign? textAlign;
+  final TextStyle? style;
+  final SCTextLevel? level;
+  final double? height;
 
   @override
   Widget build(BuildContext context) {
+
     final SCThemeData theme = SCTheme.of(context);
 
-    late final Color newColor;
-
-    if (color == null) {
+    Color? color() {
       switch (level) {
-        case SCTextLevel.title1:
-          newColor = theme.colors.title1;
-          break;
-        case SCTextLevel.paragraph1:
-          newColor = theme.colors.paragraph1;
-          break;
-        case SCTextLevel.buttonTitle:
-          newColor = theme.colors.onAccent;
-          break;
-        case SCTextLevel.lightButtonTitle:
-          newColor = theme.colors.ligthButtonTitle;
-          break;
-        case SCTextLevel.appBarTitleCollapsed:
-          newColor = theme.colors.appBarTitleCollapsed;
-          break;
+        case SCTextLevel.title1: return theme.colors.title1;
+        case SCTextLevel.paragraph1: return theme.colors.paragraph1;
+        case SCTextLevel.buttonTitle: return theme.colors.onAccent;
+        case SCTextLevel.lightButtonTitle: return theme.colors.ligthButtonTitle;
+        case SCTextLevel.appBarTitle: return theme.colors.appBarTitle;
+        case SCTextLevel.ratingName: return theme.colors.ratingNameForeground;
+        case SCTextLevel.ratingTime: return theme.colors.ratingTimeForeground;
+        case SCTextLevel.ratingText: return theme.colors.ratingTextForeground;
+        case SCTextLevel.ratingRatingTitle: return theme.colors.ratingRatingTitleForeground;
+        case SCTextLevel.ratingIndicator: return theme.colors.ratingIndicatorForeground;
+        case SCTextLevel.dialogTitle: return theme.colors.dialogTitleForeground;
+        case SCTextLevel.dialogText: return theme.colors.dialogTextForeground;
+        case SCTextLevel.sheetTitle: return theme.colors.sheetTitleForeground;
+        case SCTextLevel.userText: return theme.colors.userText;
+        case SCTextLevel.emptyBadges: return theme.colors.emptyBadges;
+        case SCTextLevel.editUserIsPrivate: return theme.colors.editUserIsPrivate;
+        case SCTextLevel.userFriendshipsUserName: return theme.colors.userFriendshipsUserName;
+        case SCTextLevel.userFriendshipsSince: return theme.colors.userFriendshipsSince;
+        case SCTextLevel.userFriendshipsEmptyBadges: return theme.colors.userFriendshipsEmptyBadges;
+        case SCTextLevel.eventListTitle: return theme.colors.eventListTitle;
+        case SCTextLevel.eventListDistance: return theme.colors.eventListDistance;
+        case SCTextLevel.eventListLocation: return theme.colors.eventListLocation;
+        case SCTextLevel.eventListTime: return theme.colors.eventListTime;
+        case SCTextLevel.imageStackExtraCount: return theme.colors.imageStackExtraCount;
+        case SCTextLevel.eventNoGuests: return theme.colors.eventNoGuests;
+        default: return null;
       }
     }
 
-    final style = () {
+    TextStyle? style() {
       switch (level) {
         case SCTextLevel.title1:
           return theme.typography.title1;
@@ -110,17 +464,65 @@ class SCText extends StatelessWidget {
           return theme.typography.buttonTitle;
         case SCTextLevel.lightButtonTitle:
           return theme.typography.ligthButtonTitle;
-        case SCTextLevel.appBarTitleCollapsed:
-          return theme.typography.appBarTitleCollapsed;
+        case SCTextLevel.appBarTitle:
+          return theme.typography.appBarTitle;
+        case SCTextLevel.ratingName:
+          return theme.typography.ratingName;
+        case SCTextLevel.ratingTime:
+          return theme.typography.ratingTime;
+        case SCTextLevel.ratingText:
+          return theme.typography.ratingText;
+        case SCTextLevel.ratingRatingTitle:
+          return theme.typography.ratingRatingTitle;
+        case SCTextLevel.ratingIndicator:
+          return theme.typography.ratingIndicator;
+        case SCTextLevel.dialogTitle:
+          return theme.typography.dialogTitle;
+        case SCTextLevel.dialogText:
+          return theme.typography.dialogText;
+        case SCTextLevel.dialogButton:
+          return theme.typography.dialogButton;
+        case SCTextLevel.sheetTitle:
+          return theme.typography.sheetTitle;
+        case SCTextLevel.userText:
+          return theme.typography.userText;
+        case SCTextLevel.emptyBadges:
+          return theme.typography.emptyBadges;
+        case SCTextLevel.editUserIsPrivate:
+          return theme.typography.editUserIsPrivate;
+        case SCTextLevel.userFriendshipsUserName:
+          return theme.typography.userFriendshipsUserName;
+        case SCTextLevel.userFriendshipsSince:
+          return theme.typography.userFriendshipsSince;
+        case SCTextLevel.userFriendshipsEmptyBadges:
+          return theme.typography.userFriendshipsEmptyBadges;
+        case SCTextLevel.eventListTitle:
+          return theme.typography.eventListTitle;
+        case SCTextLevel.eventListDistance:
+          return theme.typography.eventListDistance;
+        case SCTextLevel.eventListLocation:
+          return theme.typography.eventListLocation;
+        case SCTextLevel.eventListTime:
+          return theme.typography.eventListTime;
+        case SCTextLevel.imageStackExtraCount:
+          return theme.typography.imageStackExtraCount;
+        case SCTextLevel.eventNoGuests:
+          return theme.typography.eventNoGuests;
+        default: return null;
       }
-    }();
+    }
 
     return Text(
-      data,
+      text,
       maxLines: maxLines,
       overflow: overflow,
       textAlign: textAlign,
-      style: style.copyWith(color: color ?? newColor)
+      style: level != null
+        ? style()!.copyWith(
+          color: this.color ?? color(),
+          height: height
+        )
+        : this.style
     );
   }
 }

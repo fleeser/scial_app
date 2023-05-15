@@ -1,0 +1,7 @@
+class: PublicUserFriendRequest
+
+fields:
+  id: int
+  created: DateTime
+  text: String?
+  isSender: bool

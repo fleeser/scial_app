@@ -1,0 +1,5 @@
+class: FriendRequestCreateResponse
+
+fields:
+  success: bool
+  code: FriendRequestCreateResponseCode?

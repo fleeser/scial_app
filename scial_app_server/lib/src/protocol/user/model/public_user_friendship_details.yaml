@@ -1,0 +1,6 @@
+class: PublicUserFriendshipDetails
+
+fields:
+  id: int
+  created: DateTime
+  badges: List<FriendshipBadge>

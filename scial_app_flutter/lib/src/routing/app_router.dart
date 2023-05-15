@@ -8,6 +8,7 @@ import 'package:scial_app_flutter/src/features/auth/presentation/pages/forgot_pa
 import 'package:scial_app_flutter/src/features/auth/presentation/pages/sign_in_page.dart';
 import 'package:scial_app_flutter/src/features/auth/presentation/pages/sign_up_page.dart';
 import 'package:scial_app_flutter/src/features/auth/presentation/pages/sign_up_verification_page.dart';
+import 'package:scial_app_flutter/src/features/user/presentation/pages/user_page.dart';
 import 'package:scial_app_flutter/src/services/key_value_storage.dart';
 
 part 'app_router.g.dart';
@@ -92,7 +93,7 @@ GoRouter appRouter(AppRouterRef ref) {
             path: AppRoute.profile.path,
             parentNavigatorKey: _shellNavigatorKey,
             pageBuilder: (BuildContext context, GoRouterState state) {
-              return NoTransitionPage(child: Container());
+              return NoTransitionPage(child: UserPage(id: KeyValueStorage.getUserId()!));
             }
           )
         ]
@@ -138,6 +139,15 @@ GoRouter appRouter(AppRouterRef ref) {
             verificationCode: data?.verificationCode
           );
         }
+      ),
+      GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
+        path: '/user/:id',
+        builder: (BuildContext context, GoRouterState state) {
+          // TODO: What if is not a number in params
+          int userId = int.parse(state.params['id']!);
+          return UserPage(id: userId);
+        }
       )
     ],
     errorBuilder: (BuildContext context, GoRouterState state) => Container() // TODO add error
@@ -180,5 +190,9 @@ extension AppRouterExtension on BuildContext {
 
   void navigateToProfilePage() {
     go(AppRoute.profile.path);
+  }
+
+  void navigateToUserPage(int userId) {
+    push('/user/$userId');
   }
 }

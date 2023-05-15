@@ -1,0 +1,6 @@
+enum: EventRequestStatus
+
+values:
+  - accepted
+  - denied
+  - pending

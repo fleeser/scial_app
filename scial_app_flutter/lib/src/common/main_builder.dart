@@ -17,35 +17,45 @@ class MainBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     return SCScaffold(
       body: child,
-      bottomNavigationBar: SCBottomBar(
-        items: [
-          SCBottomBarItem(
-            onPressed: () => context.navigateToHomePage(),
-            icon: SCIcons.home,
-            selected: location == AppRoute.home.path
-          ),
-          SCBottomBarItem(
-            onPressed: () => context.navigateToDiscoverPage(),
-            icon: SCIcons.search,
-            selected: location == AppRoute.discover.path
-          ),
-          SCBottomBarItem(
-            onPressed: () {},
-            icon: SCIcons.plus,
-            isAction: true
-          ),
-          SCBottomBarItem(
-            onPressed: () => context.navigateToNotificationsPage(),
-            icon: SCIcons.bell,
-            selected: location == AppRoute.notifications.path
-          ),
-          SCBottomBarItem(
-            onPressed: () => context.navigateToProfilePage(),
-            icon: SCIcons.user,
-            selected: location == AppRoute.profile.path
-          )
+      bottomBar: SCBottomBar(
+        selectedIndex: _selectedIndex,
+        onPressed: (int index) => _onPressed(context, index),
+        items: const [
+          SCBottomBarItem.secondary(icon: SCIcons.home),
+          SCBottomBarItem.secondary(icon: SCIcons.search),
+          SCBottomBarItem.primary(icon: SCIcons.plus),
+          SCBottomBarItem.secondary(icon: SCIcons.bell),
+          SCBottomBarItem.secondary(icon: SCIcons.user)
         ]
       )
     );
+  }
+
+  int get _selectedIndex {
+    switch (location) {
+      case '/home': return 0;
+      case '/discover': return 1;
+      case '/notifications': return 3;
+      default: return 4;
+    }
+  }
+
+  void _onPressed(BuildContext context, int index) {
+    switch (index) {
+      case 0: 
+        context.navigateToHomePage();
+        break;
+      case 1:
+        context.navigateToDiscoverPage();
+        break;
+      case 2:
+        break;
+      case 3:
+        context.navigateToNotificationsPage();
+        break;
+      default:
+        context.navigateToProfilePage();
+        break;
+    }
   }
 }

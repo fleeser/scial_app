@@ -1,0 +1,6 @@
+class: UserFriendshipsResponse
+
+fields:
+  success: bool
+  code: UserFriendshipsResponseCode?
+  friendships: List<PublicUserFriendship>?

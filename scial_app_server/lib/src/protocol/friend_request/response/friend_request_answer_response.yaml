@@ -1,0 +1,5 @@
+class: FriendRequestAnswerResponse
+
+fields:
+  success: bool
+  code: FriendRequestAnswerResponseCode?

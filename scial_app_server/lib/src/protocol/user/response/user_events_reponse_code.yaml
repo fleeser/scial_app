@@ -1,0 +1,6 @@
+enum: UserEventsResponseCode
+  
+values:
+  - notAuthenticated
+  - userNotFound
+  - isPrivate

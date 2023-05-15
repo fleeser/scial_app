@@ -1,0 +1,6 @@
+class: UserRatingsResponse
+
+fields:
+  success: bool
+  code: UserRatingsResponseCode?
+  ratings: List<PublicUserRating>?

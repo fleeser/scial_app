@@ -32,7 +32,7 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
       appBar: SCAppBar(
         context: context,
         backButton: SCAppBarBackButton(enabled: !state.isLoading),
-        title: SCAppBarTitle(title: SCAppBarTitleText(text: AppLocalizations.of(context)!.sign_up_app_bar_title))
+        title: SCAppBarTitle(title: AppLocalizations.of(context)!.sign_up_app_bar_title)
       ),
       body: AuthBuilder(
         title: AppLocalizations.of(context)!.sign_up_title,

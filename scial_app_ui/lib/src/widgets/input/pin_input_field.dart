@@ -7,7 +7,6 @@ class SCPinInput extends StatelessWidget {
 
   const SCPinInput.verification({
     super.key,
-    required this.onCompleted,
     this.controller,
     this.focusNode,
     this.enabled = true,
@@ -15,7 +14,6 @@ class SCPinInput extends StatelessWidget {
   })
   : length = 6;
 
-  final void Function(String pin) onCompleted;
   final int length;
   final TextEditingController? controller;
   final FocusNode? focusNode;
@@ -57,8 +55,7 @@ class SCPinInput extends StatelessWidget {
             color: theme.colors.pinInputErrorBorder,
             borderRadius: BorderRadius.circular(12.0)
           )
-        ),
-        onCompleted: onCompleted
+        )
       )
     );
   }

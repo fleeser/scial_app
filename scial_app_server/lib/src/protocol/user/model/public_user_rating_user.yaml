@@ -1,0 +1,7 @@
+class: PublicUserRatingUser
+
+fields:
+  id: int
+  name: String?
+  imageUrl: String?
+  verified: bool
