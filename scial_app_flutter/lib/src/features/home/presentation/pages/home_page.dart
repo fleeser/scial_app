@@ -27,6 +27,7 @@ class HomePage extends StatelessWidget {
 
   List<SCAppBarButton> get _actionButtons {
     return [
+      const SCAppBarButton(icon: SCIcons.search),
       const SCAppBarButton(icon: SCIcons.book),
       const SCAppBarButton(icon: SCIcons.send)
     ];
