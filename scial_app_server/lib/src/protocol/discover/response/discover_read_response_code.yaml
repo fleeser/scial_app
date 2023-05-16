@@ -1,0 +1,4 @@
+enum: DiscoverReadResponseCode
+  
+values:
+  - notAuthenticated

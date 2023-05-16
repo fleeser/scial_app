@@ -187,8 +187,6 @@ class UserHandler {
           long: eventRow.long
         );
 
-        Serverpod.instance!.getPassword('mapboxApiKey')!;
-
         ReverseGeoCoding reverseGeoCoding = ReverseGeoCoding(apiKey: Serverpod.instance!.getPassword('mapboxApiKey')!);
         List<MapBoxPlace>? places = await reverseGeoCoding.getAddress(Location(lat: eventRow.lat, lng: eventRow.long));
 

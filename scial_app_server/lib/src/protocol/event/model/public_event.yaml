@@ -1,0 +1,17 @@
+class: PublicEvent
+
+fields:
+  id: int
+  created: DateTime
+  type: EventType
+  visibility: EventVisibility
+  title: String
+  imageUrl: String?
+  verified: bool
+  start: DateTime
+  end: DateTime
+  hosts: List<PublicEventHost?>
+  distance: double?
+  location: PublicEventLocation?
+  guestCount: int
+  guestImages: List<String?>

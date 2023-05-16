@@ -1,0 +1,6 @@
+class: DiscoverReadResponse
+
+fields:
+  success: bool
+  code: DiscoverReadResponseCode?
+  events: List<PublicEvent>?

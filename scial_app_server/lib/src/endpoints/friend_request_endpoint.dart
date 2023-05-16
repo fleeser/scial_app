@@ -1,4 +1,4 @@
-import 'package:scial_app_server/src/business/friend_request_handler.dart';
+import 'package:scial_app_server/src/handlers/friend_request_handler.dart';
 import 'package:scial_app_server/src/generated/protocol.dart';
 import 'package:serverpod/serverpod.dart';
 

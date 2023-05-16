@@ -1,4 +1,4 @@
-import 'package:scial_app_server/src/business/user_handler.dart';
+import 'package:scial_app_server/src/handlers/user_handler.dart';
 import 'package:scial_app_server/src/generated/user/response/user_events_response.dart';
 import 'package:scial_app_server/src/generated/user/response/user_friendships_response.dart';
 import 'package:scial_app_server/src/generated/user/response/user_update_response.dart';

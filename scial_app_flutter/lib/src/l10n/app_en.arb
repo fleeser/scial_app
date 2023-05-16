@@ -84,6 +84,9 @@
 
     "discover_app_bar_title" : "Discover",
     "discover_filters_sheet_title" : "Filter",
+    "discover_tab_bar_all" : "All",
+    "discover_tab_bar_coming" : "Coming",
+    "discover_tab_bar_ongoing" : "Ongoing",
     "discover_filters_event_types_title" : "Event type",
 
     "notifications_app_bar_title" : "Notifications",

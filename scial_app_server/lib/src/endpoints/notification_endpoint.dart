@@ -1,4 +1,4 @@
-import 'package:scial_app_server/src/business/notification_handler.dart';
+import 'package:scial_app_server/src/handlers/notification_handler.dart';
 import 'package:scial_app_server/src/generated/notification/response/notification_read_response.dart';
 import 'package:scial_app_server/src/generated/notification/response/notification_set_all_read_response.dart';
 import 'package:scial_app_server/src/generated/notification/response/notification_set_read_response.dart';

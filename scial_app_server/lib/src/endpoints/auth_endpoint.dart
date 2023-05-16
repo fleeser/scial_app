@@ -1,4 +1,4 @@
-import 'package:scial_app_server/src/business/auth_handler.dart';
+import 'package:scial_app_server/src/handlers/auth_handler.dart';
 import 'package:scial_app_server/src/generated/auth/response/auth_change_password_response.dart';
 import 'package:scial_app_server/src/generated/auth/response/auth_delete_account_response.dart';
 import 'package:scial_app_server/src/generated/auth/response/auth_forgot_password_response.dart';
