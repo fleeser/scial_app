@@ -78,6 +78,10 @@
     "sign_out_dialog_cancel_button_title" : "Abbrechen",
     "sign_out_dialog_submit_button_title" : "Abmelden",
 
+    "home_app_bar_title" : "Start",
+    "home_scial_day_cta_text" : "Der nächste scial Day steht an!",
+    "home_scial_day_cta_button_title" : "Teilnehmen",
+
     "notifications_app_bar_title" : "Benachrichtigungen",
     "notifications_tab_bar_all" : "Alle",
     "notifications_empty_notifications" : "Keine Benachrichtigungen",

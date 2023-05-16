@@ -35,7 +35,9 @@ enum SCTextLevel {
   notificationsFriendRequestNotFound,
   notificationsFriendRequestUserName,
   notificationsFriendRequestText,
-  notificationsFriendRequestAlreadyAnswered
+  notificationsFriendRequestAlreadyAnswered,
+  scialDayCTAText,
+  scialDayCTAButtonForeground
 }
 
 class SCText extends StatelessWidget {
@@ -514,6 +516,34 @@ class SCText extends StatelessWidget {
     textAlign = TextAlign.center,
     level = SCTextLevel.notificationsFriendRequestText;
 
+  const SCText.scialDayCTAText(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = null,
+    overflow = null,
+    textAlign = null,
+    level = SCTextLevel.scialDayCTAText;
+
+  const SCText.scialDayCTAButtonForeground(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = 1,
+    overflow = TextOverflow.ellipsis,
+    textAlign = TextAlign.center,
+    level = SCTextLevel.scialDayCTAButtonForeground;
+
   final String text;
   final Color? color;
   final int? maxLines;
@@ -562,6 +592,8 @@ class SCText extends StatelessWidget {
         case SCTextLevel.notificationsFriendRequestUserName: return theme.colors.notificationsFriendRequestUserName;
         case SCTextLevel.notificationsFriendRequestText: return theme.colors.notificationsFriendRequestText;
         case SCTextLevel.notificationsFriendRequestAlreadyAnswered: return theme.colors.notificationsFriendRequestAlreadyAnswered;
+        case SCTextLevel.scialDayCTAText: return theme.colors.scialDayCTAText;
+        case SCTextLevel.scialDayCTAButtonForeground: return theme.colors.scialDayCTAButtonForeground;
         default: return null;
       }
     }
@@ -634,6 +666,10 @@ class SCText extends StatelessWidget {
           return theme.typography.notificationsFriendRequestText;
         case SCTextLevel.notificationsFriendRequestAlreadyAnswered: 
           return theme.typography.notificationsFriendRequestAlreadyAnswered;
+        case SCTextLevel.scialDayCTAText:
+          return theme.typography.scialDayCTAText;
+        case SCTextLevel.scialDayCTAButtonForeground:
+          return theme.typography.scialDayCTAButtonForeground;
         default: return null;
       }
     }

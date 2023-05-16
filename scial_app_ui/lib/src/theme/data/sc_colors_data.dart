@@ -81,7 +81,11 @@ class SCColorsData {
     required this.notificationsFriendRequestNotFound,
     required this.notificationsFriendRequestAlreadyAnswered,
     required this.notificationsFriendRequestUserName,
-    required this.notificationsFriendRequestText
+    required this.notificationsFriendRequestText,
+    required this.scialDayCTABackground,
+    required this.scialDayCTAText,
+    required this.scialDayCTAButtonBackground,
+    required this.scialDayCTAButtonForeground
   });
 
   factory SCColorsData.light() => const SCColorsData(
@@ -163,7 +167,11 @@ class SCColorsData {
     notificationsFriendRequestNotFound: Color(0xFF191919),
     notificationsFriendRequestUserName: Color(0xFF191919),
     notificationsFriendRequestText: Color(0xFF191919),
-    notificationsFriendRequestAlreadyAnswered: Color(0xFF191919)
+    notificationsFriendRequestAlreadyAnswered: Color(0xFF191919),
+    scialDayCTABackground: Color(0xFF4299E1),
+    scialDayCTAText: Color(0xFFFFFFFF),
+    scialDayCTAButtonBackground: Color(0xFFFFFFFF),
+    scialDayCTAButtonForeground: Color(0xFF191919)
   );
 
   factory SCColorsData.dark() => const SCColorsData(
@@ -245,7 +253,11 @@ class SCColorsData {
     notificationsFriendRequestNotFound: Color(0xFFFBFBFB),
     notificationsFriendRequestUserName: Color(0xFFFBFBFB),
     notificationsFriendRequestText: Color(0xFFFBFBFB),
-    notificationsFriendRequestAlreadyAnswered: Color(0xFFFBFBFB)
+    notificationsFriendRequestAlreadyAnswered: Color(0xFFFBFBFB),
+    scialDayCTABackground: Color(0xFF3182CE),
+    scialDayCTAText: Color(0xFFFFFFFF),
+    scialDayCTAButtonBackground: Color(0xFFFFFFFF),
+    scialDayCTAButtonForeground: Color(0xFF191919)
   );
 
   final Color accent;
@@ -327,4 +339,8 @@ class SCColorsData {
   final Color notificationsFriendRequestAlreadyAnswered;
   final Color notificationsFriendRequestUserName;
   final Color notificationsFriendRequestText;
+  final Color scialDayCTABackground;
+  final Color scialDayCTAText;
+  final Color scialDayCTAButtonBackground;
+  final Color scialDayCTAButtonForeground;
 }

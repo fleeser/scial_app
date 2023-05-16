@@ -44,7 +44,9 @@ class SCTypographyData {
     required this.notificationsFriendRequestNotFound,
     required this.notificationsFriendRequestUserName,
     required this.notificationsFriendRequestText,
-    required this.notificationsFriendRequestAlreadyAnswered
+    required this.notificationsFriendRequestAlreadyAnswered,
+    required this.scialDayCTAText,
+    required this.scialDayCTAButtonForeground
   });
 
   factory SCTypographyData.regular() => const SCTypographyData(
@@ -343,6 +345,20 @@ class SCTypographyData {
       fontSize: 14.0,
       fontWeight: FontWeight.w400,
       decoration: TextDecoration.none
+    ),
+    scialDayCTAText: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 14.0,
+      fontWeight: FontWeight.bold,
+      decoration: TextDecoration.none
+    ),
+    scialDayCTAButtonForeground: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 14.0,
+      fontWeight: FontWeight.bold,
+      decoration: TextDecoration.none
     )
   );
 
@@ -388,4 +404,6 @@ class SCTypographyData {
   final TextStyle notificationsFriendRequestUserName;
   final TextStyle notificationsFriendRequestText;
   final TextStyle notificationsFriendRequestAlreadyAnswered;
+  final TextStyle scialDayCTAText;
+  final TextStyle scialDayCTAButtonForeground;
 }
