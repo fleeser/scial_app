@@ -82,6 +82,10 @@
     "home_scial_day_cta_text" : "Der nächste scial Day steht an!",
     "home_scial_day_cta_button_title" : "Teilnehmen",
 
+    "discover_app_bar_title" : "Entdecken",
+    "discover_filters_sheet_title" : "Filter",
+    "discover_filters_event_types_title" : "Veranstaltungstyp",
+
     "notifications_app_bar_title" : "Benachrichtigungen",
     "notifications_tab_bar_all" : "Alle",
     "notifications_empty_notifications" : "Keine Benachrichtigungen",

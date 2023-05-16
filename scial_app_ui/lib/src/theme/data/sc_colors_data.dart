@@ -85,7 +85,10 @@ class SCColorsData {
     required this.scialDayCTABackground,
     required this.scialDayCTAText,
     required this.scialDayCTAButtonBackground,
-    required this.scialDayCTAButtonForeground
+    required this.scialDayCTAButtonForeground,
+    required this.discoverFiltersEventTypesBackground,
+    required this.discoverFiltersEventTypesSelectedBorder,
+    required this.discoverFiltersEventTypesTitle
   });
 
   factory SCColorsData.light() => const SCColorsData(
@@ -171,7 +174,10 @@ class SCColorsData {
     scialDayCTABackground: Color(0xFF4299E1),
     scialDayCTAText: Color(0xFFFFFFFF),
     scialDayCTAButtonBackground: Color(0xFFFFFFFF),
-    scialDayCTAButtonForeground: Color(0xFF191919)
+    scialDayCTAButtonForeground: Color(0xFF191919),
+    discoverFiltersEventTypesBackground: Color(0xFF7F7F7F),
+    discoverFiltersEventTypesSelectedBorder: Color(0xFF4299E1),
+    discoverFiltersEventTypesTitle: Color(0xFF191919)
   );
 
   factory SCColorsData.dark() => const SCColorsData(
@@ -257,7 +263,10 @@ class SCColorsData {
     scialDayCTABackground: Color(0xFF3182CE),
     scialDayCTAText: Color(0xFFFFFFFF),
     scialDayCTAButtonBackground: Color(0xFFFFFFFF),
-    scialDayCTAButtonForeground: Color(0xFF191919)
+    scialDayCTAButtonForeground: Color(0xFF191919),
+    discoverFiltersEventTypesBackground: Color(0xFF333333),
+    discoverFiltersEventTypesSelectedBorder: Color(0xFF3182CE),
+    discoverFiltersEventTypesTitle: Color(0xFFFBFBFB)
   );
 
   final Color accent;
@@ -343,4 +352,7 @@ class SCColorsData {
   final Color scialDayCTAText;
   final Color scialDayCTAButtonBackground;
   final Color scialDayCTAButtonForeground;
+  final Color discoverFiltersEventTypesBackground;
+  final Color discoverFiltersEventTypesSelectedBorder;
+  final Color discoverFiltersEventTypesTitle;
 }
