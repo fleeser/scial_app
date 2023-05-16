@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:scial_app_ui/scial_app_ui.dart';
 import 'package:scial_app_ui/src/widgets/sheet/sc_sheet_button.dart';
-import 'package:scial_app_ui/src/widgets/sheet/sc_sheet_close_button.dart';
 
 Future<void> showSCSheet(BuildContext context, { required String title, required SCSheetButton button, List<Widget> Function(bool)? children }) async {
 

@@ -38,7 +38,13 @@ class SCTypographyData {
     required this.eventListTime,
     required this.imageStackExtraCount,
     required this.eventNoGuests,
-    required this.notificationsText
+    required this.notificationsText,
+    required this.notificationText,
+    required this.notificationTime,
+    required this.notificationsFriendRequestNotFound,
+    required this.notificationsFriendRequestUserName,
+    required this.notificationsFriendRequestText,
+    required this.notificationsFriendRequestAlreadyAnswered
   });
 
   factory SCTypographyData.regular() => const SCTypographyData(
@@ -295,6 +301,48 @@ class SCTypographyData {
       fontSize: 14.0,
       fontWeight: FontWeight.w400,
       decoration: TextDecoration.none
+    ),
+    notificationText: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 12.0,
+      fontWeight: FontWeight.w400,
+      decoration: TextDecoration.none
+    ),
+    notificationTime: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 10.0,
+      fontWeight: FontWeight.bold,
+      decoration: TextDecoration.none
+    ),
+    notificationsFriendRequestNotFound: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 14.0,
+      fontWeight: FontWeight.w400,
+      decoration: TextDecoration.none
+    ),
+    notificationsFriendRequestUserName: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 16.0,
+      fontWeight: FontWeight.bold,
+      decoration: TextDecoration.none
+    ),
+    notificationsFriendRequestText: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 14.0,
+      fontWeight: FontWeight.w400,
+      decoration: TextDecoration.none
+    ),
+    notificationsFriendRequestAlreadyAnswered: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 14.0,
+      fontWeight: FontWeight.w400,
+      decoration: TextDecoration.none
     )
   );
 
@@ -334,4 +382,10 @@ class SCTypographyData {
   final TextStyle imageStackExtraCount;
   final TextStyle eventNoGuests;
   final TextStyle notificationsText;
+  final TextStyle notificationText;
+  final TextStyle notificationTime;
+  final TextStyle notificationsFriendRequestNotFound;
+  final TextStyle notificationsFriendRequestUserName;
+  final TextStyle notificationsFriendRequestText;
+  final TextStyle notificationsFriendRequestAlreadyAnswered;
 }

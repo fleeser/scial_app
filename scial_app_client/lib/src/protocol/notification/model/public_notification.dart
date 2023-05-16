@@ -14,6 +14,7 @@ class PublicNotification extends _i1.SerializableEntity {
     required this.id,
     required this.type,
     required this.created,
+    required this.read,
     required this.data,
   });
 
@@ -27,6 +28,7 @@ class PublicNotification extends _i1.SerializableEntity {
           .deserialize<_i2.NotificationType>(jsonSerialization['type']),
       created: serializationManager
           .deserialize<DateTime>(jsonSerialization['created']),
+      read: serializationManager.deserialize<bool>(jsonSerialization['read']),
       data:
           serializationManager.deserialize<dynamic>(jsonSerialization['data']),
     );
@@ -38,6 +40,8 @@ class PublicNotification extends _i1.SerializableEntity {
 
   DateTime created;
 
+  bool read;
+
   dynamic data;
 
   @override
@@ -46,6 +50,7 @@ class PublicNotification extends _i1.SerializableEntity {
       'id': id,
       'type': type,
       'created': created,
+      'read': read,
       'data': data,
     };
   }

@@ -46,5 +46,6 @@ export 'src/widgets/dialog/sc_dialog_button.dart' hide SCDialogButtonWidget;
 
 export 'src/widgets/sheet/sc_sheet.dart';
 export 'src/widgets/sheet/sc_sheet_button.dart' hide SCSheetButtonWidget;
+export 'src/widgets/sheet/sc_sheet_close_button.dart';
 
 export 'src/widgets/switch/sc_switch.dart';

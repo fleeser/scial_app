@@ -6,10 +6,16 @@ class NotificationsList extends StatelessWidget {
 
   const NotificationsList({
     super.key,
-    required this.notifications
+    required this.notifications,
+    required this.setRead,
+    this.acceptRequest,
+    this.denyRequest
   });
 
   final List<PublicNotification> notifications;
+  final void Function(int) setRead;
+  final Future<bool> Function(int)? acceptRequest;
+  final Future<bool> Function(int)? denyRequest;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +24,12 @@ class NotificationsList extends StatelessWidget {
       itemCount: notifications.length,
       shrinkWrap: true,
       padding: EdgeInsets.zero,
-      itemBuilder: (BuildContext context, int index) => NotificationsListItem(notification: notifications[index])
+      itemBuilder: (BuildContext context, int index) => NotificationsListItem(
+        notification: notifications[index], 
+        setRead: setRead,
+        acceptRequest: () => acceptRequest!.call(notifications[index].id),
+        denyRequest: () => denyRequest!.call(notifications[index].id)
+      )
     );
   }
 }

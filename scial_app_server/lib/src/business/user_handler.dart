@@ -182,9 +182,6 @@ class UserHandler {
       );
 
       if (eventRow.visibility == EventVisibility.public || eventRow.hosts.contains(authUserId) || (await EventGuest.findSingleRow(session, where: (t) => t.event.equals(eventRow.id) & t.user.equals(authUserId))) != null || (await EventInvitation.findSingleRow(session, where: (t) => t.event.equals(eventRow.id) & t.user.equals(authUserId))) != null) {
-        print('looool');
-
-        
         PublicUserEventLocation location = PublicUserEventLocation(
           lat: eventRow.lat, 
           long: eventRow.long

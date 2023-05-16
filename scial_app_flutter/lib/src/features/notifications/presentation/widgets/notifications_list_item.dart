@@ -1,66 +1,119 @@
 import 'package:flutter/material.dart';
 import 'package:scial_app_client/scial_app_client.dart';
+import 'package:scial_app_flutter/src/extensions/date_time_extension.dart';
+import 'package:scial_app_flutter/src/features/notifications/presentation/widgets/notifications_friend_request_sheet.dart';
+import 'package:scial_app_flutter/src/routing/app_router.dart';
+import 'package:scial_app_ui/scial_app_ui.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class NotificationsListItem extends StatelessWidget {
 
   const NotificationsListItem({
     super.key,
-    required this.notification
+    required this.notification,
+    required this.setRead,
+    this.acceptRequest,
+    this.denyRequest
   });
 
   final PublicNotification notification;
+  final void Function(int) setRead;
+  final Future<bool> Function()? acceptRequest;
+  final Future<bool> Function()? denyRequest;
 
   @override
   Widget build(BuildContext context) {
-    return notification is PublicNotificationFriendRequestCreated
-      ? NotificationsListItemFriendRequestCreated(notification: notification as PublicNotificationFriendRequestCreated)
-      : notification is PublicNotificationFriendRequestAccepted
-        ? NotificationsListItemFriendRequestAccepted(notification: notification as PublicNotificationFriendRequestAccepted)
-        : NotificationsListItemFriendRequestDenied(notification: notification as PublicNotificationFriendRequestDenied);
+
+    SCThemeData theme = SCTheme.of(context);
+
+    return SizedBox(
+      height: 56.0 + 2.0 * SCGapSize.regular.getSpacing(theme),
+      child: RawMaterialButton(
+        onPressed: () async => await _onPressed(context),
+        padding: const SCEdgeInsets.symmetric(
+          horizontal: SCGapSize.semiBig,
+          vertical: SCGapSize.regular
+        ).toEdgeInsets(theme),
+        elevation: 0.0,
+        child: Row(
+          children: [
+            SCImage.url(
+              url: _imageUrl,
+              size: const Size(56.0, 56.0),
+              borderRadius: 56.0 / 2.0,
+              icon: SCIcons.user
+            ),
+            const SCGap.regular(),
+            Expanded(child: SCText.notificationText(_text(context))),
+            const SCGap.regular(),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                SCText.notificationTime(notification.created.toTimeText(context)),
+                if (!notification.read) Container(
+                  width: 12.0,
+                  height: 12.0,
+                  decoration: BoxDecoration(
+                    color: theme.colors.accent,
+                    shape: BoxShape.circle
+                  )
+                ),
+                if (!notification.read) const SizedBox(height: 10.0)
+              ]
+            )
+          ]
+        )
+      )
+    );
   }
-}
 
-class NotificationsListItemFriendRequestCreated extends StatelessWidget {
+  Future<void> _onPressed(BuildContext context) async {
+    setRead.call(notification.id);
 
-  const NotificationsListItemFriendRequestCreated({
-    super.key,
-    required this.notification
-  });
-
-  final PublicNotificationFriendRequestCreated notification;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text('wtf1');
+    if (notification.data is PublicNotificationFriendRequestCreated) {
+      await showFriendRequest(context, (notification.data as PublicNotificationFriendRequestCreated).friendRequest);
+    } else if (notification.data is PublicNotificationFriendRequestAccepted) {
+      int? uid = (notification.data as PublicNotificationFriendRequestAccepted).sender?.id;
+      if (uid != null) context.navigateToUserPage(uid);
+    } else if (notification.data is PublicNotificationFriendRequestDenied) {
+      int? uid = (notification.data as PublicNotificationFriendRequestDenied).sender?.id;
+      if (uid != null) context.navigateToUserPage(uid);
+    }
   }
-}
 
-class NotificationsListItemFriendRequestAccepted extends StatelessWidget {
+  Future<void> showFriendRequest(BuildContext context, PublicNotificationFriendRequestCreatedFriendRequest? friendRequest) async {
 
-  const NotificationsListItemFriendRequestAccepted({
-    super.key,
-    required this.notification
-  });
+    SCThemeData theme = SCTheme.of(context);
 
-  final PublicNotificationFriendRequestAccepted notification;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text('wtf2');
+    await showModalBottomSheet(
+      context: context, 
+      isScrollControlled: true,
+      isDismissible: false,
+      useRootNavigator: true,
+      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(12.0))),
+      backgroundColor: theme.colors.sheetBackground,
+      builder: (BuildContext context) => NotificationsFriendRequestSheet(
+        friendRequest: friendRequest,
+        acceptRequest: acceptRequest!,
+        denyRequest: denyRequest!,
+      )
+    );
   }
-}
 
-class NotificationsListItemFriendRequestDenied extends StatelessWidget {
+  String? get _imageUrl {
+    return notification.data is PublicNotificationFriendRequestCreated
+      ? (notification.data as PublicNotificationFriendRequestCreated).friendRequest?.sender?.imageUrl
+      : notification.data is PublicNotificationFriendRequestAccepted
+        ? (notification.data as PublicNotificationFriendRequestAccepted).sender?.imageUrl
+        : (notification.data as PublicNotificationFriendRequestDenied).sender?.imageUrl;
+  }
 
-  const NotificationsListItemFriendRequestDenied({
-    super.key,
-    required this.notification
-  });
-
-  final PublicNotificationFriendRequestDenied notification;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text('wtf3');
+  String _text(BuildContext context) {
+    return notification.data is PublicNotificationFriendRequestCreated
+      ? AppLocalizations.of(context)!.notifications_notification_friend_request_created_text((notification.data as PublicNotificationFriendRequestCreated).friendRequest?.sender?.name ?? AppLocalizations.of(context)!.user_name)
+      : notification.data is PublicNotificationFriendRequestAccepted
+        ? AppLocalizations.of(context)!.notifications_notification_friend_request_accepted_text((notification.data as PublicNotificationFriendRequestAccepted).sender?.name ?? AppLocalizations.of(context)!.user_name)
+        : AppLocalizations.of(context)!.notifications_notification_friend_request_denied_text((notification.data as PublicNotificationFriendRequestDenied).sender?.name ?? AppLocalizations.of(context)!.user_name);
   }
 }

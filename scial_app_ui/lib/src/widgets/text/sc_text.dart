@@ -29,7 +29,13 @@ enum SCTextLevel {
   eventListTime,
   imageStackExtraCount,
   eventNoGuests,
-  notificationsText
+  notificationsText,
+  notificationText,
+  notificationTime,
+  notificationsFriendRequestNotFound,
+  notificationsFriendRequestUserName,
+  notificationsFriendRequestText,
+  notificationsFriendRequestAlreadyAnswered
 }
 
 class SCText extends StatelessWidget {
@@ -424,6 +430,90 @@ class SCText extends StatelessWidget {
     textAlign = TextAlign.center,
     level = SCTextLevel.notificationsText;
 
+  const SCText.notificationText(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = 3,
+    overflow = TextOverflow.ellipsis,
+    textAlign = null,
+    level = SCTextLevel.notificationText;
+
+  const SCText.notificationTime(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = 1,
+    overflow = TextOverflow.ellipsis,
+    textAlign = null,
+    level = SCTextLevel.notificationTime;
+
+  const SCText.notificationsFriendRequestNotFound(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = null,
+    overflow = TextOverflow.ellipsis,
+    textAlign = TextAlign.center,
+    level = SCTextLevel.notificationsFriendRequestNotFound;
+
+  const SCText.notificationsFriendRequestAlreadyAnswered(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = null,
+    overflow = TextOverflow.ellipsis,
+    textAlign = TextAlign.center,
+    level = SCTextLevel.notificationsFriendRequestAlreadyAnswered;
+
+  const SCText.notificationsFriendRequestUserName(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = null,
+    overflow = TextOverflow.ellipsis,
+    textAlign = TextAlign.center,
+    level = SCTextLevel.notificationsFriendRequestUserName;
+
+  const SCText.notificationsFriendRequestText(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = null,
+    overflow = TextOverflow.ellipsis,
+    textAlign = TextAlign.center,
+    level = SCTextLevel.notificationsFriendRequestText;
+
   final String text;
   final Color? color;
   final int? maxLines;
@@ -466,6 +556,12 @@ class SCText extends StatelessWidget {
         case SCTextLevel.imageStackExtraCount: return theme.colors.imageStackExtraCount;
         case SCTextLevel.eventNoGuests: return theme.colors.eventNoGuests;
         case SCTextLevel.notificationsText: return theme.colors.notificationsText;
+        case SCTextLevel.notificationText: return theme.colors.notificationText;
+        case SCTextLevel.notificationTime: return theme.colors.notificationTime;
+        case SCTextLevel.notificationsFriendRequestNotFound: return theme.colors.notificationsFriendRequestNotFound;
+        case SCTextLevel.notificationsFriendRequestUserName: return theme.colors.notificationsFriendRequestUserName;
+        case SCTextLevel.notificationsFriendRequestText: return theme.colors.notificationsFriendRequestText;
+        case SCTextLevel.notificationsFriendRequestAlreadyAnswered: return theme.colors.notificationsFriendRequestAlreadyAnswered;
         default: return null;
       }
     }
@@ -526,6 +622,18 @@ class SCText extends StatelessWidget {
           return theme.typography.eventNoGuests;
         case SCTextLevel.notificationsText:
           return theme.typography.notificationsText;
+        case SCTextLevel.notificationText:
+          return theme.typography.notificationText;
+        case SCTextLevel.notificationTime:
+          return theme.typography.notificationTime;
+        case SCTextLevel.notificationsFriendRequestNotFound:
+          return theme.typography.notificationsFriendRequestNotFound;
+        case SCTextLevel.notificationsFriendRequestUserName:
+          return theme.typography.notificationsFriendRequestUserName;
+        case SCTextLevel.notificationsFriendRequestText:
+          return theme.typography.notificationsFriendRequestText;
+        case SCTextLevel.notificationsFriendRequestAlreadyAnswered: 
+          return theme.typography.notificationsFriendRequestAlreadyAnswered;
         default: return null;
       }
     }

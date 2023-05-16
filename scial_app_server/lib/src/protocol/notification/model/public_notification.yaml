@@ -4,4 +4,5 @@ fields:
   id: int
   type: NotificationType
   created: DateTime
+  read: bool
   data: dynamic

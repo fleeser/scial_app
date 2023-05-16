@@ -100,6 +100,7 @@ class NotificationHandler {
         id: notificationRow.id!, 
         type: notificationRow.type, 
         created: notificationRow.created,
+        read: notificationRow.read,
         data: data
       );
 

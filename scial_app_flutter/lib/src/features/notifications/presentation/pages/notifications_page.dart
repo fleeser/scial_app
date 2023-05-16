@@ -34,9 +34,7 @@ class _NotificationsPageState extends ConsumerState<NotificationsPage> {
         appBar: SCAppBar(
           context: context,
           title: SCAppBarTitle(title: AppLocalizations.of(context)!.notifications_app_bar_title),
-          actionButtons: const [
-            SCAppBarButton(icon: SCIcons.check)
-          ]
+          actionButtons: _actionButtons
         ),
         body: Column(
           children: [
@@ -47,7 +45,12 @@ class _NotificationsPageState extends ConsumerState<NotificationsPage> {
             Expanded(
               child: notificationsController.when(
                 data: (List<PublicNotification> notifications) => notifications.isNotEmpty
-                  ? NotificationsList(notifications: notifications)
+                  ? NotificationsList(
+                    notifications: notifications,
+                    setRead: (int notificationId) => _setRead(notificationId),
+                    acceptRequest: _acceptRequest,
+                    denyRequest: _denyRequest,
+                  )
                   : NotificationsText(text: AppLocalizations.of(context)!.notifications_empty_notifications), 
                 error: (Object e, StackTrace s) => const NotificationsText(text: 'Fehler nh'), // TODO
                 loading: () => const NotificationsLoading()
@@ -59,7 +62,36 @@ class _NotificationsPageState extends ConsumerState<NotificationsPage> {
     );
   }
 
+  List<SCAppBarButton> get _actionButtons {
+    return [
+      SCAppBarButton(
+        onPressed: _setAllRead,
+        icon: SCIcons.check
+      )
+    ];
+  }
+
   List<String> get _tabBarTitles => [
     AppLocalizations.of(context)!.notifications_tab_bar_all
   ];
+
+  Future<void> _setAllRead() async {
+    final controller = ref.read(notificationsControllerProvider.notifier);
+    await controller.setAllRead();
+  }
+
+  Future<void> _setRead(int notificationId) async {
+    final controller = ref.read(notificationsControllerProvider.notifier);
+    await controller.setRead(notificationId);
+  }
+
+  Future<bool> _acceptRequest(int notificationId) async {
+    final controller = ref.read(notificationsControllerProvider.notifier);
+    return await controller.acceptRequest(notificationId);
+  }
+
+  Future<bool> _denyRequest(int notificationId) async {
+    final controller = ref.read(notificationsControllerProvider.notifier);
+    return await controller.denyRequest(notificationId);
+  }
 }

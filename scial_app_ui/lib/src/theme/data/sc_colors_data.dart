@@ -75,7 +75,13 @@ class SCColorsData {
     required this.eventListTime,
     required this.imageStackExtraCount,
     required this.eventNoGuests,
-    required this.notificationsText
+    required this.notificationsText,
+    required this.notificationText,
+    required this.notificationTime,
+    required this.notificationsFriendRequestNotFound,
+    required this.notificationsFriendRequestAlreadyAnswered,
+    required this.notificationsFriendRequestUserName,
+    required this.notificationsFriendRequestText
   });
 
   factory SCColorsData.light() => const SCColorsData(
@@ -151,7 +157,13 @@ class SCColorsData {
     eventListTime: Color(0xFF7F7F7F),
     imageStackExtraCount: Color(0xFF191919),
     eventNoGuests: Color(0xFF191919),
-    notificationsText: Color(0xFF191919)
+    notificationsText: Color(0xFF191919),
+    notificationText: Color(0xFF191919),
+    notificationTime: Color(0xFF7F7F7F),
+    notificationsFriendRequestNotFound: Color(0xFF191919),
+    notificationsFriendRequestUserName: Color(0xFF191919),
+    notificationsFriendRequestText: Color(0xFF191919),
+    notificationsFriendRequestAlreadyAnswered: Color(0xFF191919)
   );
 
   factory SCColorsData.dark() => const SCColorsData(
@@ -227,7 +239,13 @@ class SCColorsData {
     eventListTime: Color(0xFF999999),
     imageStackExtraCount: Color(0xFFFBFBFB),
     eventNoGuests: Color(0xFFFBFBFB),
-    notificationsText: Color(0xFFFBFBFB)
+    notificationsText: Color(0xFFFBFBFB),
+    notificationText: Color(0xFFFBFBFB),
+    notificationTime: Color(0xFF999999),
+    notificationsFriendRequestNotFound: Color(0xFFFBFBFB),
+    notificationsFriendRequestUserName: Color(0xFFFBFBFB),
+    notificationsFriendRequestText: Color(0xFFFBFBFB),
+    notificationsFriendRequestAlreadyAnswered: Color(0xFFFBFBFB)
   );
 
   final Color accent;
@@ -303,4 +321,10 @@ class SCColorsData {
   final Color imageStackExtraCount;
   final Color eventNoGuests;
   final Color notificationsText;
+  final Color notificationText;
+  final Color notificationTime;
+  final Color notificationsFriendRequestNotFound;
+  final Color notificationsFriendRequestAlreadyAnswered;
+  final Color notificationsFriendRequestUserName;
+  final Color notificationsFriendRequestText;
 }
