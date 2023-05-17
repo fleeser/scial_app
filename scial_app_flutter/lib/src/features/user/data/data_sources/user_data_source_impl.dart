@@ -25,7 +25,7 @@ class UserDataSourceImpl implements UserDataSource {
   }
 
   @override
-  Future<List<PublicUserEvent>> events(int userId, double? lat, double? long) async {
+  Future<List<PublicEvent>> events(int userId, double? lat, double? long) async {
     UserEventsResponse response = await client.user.events(userId, lat, long);
 
     if (response.success) return response.events!;

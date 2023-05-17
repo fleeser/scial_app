@@ -17,7 +17,7 @@ class UserEventsUseCase implements FutureUseCase<void, UserEventsUseCaseParams> 
   final UserRepository repository;
 
   @override
-  Future<List<PublicUserEvent>> call(UserEventsUseCaseParams params) async {
+  Future<List<PublicEvent>> call(UserEventsUseCaseParams params) async {
     return await repository.events(params.userId, params.lat, params.long);
   }
 }

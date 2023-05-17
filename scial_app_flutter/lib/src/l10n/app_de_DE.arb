@@ -88,7 +88,10 @@
     "discover_tab_bar_coming" : "Anstehend",
     "discover_tab_bar_ongoing" : "Laufend",
     "discover_events_empty" : "Keine Veranstaltungen gefunden.",
+    "discover_filters_distance_title" : "Radius",
+    "discover_filters_distance_short" : "km",
     "discover_filters_event_types_title" : "Veranstaltungstyp",
+    "discover_filters_event_visibilities_title" : "Sichtbarkeit",
 
     "notifications_app_bar_title" : "Benachrichtigungen",
     "notifications_tab_bar_all" : "Alle",

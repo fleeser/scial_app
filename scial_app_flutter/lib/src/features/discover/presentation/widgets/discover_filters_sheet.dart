@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:scial_app_flutter/src/features/discover/presentation/widgets/discover_filters_sheet_distance.dart';
+import 'package:scial_app_flutter/src/features/discover/presentation/widgets/discover_filters_sheet_title.dart';
 import 'package:scial_app_flutter/src/features/discover/presentation/widgets/discover_filters_sheet_types.dart';
+import 'package:scial_app_flutter/src/features/discover/presentation/widgets/discover_filters_sheet_visibilities.dart';
 import 'package:scial_app_ui/scial_app_ui.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -43,12 +46,17 @@ class DiscoverFiltersSheet extends StatelessWidget {
           )
         ),
         const SCGap.semiBig(),
-        SCPadding(
-          padding: const SCEdgeInsets.symmetric(horizontal: SCGapSize.semiBig),
-          child: SCText.discoverFiltersEventTypesTitle(AppLocalizations.of(context)!.discover_filters_event_types_title)
-        ),
+        DiscoverFiltersSheetTitle(title: AppLocalizations.of(context)!.discover_filters_distance_title),
+        const SCGap.semiBig(),
+        const DiscoverFiltersSheetDistance(),
+        const SCGap.semiBig(),
+        DiscoverFiltersSheetTitle(title: AppLocalizations.of(context)!.discover_filters_event_types_title),
         const SCGap.semiBig(),
         const DiscoverFiltersSheetTypes(),
+        const SCGap.semiBig(),
+        DiscoverFiltersSheetTitle(title: AppLocalizations.of(context)!.discover_filters_event_visibilities_title),
+        const SCGap.semiBig(),
+        const DiscoverFiltersSheetVisibilities(),
         SizedBox(height: SCGapSize.semiBig.getSpacing(theme) + (MediaQuery.of(context).viewInsets.bottom > 0.0 ? MediaQuery.of(context).viewInsets.bottom : MediaQuery.of(context).padding.bottom))
       ]
     );

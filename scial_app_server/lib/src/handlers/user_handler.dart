@@ -1,6 +1,5 @@
 import 'package:mapbox_search/mapbox_search.dart';
 import 'package:scial_app_server/src/generated/protocol.dart';
-import 'package:scial_app_server/src/util/calculate_distance.dart';
 import 'package:serverpod/serverpod.dart';
 
 class UserHandler {
@@ -129,77 +128,103 @@ class UserHandler {
       }
     }
 
-    List<PublicUserEvent> events = [];
+    List<PublicEvent> events = [];
 
-    List<Event> eventRows = await Event.find(session, where: (t) => Expression("(events.hosts::jsonb @> '[$userId]' OR EXISTS (SELECT 1 FROM event_guests WHERE event_guests.event = events.id AND event_guests.user = $userId)) AND (NOT (events.visibility = 2) OR events.hosts::jsonb @> '[$authUserId]' OR EXISTS (SELECT 1 FROM event_guests WHERE event_guests.event = events.id AND event_guests.user = $authUserId) OR EXISTS (SELECT 1 FROM event_invitations WHERE event_invitations.event = events.id AND event_invitations.user = $authUserId AND status = 2))"));
+    // TODO: Secure
+    String query = '''SELECT 
+                        *, 
+                        ROUND(earth_distance(ll_to_earth($lat, $long), ll_to_earth(lat, long))::NUMERIC, 2) AS distance
+                      FROM
+                        events
+                      WHERE
+                        (events.hosts::jsonb @> '[$userId]' OR EXISTS (SELECT 1 FROM event_guests WHERE event_guests.event = events.id AND event_guests.user = $userId)) AND (NOT (events.visibility = 2) OR events.hosts::jsonb @> '[$authUserId]' OR EXISTS (SELECT 1 FROM event_guests WHERE event_guests.event = events.id AND event_guests.user = $authUserId) OR EXISTS (SELECT 1 FROM event_invitations WHERE event_invitations.event = events.id AND event_invitations.user = $authUserId AND status = 2))
+                        ORDER BY 
+                          start;'''; // TODO: Sort desc?
 
-    for (Event eventRow in eventRows) {
-      List<PublicUserEventHost?> hosts = [];
+    List<List<dynamic>> eventRows = await session.db.query(query);
 
-      for (int hostId in eventRow.hosts) {
+    for (List<dynamic> eventRow in eventRows) {
+      int eventId = eventRow[0];
+      EventType eventType = EventType.values[eventRow[1]];
+      EventVisibility eventVisibility = EventVisibility.values[eventRow[2]];
+      DateTime eventCreated = eventRow[3];
+      String eventTitle = eventRow[4];
+      bool eventVerified = eventRow[5];
+      List<int> eventHosts = List<int>.from(eventRow[6]);
+      double eventLat = eventRow[7];
+      double eventLong = eventRow[8];
+      DateTime eventStart = eventRow[10];
+      DateTime eventEnd = eventRow[11];
+      String? eventImageUrl = eventRow[12];
+      double eventDistance = double.parse(eventRow[13]);
+
+      if (eventDistance <= 100.0) eventDistance = 100.0;
+      
+      List<PublicEventHost?> hosts = [];
+
+      for (int hostId in eventHosts) {
         User? hostRow = await User.findById(session, hostId);
 
         if (hostRow == null) {
           hosts.add(null);
-          continue;
         }
 
-        PublicUserEventHost host = PublicUserEventHost(
-          id: hostRow.id!, 
-          verified: hostRow.verified,
+        PublicEventHost host = PublicEventHost(
+          id: hostRow!.id!, 
           name: hostRow.name,
-          imageUrl: hostRow.imageUrl
+          imageUrl: hostRow.imageUrl,
+          verified: hostRow.verified
         );
 
         hosts.add(host);
       }
 
-      int guestCount = await EventGuest.count(session, where: (t) => t.event.equals(eventRow.id));
+      int guestCount = await EventGuest.count(session, where: (t) => t.event.equals(eventId));
 
       List<String?> guestImages = [];
 
-      List<EventGuest> eventGuestRows = await EventGuest.find(session, where: (t) => t.event.equals(eventRow.id), limit: 5);
+      List<EventGuest> guestRows = await EventGuest.find(session, where: (t) => t.event.equals(eventId), limit: 5);
 
-      for (EventGuest eventGuestRow in eventGuestRows) {
-        User? eventGuestUserRow = await User.findById(session, eventGuestRow.user);
+      for (EventGuest guestRow in guestRows) {
+        int guestId = guestRow.user;
 
-        String? eventGuestImageUrl = eventGuestUserRow?.imageUrl;
-        guestImages.add(eventGuestImageUrl);
-      }
+        User? guestUserRow = await User.findById(session, guestId);
 
-      PublicUserEvent event = PublicUserEvent(
-        id: eventRow.id!, 
-        type: eventRow.type, 
-        visibility: eventRow.visibility, 
-        created: eventRow.created, 
-        title: eventRow.title, 
-        verified: eventRow.verified, 
-        start: eventRow.start, 
-        end: eventRow.end, 
-        hosts: hosts,
-        guestCount: guestCount, 
-        guestImages: guestImages
-      );
-
-      if (eventRow.visibility == EventVisibility.public || eventRow.hosts.contains(authUserId) || (await EventGuest.findSingleRow(session, where: (t) => t.event.equals(eventRow.id) & t.user.equals(authUserId))) != null || (await EventInvitation.findSingleRow(session, where: (t) => t.event.equals(eventRow.id) & t.user.equals(authUserId))) != null) {
-        PublicUserEventLocation location = PublicUserEventLocation(
-          lat: eventRow.lat, 
-          long: eventRow.long
-        );
-
-        ReverseGeoCoding reverseGeoCoding = ReverseGeoCoding(apiKey: Serverpod.instance!.getPassword('mapboxApiKey')!);
-        List<MapBoxPlace>? places = await reverseGeoCoding.getAddress(Location(lat: eventRow.lat, lng: eventRow.long));
-
-        if (places != null && places.isNotEmpty) {
-          location.name = places.first.placeName;
+        if (guestUserRow == null) {
+          guestImages.add(null);
         }
 
-        event.location = location;
+        String? guestImageUrl = guestUserRow!.imageUrl;
+
+        guestImages.add(guestImageUrl);
       }
 
-      if (lat != null && long != null && (eventRow.visibility != EventVisibility.private || eventRow.hosts.contains(authUserId) || (await EventGuest.findSingleRow(session, where: (t) => t.event.equals(eventRow.id) & t.user.equals(authUserId))) != null || (await EventInvitation.findSingleRow(session, where: (t) => t.event.equals(eventRow.id) & t.user.equals(authUserId))) != null)) {
-        event.distance = calculateDistance(lat, long, eventRow.lat, eventRow.long);
-      }
+      ReverseGeoCoding reverseGeoCoding = ReverseGeoCoding(apiKey: Serverpod.instance!.getPassword('mapboxApiKey')!);
+      List<MapBoxPlace>? places = await reverseGeoCoding.getAddress(Location(lat: eventLat, lng: eventLong));
+      PublicEventLocation location = PublicEventLocation(
+        lat: eventLat, 
+        long: eventLong,
+        name: places != null && places.isNotEmpty 
+          ? places.first.placeName 
+          : null
+      );
+
+      PublicEvent event = PublicEvent(
+        id: eventId,
+        created: eventCreated,
+        title: eventTitle,
+        imageUrl: eventImageUrl,
+        type: eventType,
+        visibility: eventVisibility,
+        verified: eventVerified,
+        start: eventStart,
+        end: eventEnd,
+        hosts: hosts,
+        guestCount: guestCount,
+        guestImages: guestImages,
+        distance: eventDistance,
+        location: location
+      );
 
       events.add(event);
     }

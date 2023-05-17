@@ -38,7 +38,8 @@ enum SCTextLevel {
   notificationsFriendRequestAlreadyAnswered,
   scialDayCTAText,
   scialDayCTAButtonForeground,
-  discoverFiltersEventTypesTitle
+  discoverFiltersTitle,
+  discoverFiltersDistance
 }
 
 class SCText extends StatelessWidget {
@@ -416,7 +417,7 @@ class SCText extends StatelessWidget {
     style = null,
     maxLines = 1,
     overflow = TextOverflow.ellipsis,
-    textAlign = null,
+    textAlign = TextAlign.center,
     level = SCTextLevel.eventNoGuests;
 
   const SCText.notificationsText(
@@ -545,7 +546,21 @@ class SCText extends StatelessWidget {
     textAlign = TextAlign.center,
     level = SCTextLevel.scialDayCTAButtonForeground;
 
-  const SCText.discoverFiltersEventTypesTitle(
+  const SCText.discoverFiltersDistance(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = 1,
+    overflow = TextOverflow.ellipsis,
+    textAlign = TextAlign.right,
+    level = SCTextLevel.discoverFiltersDistance;
+
+  const SCText.discoverFiltersTitle(
     this.text,
     {
       super.key,
@@ -557,7 +572,7 @@ class SCText extends StatelessWidget {
     maxLines = 1,
     overflow = TextOverflow.ellipsis,
     textAlign = null,
-    level = SCTextLevel.discoverFiltersEventTypesTitle;
+    level = SCTextLevel.discoverFiltersTitle;
 
   final String text;
   final Color? color;
@@ -609,7 +624,8 @@ class SCText extends StatelessWidget {
         case SCTextLevel.notificationsFriendRequestAlreadyAnswered: return theme.colors.notificationsFriendRequestAlreadyAnswered;
         case SCTextLevel.scialDayCTAText: return theme.colors.scialDayCTAText;
         case SCTextLevel.scialDayCTAButtonForeground: return theme.colors.scialDayCTAButtonForeground;
-        case SCTextLevel.discoverFiltersEventTypesTitle: return theme.colors.discoverFiltersEventTypesTitle;
+        case SCTextLevel.discoverFiltersTitle: return theme.colors.discoverFiltersTitle;
+        case SCTextLevel.discoverFiltersDistance: return theme.colors.discoverFiltersDistance;
         default: return null;
       }
     }
@@ -686,8 +702,10 @@ class SCText extends StatelessWidget {
           return theme.typography.scialDayCTAText;
         case SCTextLevel.scialDayCTAButtonForeground:
           return theme.typography.scialDayCTAButtonForeground;
-        case SCTextLevel.discoverFiltersEventTypesTitle:
-          return theme.typography.discoverFiltersEventTypesTitle;
+        case SCTextLevel.discoverFiltersTitle:
+          return theme.typography.discoverFiltersTitle;
+        case SCTextLevel.discoverFiltersDistance:
+          return theme.typography.discoverFiltersDistance;
         default: return null;
       }
     }

@@ -18,7 +18,7 @@ class DiscoverReadUseCase implements FutureUseCase<void, DiscoverReadUseCasePara
 
   @override
   Future<List<PublicEvent>> call(DiscoverReadUseCaseParams params) async {
-    return await repository.read(params.lat, params.long, params.eventTypes);
+    return await repository.read(params.lat, params.long, params.distance, params.eventTypes, params.eventVisibilities);
   }
 }
 
@@ -27,13 +27,17 @@ class DiscoverReadUseCaseParams extends Equatable {
   const DiscoverReadUseCaseParams({
     required this.lat,
     required this.long,
-    required this.eventTypes
+    required this.distance,
+    required this.eventTypes,
+    required this.eventVisibilities
   });
 
   final double lat;
   final double long;
+  final double distance;
   final List<EventType> eventTypes;
+  final List<EventVisibility> eventVisibilities;
   
   @override
-  List<Object?> get props => [ lat, long, eventTypes ];
+  List<Object?> get props => [ lat, long, distance, eventTypes, eventVisibilities ];
 }

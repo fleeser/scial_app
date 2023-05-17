@@ -86,9 +86,14 @@ class SCColorsData {
     required this.scialDayCTAText,
     required this.scialDayCTAButtonBackground,
     required this.scialDayCTAButtonForeground,
-    required this.discoverFiltersEventTypesBackground,
-    required this.discoverFiltersEventTypesSelectedBorder,
-    required this.discoverFiltersEventTypesTitle
+    required this.circularSelectorBackground,
+    required this.circularSelectorSelectedBorder,
+    required this.discoverFiltersTitle,
+    required this.discoverFiltersDistance,
+    required this.inactiveTrackColor,
+    required this.activeTrackColor,
+    required this.thumbColor,
+    required this.eventNoGuestsBackground
   });
 
   factory SCColorsData.light() => const SCColorsData(
@@ -163,7 +168,8 @@ class SCColorsData {
     eventListLocation: Color(0xFF7F7F7F),
     eventListTime: Color(0xFF7F7F7F),
     imageStackExtraCount: Color(0xFF191919),
-    eventNoGuests: Color(0xFF191919),
+    eventNoGuests: Color(0xFFFFFFFF),
+    eventNoGuestsBackground: Color(0xFFED8936),
     notificationsText: Color(0xFF191919),
     notificationText: Color(0xFF191919),
     notificationTime: Color(0xFF7F7F7F),
@@ -175,9 +181,13 @@ class SCColorsData {
     scialDayCTAText: Color(0xFFFFFFFF),
     scialDayCTAButtonBackground: Color(0xFFFFFFFF),
     scialDayCTAButtonForeground: Color(0xFF191919),
-    discoverFiltersEventTypesBackground: Color(0xFF7F7F7F),
-    discoverFiltersEventTypesSelectedBorder: Color(0xFF4299E1),
-    discoverFiltersEventTypesTitle: Color(0xFF191919)
+    circularSelectorBackground: Color(0xFF7F7F7F),
+    circularSelectorSelectedBorder: Color(0xFF4299E1),
+    discoverFiltersTitle: Color(0xFF191919),
+    inactiveTrackColor: Color(0xFF7F7F7F),
+    activeTrackColor: Color(0xFF4299E1),
+    thumbColor: Color(0xFF4299E1),
+    discoverFiltersDistance: Color(0xFF191919)
   );
 
   factory SCColorsData.dark() => const SCColorsData(
@@ -252,7 +262,8 @@ class SCColorsData {
     eventListLocation: Color(0xFF999999),
     eventListTime: Color(0xFF999999),
     imageStackExtraCount: Color(0xFFFBFBFB),
-    eventNoGuests: Color(0xFFFBFBFB),
+    eventNoGuests: Color(0xFFFFFFFF),
+    eventNoGuestsBackground: Color(0xFFDD6B20),
     notificationsText: Color(0xFFFBFBFB),
     notificationText: Color(0xFFFBFBFB),
     notificationTime: Color(0xFF999999),
@@ -264,9 +275,13 @@ class SCColorsData {
     scialDayCTAText: Color(0xFFFFFFFF),
     scialDayCTAButtonBackground: Color(0xFFFFFFFF),
     scialDayCTAButtonForeground: Color(0xFF191919),
-    discoverFiltersEventTypesBackground: Color(0xFF333333),
-    discoverFiltersEventTypesSelectedBorder: Color(0xFF3182CE),
-    discoverFiltersEventTypesTitle: Color(0xFFFBFBFB)
+    circularSelectorBackground: Color(0xFF333333),
+    circularSelectorSelectedBorder: Color(0xFF3182CE),
+    discoverFiltersTitle: Color(0xFFFBFBFB),
+    inactiveTrackColor: Color(0xFF999999),
+    activeTrackColor: Color(0xFF3182CE),
+    thumbColor: Color(0xFF3182CE),
+    discoverFiltersDistance: Color(0xFFFBFBFB)
   );
 
   final Color accent;
@@ -352,7 +367,12 @@ class SCColorsData {
   final Color scialDayCTAText;
   final Color scialDayCTAButtonBackground;
   final Color scialDayCTAButtonForeground;
-  final Color discoverFiltersEventTypesBackground;
-  final Color discoverFiltersEventTypesSelectedBorder;
-  final Color discoverFiltersEventTypesTitle;
+  final Color circularSelectorBackground;
+  final Color circularSelectorSelectedBorder;
+  final Color discoverFiltersTitle;
+  final Color inactiveTrackColor;
+  final Color activeTrackColor;
+  final Color thumbColor;
+  final Color discoverFiltersDistance;
+  final Color eventNoGuestsBackground;
 }

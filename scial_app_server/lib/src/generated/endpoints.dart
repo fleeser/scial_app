@@ -16,6 +16,8 @@ import '../endpoints/test_endpoint.dart' as _i7;
 import '../endpoints/user_endpoint.dart' as _i8;
 import 'package:scial_app_server/src/generated/event/enum/event_type.dart'
     as _i9;
+import 'package:scial_app_server/src/generated/event/enum/event_visibility.dart'
+    as _i10;
 
 class Endpoints extends _i1.EndpointDispatch {
   @override
@@ -274,9 +276,19 @@ class Endpoints extends _i1.EndpointDispatch {
               type: _i1.getType<double>(),
               nullable: false,
             ),
+            'distance': _i1.ParameterDescription(
+              name: 'distance',
+              type: _i1.getType<double>(),
+              nullable: false,
+            ),
             'eventTypes': _i1.ParameterDescription(
               name: 'eventTypes',
               type: _i1.getType<List<_i9.EventType>>(),
+              nullable: false,
+            ),
+            'eventVisibilities': _i1.ParameterDescription(
+              name: 'eventVisibilities',
+              type: _i1.getType<List<_i10.EventVisibility>>(),
               nullable: false,
             ),
           },
@@ -288,7 +300,9 @@ class Endpoints extends _i1.EndpointDispatch {
             session,
             params['lat'],
             params['long'],
+            params['distance'],
             params['eventTypes'],
+            params['eventVisibilities'],
           ),
         )
       },

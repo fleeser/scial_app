@@ -88,7 +88,10 @@
     "discover_tab_bar_coming" : "Coming",
     "discover_tab_bar_ongoing" : "Ongoing",
     "discover_events_empty" : "No events found.",
+    "discover_filters_distance_title" : "Radius",
+    "discover_filters_distance_short" : "yd",
     "discover_filters_event_types_title" : "Event type",
+    "discover_filters_event_visibilities_title" : "Visibility",
 
     "notifications_app_bar_title" : "Notifications",
     "notifications_tab_bar_all" : "All",

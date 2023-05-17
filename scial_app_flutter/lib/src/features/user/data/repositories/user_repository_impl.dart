@@ -25,7 +25,7 @@ class UserRepositoryImpl implements UserRepository {
   }
 
   @override
-  Future<List<PublicUserEvent>> events(int userId, double? lat, double? long) async {
+  Future<List<PublicEvent>> events(int userId, double? lat, double? long) async {
     return await dataSource.events(userId, lat, long);
   }
 

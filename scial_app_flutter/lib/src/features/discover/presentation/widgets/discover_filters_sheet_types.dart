@@ -22,82 +22,19 @@ class FiltersEventTypesNotifier extends StateNotifier<List<EventType>> {
 
 final filtersEventTypesProvider = StateNotifierProvider<FiltersEventTypesNotifier, List<EventType>>((ref) => FiltersEventTypesNotifier());
 
-class DiscoverFiltersSheetTypes extends StatelessWidget {
+class DiscoverFiltersSheetTypes extends ConsumerWidget {
 
   const DiscoverFiltersSheetTypes({ super.key });
 
   @override
-  Widget build(BuildContext context) {
-
-    SCThemeData theme = SCTheme.of(context);
-
-    return SizedBox(
-      height: 2.0 * SCGapSize.regular.getSpacing(theme) + 56.0,
-      child: ListView.builder(
-        itemCount: EventType.values.length,
-        shrinkWrap: true,
-        padding: const SCEdgeInsets.symmetric(vertical: SCGapSize.regular).toEdgeInsets(theme),
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (BuildContext context, int index) => DiscoverFiltersSheetType(
-          index: index
-        )
-      )
-    );
-  }
-}
-
-class DiscoverFiltersSheetType extends ConsumerWidget {
-
-  const DiscoverFiltersSheetType({
-    super.key,
-    required this.index
-  });
-
-  final int index;
-
-  @override
   Widget build(BuildContext context, WidgetRef ref) {
-
-    SCThemeData theme = SCTheme.of(context);
 
     final List<EventType> selectedEventTypes = ref.watch(filtersEventTypesProvider);
 
-    EventType eventType = EventType.values[index];
-    bool isSelected = selectedEventTypes.contains(eventType);
-
-    return SCPadding(
-      padding: SCEdgeInsets.only(
-        left: index == 0 ? SCGapSize.semiBig : SCGapSize.semiSmall,
-        right: index == EventType.values.length - 1 ? SCGapSize.semiBig : SCGapSize.semiSmall
-      ),
-      child: Container(
-        width: 56.0,
-        height: 56.0,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: theme.colors.discoverFiltersEventTypesBackground,
-          border: Border.all(
-            width: 2.0,
-            color: isSelected
-              ? theme.colors.discoverFiltersEventTypesSelectedBorder
-              : theme.colors.discoverFiltersEventTypesBackground
-          )
-        ),
-        child: SizedBox(
-          width: 56.0,
-          height: 56.0,
-          child: RawMaterialButton(
-            onPressed: () => ref.read(filtersEventTypesProvider.notifier).toggle(eventType),
-            elevation: 0.0,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(56.0 / 2.0)),
-            child: Text(
-              eventType.emoji,
-              textAlign: TextAlign.center,
-              style: const TextStyle(fontSize: 28.0)
-            )
-          )
-        )
-      )
+    return SCCircularSelectable(
+      emojis: EventType.values.map((EventType eventType) => eventType.emoji).toList(), 
+      selectedIndexes: selectedEventTypes.map((EventType eventType) => eventType.index).toList(), 
+      onPressed: (int index) => ref.read(filtersEventTypesProvider.notifier).toggle(EventType.values[index])
     );
   }
 }

@@ -25,7 +25,7 @@ class _DiscoverPageState extends ConsumerState<DiscoverPage> {
   @override
   Widget build(BuildContext context) {
 
-    final discoverController = ref.watch(discoverControllerProvider);
+    final discoverController = ref.watch(discoverControllerProvider(context));
 
     _tabController = useTabController(initialLength: _tabBarTitles.length);
 

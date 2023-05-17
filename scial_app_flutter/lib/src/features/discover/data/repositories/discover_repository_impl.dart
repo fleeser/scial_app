@@ -20,7 +20,7 @@ class DiscoverRepositoryImpl implements DiscoverRepository {
   final DiscoverDataSource dataSource;
 
   @override
-  Future<List<PublicEvent>> read(double lat, double long, List<EventType> eventTypes) async {
-    return await dataSource.read(lat, long, eventTypes);
+  Future<List<PublicEvent>> read(double lat, double long, double distance, List<EventType> eventTypes, List<EventVisibility> eventVisibilities) async {
+    return await dataSource.read(lat, long, distance, eventTypes, eventVisibilities);
   }
 }

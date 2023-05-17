@@ -26,7 +26,7 @@ class UserEventsResponse extends _i1.SerializableEntity {
       code: serializationManager
           .deserialize<_i2.UserEventsResponseCode?>(jsonSerialization['code']),
       events: serializationManager
-          .deserialize<List<_i2.PublicUserEvent>?>(jsonSerialization['events']),
+          .deserialize<List<_i2.PublicEvent>?>(jsonSerialization['events']),
     );
   }
 
@@ -34,7 +34,7 @@ class UserEventsResponse extends _i1.SerializableEntity {
 
   _i2.UserEventsResponseCode? code;
 
-  List<_i2.PublicUserEvent>? events;
+  List<_i2.PublicEvent>? events;
 
   @override
   Map<String, dynamic> toJson() {

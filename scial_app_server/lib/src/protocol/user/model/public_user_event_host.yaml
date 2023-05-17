@@ -1,7 +1,0 @@
-class: PublicUserEventHost
-
-fields:
-  id: int
-  name: String?
-  verified: bool
-  imageUrl: String?

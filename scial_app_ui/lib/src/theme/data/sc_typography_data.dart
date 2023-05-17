@@ -47,7 +47,8 @@ class SCTypographyData {
     required this.notificationsFriendRequestAlreadyAnswered,
     required this.scialDayCTAText,
     required this.scialDayCTAButtonForeground,
-    required this.discoverFiltersEventTypesTitle
+    required this.discoverFiltersTitle,
+    required this.discoverFiltersDistance
   });
 
   factory SCTypographyData.regular() => const SCTypographyData(
@@ -361,7 +362,14 @@ class SCTypographyData {
       fontWeight: FontWeight.bold,
       decoration: TextDecoration.none
     ),
-    discoverFiltersEventTypesTitle: TextStyle(
+    discoverFiltersTitle: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 14.0,
+      fontWeight: FontWeight.bold,
+      decoration: TextDecoration.none
+    ),
+    discoverFiltersDistance: TextStyle(
       fontFamily: 'Poppins',
       package: 'scial_app_ui',
       fontSize: 14.0,
@@ -414,5 +422,6 @@ class SCTypographyData {
   final TextStyle notificationsFriendRequestAlreadyAnswered;
   final TextStyle scialDayCTAText;
   final TextStyle scialDayCTAButtonForeground;
-  final TextStyle discoverFiltersEventTypesTitle;
+  final TextStyle discoverFiltersTitle;
+  final TextStyle discoverFiltersDistance;
 }

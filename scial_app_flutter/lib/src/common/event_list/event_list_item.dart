@@ -100,7 +100,7 @@ class EventListItem extends StatelessWidget {
             const SCGap.regular(),
             Row(
               children: [
-                Expanded(
+                Flexible(
                   child: event.guestCount > 0
                     ? SCImageStack(
                       count: event.guestCount, 
@@ -108,11 +108,21 @@ class EventListItem extends StatelessWidget {
                       size: const Size(32.0, 32.0),
                       urls: event.guestImages
                     )
-                    : Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 32.0 - 18.0),
-                      child: SCText.eventNoGuests(AppLocalizations.of(context)!.no_guests)
+                    : FittedBox(
+                      child: Container(
+                        height: 32.0,
+                        alignment: Alignment.center,
+                        padding: const SCEdgeInsets.symmetric(horizontal: SCGapSize.regular).toEdgeInsets(theme),
+                        decoration: BoxDecoration(
+                          color: theme.colors.eventNoGuestsBackground,
+                          borderRadius: BorderRadius.circular(32.0 / 2.0)
+                        ),
+                        child: SCText.eventNoGuests(AppLocalizations.of(context)!.no_guests)
+                      )
                     )
                 ),
+                const Spacer(),
+                const Spacer(),
                 const SCGap.semiBig(),
                 Text(
                   event.visibility.emoji,

@@ -4,12 +4,12 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:scial_app_client/scial_app_client.dart';
+import 'package:scial_app_flutter/src/common/event_list/event_list.dart';
+import 'package:scial_app_flutter/src/common/event_list/event_list_loading.dart';
 import 'package:scial_app_flutter/src/features/user/presentation/controller/events_controller.dart';
 import 'package:scial_app_flutter/src/features/user/presentation/controller/friendships_controller.dart';
 import 'package:scial_app_flutter/src/features/user/presentation/controller/ratings_controller.dart';
 import 'package:scial_app_flutter/src/features/user/presentation/controller/user_controller.dart';
-import 'package:scial_app_flutter/src/features/user/presentation/widgets/events/user_events_list.dart';
-import 'package:scial_app_flutter/src/features/user/presentation/widgets/events/user_events_loading.dart';
 import 'package:scial_app_flutter/src/features/user/presentation/widgets/friendships/user_friendships_loading.dart';
 import 'package:scial_app_flutter/src/features/user/presentation/widgets/ratings/user_ratings_list.dart';
 import 'package:scial_app_flutter/src/features/user/presentation/widgets/ratings/user_ratings_loading.dart';
@@ -97,10 +97,10 @@ class _UserPageState extends ConsumerState<UserPage> {
                   controller: _tabController,
                   children: [
                     eventsController.when(
-                      data: (List<PublicUserEvent> events) => events.isNotEmpty
-                        ? UserEventsList(
-                          addBottomPadding: !_isProfile,
-                          events: events
+                      data: (List<PublicEvent> events) => events.isNotEmpty
+                        ? EventList(
+                          events: events,
+                          addBottomPadding: !_isProfile
                         )
                         : UserText(
                           addBottomPadding: _isProfile,
@@ -110,7 +110,7 @@ class _UserPageState extends ConsumerState<UserPage> {
                         addBottomPadding: _isProfile,
                         text: 'Fehler nh', // TODO
                       ),
-                      loading: () => UserEventsLoading(addBottomPadding: !_isProfile)
+                      loading: () => EventListLoading(addBottomPadding: !_isProfile)
                     ),
                     friendshipsController.when(
                       data: (List<PublicUserFriendship> friendships) => friendships.isNotEmpty
@@ -169,6 +169,9 @@ class _UserPageState extends ConsumerState<UserPage> {
     : const SCSliverAppBarBackButton();
 
   List<SCSliverAppBarButton> get _actionButtons => [
+    if (_isProfile) SCSliverAppBarButton(
+      icon: SCIcons.userPlus, // TODO show share code
+    ),
     if (_isProfile) SCSliverAppBarButton(
       onPressed: _handleUpdateUser,
       icon: SCIcons.edit,

@@ -1,6 +1,0 @@
-class: PublicUserEventLocation
-
-fields:
-  lat: double
-  long: double
-  name: String?

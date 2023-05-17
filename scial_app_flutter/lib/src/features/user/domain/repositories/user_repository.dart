@@ -2,7 +2,7 @@ import 'package:scial_app_client/scial_app_client.dart';
 
 abstract class UserRepository {
   Future<PublicUser> read(int userId);
-  Future<List<PublicUserEvent>> events(int userId, double? lat, double? long);
+  Future<List<PublicEvent>> events(int userId, double? lat, double? long);
   Future<List<PublicUserFriendship>> friendships(int userId);
   Future<List<PublicUserRating>> ratings(int userId);
   Future<void> removeFriendship(int friendshipId);

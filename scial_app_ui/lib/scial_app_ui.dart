@@ -49,3 +49,7 @@ export 'src/widgets/sheet/sc_sheet_button.dart' hide SCSheetButtonWidget;
 export 'src/widgets/sheet/sc_sheet_close_button.dart';
 
 export 'src/widgets/switch/sc_switch.dart';
+
+export 'src/widgets/slider/sc_slider.dart';
+
+export 'src/widgets/selectable/circular_selectable.dart' hide SCCircularSelectableItem;

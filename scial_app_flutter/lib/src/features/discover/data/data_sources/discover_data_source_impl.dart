@@ -12,8 +12,8 @@ DiscoverDataSource discoverDataSource(DiscoverDataSourceRef ref) => DiscoverData
 class DiscoverDataSourceImpl implements DiscoverDataSource {
 
   @override
-  Future<List<PublicEvent>> read(double lat, double long, List<EventType> eventTypes) async {
-    DiscoverReadResponse response = await client.discover.read(lat, long, eventTypes);
+  Future<List<PublicEvent>> read(double lat, double long, double distance, List<EventType> eventTypes, List<EventVisibility> eventVisibilities) async {
+    DiscoverReadResponse response = await client.discover.read(lat, long, distance, eventTypes, eventVisibilities);
 
     if (response.success) return response.events!;
     

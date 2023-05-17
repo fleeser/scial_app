@@ -86,30 +86,29 @@ import 'rating/enum/rating_type.dart' as _i63;
 import 'rating/table/rating.dart' as _i64;
 import 'user/enum/user_badge.dart' as _i65;
 import 'user/model/public_user.dart' as _i66;
-import 'user/model/public_user_event.dart' as _i67;
-import 'user/model/public_user_event_host.dart' as _i68;
-import 'user/model/public_user_event_location.dart' as _i69;
-import 'user/model/public_user_friend_request.dart' as _i70;
-import 'user/model/public_user_friendship.dart' as _i71;
-import 'user/model/public_user_friendship_details.dart' as _i72;
-import 'user/model/public_user_friendship_user.dart' as _i73;
-import 'user/model/public_user_rating.dart' as _i74;
-import 'user/model/public_user_rating_user.dart' as _i75;
-import 'user/response/user_events_reponse_code.dart' as _i76;
-import 'user/response/user_events_response.dart' as _i77;
-import 'user/response/user_friendships_response.dart' as _i78;
-import 'user/response/user_friendships_response_code.dart' as _i79;
-import 'user/response/user_ratings_response.dart' as _i80;
-import 'user/response/user_ratings_response_code.dart' as _i81;
-import 'user/response/user_read_response.dart' as _i82;
-import 'user/response/user_read_response_code.dart' as _i83;
-import 'user/response/user_update_response.dart' as _i84;
-import 'user/response/user_update_response_code.dart' as _i85;
-import 'user/table/user.dart' as _i86;
-import 'protocol.dart' as _i87;
+import 'user/model/public_user_friend_request.dart' as _i67;
+import 'user/model/public_user_friendship.dart' as _i68;
+import 'user/model/public_user_friendship_details.dart' as _i69;
+import 'user/model/public_user_friendship_user.dart' as _i70;
+import 'user/model/public_user_rating.dart' as _i71;
+import 'user/model/public_user_rating_user.dart' as _i72;
+import 'user/response/user_events_reponse_code.dart' as _i73;
+import 'user/response/user_events_response.dart' as _i74;
+import 'user/response/user_friendships_response.dart' as _i75;
+import 'user/response/user_friendships_response_code.dart' as _i76;
+import 'user/response/user_ratings_response.dart' as _i77;
+import 'user/response/user_ratings_response_code.dart' as _i78;
+import 'user/response/user_read_response.dart' as _i79;
+import 'user/response/user_read_response_code.dart' as _i80;
+import 'user/response/user_update_response.dart' as _i81;
+import 'user/response/user_update_response_code.dart' as _i82;
+import 'user/table/user.dart' as _i83;
+import 'protocol.dart' as _i84;
 import 'package:scial_app_server/src/generated/event/enum/event_type.dart'
-    as _i88;
-import 'package:serverpod/protocol.dart' as _i89;
+    as _i85;
+import 'package:scial_app_server/src/generated/event/enum/event_visibility.dart'
+    as _i86;
+import 'package:serverpod/protocol.dart' as _i87;
 export 'auth/response/auth_change_password_response.dart';
 export 'auth/response/auth_change_password_response_code.dart';
 export 'auth/response/auth_delete_account_response.dart';
@@ -175,9 +174,6 @@ export 'rating/enum/rating_type.dart';
 export 'rating/table/rating.dart';
 export 'user/enum/user_badge.dart';
 export 'user/model/public_user.dart';
-export 'user/model/public_user_event.dart';
-export 'user/model/public_user_event_host.dart';
-export 'user/model/public_user_event_location.dart';
 export 'user/model/public_user_friend_request.dart';
 export 'user/model/public_user_friendship.dart';
 export 'user/model/public_user_friendship_details.dart';
@@ -418,65 +414,56 @@ class Protocol extends _i1.SerializationManagerServer {
     if (t == _i66.PublicUser) {
       return _i66.PublicUser.fromJson(data, this) as T;
     }
-    if (t == _i67.PublicUserEvent) {
-      return _i67.PublicUserEvent.fromJson(data, this) as T;
+    if (t == _i67.PublicUserFriendRequest) {
+      return _i67.PublicUserFriendRequest.fromJson(data, this) as T;
     }
-    if (t == _i68.PublicUserEventHost) {
-      return _i68.PublicUserEventHost.fromJson(data, this) as T;
+    if (t == _i68.PublicUserFriendship) {
+      return _i68.PublicUserFriendship.fromJson(data, this) as T;
     }
-    if (t == _i69.PublicUserEventLocation) {
-      return _i69.PublicUserEventLocation.fromJson(data, this) as T;
+    if (t == _i69.PublicUserFriendshipDetails) {
+      return _i69.PublicUserFriendshipDetails.fromJson(data, this) as T;
     }
-    if (t == _i70.PublicUserFriendRequest) {
-      return _i70.PublicUserFriendRequest.fromJson(data, this) as T;
+    if (t == _i70.PublicUserFriendshipUser) {
+      return _i70.PublicUserFriendshipUser.fromJson(data, this) as T;
     }
-    if (t == _i71.PublicUserFriendship) {
-      return _i71.PublicUserFriendship.fromJson(data, this) as T;
+    if (t == _i71.PublicUserRating) {
+      return _i71.PublicUserRating.fromJson(data, this) as T;
     }
-    if (t == _i72.PublicUserFriendshipDetails) {
-      return _i72.PublicUserFriendshipDetails.fromJson(data, this) as T;
+    if (t == _i72.PublicUserRatingUser) {
+      return _i72.PublicUserRatingUser.fromJson(data, this) as T;
     }
-    if (t == _i73.PublicUserFriendshipUser) {
-      return _i73.PublicUserFriendshipUser.fromJson(data, this) as T;
+    if (t == _i73.UserEventsResponseCode) {
+      return _i73.UserEventsResponseCode.fromJson(data) as T;
     }
-    if (t == _i74.PublicUserRating) {
-      return _i74.PublicUserRating.fromJson(data, this) as T;
+    if (t == _i74.UserEventsResponse) {
+      return _i74.UserEventsResponse.fromJson(data, this) as T;
     }
-    if (t == _i75.PublicUserRatingUser) {
-      return _i75.PublicUserRatingUser.fromJson(data, this) as T;
+    if (t == _i75.UserFriendshipsResponse) {
+      return _i75.UserFriendshipsResponse.fromJson(data, this) as T;
     }
-    if (t == _i76.UserEventsResponseCode) {
-      return _i76.UserEventsResponseCode.fromJson(data) as T;
+    if (t == _i76.UserFriendshipsResponseCode) {
+      return _i76.UserFriendshipsResponseCode.fromJson(data) as T;
     }
-    if (t == _i77.UserEventsResponse) {
-      return _i77.UserEventsResponse.fromJson(data, this) as T;
+    if (t == _i77.UserRatingsResponse) {
+      return _i77.UserRatingsResponse.fromJson(data, this) as T;
     }
-    if (t == _i78.UserFriendshipsResponse) {
-      return _i78.UserFriendshipsResponse.fromJson(data, this) as T;
+    if (t == _i78.UserRatingsResponseCode) {
+      return _i78.UserRatingsResponseCode.fromJson(data) as T;
     }
-    if (t == _i79.UserFriendshipsResponseCode) {
-      return _i79.UserFriendshipsResponseCode.fromJson(data) as T;
+    if (t == _i79.UserReadResponse) {
+      return _i79.UserReadResponse.fromJson(data, this) as T;
     }
-    if (t == _i80.UserRatingsResponse) {
-      return _i80.UserRatingsResponse.fromJson(data, this) as T;
+    if (t == _i80.UserReadResponseCode) {
+      return _i80.UserReadResponseCode.fromJson(data) as T;
     }
-    if (t == _i81.UserRatingsResponseCode) {
-      return _i81.UserRatingsResponseCode.fromJson(data) as T;
+    if (t == _i81.UserUpdateResponse) {
+      return _i81.UserUpdateResponse.fromJson(data, this) as T;
     }
-    if (t == _i82.UserReadResponse) {
-      return _i82.UserReadResponse.fromJson(data, this) as T;
+    if (t == _i82.UserUpdateResponseCode) {
+      return _i82.UserUpdateResponseCode.fromJson(data) as T;
     }
-    if (t == _i83.UserReadResponseCode) {
-      return _i83.UserReadResponseCode.fromJson(data) as T;
-    }
-    if (t == _i84.UserUpdateResponse) {
-      return _i84.UserUpdateResponse.fromJson(data, this) as T;
-    }
-    if (t == _i85.UserUpdateResponseCode) {
-      return _i85.UserUpdateResponseCode.fromJson(data) as T;
-    }
-    if (t == _i86.User) {
-      return _i86.User.fromJson(data, this) as T;
+    if (t == _i83.User) {
+      return _i83.User.fromJson(data, this) as T;
     }
     if (t == _i1.getType<_i2.AuthChangePasswordResponse?>()) {
       return (data != null
@@ -775,105 +762,91 @@ class Protocol extends _i1.SerializationManagerServer {
     if (t == _i1.getType<_i66.PublicUser?>()) {
       return (data != null ? _i66.PublicUser.fromJson(data, this) : null) as T;
     }
-    if (t == _i1.getType<_i67.PublicUserEvent?>()) {
-      return (data != null ? _i67.PublicUserEvent.fromJson(data, this) : null)
+    if (t == _i1.getType<_i67.PublicUserFriendRequest?>()) {
+      return (data != null
+          ? _i67.PublicUserFriendRequest.fromJson(data, this)
+          : null) as T;
+    }
+    if (t == _i1.getType<_i68.PublicUserFriendship?>()) {
+      return (data != null
+          ? _i68.PublicUserFriendship.fromJson(data, this)
+          : null) as T;
+    }
+    if (t == _i1.getType<_i69.PublicUserFriendshipDetails?>()) {
+      return (data != null
+          ? _i69.PublicUserFriendshipDetails.fromJson(data, this)
+          : null) as T;
+    }
+    if (t == _i1.getType<_i70.PublicUserFriendshipUser?>()) {
+      return (data != null
+          ? _i70.PublicUserFriendshipUser.fromJson(data, this)
+          : null) as T;
+    }
+    if (t == _i1.getType<_i71.PublicUserRating?>()) {
+      return (data != null ? _i71.PublicUserRating.fromJson(data, this) : null)
           as T;
     }
-    if (t == _i1.getType<_i68.PublicUserEventHost?>()) {
+    if (t == _i1.getType<_i72.PublicUserRatingUser?>()) {
       return (data != null
-          ? _i68.PublicUserEventHost.fromJson(data, this)
+          ? _i72.PublicUserRatingUser.fromJson(data, this)
           : null) as T;
     }
-    if (t == _i1.getType<_i69.PublicUserEventLocation?>()) {
-      return (data != null
-          ? _i69.PublicUserEventLocation.fromJson(data, this)
-          : null) as T;
-    }
-    if (t == _i1.getType<_i70.PublicUserFriendRequest?>()) {
-      return (data != null
-          ? _i70.PublicUserFriendRequest.fromJson(data, this)
-          : null) as T;
-    }
-    if (t == _i1.getType<_i71.PublicUserFriendship?>()) {
-      return (data != null
-          ? _i71.PublicUserFriendship.fromJson(data, this)
-          : null) as T;
-    }
-    if (t == _i1.getType<_i72.PublicUserFriendshipDetails?>()) {
-      return (data != null
-          ? _i72.PublicUserFriendshipDetails.fromJson(data, this)
-          : null) as T;
-    }
-    if (t == _i1.getType<_i73.PublicUserFriendshipUser?>()) {
-      return (data != null
-          ? _i73.PublicUserFriendshipUser.fromJson(data, this)
-          : null) as T;
-    }
-    if (t == _i1.getType<_i74.PublicUserRating?>()) {
-      return (data != null ? _i74.PublicUserRating.fromJson(data, this) : null)
+    if (t == _i1.getType<_i73.UserEventsResponseCode?>()) {
+      return (data != null ? _i73.UserEventsResponseCode.fromJson(data) : null)
           as T;
     }
-    if (t == _i1.getType<_i75.PublicUserRatingUser?>()) {
+    if (t == _i1.getType<_i74.UserEventsResponse?>()) {
       return (data != null
-          ? _i75.PublicUserRatingUser.fromJson(data, this)
+          ? _i74.UserEventsResponse.fromJson(data, this)
           : null) as T;
     }
-    if (t == _i1.getType<_i76.UserEventsResponseCode?>()) {
-      return (data != null ? _i76.UserEventsResponseCode.fromJson(data) : null)
+    if (t == _i1.getType<_i75.UserFriendshipsResponse?>()) {
+      return (data != null
+          ? _i75.UserFriendshipsResponse.fromJson(data, this)
+          : null) as T;
+    }
+    if (t == _i1.getType<_i76.UserFriendshipsResponseCode?>()) {
+      return (data != null
+          ? _i76.UserFriendshipsResponseCode.fromJson(data)
+          : null) as T;
+    }
+    if (t == _i1.getType<_i77.UserRatingsResponse?>()) {
+      return (data != null
+          ? _i77.UserRatingsResponse.fromJson(data, this)
+          : null) as T;
+    }
+    if (t == _i1.getType<_i78.UserRatingsResponseCode?>()) {
+      return (data != null ? _i78.UserRatingsResponseCode.fromJson(data) : null)
           as T;
     }
-    if (t == _i1.getType<_i77.UserEventsResponse?>()) {
-      return (data != null
-          ? _i77.UserEventsResponse.fromJson(data, this)
-          : null) as T;
-    }
-    if (t == _i1.getType<_i78.UserFriendshipsResponse?>()) {
-      return (data != null
-          ? _i78.UserFriendshipsResponse.fromJson(data, this)
-          : null) as T;
-    }
-    if (t == _i1.getType<_i79.UserFriendshipsResponseCode?>()) {
-      return (data != null
-          ? _i79.UserFriendshipsResponseCode.fromJson(data)
-          : null) as T;
-    }
-    if (t == _i1.getType<_i80.UserRatingsResponse?>()) {
-      return (data != null
-          ? _i80.UserRatingsResponse.fromJson(data, this)
-          : null) as T;
-    }
-    if (t == _i1.getType<_i81.UserRatingsResponseCode?>()) {
-      return (data != null ? _i81.UserRatingsResponseCode.fromJson(data) : null)
+    if (t == _i1.getType<_i79.UserReadResponse?>()) {
+      return (data != null ? _i79.UserReadResponse.fromJson(data, this) : null)
           as T;
     }
-    if (t == _i1.getType<_i82.UserReadResponse?>()) {
-      return (data != null ? _i82.UserReadResponse.fromJson(data, this) : null)
+    if (t == _i1.getType<_i80.UserReadResponseCode?>()) {
+      return (data != null ? _i80.UserReadResponseCode.fromJson(data) : null)
           as T;
     }
-    if (t == _i1.getType<_i83.UserReadResponseCode?>()) {
-      return (data != null ? _i83.UserReadResponseCode.fromJson(data) : null)
-          as T;
-    }
-    if (t == _i1.getType<_i84.UserUpdateResponse?>()) {
+    if (t == _i1.getType<_i81.UserUpdateResponse?>()) {
       return (data != null
-          ? _i84.UserUpdateResponse.fromJson(data, this)
+          ? _i81.UserUpdateResponse.fromJson(data, this)
           : null) as T;
     }
-    if (t == _i1.getType<_i85.UserUpdateResponseCode?>()) {
-      return (data != null ? _i85.UserUpdateResponseCode.fromJson(data) : null)
+    if (t == _i1.getType<_i82.UserUpdateResponseCode?>()) {
+      return (data != null ? _i82.UserUpdateResponseCode.fromJson(data) : null)
           as T;
     }
-    if (t == _i1.getType<_i86.User?>()) {
-      return (data != null ? _i86.User.fromJson(data, this) : null) as T;
+    if (t == _i1.getType<_i83.User?>()) {
+      return (data != null ? _i83.User.fromJson(data, this) : null) as T;
     }
-    if (t == _i1.getType<List<_i87.PublicEvent>?>()) {
+    if (t == _i1.getType<List<_i84.PublicEvent>?>()) {
       return (data != null
-          ? (data as List).map((e) => deserialize<_i87.PublicEvent>(e)).toList()
+          ? (data as List).map((e) => deserialize<_i84.PublicEvent>(e)).toList()
           : null) as dynamic;
     }
-    if (t == List<_i87.PublicEventHost?>) {
+    if (t == List<_i84.PublicEventHost?>) {
       return (data as List)
-          .map((e) => deserialize<_i87.PublicEventHost?>(e))
+          .map((e) => deserialize<_i84.PublicEventHost?>(e))
           .toList() as dynamic;
     }
     if (t == List<String?>) {
@@ -883,54 +856,52 @@ class Protocol extends _i1.SerializationManagerServer {
     if (t == List<int>) {
       return (data as List).map((e) => deserialize<int>(e)).toList() as dynamic;
     }
-    if (t == List<_i87.FriendshipBadge>) {
+    if (t == List<_i84.FriendshipBadge>) {
       return (data as List)
-          .map((e) => deserialize<_i87.FriendshipBadge>(e))
+          .map((e) => deserialize<_i84.FriendshipBadge>(e))
           .toList() as dynamic;
     }
-    if (t == _i1.getType<List<_i87.PublicNotification>?>()) {
+    if (t == _i1.getType<List<_i84.PublicNotification>?>()) {
       return (data != null
           ? (data as List)
-              .map((e) => deserialize<_i87.PublicNotification>(e))
+              .map((e) => deserialize<_i84.PublicNotification>(e))
               .toList()
           : null) as dynamic;
     }
-    if (t == List<_i87.UserBadge>) {
-      return (data as List).map((e) => deserialize<_i87.UserBadge>(e)).toList()
+    if (t == List<_i84.UserBadge>) {
+      return (data as List).map((e) => deserialize<_i84.UserBadge>(e)).toList()
           as dynamic;
     }
-    if (t == List<_i87.PublicUserEventHost?>) {
+    if (t == _i1.getType<List<_i84.PublicEvent>?>()) {
+      return (data != null
+          ? (data as List).map((e) => deserialize<_i84.PublicEvent>(e)).toList()
+          : null) as dynamic;
+    }
+    if (t == _i1.getType<List<_i84.PublicUserFriendship>?>()) {
+      return (data != null
+          ? (data as List)
+              .map((e) => deserialize<_i84.PublicUserFriendship>(e))
+              .toList()
+          : null) as dynamic;
+    }
+    if (t == _i1.getType<List<_i84.PublicUserRating>?>()) {
+      return (data != null
+          ? (data as List)
+              .map((e) => deserialize<_i84.PublicUserRating>(e))
+              .toList()
+          : null) as dynamic;
+    }
+    if (t == List<_i85.EventType>) {
+      return (data as List).map((e) => deserialize<_i85.EventType>(e)).toList()
+          as dynamic;
+    }
+    if (t == List<_i86.EventVisibility>) {
       return (data as List)
-          .map((e) => deserialize<_i87.PublicUserEventHost?>(e))
+          .map((e) => deserialize<_i86.EventVisibility>(e))
           .toList() as dynamic;
-    }
-    if (t == _i1.getType<List<_i87.PublicUserEvent>?>()) {
-      return (data != null
-          ? (data as List)
-              .map((e) => deserialize<_i87.PublicUserEvent>(e))
-              .toList()
-          : null) as dynamic;
-    }
-    if (t == _i1.getType<List<_i87.PublicUserFriendship>?>()) {
-      return (data != null
-          ? (data as List)
-              .map((e) => deserialize<_i87.PublicUserFriendship>(e))
-              .toList()
-          : null) as dynamic;
-    }
-    if (t == _i1.getType<List<_i87.PublicUserRating>?>()) {
-      return (data != null
-          ? (data as List)
-              .map((e) => deserialize<_i87.PublicUserRating>(e))
-              .toList()
-          : null) as dynamic;
-    }
-    if (t == List<_i88.EventType>) {
-      return (data as List).map((e) => deserialize<_i88.EventType>(e)).toList()
-          as dynamic;
     }
     try {
-      return _i89.Protocol().deserialize<T>(data, t);
+      return _i87.Protocol().deserialize<T>(data, t);
     } catch (_) {}
     return super.deserialize<T>(data, t);
   }
@@ -1133,64 +1104,55 @@ class Protocol extends _i1.SerializationManagerServer {
     if (data is _i66.PublicUser) {
       return 'PublicUser';
     }
-    if (data is _i67.PublicUserEvent) {
-      return 'PublicUserEvent';
-    }
-    if (data is _i68.PublicUserEventHost) {
-      return 'PublicUserEventHost';
-    }
-    if (data is _i69.PublicUserEventLocation) {
-      return 'PublicUserEventLocation';
-    }
-    if (data is _i70.PublicUserFriendRequest) {
+    if (data is _i67.PublicUserFriendRequest) {
       return 'PublicUserFriendRequest';
     }
-    if (data is _i71.PublicUserFriendship) {
+    if (data is _i68.PublicUserFriendship) {
       return 'PublicUserFriendship';
     }
-    if (data is _i72.PublicUserFriendshipDetails) {
+    if (data is _i69.PublicUserFriendshipDetails) {
       return 'PublicUserFriendshipDetails';
     }
-    if (data is _i73.PublicUserFriendshipUser) {
+    if (data is _i70.PublicUserFriendshipUser) {
       return 'PublicUserFriendshipUser';
     }
-    if (data is _i74.PublicUserRating) {
+    if (data is _i71.PublicUserRating) {
       return 'PublicUserRating';
     }
-    if (data is _i75.PublicUserRatingUser) {
+    if (data is _i72.PublicUserRatingUser) {
       return 'PublicUserRatingUser';
     }
-    if (data is _i76.UserEventsResponseCode) {
+    if (data is _i73.UserEventsResponseCode) {
       return 'UserEventsResponseCode';
     }
-    if (data is _i77.UserEventsResponse) {
+    if (data is _i74.UserEventsResponse) {
       return 'UserEventsResponse';
     }
-    if (data is _i78.UserFriendshipsResponse) {
+    if (data is _i75.UserFriendshipsResponse) {
       return 'UserFriendshipsResponse';
     }
-    if (data is _i79.UserFriendshipsResponseCode) {
+    if (data is _i76.UserFriendshipsResponseCode) {
       return 'UserFriendshipsResponseCode';
     }
-    if (data is _i80.UserRatingsResponse) {
+    if (data is _i77.UserRatingsResponse) {
       return 'UserRatingsResponse';
     }
-    if (data is _i81.UserRatingsResponseCode) {
+    if (data is _i78.UserRatingsResponseCode) {
       return 'UserRatingsResponseCode';
     }
-    if (data is _i82.UserReadResponse) {
+    if (data is _i79.UserReadResponse) {
       return 'UserReadResponse';
     }
-    if (data is _i83.UserReadResponseCode) {
+    if (data is _i80.UserReadResponseCode) {
       return 'UserReadResponseCode';
     }
-    if (data is _i84.UserUpdateResponse) {
+    if (data is _i81.UserUpdateResponse) {
       return 'UserUpdateResponse';
     }
-    if (data is _i85.UserUpdateResponseCode) {
+    if (data is _i82.UserUpdateResponseCode) {
       return 'UserUpdateResponseCode';
     }
-    if (data is _i86.User) {
+    if (data is _i83.User) {
       return 'User';
     }
     return super.getClassNameForObject(data);
@@ -1408,65 +1370,56 @@ class Protocol extends _i1.SerializationManagerServer {
     if (data['className'] == 'PublicUser') {
       return deserialize<_i66.PublicUser>(data['data']);
     }
-    if (data['className'] == 'PublicUserEvent') {
-      return deserialize<_i67.PublicUserEvent>(data['data']);
-    }
-    if (data['className'] == 'PublicUserEventHost') {
-      return deserialize<_i68.PublicUserEventHost>(data['data']);
-    }
-    if (data['className'] == 'PublicUserEventLocation') {
-      return deserialize<_i69.PublicUserEventLocation>(data['data']);
-    }
     if (data['className'] == 'PublicUserFriendRequest') {
-      return deserialize<_i70.PublicUserFriendRequest>(data['data']);
+      return deserialize<_i67.PublicUserFriendRequest>(data['data']);
     }
     if (data['className'] == 'PublicUserFriendship') {
-      return deserialize<_i71.PublicUserFriendship>(data['data']);
+      return deserialize<_i68.PublicUserFriendship>(data['data']);
     }
     if (data['className'] == 'PublicUserFriendshipDetails') {
-      return deserialize<_i72.PublicUserFriendshipDetails>(data['data']);
+      return deserialize<_i69.PublicUserFriendshipDetails>(data['data']);
     }
     if (data['className'] == 'PublicUserFriendshipUser') {
-      return deserialize<_i73.PublicUserFriendshipUser>(data['data']);
+      return deserialize<_i70.PublicUserFriendshipUser>(data['data']);
     }
     if (data['className'] == 'PublicUserRating') {
-      return deserialize<_i74.PublicUserRating>(data['data']);
+      return deserialize<_i71.PublicUserRating>(data['data']);
     }
     if (data['className'] == 'PublicUserRatingUser') {
-      return deserialize<_i75.PublicUserRatingUser>(data['data']);
+      return deserialize<_i72.PublicUserRatingUser>(data['data']);
     }
     if (data['className'] == 'UserEventsResponseCode') {
-      return deserialize<_i76.UserEventsResponseCode>(data['data']);
+      return deserialize<_i73.UserEventsResponseCode>(data['data']);
     }
     if (data['className'] == 'UserEventsResponse') {
-      return deserialize<_i77.UserEventsResponse>(data['data']);
+      return deserialize<_i74.UserEventsResponse>(data['data']);
     }
     if (data['className'] == 'UserFriendshipsResponse') {
-      return deserialize<_i78.UserFriendshipsResponse>(data['data']);
+      return deserialize<_i75.UserFriendshipsResponse>(data['data']);
     }
     if (data['className'] == 'UserFriendshipsResponseCode') {
-      return deserialize<_i79.UserFriendshipsResponseCode>(data['data']);
+      return deserialize<_i76.UserFriendshipsResponseCode>(data['data']);
     }
     if (data['className'] == 'UserRatingsResponse') {
-      return deserialize<_i80.UserRatingsResponse>(data['data']);
+      return deserialize<_i77.UserRatingsResponse>(data['data']);
     }
     if (data['className'] == 'UserRatingsResponseCode') {
-      return deserialize<_i81.UserRatingsResponseCode>(data['data']);
+      return deserialize<_i78.UserRatingsResponseCode>(data['data']);
     }
     if (data['className'] == 'UserReadResponse') {
-      return deserialize<_i82.UserReadResponse>(data['data']);
+      return deserialize<_i79.UserReadResponse>(data['data']);
     }
     if (data['className'] == 'UserReadResponseCode') {
-      return deserialize<_i83.UserReadResponseCode>(data['data']);
+      return deserialize<_i80.UserReadResponseCode>(data['data']);
     }
     if (data['className'] == 'UserUpdateResponse') {
-      return deserialize<_i84.UserUpdateResponse>(data['data']);
+      return deserialize<_i81.UserUpdateResponse>(data['data']);
     }
     if (data['className'] == 'UserUpdateResponseCode') {
-      return deserialize<_i85.UserUpdateResponseCode>(data['data']);
+      return deserialize<_i82.UserUpdateResponseCode>(data['data']);
     }
     if (data['className'] == 'User') {
-      return deserialize<_i86.User>(data['data']);
+      return deserialize<_i83.User>(data['data']);
     }
     return super.deserializeByClassName(data);
   }
@@ -1474,7 +1427,7 @@ class Protocol extends _i1.SerializationManagerServer {
   @override
   _i1.Table? getTableForType(Type t) {
     {
-      var table = _i89.Protocol().getTableForType(t);
+      var table = _i87.Protocol().getTableForType(t);
       if (table != null) {
         return table;
       }
@@ -1504,8 +1457,8 @@ class Protocol extends _i1.SerializationManagerServer {
         return _i62.Notification.t;
       case _i64.Rating:
         return _i64.Rating.t;
-      case _i86.User:
-        return _i86.User.t;
+      case _i83.User:
+        return _i83.User.t;
     }
     return null;
   }

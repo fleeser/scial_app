@@ -9,11 +9,11 @@ part 'events_controller.g.dart';
 class EventsController extends _$EventsController {
 
   @override
-  FutureOr<List<PublicUserEvent>> build(int userId) async {
+  FutureOr<List<PublicEvent>> build(int userId) async {
     return await _read(userId);
   }
 
-  Future<List<PublicUserEvent>> _read(int userId) async {
+  Future<List<PublicEvent>> _read(int userId) async {
     LocationModel? location = await ref.read(locationControllerProvider.future);
     return await ref.read(userEventsUseCaseProvider).call(UserEventsUseCaseParams(userId: userId, lat: location?.lat, long: location!.long));
   }

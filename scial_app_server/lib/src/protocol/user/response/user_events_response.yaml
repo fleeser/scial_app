@@ -3,4 +3,4 @@ class: UserEventsResponse
 fields:
   success: bool
   code: UserEventsResponseCode?
-  events: List<PublicUserEvent>?
+  events: List<PublicEvent>?
