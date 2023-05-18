@@ -4,6 +4,7 @@ import 'package:scial_app_flutter/src/extensions/date_time_extension.dart';
 import 'package:scial_app_flutter/src/extensions/distance_extension.dart';
 import 'package:scial_app_flutter/src/extensions/event_type_extension.dart';
 import 'package:scial_app_flutter/src/extensions/event_visibility_extension.dart';
+import 'package:scial_app_flutter/src/routing/app_router.dart';
 import 'package:scial_app_ui/scial_app_ui.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -22,7 +23,7 @@ class EventListItem extends StatelessWidget {
     SCThemeData theme = SCTheme.of(context);
     
     return RawMaterialButton(
-        onPressed: () {},
+        onPressed: () => context.navigateToEventPage(event.id),
         padding: const SCEdgeInsets.symmetric(
           horizontal: SCGapSize.semiBig,
           vertical: SCGapSize.regular

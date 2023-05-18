@@ -1,0 +1,6 @@
+class: EventGuestsResponse
+
+fields:
+  success: bool
+  code: EventGuestsResponseCode?
+  guests: List<PublicEventFullGuest>?

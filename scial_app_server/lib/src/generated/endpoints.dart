@@ -9,15 +9,16 @@
 import 'package:serverpod/serverpod.dart' as _i1;
 import '../endpoints/auth_endpoint.dart' as _i2;
 import '../endpoints/discover_endpoint.dart' as _i3;
-import '../endpoints/friend_request_endpoint.dart' as _i4;
-import '../endpoints/friendship_endpoint.dart' as _i5;
-import '../endpoints/notification_endpoint.dart' as _i6;
-import '../endpoints/test_endpoint.dart' as _i7;
-import '../endpoints/user_endpoint.dart' as _i8;
+import '../endpoints/event_endpoint.dart' as _i4;
+import '../endpoints/friend_request_endpoint.dart' as _i5;
+import '../endpoints/friendship_endpoint.dart' as _i6;
+import '../endpoints/notification_endpoint.dart' as _i7;
+import '../endpoints/test_endpoint.dart' as _i8;
+import '../endpoints/user_endpoint.dart' as _i9;
 import 'package:scial_app_server/src/generated/event/enum/event_type.dart'
-    as _i9;
-import 'package:scial_app_server/src/generated/event/enum/event_visibility.dart'
     as _i10;
+import 'package:scial_app_server/src/generated/event/enum/event_visibility.dart'
+    as _i11;
 
 class Endpoints extends _i1.EndpointDispatch {
   @override
@@ -35,31 +36,37 @@ class Endpoints extends _i1.EndpointDispatch {
           'discover',
           null,
         ),
-      'friendRequest': _i4.FriendRequestEndpoint()
+      'event': _i4.EventEndpoint()
+        ..initialize(
+          server,
+          'event',
+          null,
+        ),
+      'friendRequest': _i5.FriendRequestEndpoint()
         ..initialize(
           server,
           'friendRequest',
           null,
         ),
-      'friendship': _i5.FriendshipEndpoint()
+      'friendship': _i6.FriendshipEndpoint()
         ..initialize(
           server,
           'friendship',
           null,
         ),
-      'notification': _i6.NotificationEndpoint()
+      'notification': _i7.NotificationEndpoint()
         ..initialize(
           server,
           'notification',
           null,
         ),
-      'test': _i7.TestEndpoint()
+      'test': _i8.TestEndpoint()
         ..initialize(
           server,
           'test',
           null,
         ),
-      'user': _i8.UserEndpoint()
+      'user': _i9.UserEndpoint()
         ..initialize(
           server,
           'user',
@@ -283,12 +290,12 @@ class Endpoints extends _i1.EndpointDispatch {
             ),
             'eventTypes': _i1.ParameterDescription(
               name: 'eventTypes',
-              type: _i1.getType<List<_i9.EventType>>(),
+              type: _i1.getType<List<_i10.EventType>>(),
               nullable: false,
             ),
             'eventVisibilities': _i1.ParameterDescription(
               name: 'eventVisibilities',
-              type: _i1.getType<List<_i10.EventVisibility>>(),
+              type: _i1.getType<List<_i11.EventVisibility>>(),
               nullable: false,
             ),
           },
@@ -303,6 +310,30 @@ class Endpoints extends _i1.EndpointDispatch {
             params['distance'],
             params['eventTypes'],
             params['eventVisibilities'],
+          ),
+        )
+      },
+    );
+    connectors['event'] = _i1.EndpointConnector(
+      name: 'event',
+      endpoint: endpoints['event']!,
+      methodConnectors: {
+        'guests': _i1.MethodConnector(
+          name: 'guests',
+          params: {
+            'eventId': _i1.ParameterDescription(
+              name: 'eventId',
+              type: _i1.getType<int>(),
+              nullable: false,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['event'] as _i4.EventEndpoint).guests(
+            session,
+            params['eventId'],
           ),
         )
       },
@@ -329,7 +360,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['friendRequest'] as _i4.FriendRequestEndpoint).create(
+              (endpoints['friendRequest'] as _i5.FriendRequestEndpoint).create(
             session,
             params['userId'],
             params['text'],
@@ -353,7 +384,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['friendRequest'] as _i4.FriendRequestEndpoint).answer(
+              (endpoints['friendRequest'] as _i5.FriendRequestEndpoint).answer(
             session,
             params['friendRequestId'],
             params['answer'],
@@ -372,7 +403,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['friendRequest'] as _i4.FriendRequestEndpoint)
+              (endpoints['friendRequest'] as _i5.FriendRequestEndpoint)
                   .takeBack(
             session,
             params['friendRequestId'],
@@ -397,7 +428,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['friendship'] as _i5.FriendshipEndpoint).remove(
+              (endpoints['friendship'] as _i6.FriendshipEndpoint).remove(
             session,
             params['friendshipId'],
           ),
@@ -415,7 +446,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['notification'] as _i6.NotificationEndpoint)
+              (endpoints['notification'] as _i7.NotificationEndpoint)
                   .read(session),
         ),
         'setRead': _i1.MethodConnector(
@@ -431,7 +462,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['notification'] as _i6.NotificationEndpoint).setRead(
+              (endpoints['notification'] as _i7.NotificationEndpoint).setRead(
             session,
             params['notificationId'],
           ),
@@ -443,7 +474,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['notification'] as _i6.NotificationEndpoint)
+              (endpoints['notification'] as _i7.NotificationEndpoint)
                   .setAllRead(session),
         ),
       },
@@ -459,7 +490,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['test'] as _i7.TestEndpoint).test(session),
+              (endpoints['test'] as _i8.TestEndpoint).test(session),
         )
       },
     );
@@ -480,7 +511,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['user'] as _i8.UserEndpoint).read(
+              (endpoints['user'] as _i9.UserEndpoint).read(
             session,
             params['userId'],
           ),
@@ -513,7 +544,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['user'] as _i8.UserEndpoint).update(
+              (endpoints['user'] as _i9.UserEndpoint).update(
             session,
             name: params['name'],
             isPrivate: params['isPrivate'],
@@ -554,7 +585,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['user'] as _i8.UserEndpoint).events(
+              (endpoints['user'] as _i9.UserEndpoint).events(
             session,
             params['userId'],
             params['lat'],
@@ -586,7 +617,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['user'] as _i8.UserEndpoint).friendships(
+              (endpoints['user'] as _i9.UserEndpoint).friendships(
             session,
             params['userId'],
             limit: params['limit'],
@@ -616,7 +647,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['user'] as _i8.UserEndpoint).ratings(
+              (endpoints['user'] as _i9.UserEndpoint).ratings(
             session,
             params['userId'],
             limit: params['limit'],

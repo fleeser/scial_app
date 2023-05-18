@@ -1,0 +1,7 @@
+enum: EventGuestsResponseCode
+  
+values:
+  - notAuthenticated
+  - eventNotFound
+  - isPrivate
+  - isProtected

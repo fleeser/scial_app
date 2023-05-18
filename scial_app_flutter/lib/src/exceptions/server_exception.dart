@@ -72,6 +72,10 @@ class ServerException with _$ServerException {
 
   const factory ServerException.userUpdateUserNotFound() = UserUpdateUserNotFound;
 
+  const factory ServerException.eventGuestsEventNotFound() = EventGuestsEventNotFound;
+  const factory ServerException.eventGuestsIsPrivate() = EventGuestsIsPrivate;
+  const factory ServerException.eventGuestsIsProtected() = EventGuestsIsProtected;
+
   const factory ServerException.notAuthenticated() = NotAuthenticated;
 
   const factory ServerException.unknownError() = UnknownError;
@@ -145,6 +149,10 @@ extension ServerExceptionExtension on ServerException {
       userCreateFriendRequestFriendRequestAlreadyExists: () => AppLocalizations.of(context)!.user_create_friend_request_friend_request_already_exists,
 
       userUpdateUserNotFound: () => AppLocalizations.of(context)!.user_update_user_not_found,
+
+      eventGuestsEventNotFound: () => AppLocalizations.of(context)!.event_guests_event_not_found,
+      eventGuestsIsPrivate: () => AppLocalizations.of(context)!.event_guests_is_private,
+      eventGuestsIsProtected: () => AppLocalizations.of(context)!.event_guests_is_protected,
 
       notAuthenticated: () => AppLocalizations.of(context)!.not_authenticated,
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scial_app_flutter/src/features/home/presentation/widgets/scial_day_cta.dart';
+import 'package:scial_app_flutter/src/routing/app_router.dart';
 import 'package:scial_app_ui/scial_app_ui.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -15,7 +16,7 @@ class HomePage extends StatelessWidget {
       appBar: SCAppBar(
         context: context,
         title: SCAppBarTitle(title: AppLocalizations.of(context)!.home_app_bar_title),
-        actionButtons: _actionButtons,
+        actionButtons: _actionButtons(context),
       ),
       body: const Column(
         children: [
@@ -25,10 +26,13 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  List<SCAppBarButton> get _actionButtons {
+  List<SCAppBarButton> _actionButtons(BuildContext context) {
     return [
       const SCAppBarButton(icon: SCIcons.book),
-      const SCAppBarButton(icon: SCIcons.send)
+      SCAppBarButton(
+        onPressed: () => context.navigateToChatsPage(),
+        icon: SCIcons.send
+      )
     ];
   }
 }

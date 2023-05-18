@@ -9,6 +9,8 @@ auth:
   - deleteAccount:
 discover:
   - read:
+event:
+  - guests:
 friendRequest:
   - create:
   - answer:

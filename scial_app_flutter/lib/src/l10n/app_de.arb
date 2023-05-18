@@ -82,6 +82,11 @@
     "home_scial_day_cta_text" : "Der nächste scial Day steht an!",
     "home_scial_day_cta_button_title" : "Teilnehmen",
 
+    "chats_app_bar_title" : "Posteingang",
+
+    "event_tab_bar_general" : "Allgemein",
+    "event_tab_bar_guests" : "Gäste",
+
     "discover_app_bar_title" : "Entdecken",
     "discover_filters_sheet_title" : "Filter",
     "discover_tab_bar_all" : "Alle",
@@ -210,6 +215,10 @@
     "user_create_friend_request_friend_request_already_exists" : "Es existiert bereits eine Freundschaftsanfrage zwischen euch.",
 
     "user_update_user_not_found" : "Benutzer nicht gefunden.",
+
+    "event_guests_event_not_found" : "Veranstaltung nicht gefunden.",
+    "event_guests_is_private" : "Veranstaltung ist privat.",
+    "event_guests_is_protected" : "Veranstaltung ist geschützt.",
 
     "location_service_disabled" : "Standort-Funktion nicht verfügbar.",
     "location_denied_forever" : "Standort-Erlaubnis ist in den Geräteeinstellungen deaktiviert.",

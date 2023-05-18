@@ -28,7 +28,7 @@ void main() async {
     authenticationKeyManager: AuthKeyManager()
   )..connectivityMonitor = FlutterConnectivityMonitor();
 
-  //await client.test.test();
+  await client.openStreamingConnection(disconnectOnLostInternetConnection: false);
 
   runApp(const ProviderScope(child: App()));
 }

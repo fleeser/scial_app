@@ -1,0 +1,5 @@
+class: PublicEventFullGuest
+
+fields:
+  user: PublicEventFullGuestUser?
+  joined: DateTime

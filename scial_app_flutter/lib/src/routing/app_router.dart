@@ -8,7 +8,9 @@ import 'package:scial_app_flutter/src/features/auth/presentation/pages/forgot_pa
 import 'package:scial_app_flutter/src/features/auth/presentation/pages/sign_in_page.dart';
 import 'package:scial_app_flutter/src/features/auth/presentation/pages/sign_up_page.dart';
 import 'package:scial_app_flutter/src/features/auth/presentation/pages/sign_up_verification_page.dart';
+import 'package:scial_app_flutter/src/features/chat/presentation/pages/chats_page.dart';
 import 'package:scial_app_flutter/src/features/discover/presentation/pages/discover_page.dart';
+import 'package:scial_app_flutter/src/features/event/presentation/pages/event_page.dart';
 import 'package:scial_app_flutter/src/features/home/presentation/pages/home_page.dart';
 import 'package:scial_app_flutter/src/features/notifications/presentation/pages/notifications_page.dart';
 import 'package:scial_app_flutter/src/features/user/presentation/pages/user_page.dart';
@@ -27,7 +29,8 @@ enum AppRoute {
   home('/home'),
   discover('/discover'),
   notifications('/notifications'),
-  profile('/profile');
+  profile('/profile'),
+  chats('/chats');
 
   const AppRoute(this.path);
 
@@ -151,6 +154,20 @@ GoRouter appRouter(AppRouterRef ref) {
           int userId = int.parse(state.params['id']!);
           return UserPage(id: userId);
         }
+      ),
+      GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
+        path: '/event/:id',
+        builder: (BuildContext context, GoRouterState state) {
+          // TODO: What if is not a number in params
+          int eventId = int.parse(state.params['id']!);
+          return EventPage(id: eventId);
+        }
+      ),
+      GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
+        path: AppRoute.chats.path,
+        builder: (BuildContext context, GoRouterState state) => const ChatsPage()
       )
     ],
     errorBuilder: (BuildContext context, GoRouterState state) => Container() // TODO add error
@@ -197,5 +214,13 @@ extension AppRouterExtension on BuildContext {
 
   void navigateToUserPage(int userId) {
     push('/user/$userId');
+  }
+
+  void navigateToEventPage(int eventId) {
+    push('/event/$eventId');
+  }
+
+  void navigateToChatsPage() {
+    push(AppRoute.chats.path);
   }
 }

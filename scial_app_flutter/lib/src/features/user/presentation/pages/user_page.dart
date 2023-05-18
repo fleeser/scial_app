@@ -170,9 +170,6 @@ class _UserPageState extends ConsumerState<UserPage> {
 
   List<SCSliverAppBarButton> get _actionButtons => [
     if (_isProfile) SCSliverAppBarButton(
-      icon: SCIcons.userPlus, // TODO show share code
-    ),
-    if (_isProfile) SCSliverAppBarButton(
       onPressed: _handleUpdateUser,
       icon: SCIcons.edit,
       enabled: !ref.watch(userControllerProvider(widget.id)).isLoading && !ref.watch(userControllerProvider(widget.id)).hasError
