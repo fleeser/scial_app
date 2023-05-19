@@ -86,6 +86,8 @@
     "location_app_bar_title" : "Standort ändern",
     "location_search_hint" : "Ort suchen",
     "location_history_empty" : "Kein Verlauf",
+    "location_search_empty_search" : "Gib was ein!",
+    "location_search_empty" : "Keine Ergebnisse",
 
     "chats_app_bar_title" : "Posteingang",
 

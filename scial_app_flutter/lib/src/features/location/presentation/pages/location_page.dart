@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:mapbox_search/mapbox_search.dart';
 import 'package:scial_app_flutter/src/features/location/domain/entities/local_location.dart';
 import 'package:scial_app_flutter/src/features/location/presentation/controller/location_controller.dart';
 import 'package:scial_app_flutter/src/features/location/presentation/widgets/location_text.dart';
@@ -8,17 +10,32 @@ import 'package:scial_app_flutter/src/services/location_database_helper.dart';
 import 'package:scial_app_ui/scial_app_ui.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-/*
+final locationSearchTextProvider = StateProvider<String>((ref) => '');
+final locationSearchProvider = FutureProvider<List<LocationModel>>((ref) async {
+  PlacesSearch placesSearch = PlacesSearch(apiKey: dotenv.env['MAPBOX_API_KEY']!);
 
-var placesSearch = PlacesSearch(
-    apiKey: 'API Key',
-    limit: 5,
-);
+  final String searchText = ref.watch(locationSearchTextProvider);
 
-Future<List<MapBoxPlace>> getPlaces() =>
-  placesSearch.getPlaces("New York");
+  List<LocationModel> locations = [];
 
-  */
+  final List<MapBoxPlace>? results = await placesSearch.getPlaces(searchText);
+
+  if (results != null && results.isNotEmpty) {
+    for (MapBoxPlace result in results) {
+      if (result.center == null) continue;
+      
+      LocationModel location = LocationModel(
+        lat: result.center![0],
+        long: result.center![1],
+        name: result.placeName
+      );
+
+      locations.add(location);
+    }
+  }
+
+  return locations;
+});
 
 class LocationPage extends ConsumerStatefulWidget {
 
@@ -45,6 +62,8 @@ class _LocationPageState extends ConsumerState<LocationPage> {
     final AsyncValue<List<LocalLocation>> locationsValue = ref.watch(fetchLocalLocationsProvider);
     final bool isExpanded = ref.watch(isExpandedProvider);
     final locationController = ref.watch(locationControllerProvider);
+    final String searchText = ref.watch(locationSearchTextProvider);
+    final AsyncValue<List<LocationModel>> searchValue = ref.watch(locationSearchProvider);
 
     return SCShimmer(
       linearGradient: scGradient(context),
@@ -63,11 +82,41 @@ class _LocationPageState extends ConsumerState<LocationPage> {
           ],
           searchButton: SCAppBarSearchButton(
             isExpandedProvider: isExpandedProvider,
-            hint: AppLocalizations.of(context)!.location_search_hint
+            hint: AppLocalizations.of(context)!.location_search_hint,
+            onChanged: (String searchText) => ref.read(locationSearchTextProvider.notifier).update((state) => state = searchText)
           )
         ),
         body: isExpanded
-          ? Container()
+          ? searchText.isNotEmpty
+            ? searchValue.when(
+              data: (List<LocationModel> locations) => locations.isNotEmpty
+                ? SCLocationList(
+                  items: List.generate(locations.length, (int index) => SCLocationListItem(name: locations[index].name!)),
+                  addBottomPadding: true,
+                  onPressed: (int index) async {
+                    LocationModel selectedLocation = locations[index];
+
+                    ref.read(locationControllerProvider.notifier).setLocation(selectedLocation);
+
+                    LocalLocation localLocation = LocalLocation(
+                      lat: selectedLocation.lat,
+                      long: selectedLocation.long,
+                      name: selectedLocation.name!,
+                      created: DateTime.now()
+                    );
+
+                    LocationDatabaseHelper.insertLocation(localLocation);
+
+                    ref.read(locationSearchTextProvider.notifier).update((state) => state = '');
+
+                    context.pop();
+                  }
+                )
+                : LocationText(text: AppLocalizations.of(context)!.location_search_empty),
+              error: (Object e, StackTrace s) => const LocationText(text: 'fehler nh'), // TODO , 
+              loading: () => const SCLocationLoading(addBottomPadding: true)
+            )
+            : LocationText(text: AppLocalizations.of(context)!.location_search_empty_search)
           : locationsValue.when(
             data: (List<LocalLocation> locations) => locations.isEmpty
               ? LocationText(text: AppLocalizations.of(context)!.location_history_empty)
@@ -88,7 +137,7 @@ class _LocationPageState extends ConsumerState<LocationPage> {
                 }
               ), 
             error: (Object e, StackTrace s) => const LocationText(text: 'fehler nh'), // TODO 
-            loading: () => const SCLocationLoading()
+            loading: () => const SCLocationLoading(addBottomPadding: true)
           )
       )
     );

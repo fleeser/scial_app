@@ -9,11 +9,15 @@ class SCAppBarSearchButton extends ConsumerStatefulWidget {
   const SCAppBarSearchButton({ 
     super.key,
     required this.isExpandedProvider,
-    required this.hint
+    required this.hint,
+    this.onChanged,
+    this.controller
   });
 
   final AutoDisposeStateProvider<bool> isExpandedProvider;
   final String hint;
+  final void Function(String)? onChanged;
+  final TextEditingController? controller;
 
   @override
   ConsumerState<SCAppBarSearchButton> createState() => _SCAppBarSearchButtonState();
@@ -22,10 +26,16 @@ class SCAppBarSearchButton extends ConsumerStatefulWidget {
 class _SCAppBarSearchButtonState extends ConsumerState<SCAppBarSearchButton> with SingleTickerProviderStateMixin {
 
   late AnimationController animationController;
+  late TextEditingController? controller;
+  late FocusNode focusNode;
 
   @override
   void initState() {
     super.initState();
+
+    focusNode = FocusNode();
+
+    if (widget.controller == null) controller = TextEditingController();
 
     animationController = AnimationController(
       vsync: this,
@@ -35,6 +45,9 @@ class _SCAppBarSearchButtonState extends ConsumerState<SCAppBarSearchButton> wit
 
   @override
   void dispose() {
+
+    widget.controller?.dispose();
+    controller?.dispose();
     animationController.dispose();
 
     super.dispose();
@@ -74,7 +87,15 @@ class _SCAppBarSearchButtonState extends ConsumerState<SCAppBarSearchButton> wit
                 height: (kToolbarHeight - 10.0) - 12.0,
                 width: (kToolbarHeight - 10.0) - 12.0,
                 child: RawMaterialButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    if (widget.controller != null) {
+                      widget.controller!.clear();
+                    } else {
+                      controller!.clear();
+                    }
+
+                    widget.onChanged?.call('');
+                  },
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(((kToolbarHeight - 10.0) - 12.0) / 2.0)),
                   child: AnimatedBuilder(
                     animation: animationController,
@@ -107,9 +128,15 @@ class _SCAppBarSearchButtonState extends ConsumerState<SCAppBarSearchButton> wit
               child: SizedBox(
                 height: kToolbarHeight - 10.0,
                 width: 180.0,
-                // TODO: light or dark style keyboard
+                // TODO: Better way color appearance
                 child: TextField(
                   maxLines: 1,
+                  keyboardAppearance: theme.colors.background == const Color(0xFFFFFFFF)
+                    ? Brightness.light
+                    : Brightness.dark,
+                  focusNode: focusNode,
+                  onChanged: widget.onChanged,
+                  controller: widget.controller ?? controller,
                   cursorColor: theme.colors.appBarSearchBarCursor,
                   decoration: InputDecoration(
                     contentPadding: const EdgeInsets.symmetric(horizontal: 6.0),
@@ -132,10 +159,19 @@ class _SCAppBarSearchButtonState extends ConsumerState<SCAppBarSearchButton> wit
               onPressed: () {
                 if (isExpanded) {
                   animationController.reverse();
-                  FocusManager.instance.primaryFocus?.unfocus();
+                  focusNode.unfocus();
                 } else {
                   animationController.forward();
+                  focusNode.requestFocus();
                 }
+
+                if (widget.controller != null) {
+                  widget.controller!.clear();
+                } else {
+                  controller!.clear();
+                }
+
+                widget.onChanged?.call('');
 
                 ref.read(widget.isExpandedProvider.notifier).update((state) => state = !state);
               },

@@ -40,7 +40,7 @@ class SCCTA extends StatelessWidget {
           SizedBox(
             height: 40.0,
             child: RawMaterialButton(
-              onPressed: isEnabled && !isLoading ? onPressed : null,
+              onPressed: onPressed,
               elevation: 0.0,
               padding: const SCEdgeInsets.symmetric(horizontal: SCGapSize.regular).toEdgeInsets(theme),
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),

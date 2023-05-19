@@ -86,6 +86,8 @@
     "location_app_bar_title" : "Change location",
     "location_search_hint" : "Search location",
     "location_history_empty" : "No history",
+    "location_search_empty_search" : "Enter something!",
+    "location_search_empty" : "No results",
 
     "chats_app_bar_title" : "Inbox",
 
