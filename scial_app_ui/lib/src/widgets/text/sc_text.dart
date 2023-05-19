@@ -43,6 +43,10 @@ enum SCTextLevel {
 
   centerText,
 
+  // Sheet
+
+  sheetSubTitle,
+
   // CTA
 
   ctaText,
@@ -573,6 +577,22 @@ class SCText extends StatelessWidget {
     textAlign = TextAlign.center,
     level = SCTextLevel.centerText;
 
+  // Sheet
+
+  const SCText.sheetSubTitle(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = 1,
+    overflow = TextOverflow.ellipsis,
+    textAlign = null,
+    level = SCTextLevel.sheetSubTitle;
+
   // CTA
 
   const SCText.ctaText(
@@ -676,6 +696,10 @@ class SCText extends StatelessWidget {
 
         case SCTextLevel.centerText: return theme.colors.centerText;
 
+        // Sheet
+
+        case SCTextLevel.sheetSubTitle: return theme.colors.sheetSubTitle;
+
         // Location
 
         case SCTextLevel.locationListItemText: return theme.colors.locationListItemText;
@@ -727,6 +751,10 @@ class SCText extends StatelessWidget {
         // Center Text
 
         case SCTextLevel.centerText: return theme.typography.centerText;
+
+        // Sheet
+
+        case SCTextLevel.sheetSubTitle: return theme.typography.sheetSubTitle;
 
         // Location
 

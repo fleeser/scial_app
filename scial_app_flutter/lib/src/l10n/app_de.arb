@@ -91,6 +91,17 @@
 
     "chats_app_bar_title" : "Posteingang",
 
+    "create_event_sheet_title" : "Veranstaltung erstellen",
+    "create_event_sheet_title_subtitle" : "Titel",
+    "create_event_sheet_description_subtitle" : "Beschreibung",
+    "create_event_sheet_type_subtitle" : "Typ",
+    "create_event_sheet_visibility_subtitle" : "Sichtbarkeit",
+    "create_event_sheet_time_subtitle" : "Zeit",
+    "create_event_sheet_location_subtitle" : "Ort",
+    "create_event_sheet_hosts_subtitle" : "Weitere Gastgeber",
+    "create_event_sheet_invitations_subtitle" : "Einladungen versenden",
+    "create_event_sheet_create_button_title" : "Erstellen",
+
     "event_tab_bar_general" : "Allgemein",
     "event_tab_bar_guests" : "Gäste",
 

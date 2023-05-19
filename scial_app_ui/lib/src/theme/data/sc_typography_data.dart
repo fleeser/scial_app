@@ -52,6 +52,10 @@ class SCTypographyData {
 
     required this.centerText,
 
+    // Sheet
+
+    required this.sheetSubTitle,
+
     // App Bar
 
     required this.appBarSearchBarHint,
@@ -389,6 +393,16 @@ class SCTypographyData {
       decoration: TextDecoration.none
     ),
 
+    // Sheet
+
+    sheetSubTitle: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 14.0,
+      fontWeight: FontWeight.bold,
+      decoration: TextDecoration.none
+    ),
+
     // App Bar
 
     appBarSearchBarHint: TextStyle(
@@ -482,6 +496,10 @@ class SCTypographyData {
   // Center Text
 
   final TextStyle centerText;
+
+  // Sheet
+
+  final TextStyle sheetSubTitle;
 
   // App Bar
 

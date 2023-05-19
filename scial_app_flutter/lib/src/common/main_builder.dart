@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:scial_app_flutter/src/features/create_event/presentation/widgets/create_event_sheet.dart';
 import 'package:scial_app_flutter/src/routing/app_router.dart';
 import 'package:scial_app_ui/scial_app_ui.dart';
 
@@ -40,7 +41,7 @@ class MainBuilder extends StatelessWidget {
     }
   }
 
-  void _onPressed(BuildContext context, int index) {
+  void _onPressed(BuildContext context, int index) async {
     switch (index) {
       case 0: 
         context.navigateToHomePage();
@@ -49,6 +50,7 @@ class MainBuilder extends StatelessWidget {
         context.navigateToDiscoverPage();
         break;
       case 2:
+        await showCreateEventSheet(context);
         break;
       case 3:
         context.navigateToNotificationsPage();

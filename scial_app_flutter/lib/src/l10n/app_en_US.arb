@@ -91,6 +91,17 @@
 
     "chats_app_bar_title" : "Inbox",
 
+    "create_event_sheet_title" : "Create event",
+    "create_event_sheet_title_subtitle" : "Title",
+    "create_event_sheet_description_subtitle" : "Description",
+    "create_event_sheet_type_subtitle" : "Type",
+    "create_event_sheet_visibility_subtitle" : "Visibility",
+    "create_event_sheet_time_subtitle" : "Time",
+    "create_event_sheet_location_subtitle" : "Location",
+    "create_event_sheet_hosts_subtitle" : "More hosts",
+    "create_event_sheet_invitations_subtitle" : "Send invitations",
+    "create_event_sheet_create_button_title" : "Create",
+
     "event_tab_bar_general" : "General",
     "event_tab_bar_guests" : "Guests",
 

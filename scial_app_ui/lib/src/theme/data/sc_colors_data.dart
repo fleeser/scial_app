@@ -94,6 +94,10 @@ class SCColorsData {
 
     required this.centerText,
 
+    // Sheet
+
+    required this.sheetSubTitle,
+
     // App Bar
 
     required this.appBarSearchBarBackground,
@@ -210,6 +214,10 @@ class SCColorsData {
     // Center Text
 
     centerText: SCPalette.gray900,
+
+    // Sheet
+
+    sheetSubTitle: SCPalette.gray900,
 
     // App Bar
 
@@ -328,6 +336,10 @@ class SCColorsData {
 
     centerText: SCPalette.gray100,
 
+    // Sheet
+
+    sheetSubTitle: SCPalette.gray100,
+
     // App Bar
 
     appBarSearchBarBackground: SCPalette.gray700,
@@ -443,6 +455,10 @@ class SCColorsData {
   // Center Text
 
   final Color centerText;
+
+  // Sheet
+
+  final Color sheetSubTitle;
 
   // App Bar
 
