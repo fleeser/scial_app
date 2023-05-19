@@ -39,6 +39,10 @@ dependencies:
 
   flutter_dotenv: ^5.0.2
 
+  path: ^1.8.2
+
+  sqflite: ^2.2.8
+
   hive_flutter: ^1.1.0
   freezed_annotation: ^2.2.0
 

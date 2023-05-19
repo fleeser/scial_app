@@ -48,8 +48,23 @@ class SCTypographyData {
     required this.discoverFiltersTitle,
     required this.discoverFiltersDistance,
 
+    // Center Text
+
+    required this.centerText,
+
+    // App Bar
+
+    required this.appBarSearchBarHint,
+    required this.appBarSearchBarText,
+
+    // CTA
+
     required this.ctaText,
-    required this.ctaButtonText
+    required this.ctaButtonText,
+
+    // Location
+
+    required this.locationListItemText
   });
 
   factory SCTypographyData.regular() => const SCTypographyData(
@@ -364,6 +379,33 @@ class SCTypographyData {
       decoration: TextDecoration.none
     ),
 
+    // Center Text
+
+    centerText: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 14.0,
+      fontWeight: FontWeight.w400,
+      decoration: TextDecoration.none
+    ),
+
+    // App Bar
+
+    appBarSearchBarHint: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 14.0,
+      fontWeight: FontWeight.w400,
+      decoration: TextDecoration.none
+    ),
+    appBarSearchBarText: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 14.0,
+      fontWeight: FontWeight.w400,
+      decoration: TextDecoration.none
+    ),
+
     // CTA
 
     ctaText: TextStyle(
@@ -378,6 +420,16 @@ class SCTypographyData {
       package: 'scial_app_ui',
       fontSize: 14.0,
       fontWeight: FontWeight.bold,
+      decoration: TextDecoration.none
+    ),
+
+    // Location
+
+    locationListItemText: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 14.0,
+      fontWeight: FontWeight.w400,
       decoration: TextDecoration.none
     )
   );
@@ -427,8 +479,21 @@ class SCTypographyData {
   final TextStyle discoverFiltersTitle;
   final TextStyle discoverFiltersDistance;
 
+  // Center Text
+
+  final TextStyle centerText;
+
+  // App Bar
+
+  final TextStyle appBarSearchBarHint;
+  final TextStyle appBarSearchBarText;
+
   // CTA
 
   final TextStyle ctaText;
   final TextStyle ctaButtonText;
+
+  // Location
+
+  final TextStyle locationListItemText;
 }

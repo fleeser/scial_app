@@ -39,10 +39,18 @@ enum SCTextLevel {
   discoverFiltersTitle,
   discoverFiltersDistance,
 
+  // Center Text
+
+  centerText,
+
   // CTA
 
   ctaText,
-  ctaButtonText
+  ctaButtonText,
+
+  // Location
+
+  locationListItemText
 }
 
 class SCText extends StatelessWidget {
@@ -549,6 +557,22 @@ class SCText extends StatelessWidget {
     textAlign = null,
     level = SCTextLevel.discoverFiltersTitle;
 
+  // Center Text
+
+  const SCText.centerText(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = null,
+    overflow = null,
+    textAlign = TextAlign.center,
+    level = SCTextLevel.centerText;
+
   // CTA
 
   const SCText.ctaText(
@@ -578,6 +602,22 @@ class SCText extends StatelessWidget {
     overflow = TextOverflow.ellipsis,
     textAlign = TextAlign.center,
     level = SCTextLevel.ctaButtonText;
+
+  // Location
+
+  const SCText.locationListItemText(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = 3,
+    overflow = TextOverflow.ellipsis,
+    textAlign = null,
+    level = SCTextLevel.locationListItemText;
 
   final String text;
   final Color? color;
@@ -631,86 +671,67 @@ class SCText extends StatelessWidget {
         case SCTextLevel.ctaButtonText: return theme.colors.ctaButtonText;
         case SCTextLevel.discoverFiltersTitle: return theme.colors.discoverFiltersTitle;
         case SCTextLevel.discoverFiltersDistance: return theme.colors.discoverFiltersDistance;
+
+        // Center Text
+
+        case SCTextLevel.centerText: return theme.colors.centerText;
+
+        // Location
+
+        case SCTextLevel.locationListItemText: return theme.colors.locationListItemText;
+
         default: return null;
       }
     }
 
     TextStyle? style() {
       switch (level) {
-        case SCTextLevel.title1:
-          return theme.typography.title1;
-        case SCTextLevel.paragraph1: 
-          return theme.typography.paragraph1;
-        case SCTextLevel.buttonTitle:
-          return theme.typography.buttonTitle;
-        case SCTextLevel.lightButtonTitle:
-          return theme.typography.ligthButtonTitle;
-        case SCTextLevel.appBarTitle:
-          return theme.typography.appBarTitle;
-        case SCTextLevel.ratingName:
-          return theme.typography.ratingName;
-        case SCTextLevel.ratingTime:
-          return theme.typography.ratingTime;
-        case SCTextLevel.ratingText:
-          return theme.typography.ratingText;
-        case SCTextLevel.ratingRatingTitle:
-          return theme.typography.ratingRatingTitle;
-        case SCTextLevel.ratingIndicator:
-          return theme.typography.ratingIndicator;
-        case SCTextLevel.dialogTitle:
-          return theme.typography.dialogTitle;
-        case SCTextLevel.dialogText:
-          return theme.typography.dialogText;
-        case SCTextLevel.dialogButton:
-          return theme.typography.dialogButton;
-        case SCTextLevel.sheetTitle:
-          return theme.typography.sheetTitle;
-        case SCTextLevel.userText:
-          return theme.typography.userText;
-        case SCTextLevel.emptyBadges:
-          return theme.typography.emptyBadges;
-        case SCTextLevel.editUserIsPrivate:
-          return theme.typography.editUserIsPrivate;
-        case SCTextLevel.userFriendshipsUserName:
-          return theme.typography.userFriendshipsUserName;
-        case SCTextLevel.userFriendshipsSince:
-          return theme.typography.userFriendshipsSince;
-        case SCTextLevel.userFriendshipsEmptyBadges:
-          return theme.typography.userFriendshipsEmptyBadges;
-        case SCTextLevel.eventListTitle:
-          return theme.typography.eventListTitle;
-        case SCTextLevel.eventListDistance:
-          return theme.typography.eventListDistance;
-        case SCTextLevel.eventListLocation:
-          return theme.typography.eventListLocation;
-        case SCTextLevel.eventListTime:
-          return theme.typography.eventListTime;
-        case SCTextLevel.imageStackExtraCount:
-          return theme.typography.imageStackExtraCount;
-        case SCTextLevel.eventNoGuests:
-          return theme.typography.eventNoGuests;
-        case SCTextLevel.notificationsText:
-          return theme.typography.notificationsText;
-        case SCTextLevel.notificationText:
-          return theme.typography.notificationText;
-        case SCTextLevel.notificationTime:
-          return theme.typography.notificationTime;
-        case SCTextLevel.notificationsFriendRequestNotFound:
-          return theme.typography.notificationsFriendRequestNotFound;
-        case SCTextLevel.notificationsFriendRequestUserName:
-          return theme.typography.notificationsFriendRequestUserName;
-        case SCTextLevel.notificationsFriendRequestText:
-          return theme.typography.notificationsFriendRequestText;
-        case SCTextLevel.notificationsFriendRequestAlreadyAnswered: 
-          return theme.typography.notificationsFriendRequestAlreadyAnswered;
-        case SCTextLevel.ctaText:
-          return theme.typography.ctaText;
-        case SCTextLevel.ctaButtonText:
-          return theme.typography.ctaButtonText;
-        case SCTextLevel.discoverFiltersTitle:
-          return theme.typography.discoverFiltersTitle;
-        case SCTextLevel.discoverFiltersDistance:
-          return theme.typography.discoverFiltersDistance;
+        case SCTextLevel.title1: return theme.typography.title1;
+        case SCTextLevel.paragraph1:  return theme.typography.paragraph1;
+        case SCTextLevel.buttonTitle:return theme.typography.buttonTitle;
+        case SCTextLevel.lightButtonTitle: return theme.typography.ligthButtonTitle;
+        case SCTextLevel.appBarTitle:return theme.typography.appBarTitle;
+        case SCTextLevel.ratingName: return theme.typography.ratingName;
+        case SCTextLevel.ratingTime: return theme.typography.ratingTime;
+        case SCTextLevel.ratingText: return theme.typography.ratingText;
+        case SCTextLevel.ratingRatingTitle: return theme.typography.ratingRatingTitle;
+        case SCTextLevel.ratingIndicator: return theme.typography.ratingIndicator;
+        case SCTextLevel.dialogTitle: return theme.typography.dialogTitle;
+        case SCTextLevel.dialogText: return theme.typography.dialogText;
+        case SCTextLevel.dialogButton: return theme.typography.dialogButton;
+        case SCTextLevel.sheetTitle: return theme.typography.sheetTitle;
+        case SCTextLevel.userText: return theme.typography.userText;
+        case SCTextLevel.emptyBadges: return theme.typography.emptyBadges;
+        case SCTextLevel.editUserIsPrivate: return theme.typography.editUserIsPrivate;
+        case SCTextLevel.userFriendshipsUserName:return theme.typography.userFriendshipsUserName;
+        case SCTextLevel.userFriendshipsSince: return theme.typography.userFriendshipsSince;
+        case SCTextLevel.userFriendshipsEmptyBadges: return theme.typography.userFriendshipsEmptyBadges;
+        case SCTextLevel.eventListTitle: return theme.typography.eventListTitle;
+        case SCTextLevel.eventListDistance: return theme.typography.eventListDistance;
+        case SCTextLevel.eventListLocation: return theme.typography.eventListLocation;
+        case SCTextLevel.eventListTime:  return theme.typography.eventListTime;
+        case SCTextLevel.imageStackExtraCount: return theme.typography.imageStackExtraCount;
+        case SCTextLevel.eventNoGuests: return theme.typography.eventNoGuests;
+        case SCTextLevel.notificationsText: return theme.typography.notificationsText;
+        case SCTextLevel.notificationText: return theme.typography.notificationText;
+        case SCTextLevel.notificationTime: return theme.typography.notificationTime;
+        case SCTextLevel.notificationsFriendRequestNotFound: return theme.typography.notificationsFriendRequestNotFound;
+        case SCTextLevel.notificationsFriendRequestUserName: return theme.typography.notificationsFriendRequestUserName;
+        case SCTextLevel.notificationsFriendRequestText: return theme.typography.notificationsFriendRequestText;
+        case SCTextLevel.notificationsFriendRequestAlreadyAnswered:  return theme.typography.notificationsFriendRequestAlreadyAnswered;
+        case SCTextLevel.ctaText: return theme.typography.ctaText;
+        case SCTextLevel.ctaButtonText: return theme.typography.ctaButtonText;
+        case SCTextLevel.discoverFiltersTitle: return theme.typography.discoverFiltersTitle;
+        case SCTextLevel.discoverFiltersDistance: return theme.typography.discoverFiltersDistance;
+
+        // Center Text
+
+        case SCTextLevel.centerText: return theme.typography.centerText;
+
+        // Location
+
+        case SCTextLevel.locationListItemText: return theme.typography.locationListItemText;
+
         default: return null;
       }
     }

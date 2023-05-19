@@ -49,20 +49,25 @@ class SCAppBar extends ConsumerWidget implements PreferredSizeWidget {
       ),
       child: Row(
         children: [
-          if (backButton != null) animatedWidget(
-            SCPadding(
+          if (backButton != null) AnimatedVisibilityWidget(
+            isVisible: !searchIsExpanded,
+            child: SCPadding(
               padding: const SCEdgeInsets.only(right: SCGapSize.semiBig),
               child: backButton
-            ),
-            searchIsExpanded),
+            )
+          ),
           Expanded(
-            child: animatedWidget(Row(
-              children: [
-                if (image != null) image!,
-                if (image != null && title != null) const SCGap.regular(),
-                if (title != null) Expanded(child: title!)
-              ]
-            ), searchIsExpanded)),
+            child: AnimatedVisibilityWidget(
+              isVisible: !searchIsExpanded,
+              child: Row(
+                children: [
+                  if (image != null) image!,
+                  if (image != null && title != null) const SCGap.regular(),
+                  if (title != null) Expanded(child: title!)
+                ]
+              )
+            )
+          ),
           ...List.generate(actionButtons.length + (searchButton != null ? 1 : 0), (int index) => searchButton != null && index == actionButtons.length
             ? SCPadding(
               padding: SCEdgeInsets.only(
@@ -72,14 +77,17 @@ class SCAppBar extends ConsumerWidget implements PreferredSizeWidget {
               ),
               child: searchButton
             )
-            : animatedWidget(SCPadding(
-              padding: SCEdgeInsets.only(
-                left: index == 0
-                  ? SCGapSize.semiBig
-                  : SCGapSize.regular
-              ),
-              child: actionButtons[index]
-            ), searchIsExpanded)
+            : AnimatedVisibilityWidget(
+              isVisible: !searchIsExpanded, 
+              child: SCPadding(
+                padding: SCEdgeInsets.only(
+                  left: index == 0
+                    ? SCGapSize.semiBig
+                    : SCGapSize.regular
+                ),
+                child: actionButtons[index]
+              )
+            )
           )
         ]
       )
@@ -88,10 +96,62 @@ class SCAppBar extends ConsumerWidget implements PreferredSizeWidget {
   
   @override
   Size get preferredSize => Size(double.maxFinite, MediaQuery.of(context).padding.top + kToolbarHeight);
+}
 
-  Widget animatedWidget(Widget child, bool isExpanded) => AnimatedSwitcher(
-    duration: const Duration(milliseconds: 375),
-    reverseDuration: Duration.zero,
-    child: !isExpanded ? child : null
-  );
+class AnimatedVisibilityWidget extends StatefulWidget {
+
+  const AnimatedVisibilityWidget({
+    super.key,
+    required this.isVisible,
+    required this.child
+  });
+
+  final bool isVisible;
+  final Widget child;
+
+  @override
+  State<AnimatedVisibilityWidget> createState() => _AnimatedVisibilityWidgetState();
+}
+
+class _AnimatedVisibilityWidgetState extends State<AnimatedVisibilityWidget> with SingleTickerProviderStateMixin {
+
+  late AnimationController _animationController;
+  late Animation<double> _animation;
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(duration: const Duration(milliseconds: 375), vsync: this);
+    _animation = Tween<double>(begin: 0, end: 1).animate(_animationController);
+  }
+
+  @override
+  void didUpdateWidget(AnimatedVisibilityWidget oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.isVisible) {
+      _animationController.reverse();
+    } else {
+      _animationController.forward();
+    }
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: _animation,
+      builder: (context, child) {
+        return Visibility(
+          visible: widget.isVisible && _animation.status == AnimationStatus.dismissed,
+          child: child!
+        );
+      },
+      child: widget.child
+    );
+  }
 }

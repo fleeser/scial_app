@@ -26,6 +26,11 @@ class LocationController extends _$LocationController {
     return await _fetch();
   }
 
+  Future<void> refetch() async {
+    state = const AsyncLoading();
+    state = await AsyncValue.guard(() => _fetch());
+  }
+
   Future<LocationModel?> _fetch() async {
     Location location = Location();
 
@@ -69,5 +74,9 @@ class LocationController extends _$LocationController {
       long: locationData.longitude!,
       name: name
     );
+  }
+
+  void setLocation(LocationModel location) {
+    state = AsyncValue.data(location);
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:scial_app_ui/src/theme/sc_palette.dart';
 
 class SCColorsData {
 
@@ -89,6 +90,19 @@ class SCColorsData {
     required this.thumbColor,
     required this.eventNoGuestsBackground,
 
+    // Center Text
+
+    required this.centerText,
+
+    // App Bar
+
+    required this.appBarSearchBarBackground,
+    required this.appBarSearchBarDeleteIcon,
+    required this.appBarSearchBarSearchIcon,
+    required this.appBarSearchBarCursor,
+    required this.appBarSearchBarHint,
+    required this.appBarSearchBarText,
+
     // Circular Selector
 
     required this.circularSelectorBackground,
@@ -99,7 +113,11 @@ class SCColorsData {
     required this.ctaBackground,
     required this.ctaText,
     required this.ctaButtonBackground,
-    required this.ctaButtonText
+    required this.ctaButtonText,
+
+    // Location
+
+    required this.locationListItemText
   });
 
   factory SCColorsData.light() => const SCColorsData(
@@ -189,6 +207,19 @@ class SCColorsData {
     thumbColor: Color(0xFF4299E1),
     discoverFiltersDistance: Color(0xFF191919),
 
+    // Center Text
+
+    centerText: SCPalette.gray900,
+
+    // App Bar
+
+    appBarSearchBarBackground: SCPalette.gray300,
+    appBarSearchBarDeleteIcon: SCPalette.gray900,
+    appBarSearchBarSearchIcon: SCPalette.gray900,
+    appBarSearchBarCursor: SCPalette.gray500,
+    appBarSearchBarHint: SCPalette.gray500,
+    appBarSearchBarText: SCPalette.gray900,
+
     // Circular Selector
 
     circularSelectorBackground: Color(0xFF7F7F7F),
@@ -199,7 +230,11 @@ class SCColorsData {
     ctaBackground: Color(0xFF4299E1),
     ctaText: Color(0xFFFFFFFF),
     ctaButtonBackground: Color(0xFFFFFFFF),
-    ctaButtonText: Color(0xFF191919)
+    ctaButtonText: Color(0xFF191919),
+
+    // Location
+
+    locationListItemText: SCPalette.gray900
   );
 
   factory SCColorsData.dark() => const SCColorsData(
@@ -289,6 +324,19 @@ class SCColorsData {
     thumbColor: Color(0xFF3182CE),
     discoverFiltersDistance: Color(0xFFFBFBFB),
 
+    // Center Text
+
+    centerText: SCPalette.gray100,
+
+    // App Bar
+
+    appBarSearchBarBackground: SCPalette.gray700,
+    appBarSearchBarDeleteIcon: SCPalette.gray100,
+    appBarSearchBarSearchIcon: SCPalette.gray100,
+    appBarSearchBarCursor: SCPalette.gray400,
+    appBarSearchBarHint: SCPalette.gray400,
+    appBarSearchBarText: SCPalette.gray100,
+
     // Circular Selector
 
     circularSelectorBackground: Color(0xFF333333),
@@ -299,7 +347,11 @@ class SCColorsData {
     ctaBackground: Color(0xFF3182CE),
     ctaText: Color(0xFFFFFFFF),
     ctaButtonBackground: Color(0xFFFFFFFF),
-    ctaButtonText: Color(0xFF191919)
+    ctaButtonText: Color(0xFF191919),
+
+    // Location
+
+    locationListItemText: SCPalette.gray100
   );
 
   final Color accent;
@@ -388,6 +440,19 @@ class SCColorsData {
   final Color discoverFiltersDistance;
   final Color eventNoGuestsBackground;
 
+  // Center Text
+
+  final Color centerText;
+
+  // App Bar
+
+  final Color appBarSearchBarBackground;
+  final Color appBarSearchBarDeleteIcon;
+  final Color appBarSearchBarSearchIcon;
+  final Color appBarSearchBarCursor;
+  final Color appBarSearchBarHint;
+  final Color appBarSearchBarText;
+
   // Circular Selector
 
   final Color circularSelectorBackground;
@@ -399,4 +464,8 @@ class SCColorsData {
   final Color ctaText;
   final Color ctaButtonBackground;
   final Color ctaButtonText;
+
+  // Location
+
+  final Color locationListItemText;
 }

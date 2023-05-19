@@ -84,6 +84,8 @@
     "home_location_cta_button_title" : "Anpassen",
 
     "location_app_bar_title" : "Standort ändern",
+    "location_search_hint" : "Ort suchen",
+    "location_history_empty" : "Kein Verlauf",
 
     "chats_app_bar_title" : "Posteingang",
 

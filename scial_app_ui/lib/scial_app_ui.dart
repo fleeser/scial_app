@@ -56,3 +56,7 @@ export 'src/widgets/slider/sc_slider.dart';
 export 'src/widgets/selectable/circular_selectable.dart' hide SCCircularSelectableItem;
 
 export 'src/widgets/cta/sc_cta.dart';
+
+export 'src/widgets/location/sc_location_list.dart';
+export 'src/widgets/location/sc_location_list_item.dart' hide SCLocationListItemWidget;
+export 'src/widgets/location/sc_location_loading.dart';

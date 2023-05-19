@@ -8,10 +8,12 @@ class SCAppBarSearchButton extends ConsumerStatefulWidget {
 
   const SCAppBarSearchButton({ 
     super.key,
-    required this.isExpandedProvider
+    required this.isExpandedProvider,
+    required this.hint
   });
 
   final AutoDisposeStateProvider<bool> isExpandedProvider;
+  final String hint;
 
   @override
   ConsumerState<SCAppBarSearchButton> createState() => _SCAppBarSearchButtonState();
@@ -53,7 +55,7 @@ class _SCAppBarSearchButtonState extends ConsumerState<SCAppBarSearchButton> wit
         : kToolbarHeight - 10.0,
       curve: Curves.easeOut,
       decoration: BoxDecoration(
-        color: theme.colors.appBarButtonBackground,
+        color: theme.colors.appBarSearchBarBackground,
         borderRadius: BorderRadius.circular((kToolbarHeight - 10.0) / 2.0)
       ),
       child: Stack(
@@ -76,10 +78,10 @@ class _SCAppBarSearchButtonState extends ConsumerState<SCAppBarSearchButton> wit
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(((kToolbarHeight - 10.0) - 12.0) / 2.0)),
                   child: AnimatedBuilder(
                     animation: animationController,
-                    child: const SCIcon(
+                    child: SCIcon(
                       icon: SCIcons.x, 
                       size: ((kToolbarHeight - 10.0) - 12.0) / 2.0, 
-                      color: Colors.greenAccent // TODO color
+                      color: theme.colors.appBarSearchBarDeleteIcon
                     ),
                     builder: (BuildContext context, Widget? child) {
                       return Transform.rotate(
@@ -102,31 +104,23 @@ class _SCAppBarSearchButtonState extends ConsumerState<SCAppBarSearchButton> wit
               opacity: isExpanded 
                 ? 1.0 
                 : 0.0,
-              child: const SizedBox(
+              child: SizedBox(
                 height: kToolbarHeight - 10.0,
                 width: 180.0,
                 // TODO: light or dark style keyboard
                 child: TextField(
                   maxLines: 1,
-                  cursorColor: Colors.red, // TODO: color
+                  cursorColor: theme.colors.appBarSearchBarCursor,
                   decoration: InputDecoration(
-                    contentPadding: EdgeInsets.symmetric(horizontal: 6.0),
+                    contentPadding: const EdgeInsets.symmetric(horizontal: 6.0),
                     hintMaxLines: 1,
                     floatingLabelBehavior: FloatingLabelBehavior.never,
-                    labelText: 'search_hint_text',
-                    labelStyle: TextStyle(
-                      color: Colors.blue, // TODO: color
-                      fontFamily: 'Poppins',
-                      fontSize: 16.0
-                    ),
+                    labelText: widget.hint,
+                    labelStyle: theme.typography.appBarSearchBarHint.copyWith(color: theme.colors.appBarSearchBarHint),
                     alignLabelWithHint: true,
-                    border: OutlineInputBorder(borderSide: BorderSide.none)
+                    border: const OutlineInputBorder(borderSide: BorderSide.none)
                   ),
-                  style: TextStyle(
-                    color: Colors.pink, // TODO: color
-                    fontFamily: 'Poppins',
-                    fontSize: 16.0
-                  )
+                  style: theme.typography.appBarSearchBarText.copyWith(color: theme.colors.appBarSearchBarText),
                 )
               )
             )
@@ -147,11 +141,10 @@ class _SCAppBarSearchButtonState extends ConsumerState<SCAppBarSearchButton> wit
               },
               elevation: 0.0,
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular((kToolbarHeight - 10.0) / 2.0)),
-              fillColor: Colors.purple,// TODO color
-              child: const SCIcon(
+              child: SCIcon(
                 icon: SCIcons.search,
                 size: (kToolbarHeight - 10.0) / 2.0,
-                color: Colors.orange // TODO color
+                color: theme.colors.appBarSearchBarSearchIcon
               )
             )
           )
