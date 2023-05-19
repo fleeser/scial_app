@@ -12,6 +12,7 @@ import 'package:scial_app_flutter/src/features/chat/presentation/pages/chats_pag
 import 'package:scial_app_flutter/src/features/discover/presentation/pages/discover_page.dart';
 import 'package:scial_app_flutter/src/features/event/presentation/pages/event_page.dart';
 import 'package:scial_app_flutter/src/features/home/presentation/pages/home_page.dart';
+import 'package:scial_app_flutter/src/features/location/presentation/pages/location_page.dart';
 import 'package:scial_app_flutter/src/features/notifications/presentation/pages/notifications_page.dart';
 import 'package:scial_app_flutter/src/features/user/presentation/pages/user_page.dart';
 import 'package:scial_app_flutter/src/services/key_value_storage.dart';
@@ -30,7 +31,8 @@ enum AppRoute {
   discover('/discover'),
   notifications('/notifications'),
   profile('/profile'),
-  chats('/chats');
+  chats('/chats'),
+  location('/location');
 
   const AppRoute(this.path);
 
@@ -168,6 +170,11 @@ GoRouter appRouter(AppRouterRef ref) {
         parentNavigatorKey: _rootNavigatorKey,
         path: AppRoute.chats.path,
         builder: (BuildContext context, GoRouterState state) => const ChatsPage()
+      ),
+      GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
+        path: AppRoute.location.path,
+        builder: (BuildContext context, GoRouterState state) => const LocationPage()
       )
     ],
     errorBuilder: (BuildContext context, GoRouterState state) => Container() // TODO add error
@@ -222,5 +229,9 @@ extension AppRouterExtension on BuildContext {
 
   void navigateToChatsPage() {
     push(AppRoute.chats.path);
+  }
+
+  void navigateToLocationPage() {
+    push(AppRoute.location.path);
   }
 }

@@ -45,10 +45,11 @@ class SCTypographyData {
     required this.notificationsFriendRequestUserName,
     required this.notificationsFriendRequestText,
     required this.notificationsFriendRequestAlreadyAnswered,
-    required this.scialDayCTAText,
-    required this.scialDayCTAButtonForeground,
     required this.discoverFiltersTitle,
-    required this.discoverFiltersDistance
+    required this.discoverFiltersDistance,
+
+    required this.ctaText,
+    required this.ctaButtonText
   });
 
   factory SCTypographyData.regular() => const SCTypographyData(
@@ -348,20 +349,6 @@ class SCTypographyData {
       fontWeight: FontWeight.w400,
       decoration: TextDecoration.none
     ),
-    scialDayCTAText: TextStyle(
-      fontFamily: 'Poppins',
-      package: 'scial_app_ui',
-      fontSize: 14.0,
-      fontWeight: FontWeight.bold,
-      decoration: TextDecoration.none
-    ),
-    scialDayCTAButtonForeground: TextStyle(
-      fontFamily: 'Poppins',
-      package: 'scial_app_ui',
-      fontSize: 14.0,
-      fontWeight: FontWeight.bold,
-      decoration: TextDecoration.none
-    ),
     discoverFiltersTitle: TextStyle(
       fontFamily: 'Poppins',
       package: 'scial_app_ui',
@@ -370,6 +357,23 @@ class SCTypographyData {
       decoration: TextDecoration.none
     ),
     discoverFiltersDistance: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 14.0,
+      fontWeight: FontWeight.bold,
+      decoration: TextDecoration.none
+    ),
+
+    // CTA
+
+    ctaText: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 14.0,
+      fontWeight: FontWeight.bold,
+      decoration: TextDecoration.none
+    ),
+    ctaButtonText: TextStyle(
       fontFamily: 'Poppins',
       package: 'scial_app_ui',
       fontSize: 14.0,
@@ -420,8 +424,11 @@ class SCTypographyData {
   final TextStyle notificationsFriendRequestUserName;
   final TextStyle notificationsFriendRequestText;
   final TextStyle notificationsFriendRequestAlreadyAnswered;
-  final TextStyle scialDayCTAText;
-  final TextStyle scialDayCTAButtonForeground;
   final TextStyle discoverFiltersTitle;
   final TextStyle discoverFiltersDistance;
+
+  // CTA
+
+  final TextStyle ctaText;
+  final TextStyle ctaButtonText;
 }

@@ -5,7 +5,7 @@ import 'package:scial_app_flutter/src/features/discover/domain/use_cases/discove
 import 'package:scial_app_flutter/src/features/discover/presentation/widgets/discover_filters_sheet_distance.dart';
 import 'package:scial_app_flutter/src/features/discover/presentation/widgets/discover_filters_sheet_types.dart';
 import 'package:scial_app_flutter/src/features/discover/presentation/widgets/discover_filters_sheet_visibilities.dart';
-import 'package:scial_app_flutter/src/services/location_controller.dart';
+import 'package:scial_app_flutter/src/features/location/presentation/controller/location_controller.dart';
 
 part 'discover_controller.g.dart';
 

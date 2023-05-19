@@ -82,18 +82,24 @@ class SCColorsData {
     required this.notificationsFriendRequestAlreadyAnswered,
     required this.notificationsFriendRequestUserName,
     required this.notificationsFriendRequestText,
-    required this.scialDayCTABackground,
-    required this.scialDayCTAText,
-    required this.scialDayCTAButtonBackground,
-    required this.scialDayCTAButtonForeground,
-    required this.circularSelectorBackground,
-    required this.circularSelectorSelectedBorder,
     required this.discoverFiltersTitle,
     required this.discoverFiltersDistance,
     required this.inactiveTrackColor,
     required this.activeTrackColor,
     required this.thumbColor,
-    required this.eventNoGuestsBackground
+    required this.eventNoGuestsBackground,
+
+    // Circular Selector
+
+    required this.circularSelectorBackground,
+    required this.circularSelectorSelectedBorder,
+
+    // CTA
+
+    required this.ctaBackground,
+    required this.ctaText,
+    required this.ctaButtonBackground,
+    required this.ctaButtonText
   });
 
   factory SCColorsData.light() => const SCColorsData(
@@ -177,17 +183,23 @@ class SCColorsData {
     notificationsFriendRequestUserName: Color(0xFF191919),
     notificationsFriendRequestText: Color(0xFF191919),
     notificationsFriendRequestAlreadyAnswered: Color(0xFF191919),
-    scialDayCTABackground: Color(0xFF4299E1),
-    scialDayCTAText: Color(0xFFFFFFFF),
-    scialDayCTAButtonBackground: Color(0xFFFFFFFF),
-    scialDayCTAButtonForeground: Color(0xFF191919),
-    circularSelectorBackground: Color(0xFF7F7F7F),
-    circularSelectorSelectedBorder: Color(0xFF4299E1),
     discoverFiltersTitle: Color(0xFF191919),
     inactiveTrackColor: Color(0xFF7F7F7F),
     activeTrackColor: Color(0xFF4299E1),
     thumbColor: Color(0xFF4299E1),
-    discoverFiltersDistance: Color(0xFF191919)
+    discoverFiltersDistance: Color(0xFF191919),
+
+    // Circular Selector
+
+    circularSelectorBackground: Color(0xFF7F7F7F),
+    circularSelectorSelectedBorder: Color(0xFF4299E1),
+
+    // CTA
+
+    ctaBackground: Color(0xFF4299E1),
+    ctaText: Color(0xFFFFFFFF),
+    ctaButtonBackground: Color(0xFFFFFFFF),
+    ctaButtonText: Color(0xFF191919)
   );
 
   factory SCColorsData.dark() => const SCColorsData(
@@ -271,17 +283,23 @@ class SCColorsData {
     notificationsFriendRequestUserName: Color(0xFFFBFBFB),
     notificationsFriendRequestText: Color(0xFFFBFBFB),
     notificationsFriendRequestAlreadyAnswered: Color(0xFFFBFBFB),
-    scialDayCTABackground: Color(0xFF3182CE),
-    scialDayCTAText: Color(0xFFFFFFFF),
-    scialDayCTAButtonBackground: Color(0xFFFFFFFF),
-    scialDayCTAButtonForeground: Color(0xFF191919),
-    circularSelectorBackground: Color(0xFF333333),
-    circularSelectorSelectedBorder: Color(0xFF3182CE),
     discoverFiltersTitle: Color(0xFFFBFBFB),
     inactiveTrackColor: Color(0xFF999999),
     activeTrackColor: Color(0xFF3182CE),
     thumbColor: Color(0xFF3182CE),
-    discoverFiltersDistance: Color(0xFFFBFBFB)
+    discoverFiltersDistance: Color(0xFFFBFBFB),
+
+    // Circular Selector
+
+    circularSelectorBackground: Color(0xFF333333),
+    circularSelectorSelectedBorder: Color(0xFF3182CE),
+
+    // CTA
+
+    ctaBackground: Color(0xFF3182CE),
+    ctaText: Color(0xFFFFFFFF),
+    ctaButtonBackground: Color(0xFFFFFFFF),
+    ctaButtonText: Color(0xFF191919)
   );
 
   final Color accent;
@@ -363,16 +381,22 @@ class SCColorsData {
   final Color notificationsFriendRequestAlreadyAnswered;
   final Color notificationsFriendRequestUserName;
   final Color notificationsFriendRequestText;
-  final Color scialDayCTABackground;
-  final Color scialDayCTAText;
-  final Color scialDayCTAButtonBackground;
-  final Color scialDayCTAButtonForeground;
-  final Color circularSelectorBackground;
-  final Color circularSelectorSelectedBorder;
   final Color discoverFiltersTitle;
   final Color inactiveTrackColor;
   final Color activeTrackColor;
   final Color thumbColor;
   final Color discoverFiltersDistance;
   final Color eventNoGuestsBackground;
+
+  // Circular Selector
+
+  final Color circularSelectorBackground;
+  final Color circularSelectorSelectedBorder;
+
+  // CTA
+
+  final Color ctaBackground;
+  final Color ctaText;
+  final Color ctaButtonBackground;
+  final Color ctaButtonText;
 }

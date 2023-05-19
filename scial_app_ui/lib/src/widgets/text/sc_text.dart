@@ -36,10 +36,13 @@ enum SCTextLevel {
   notificationsFriendRequestUserName,
   notificationsFriendRequestText,
   notificationsFriendRequestAlreadyAnswered,
-  scialDayCTAText,
-  scialDayCTAButtonForeground,
   discoverFiltersTitle,
-  discoverFiltersDistance
+  discoverFiltersDistance,
+
+  // CTA
+
+  ctaText,
+  ctaButtonText
 }
 
 class SCText extends StatelessWidget {
@@ -518,34 +521,6 @@ class SCText extends StatelessWidget {
     textAlign = TextAlign.center,
     level = SCTextLevel.notificationsFriendRequestText;
 
-  const SCText.scialDayCTAText(
-    this.text,
-    {
-      super.key,
-      this.color
-    }
-  ) 
-  : height = null,
-    style = null,
-    maxLines = null,
-    overflow = null,
-    textAlign = null,
-    level = SCTextLevel.scialDayCTAText;
-
-  const SCText.scialDayCTAButtonForeground(
-    this.text,
-    {
-      super.key,
-      this.color
-    }
-  ) 
-  : height = null,
-    style = null,
-    maxLines = 1,
-    overflow = TextOverflow.ellipsis,
-    textAlign = TextAlign.center,
-    level = SCTextLevel.scialDayCTAButtonForeground;
-
   const SCText.discoverFiltersDistance(
     this.text,
     {
@@ -573,6 +548,36 @@ class SCText extends StatelessWidget {
     overflow = TextOverflow.ellipsis,
     textAlign = null,
     level = SCTextLevel.discoverFiltersTitle;
+
+  // CTA
+
+  const SCText.ctaText(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = null,
+    overflow = null,
+    textAlign = null,
+    level = SCTextLevel.ctaText;
+
+  const SCText.ctaButtonText(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = 1,
+    overflow = TextOverflow.ellipsis,
+    textAlign = TextAlign.center,
+    level = SCTextLevel.ctaButtonText;
 
   final String text;
   final Color? color;
@@ -622,8 +627,8 @@ class SCText extends StatelessWidget {
         case SCTextLevel.notificationsFriendRequestUserName: return theme.colors.notificationsFriendRequestUserName;
         case SCTextLevel.notificationsFriendRequestText: return theme.colors.notificationsFriendRequestText;
         case SCTextLevel.notificationsFriendRequestAlreadyAnswered: return theme.colors.notificationsFriendRequestAlreadyAnswered;
-        case SCTextLevel.scialDayCTAText: return theme.colors.scialDayCTAText;
-        case SCTextLevel.scialDayCTAButtonForeground: return theme.colors.scialDayCTAButtonForeground;
+        case SCTextLevel.ctaText: return theme.colors.ctaText;
+        case SCTextLevel.ctaButtonText: return theme.colors.ctaButtonText;
         case SCTextLevel.discoverFiltersTitle: return theme.colors.discoverFiltersTitle;
         case SCTextLevel.discoverFiltersDistance: return theme.colors.discoverFiltersDistance;
         default: return null;
@@ -698,10 +703,10 @@ class SCText extends StatelessWidget {
           return theme.typography.notificationsFriendRequestText;
         case SCTextLevel.notificationsFriendRequestAlreadyAnswered: 
           return theme.typography.notificationsFriendRequestAlreadyAnswered;
-        case SCTextLevel.scialDayCTAText:
-          return theme.typography.scialDayCTAText;
-        case SCTextLevel.scialDayCTAButtonForeground:
-          return theme.typography.scialDayCTAButtonForeground;
+        case SCTextLevel.ctaText:
+          return theme.typography.ctaText;
+        case SCTextLevel.ctaButtonText:
+          return theme.typography.ctaButtonText;
         case SCTextLevel.discoverFiltersTitle:
           return theme.typography.discoverFiltersTitle;
         case SCTextLevel.discoverFiltersDistance:

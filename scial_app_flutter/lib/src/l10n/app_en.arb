@@ -81,6 +81,9 @@
     "home_app_bar_title" : "Home",
     "home_scial_day_cta_text" : "The next scial Day is coming up!",
     "home_scial_day_cta_button_title" : "Join",
+    "home_location_cta_button_title" : "Change",
+
+    "location_app_bar_title" : "Change location",
 
     "chats_app_bar_title" : "Inbox",
 
