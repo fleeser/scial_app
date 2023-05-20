@@ -119,9 +119,21 @@ class SCColorsData {
     required this.ctaButtonBackground,
     required this.ctaButtonText,
 
+    // Popup
+
+    required this.popupButtonBackground,
+    required this.popupButtonIcon,
+    required this.popupButtonText,
+
     // Location
 
-    required this.locationListItemText
+    required this.locationListItemText,
+
+    // Editable Users
+
+    required this.editableUsersButtonBackground,
+    required this.editableUsersButtonIcon,
+    required this.editableUsersText
   });
 
   factory SCColorsData.light() => const SCColorsData(
@@ -240,9 +252,21 @@ class SCColorsData {
     ctaButtonBackground: Color(0xFFFFFFFF),
     ctaButtonText: Color(0xFF191919),
 
+    // Popup
+
+    popupButtonBackground: SCPalette.gray300,
+    popupButtonIcon: SCPalette.gray900,
+    popupButtonText: SCPalette.gray900,
+
     // Location
 
-    locationListItemText: SCPalette.gray900
+    locationListItemText: SCPalette.gray900,
+
+    // Editable Users
+
+    editableUsersButtonBackground: SCPalette.gray300,
+    editableUsersButtonIcon: SCPalette.gray900,
+    editableUsersText: SCPalette.gray900
   );
 
   factory SCColorsData.dark() => const SCColorsData(
@@ -361,9 +385,21 @@ class SCColorsData {
     ctaButtonBackground: Color(0xFFFFFFFF),
     ctaButtonText: Color(0xFF191919),
 
+    // Popup
+
+    popupButtonBackground: SCPalette.gray700,
+    popupButtonIcon: SCPalette.gray100,
+    popupButtonText: SCPalette.gray100,
+
     // Location
 
-    locationListItemText: SCPalette.gray100
+    locationListItemText: SCPalette.gray100,
+
+    // Editable Users
+
+    editableUsersButtonBackground: SCPalette.gray700,
+    editableUsersButtonIcon: SCPalette.gray100,
+    editableUsersText: SCPalette.gray100
   );
 
   final Color accent;
@@ -481,7 +517,19 @@ class SCColorsData {
   final Color ctaButtonBackground;
   final Color ctaButtonText;
 
+  // Popup
+
+  final Color popupButtonBackground;
+  final Color popupButtonIcon;
+  final Color popupButtonText;
+
   // Location
 
   final Color locationListItemText;
+
+  // Editable Users
+
+  final Color editableUsersButtonBackground;
+  final Color editableUsersButtonIcon;
+  final Color editableUsersText;
 }

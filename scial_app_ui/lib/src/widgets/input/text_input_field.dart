@@ -7,6 +7,16 @@ import 'package:scial_app_ui/src/widgets/responsive/sc_padding.dart';
 
 class SCTextInputField extends StatelessWidget {
 
+  const SCTextInputField({
+    super.key,
+    this.controller,
+    required this.hint,
+    this.icon,
+    this.enabled = true,
+    this.obscure = false,
+    this.keyboardType = TextInputType.text
+  });
+
   const SCTextInputField.email({
     super.key,
     this.controller,
@@ -39,7 +49,7 @@ class SCTextInputField extends StatelessWidget {
 
   final TextEditingController? controller;
   final bool obscure;
-  final SCIcons icon;
+  final SCIcons? icon;
   final String? hint;
   final TextInputType keyboardType;
   final bool enabled;
@@ -57,10 +67,10 @@ class SCTextInputField extends StatelessWidget {
       ),
       child: Row(
         children: [
-          SCPadding(
+          if (icon != null) SCPadding(
             padding: const SCEdgeInsets.only(left: SCGapSize.regular),
             child: SCIcon(
-              icon: icon,
+              icon: icon!,
               size: 24.0,
               color: theme.colors.textInputIcon
             )

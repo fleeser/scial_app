@@ -52,9 +52,17 @@ enum SCTextLevel {
   ctaText,
   ctaButtonText,
 
+  // Popup
+
+  popupButtonText,
+
   // Location
 
-  locationListItemText
+  locationListItemText,
+
+  // Editable Users
+
+  editableUsersText
 }
 
 class SCText extends StatelessWidget {
@@ -623,6 +631,22 @@ class SCText extends StatelessWidget {
     textAlign = TextAlign.center,
     level = SCTextLevel.ctaButtonText;
 
+  // Popup
+
+  const SCText.popupButtonText(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = 1,
+    overflow = TextOverflow.ellipsis,
+    textAlign = null,
+    level = SCTextLevel.popupButtonText;
+
   // Location
 
   const SCText.locationListItemText(
@@ -638,6 +662,22 @@ class SCText extends StatelessWidget {
     overflow = TextOverflow.ellipsis,
     textAlign = null,
     level = SCTextLevel.locationListItemText;
+
+  // Editable Users
+
+  const SCText.editableUsersText(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = 1,
+    overflow = TextOverflow.ellipsis,
+    textAlign = null,
+    level = SCTextLevel.editableUsersText;
 
   final String text;
   final Color? color;
@@ -687,8 +727,6 @@ class SCText extends StatelessWidget {
         case SCTextLevel.notificationsFriendRequestUserName: return theme.colors.notificationsFriendRequestUserName;
         case SCTextLevel.notificationsFriendRequestText: return theme.colors.notificationsFriendRequestText;
         case SCTextLevel.notificationsFriendRequestAlreadyAnswered: return theme.colors.notificationsFriendRequestAlreadyAnswered;
-        case SCTextLevel.ctaText: return theme.colors.ctaText;
-        case SCTextLevel.ctaButtonText: return theme.colors.ctaButtonText;
         case SCTextLevel.discoverFiltersTitle: return theme.colors.discoverFiltersTitle;
         case SCTextLevel.discoverFiltersDistance: return theme.colors.discoverFiltersDistance;
 
@@ -700,9 +738,22 @@ class SCText extends StatelessWidget {
 
         case SCTextLevel.sheetSubTitle: return theme.colors.sheetSubTitle;
 
+        // CTA
+
+        case SCTextLevel.ctaText: return theme.colors.ctaText;
+        case SCTextLevel.ctaButtonText: return theme.colors.ctaButtonText;
+
+        // Popup
+
+        case SCTextLevel.popupButtonText: return theme.colors.popupButtonText;
+
         // Location
 
         case SCTextLevel.locationListItemText: return theme.colors.locationListItemText;
+
+        // Editable Users
+
+        case SCTextLevel.editableUsersText: return theme.colors.editableUsersText;
 
         default: return null;
       }
@@ -743,8 +794,6 @@ class SCText extends StatelessWidget {
         case SCTextLevel.notificationsFriendRequestUserName: return theme.typography.notificationsFriendRequestUserName;
         case SCTextLevel.notificationsFriendRequestText: return theme.typography.notificationsFriendRequestText;
         case SCTextLevel.notificationsFriendRequestAlreadyAnswered:  return theme.typography.notificationsFriendRequestAlreadyAnswered;
-        case SCTextLevel.ctaText: return theme.typography.ctaText;
-        case SCTextLevel.ctaButtonText: return theme.typography.ctaButtonText;
         case SCTextLevel.discoverFiltersTitle: return theme.typography.discoverFiltersTitle;
         case SCTextLevel.discoverFiltersDistance: return theme.typography.discoverFiltersDistance;
 
@@ -756,9 +805,22 @@ class SCText extends StatelessWidget {
 
         case SCTextLevel.sheetSubTitle: return theme.typography.sheetSubTitle;
 
+        // CTA
+
+        case SCTextLevel.ctaText: return theme.typography.ctaText;
+        case SCTextLevel.ctaButtonText: return theme.typography.ctaButtonText;
+
+        // Popup
+
+        case SCTextLevel.popupButtonText: return theme.typography.popupButtonText;
+
         // Location
 
         case SCTextLevel.locationListItemText: return theme.typography.locationListItemText;
+
+        // Editable Users
+
+        case SCTextLevel.editableUsersText: return theme.typography.editableUsersText;
 
         default: return null;
       }

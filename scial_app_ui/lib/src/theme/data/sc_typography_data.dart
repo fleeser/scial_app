@@ -66,9 +66,17 @@ class SCTypographyData {
     required this.ctaText,
     required this.ctaButtonText,
 
+    // Popup
+
+    required this.popupButtonText,
+
     // Location
 
-    required this.locationListItemText
+    required this.locationListItemText,
+
+    // Editable Users
+
+    required this.editableUsersText
   });
 
   factory SCTypographyData.regular() => const SCTypographyData(
@@ -437,9 +445,29 @@ class SCTypographyData {
       decoration: TextDecoration.none
     ),
 
+    // Popup
+
+    popupButtonText: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 12.0,
+      fontWeight: FontWeight.bold,
+      decoration: TextDecoration.none
+    ),
+
     // Location
 
     locationListItemText: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 14.0,
+      fontWeight: FontWeight.w400,
+      decoration: TextDecoration.none
+    ),
+
+    // Editable Users
+
+    editableUsersText: TextStyle(
       fontFamily: 'Poppins',
       package: 'scial_app_ui',
       fontSize: 14.0,
@@ -511,7 +539,15 @@ class SCTypographyData {
   final TextStyle ctaText;
   final TextStyle ctaButtonText;
 
+  // Popup
+
+  final TextStyle popupButtonText;
+
   // Location
 
   final TextStyle locationListItemText;
+
+  // Editable Users
+
+  final TextStyle editableUsersText;
 }

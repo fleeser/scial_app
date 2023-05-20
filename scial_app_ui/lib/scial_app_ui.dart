@@ -60,3 +60,8 @@ export 'src/widgets/cta/sc_cta.dart';
 export 'src/widgets/location/sc_location_list.dart';
 export 'src/widgets/location/sc_location_list_item.dart' hide SCLocationListItemWidget;
 export 'src/widgets/location/sc_location_loading.dart';
+
+export 'src/widgets/popup/sc_popup_date_button.dart';
+export 'src/widgets/popup/sc_popup_time_button.dart';
+
+export 'src/widgets/editable_users/sc_editable_users.dart';
