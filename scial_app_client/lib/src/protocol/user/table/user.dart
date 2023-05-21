@@ -18,6 +18,7 @@ class User extends _i1.SerializableEntity {
     required this.verified,
     required this.private,
     required this.badges,
+    required this.uniqueCode,
   });
 
   factory User.fromJson(
@@ -38,6 +39,8 @@ class User extends _i1.SerializableEntity {
           serializationManager.deserialize<bool>(jsonSerialization['private']),
       badges: serializationManager
           .deserialize<List<_i2.UserBadge>>(jsonSerialization['badges']),
+      uniqueCode: serializationManager
+          .deserialize<String>(jsonSerialization['uniqueCode']),
     );
   }
 
@@ -58,6 +61,8 @@ class User extends _i1.SerializableEntity {
 
   List<_i2.UserBadge> badges;
 
+  String uniqueCode;
+
   @override
   Map<String, dynamic> toJson() {
     return {
@@ -68,6 +73,7 @@ class User extends _i1.SerializableEntity {
       'verified': verified,
       'private': private,
       'badges': badges,
+      'uniqueCode': uniqueCode,
     };
   }
 }

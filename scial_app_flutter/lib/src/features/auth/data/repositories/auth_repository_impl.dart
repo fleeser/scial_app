@@ -45,9 +45,9 @@ class AuthRepositoryImpl implements AuthRepository {
     bool verificationCodeIsValid = Validator.validateVerificationCode(verificationCode);
     if (!verificationCodeIsValid) throw const AppException.authSignUpVerificationInvalidVerificationCode();
 
-    final ({ int keyId, String key, int userId }) result = await dataSource.signUpVerification(email, verificationCode);
+    final ({ int keyId, String key, int userId, String uniqueCode }) result = await dataSource.signUpVerification(email, verificationCode);
 
-    await KeyValueStorage.storeAuthInfo(result.keyId, result.key, result.userId);
+    await KeyValueStorage.storeAuthInfo(result.keyId, result.key, result.userId, result.uniqueCode);
   }
 
   @override
@@ -86,10 +86,10 @@ class AuthRepositoryImpl implements AuthRepository {
     bool passwordIsValid = Validator.validatePassword(password);
     if (!passwordIsValid) throw const AppException.authForgotPasswordSubmissionWeakPassword();
 
-    final ({ int keyId, String key, int userId })? result = await dataSource.forgotPasswordSubmission(email, verificationCode, password);
+    final ({ int keyId, String key, int userId, String uniqueCode })? result = await dataSource.forgotPasswordSubmission(email, verificationCode, password);
 
     if (result != null) {
-      await KeyValueStorage.storeAuthInfo(result.keyId, result.key, result.userId);
+      await KeyValueStorage.storeAuthInfo(result.keyId, result.key, result.userId, result.uniqueCode);
     }
   }
 
@@ -103,9 +103,9 @@ class AuthRepositoryImpl implements AuthRepository {
     bool passwordIsValid = Validator.validatePassword(password);
     if (!passwordIsValid) throw const AppException.authSignInWeakPassword();
 
-    final ({ int keyId, String key, int userId }) result = await dataSource.signIn(email, password);
+    final ({ int keyId, String key, int userId, String uniqueCode }) result = await dataSource.signIn(email, password);
 
-    await KeyValueStorage.storeAuthInfo(result.keyId, result.key, result.userId);
+    await KeyValueStorage.storeAuthInfo(result.keyId, result.key, result.userId, result.uniqueCode);
   }
 
   @override

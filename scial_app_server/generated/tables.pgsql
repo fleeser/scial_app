@@ -219,7 +219,8 @@ CREATE TABLE "users" (
   "imageUrl" text,
   "verified" boolean NOT NULL,
   "private" boolean NOT NULL,
-  "badges" json NOT NULL
+  "badges" json NOT NULL,
+  "uniqueCode" text NOT NULL
 );
 
 ALTER TABLE ONLY "users"

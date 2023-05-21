@@ -12,6 +12,7 @@ enum AuthSignInResponseCode with _i1.SerializableEntity {
   invalidEmail,
   weakPassword,
   accountNotFound,
+  userNotFound,
   wrongPassword;
 
   static AuthSignInResponseCode? fromJson(int index) {
@@ -23,6 +24,8 @@ enum AuthSignInResponseCode with _i1.SerializableEntity {
       case 2:
         return accountNotFound;
       case 3:
+        return userNotFound;
+      case 4:
         return wrongPassword;
       default:
         return null;

@@ -15,6 +15,7 @@ enum AuthForgotPasswordSubmissionResponseCode with _i1.SerializableEntity {
   requestNotFound,
   wrongVerificationCode,
   accountNotFound,
+  userNotFound,
   samePassword;
 
   static AuthForgotPasswordSubmissionResponseCode? fromJson(int index) {
@@ -32,6 +33,8 @@ enum AuthForgotPasswordSubmissionResponseCode with _i1.SerializableEntity {
       case 5:
         return accountNotFound;
       case 6:
+        return userNotFound;
+      case 7:
         return samePassword;
       default:
         return null;

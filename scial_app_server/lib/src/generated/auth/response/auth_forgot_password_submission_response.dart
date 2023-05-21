@@ -16,6 +16,7 @@ class AuthForgotPasswordSubmissionResponse extends _i1.SerializableEntity {
     this.keyId,
     this.key,
     this.userId,
+    this.uniqueCode,
   });
 
   factory AuthForgotPasswordSubmissionResponse.fromJson(
@@ -32,6 +33,8 @@ class AuthForgotPasswordSubmissionResponse extends _i1.SerializableEntity {
       key: serializationManager.deserialize<String?>(jsonSerialization['key']),
       userId:
           serializationManager.deserialize<int?>(jsonSerialization['userId']),
+      uniqueCode: serializationManager
+          .deserialize<String?>(jsonSerialization['uniqueCode']),
     );
   }
 
@@ -45,6 +48,8 @@ class AuthForgotPasswordSubmissionResponse extends _i1.SerializableEntity {
 
   int? userId;
 
+  String? uniqueCode;
+
   @override
   Map<String, dynamic> toJson() {
     return {
@@ -53,6 +58,7 @@ class AuthForgotPasswordSubmissionResponse extends _i1.SerializableEntity {
       'keyId': keyId,
       'key': key,
       'userId': userId,
+      'uniqueCode': uniqueCode,
     };
   }
 
@@ -64,6 +70,7 @@ class AuthForgotPasswordSubmissionResponse extends _i1.SerializableEntity {
       'keyId': keyId,
       'key': key,
       'userId': userId,
+      'uniqueCode': uniqueCode,
     };
   }
 }

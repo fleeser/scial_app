@@ -15,7 +15,8 @@ enum Boxes {
 enum AuthBoxKeys {
 
   key('key'),
-  userId('userId');
+  userId('userId'),
+  uniqueCode('uniqueCode');
 
   const AuthBoxKeys(this.title);
 
@@ -77,14 +78,16 @@ class KeyValueStorage {
     return _authBox.listenable(keys: [ AuthBoxKeys.userId.title ]);
   }
 
-  static Future<void> storeAuthInfo(int keyId, String key, int userId) async {
+  static Future<void> storeAuthInfo(int keyId, String key, int userId, String uniqueCode) async {
     await _authBox.put(AuthBoxKeys.key.title, '$keyId:$key');
     await _authBox.put(AuthBoxKeys.userId.title, userId);
+    await _authBox.put(AuthBoxKeys.uniqueCode.title, uniqueCode);
   }
 
   static Future<void> removeAuthInfo() async {
     await _authBox.delete(AuthBoxKeys.key.title);
     await _authBox.delete(AuthBoxKeys.userId.title);
+    await _authBox.delete(AuthBoxKeys.uniqueCode.title);
   }
 
   static Future<void> openThemeBox() async {

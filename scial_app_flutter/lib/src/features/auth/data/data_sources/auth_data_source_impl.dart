@@ -26,11 +26,11 @@ class AuthDataSourceImpl implements AuthDataSource {
   }
   
   @override
-  Future<({ int keyId, String key, int userId })> signUpVerification(String email, String verificationCode) async {
+  Future<({ int keyId, String key, int userId, String uniqueCode })> signUpVerification(String email, String verificationCode) async {
     AuthSignUpVerificationResponse response = await client.auth.signUpVerification(email, verificationCode);
 
     if (response.success) {
-      return (keyId: response.keyId!, key: response.key!, userId: response.userId!);
+      return (keyId: response.keyId!, key: response.key!, userId: response.userId!, uniqueCode: response.uniqueCode!);
     }
 
     switch (response.code) {
@@ -71,12 +71,12 @@ class AuthDataSourceImpl implements AuthDataSource {
   }
 
   @override
-  Future<({ int keyId, String key, int userId })?> forgotPasswordSubmission(String email, String verificationCode, String password) async {
+  Future<({ int keyId, String key, int userId, String uniqueCode })?> forgotPasswordSubmission(String email, String verificationCode, String password) async {
     AuthForgotPasswordSubmissionResponse response = await client.auth.forgotPasswordSubmission(email, verificationCode, password);
 
     if (response.success) {
       if (response.keyId != null) {
-        return (keyId: response.keyId!, key: response.key!, userId: response.userId!);
+        return (keyId: response.keyId!, key: response.key!, userId: response.userId!, uniqueCode: response.uniqueCode!);
       }
 
       return null;
@@ -89,23 +89,25 @@ class AuthDataSourceImpl implements AuthDataSource {
       case AuthForgotPasswordSubmissionResponseCode.requestNotFound: throw const ServerException.authForgotPasswordSubmissionRequestNotFound();
       case AuthForgotPasswordSubmissionResponseCode.wrongVerificationCode: throw const ServerException.authForgotPasswordSubmissionWrongVerificationCode();
       case AuthForgotPasswordSubmissionResponseCode.accountNotFound: throw const ServerException.authForgotPasswordSubmissionAccountNotFound();
+      case AuthForgotPasswordSubmissionResponseCode.userNotFound: throw const ServerException.authForgotPasswordSubmissionUserNotFound();
       case AuthForgotPasswordSubmissionResponseCode.samePassword: throw const ServerException.authForgotPasswordSubmissionSamePassword();
       default: throw const ServerException.unknownError();
     }
   }
 
   @override
-  Future<({ int keyId, String key, int userId })> signIn(String email, String password) async {
+  Future<({ int keyId, String key, int userId, String uniqueCode })> signIn(String email, String password) async {
     AuthSignInResponse response = await client.auth.signIn(email, password);
 
     if (response.success) {
-      return (keyId: response.keyId!, key: response.key!, userId: response.userId!);
+      return (keyId: response.keyId!, key: response.key!, userId: response.userId!, uniqueCode: response.uniqueCode!);
     }
 
     switch (response.code) {
       case AuthSignInResponseCode.invalidEmail: throw const ServerException.authSignInInvalidEmail();
       case AuthSignInResponseCode.weakPassword: throw const ServerException.authSignInWeakPassword();
       case AuthSignInResponseCode.accountNotFound: throw const ServerException.authSignInAccountNotFound();
+      case AuthSignInResponseCode.userNotFound: throw const ServerException.authSignInUserNotFound();
       case AuthSignInResponseCode.wrongPassword: throw const ServerException.authSignInWrongPassword();
       default: throw const ServerException.unknownError();
     }

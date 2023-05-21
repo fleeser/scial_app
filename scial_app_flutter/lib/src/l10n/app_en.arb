@@ -199,11 +199,13 @@
     "auth_forgot_password_submission_request_not_found" : "No request found for resetting your password.",
     "auth_forgot_password_submission_wrong_verification_code" : "The verification code is wrong.",
     "auth_forgot_password_submission_account_not_found" : "An account with this E-Mail-Address does not exist.",
+    "auth_forgot_password_submission_user_not_found" : "User not found.",
     "auth_forgot_password_submission_same_password" : "The new password can not match with your new password.",
 
     "auth_sign_in_invalid_email" : "This does not seem to be an E-Mail-Address.",
     "auth_sign_in_weak_password" : "Pretty sure this is not what a password looks like.",
     "auth_sign_in_account_not_found" : "An account with this E-Mail-Address does not exist.",
+    "auth_sign_in_user_not_found" : "User not found.",
     "auth_sign_in_wrong_password" : "Was this really your password?",
 
     "auth_change_password_weak_old_password" : "Pretty sure this is not what your old password looked like.",

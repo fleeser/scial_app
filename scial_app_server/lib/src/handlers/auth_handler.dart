@@ -20,6 +20,7 @@ import 'package:scial_app_server/src/generated/auth/table/auth_sign_up_request.d
 import 'package:scial_app_server/src/generated/user/table/user.dart';
 import 'package:scial_app_server/src/util/emailer.dart';
 import 'package:scial_app_server/src/util/password_hash_generator.dart';
+import 'package:scial_app_server/src/util/unique_code_generator.dart';
 import 'package:scial_app_server/src/util/verification_code_generator.dart';
 import 'package:serverpod/protocol.dart';
 import 'package:serverpod/serverpod.dart';
@@ -115,11 +116,17 @@ class AuthHandler {
       );
     }
 
+    late String uniqueCode;
+    do {
+      uniqueCode = UniqueCodeGenerator.generate();
+    } while ((await User.findSingleRow(session, where: (t) => t.uniqueCode.equals(uniqueCode))) != null);
+
     User user = User(
       created: DateTime.now(),
       verified: false,
       private: true,
-      badges: []
+      badges: [],
+      uniqueCode: uniqueCode
     );
 
     await User.insert(session, user);
@@ -138,7 +145,8 @@ class AuthHandler {
       success: true,
       keyId: key.id,
       key: key.key,
-      userId: key.userId
+      userId: key.userId,
+      uniqueCode: uniqueCode
     );
   }
 
@@ -273,6 +281,15 @@ class AuthHandler {
       ); 
     }
 
+    User? userRow = await User.findById(session, auth.userId);
+
+    if (userRow == null) {
+      return AuthForgotPasswordSubmissionResponse(
+        success: false,
+        code: AuthForgotPasswordSubmissionResponseCode.userNotFound
+      );
+    }
+
     String hash = PasswordHashGenerator.generate(password);
 
     if (auth.hash == hash) {
@@ -295,7 +312,8 @@ class AuthHandler {
       success: true,
       keyId: key?.id,
       key: key?.key,
-      userId: key?.userId
+      userId: key?.userId,
+      uniqueCode: userRow.uniqueCode
     );
   }
 
@@ -327,6 +345,15 @@ class AuthHandler {
       );
     }
 
+    User? userRow = await User.findById(session, auth.userId);
+
+    if (userRow == null) {
+      return AuthSignInResponse(
+        success: false,
+        code: AuthSignInResponseCode.userNotFound
+      );
+    }
+
     String passwordHash = PasswordHashGenerator.generate(password);
 
     if (auth.hash != passwordHash) {
@@ -342,7 +369,8 @@ class AuthHandler {
       success: true,
       keyId: key.id,
       key: key.key,
-      userId: key.userId
+      userId: key.userId,
+      uniqueCode: userRow.uniqueCode
     );
   }
 

@@ -30,11 +30,13 @@ class ServerException with _$ServerException {
   const factory ServerException.authForgotPasswordSubmissionRequestNotFound() = AuthForgotPasswordSubmissionRequestNotFound;
   const factory ServerException.authForgotPasswordSubmissionWrongVerificationCode() = AuthForgotPasswordSubmissionWrongVerificationCode;
   const factory ServerException.authForgotPasswordSubmissionAccountNotFound() = AuthForgotPasswordSubmissionAccountNotFound;
+  const factory ServerException.authForgotPasswordSubmissionUserNotFound() = AuthForgotPasswordSubmissionUserNotFound;
   const factory ServerException.authForgotPasswordSubmissionSamePassword() = AuthForgotPasswordSubmissionSamePassword;
 
   const factory ServerException.authSignInInvalidEmail() = AuthSignInInvalidEmail;
   const factory ServerException.authSignInWeakPassword() = AuthSignInWeakPassword;
   const factory ServerException.authSignInAccountNotFound() = AuthSignInAccountNotFound;
+  const factory ServerException.authSignInUserNotFound() = AuthSignInUserNotFound;
   const factory ServerException.authSignInWrongPassword() = AuthSignInWrongPassword;
 
   const factory ServerException.authChangePasswordWeakOldPassword() = AuthChangePasswordWeakOldPassword;
@@ -108,11 +110,13 @@ extension ServerExceptionExtension on ServerException {
       authForgotPasswordSubmissionRequestNotFound: () => AppLocalizations.of(context)!.auth_forgot_password_submission_request_not_found,
       authForgotPasswordSubmissionWrongVerificationCode: () => AppLocalizations.of(context)!.auth_forgot_password_submission_wrong_verification_code,
       authForgotPasswordSubmissionAccountNotFound: () => AppLocalizations.of(context)!.auth_forgot_password_submission_account_not_found,
+      authForgotPasswordSubmissionUserNotFound: () => AppLocalizations.of(context)!.auth_forgot_password_submission_user_not_found,
       authForgotPasswordSubmissionSamePassword: () => AppLocalizations.of(context)!.auth_forgot_password_submission_same_password,
 
       authSignInInvalidEmail: () => AppLocalizations.of(context)!.auth_sign_in_invalid_email,
       authSignInWeakPassword: () => AppLocalizations.of(context)!.auth_sign_in_weak_password,
       authSignInAccountNotFound: () => AppLocalizations.of(context)!.auth_sign_in_account_not_found,
+      authSignInUserNotFound: () => AppLocalizations.of(context)!.auth_sign_in_user_not_found,
       authSignInWrongPassword: () => AppLocalizations.of(context)!.auth_sign_in_wrong_password,
 
       authChangePasswordWeakOldPassword: () => AppLocalizations.of(context)!.auth_change_password_weak_old_password,

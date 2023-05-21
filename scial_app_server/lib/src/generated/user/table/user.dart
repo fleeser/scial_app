@@ -18,6 +18,7 @@ class User extends _i1.TableRow {
     required this.verified,
     required this.private,
     required this.badges,
+    required this.uniqueCode,
   }) : super(id);
 
   factory User.fromJson(
@@ -38,6 +39,8 @@ class User extends _i1.TableRow {
           serializationManager.deserialize<bool>(jsonSerialization['private']),
       badges: serializationManager
           .deserialize<List<_i2.UserBadge>>(jsonSerialization['badges']),
+      uniqueCode: serializationManager
+          .deserialize<String>(jsonSerialization['uniqueCode']),
     );
   }
 
@@ -55,6 +58,8 @@ class User extends _i1.TableRow {
 
   List<_i2.UserBadge> badges;
 
+  String uniqueCode;
+
   @override
   String get tableName => 'users';
   @override
@@ -67,6 +72,7 @@ class User extends _i1.TableRow {
       'verified': verified,
       'private': private,
       'badges': badges,
+      'uniqueCode': uniqueCode,
     };
   }
 
@@ -80,6 +86,7 @@ class User extends _i1.TableRow {
       'verified': verified,
       'private': private,
       'badges': badges,
+      'uniqueCode': uniqueCode,
     };
   }
 
@@ -93,6 +100,7 @@ class User extends _i1.TableRow {
       'verified': verified,
       'private': private,
       'badges': badges,
+      'uniqueCode': uniqueCode,
     };
   }
 
@@ -122,6 +130,9 @@ class User extends _i1.TableRow {
         return;
       case 'badges':
         badges = value;
+        return;
+      case 'uniqueCode':
+        uniqueCode = value;
         return;
       default:
         throw UnimplementedError();
@@ -259,6 +270,8 @@ class UserTable extends _i1.Table {
 
   final badges = _i1.ColumnSerializable('badges');
 
+  final uniqueCode = _i1.ColumnString('uniqueCode');
+
   @override
   List<_i1.Column> get columns => [
         id,
@@ -268,6 +281,7 @@ class UserTable extends _i1.Table {
         verified,
         private,
         badges,
+        uniqueCode,
       ];
 }
 
