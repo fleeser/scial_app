@@ -3,6 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:scial_app_client/scial_app_client.dart';
 import 'package:scial_app_flutter/src/features/search_user/domain/use_cases/search_user_search_use_case.dart';
+import 'package:scial_app_flutter/src/features/search_user/presentation/widgets/select_users_list.dart';
 import 'package:scial_app_ui/scial_app_ui.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -13,7 +14,20 @@ Future<List<PublicUserSearchUser>> searchUsers(SearchUsersRef ref, String search
   return await ref.read(searchUserSearchUseCaseProvider).call(SearchUserSearchUseCaseParams(searchText: searchText));
 }
 
-Future<void> showSelectUsersSheet(BuildContext context) async {
+class SelectedUsersNotifier extends StateNotifier<List<PublicUserSearchUser>> {
+
+  SelectedUsersNotifier() : super([]);
+
+  void addUser(PublicUserSearchUser user) {
+    state = [ ...state, user ];
+  }
+
+  void removeUser(int userId) {
+    state = [ for (final user in state) if (user.id != userId) user ];
+  }
+}
+
+Future<void> showSelectUsersSheet(BuildContext context, AutoDisposeStateNotifierProvider<SelectedUsersNotifier, List<PublicUserSearchUser>> selectedUsersProvider) async {
   
   SCThemeData theme = SCTheme.of(context);
 
@@ -25,13 +39,18 @@ Future<void> showSelectUsersSheet(BuildContext context) async {
     useSafeArea: true,
     shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(12.0))),
     backgroundColor: theme.colors.sheetBackground,
-    builder: (BuildContext context) => const SelectUsersSheet()
+    builder: (BuildContext context) => SelectUsersSheet(selectedUsersProvider: selectedUsersProvider)
   );
 }
 
 class SelectUsersSheet extends ConsumerStatefulWidget {
 
-  const SelectUsersSheet({ super.key });
+  const SelectUsersSheet({ 
+    super.key,
+    required this.selectedUsersProvider
+  });
+
+  final AutoDisposeStateNotifierProvider<SelectedUsersNotifier, List<PublicUserSearchUser>> selectedUsersProvider;
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _SelectUsersSheetState();
@@ -58,6 +77,7 @@ class _SelectUsersSheetState extends ConsumerState<SelectUsersSheet> {
     final bool isExpanded = ref.watch(isExpandedProvider);
     final String searchText = ref.watch(searchTextProvider);
     final AsyncValue<List<PublicUserSearchUser>> searchUsersValue = ref.watch(searchUsersProvider(searchText));
+    final List<PublicUserSearchUser> selectedUsers = ref.watch(widget.selectedUsersProvider);
 
     return SingleChildScrollView(
       child: Column(
@@ -97,15 +117,33 @@ class _SelectUsersSheetState extends ConsumerState<SelectUsersSheet> {
           ),
           const SCGap.semiBig(),
           searchText.isNotEmpty
-              ? searchUsersValue.when(
-                data: (List<PublicUserSearchUser> users) => users.isEmpty
-                  ? Text('empty')
-                  : Text(users.length.toString()), 
-                error: (Object e, StackTrace s) => Text(e.toString()), // TODO fehler nh 
-                loading: () => Text('lädt')
-              )
-              : Text('gib was ein')
-          ,
+            ? searchUsersValue.when(
+              data: (List<PublicUserSearchUser> users) {
+
+                if (users.isNotEmpty) {
+
+                  List<int> selectedUserIds = selectedUsers.map((user) => user.id).toList();
+
+                  return SelectUsersList(
+                    users: users,
+                    selectedUserIds: selectedUserIds, 
+                    addBottomPadding: true,
+                    onSelected: (int userId) {
+                      if (selectedUserIds.contains(userId)) {
+                        ref.read(widget.selectedUsersProvider.notifier).removeUser(userId);
+                      } else {
+                        ref.read(widget.selectedUsersProvider.notifier).addUser(users.firstWhere((user) => user.id == userId));
+                      }
+                    }
+                  );
+                }
+
+                return Text('empty');
+              }, 
+              error: (Object e, StackTrace s) => Text(e.toString()), // TODO fehler nh 
+              loading: () => Text('lädt')
+            )
+            : Text('gib was ein'),
           SizedBox(height: SCGapSize.semiBig.getSpacing(theme) + (MediaQuery.of(context).viewInsets.bottom > 0.0 ? MediaQuery.of(context).viewInsets.bottom : MediaQuery.of(context).padding.bottom))
         ]
       )

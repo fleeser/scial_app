@@ -261,7 +261,6 @@
     "location_name_not_found" : "Name des Standorts nicht gefunden.",
 
     "search_user_search_invalid_unique_code" : "Der Code muss genau aus 8 Ziffern und Buchstaben bestehen.",
-    "search_user_search_user_not_found" : "Eigener Benutzer nicht gefunden.",
 
     "no_internet_connection" : "Keine Internetverbindung möglich.",
 

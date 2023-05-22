@@ -79,7 +79,6 @@ class ServerException with _$ServerException {
   const factory ServerException.eventGuestsIsProtected() = EventGuestsIsProtected;
 
   const factory ServerException.searchUserSearchInvalidUniqueCode() = SearchUserSearchInvalidUniqueCode;
-  const factory ServerException.searchUserSearchUserNotFound() = SearchUserSearchUserNotFound;
 
   const factory ServerException.notAuthenticated() = NotAuthenticated;
 
@@ -162,7 +161,6 @@ extension ServerExceptionExtension on ServerException {
       eventGuestsIsProtected: () => AppLocalizations.of(context)!.event_guests_is_protected,
 
       searchUserSearchInvalidUniqueCode: () => AppLocalizations.of(context)!.search_user_search_invalid_unique_code,
-      searchUserSearchUserNotFound: () => AppLocalizations.of(context)!.search_user_search_user_not_found,
 
       notAuthenticated: () => AppLocalizations.of(context)!.not_authenticated,
 

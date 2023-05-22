@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:scial_app_client/scial_app_client.dart';
+import 'package:scial_app_flutter/src/extensions/time_text_extensions.dart';
 import 'package:scial_app_flutter/src/extensions/event_type_extension.dart';
 import 'package:scial_app_flutter/src/extensions/event_visibility_extension.dart';
 import 'package:scial_app_flutter/src/features/create_event/presentation/controller/create_event_controller.dart';
@@ -27,7 +28,7 @@ Future<void> showCreateEventSheet(BuildContext context) async {
     useSafeArea: true,
     shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(12.0))),
     backgroundColor: theme.colors.sheetBackground,
-    builder: (BuildContext context) => const CreateEventSheet()
+    builder: (BuildContext context) => const CreateEventSheet() // TODO: Hosts and guests can not be in one
   );
 }
 
@@ -41,6 +42,25 @@ class CreateEventSheet extends ConsumerStatefulWidget {
 
 class _CreateEventSheetState extends ConsumerState<CreateEventSheet> {
 
+  late AutoDisposeStateProvider<DateTime?> selectedStartDateProvider;
+  late AutoDisposeStateProvider<DateTime?> selectedEndDateProvider;
+  late AutoDisposeStateProvider<TimeOfDay?> selectedStartTimeProvider;
+  late AutoDisposeStateProvider<TimeOfDay?> selectedEndTimeProvider;
+  late AutoDisposeStateNotifierProvider<SelectedUsersNotifier, List<PublicUserSearchUser>> selectedHostsProvider;
+  late AutoDisposeStateNotifierProvider<SelectedUsersNotifier, List<PublicUserSearchUser>> selectedGuestsProvider;
+
+  @override
+  void initState() {
+    super.initState();
+
+    selectedStartDateProvider = AutoDisposeStateProvider<DateTime?>((ref) => null);
+    selectedEndDateProvider = AutoDisposeStateProvider<DateTime?>((ref) => null);
+    selectedStartTimeProvider = AutoDisposeStateProvider<TimeOfDay?>((ref) => null);
+    selectedEndTimeProvider = AutoDisposeStateProvider<TimeOfDay?>((ref) => null);
+    selectedHostsProvider = AutoDisposeStateNotifierProvider<SelectedUsersNotifier, List<PublicUserSearchUser>>((ref) => SelectedUsersNotifier());
+    selectedGuestsProvider = AutoDisposeStateNotifierProvider<SelectedUsersNotifier, List<PublicUserSearchUser>>((ref) => SelectedUsersNotifier());
+  }
+
   @override
   Widget build(BuildContext context) {
     
@@ -50,6 +70,12 @@ class _CreateEventSheetState extends ConsumerState<CreateEventSheet> {
     final EventType selectedEventType = ref.watch(createEventSelectedEventTypeProvider);
     final EventVisibility selectedEventVisibility = ref.watch(createEventSelectedEventVisibilityProvider);
     final locationController = ref.watch(locationControllerProvider);
+    final List<PublicUserSearchUser> selectedHosts = ref.watch(selectedHostsProvider);
+    final List<PublicUserSearchUser> selectedGuests = ref.watch(selectedGuestsProvider);
+    final DateTime? selectedStartDate = ref.watch(selectedStartDateProvider);
+    final DateTime? selectedEndDate = ref.watch(selectedEndDateProvider);
+    final TimeOfDay? selectedStartTime = ref.watch(selectedStartTimeProvider);
+    final TimeOfDay? selectedEndTime = ref.watch(selectedEndTimeProvider);
 
     return SingleChildScrollView(
       child: Column(
@@ -107,14 +133,20 @@ class _CreateEventSheetState extends ConsumerState<CreateEventSheet> {
                 Expanded(
                   flex: 3,
                   child: SCPopupDateButton(
-                    emptyDateText: AppLocalizations.of(context)!.create_event_sheet_empty_time
+                    emptyDateText: AppLocalizations.of(context)!.create_event_sheet_empty_time,
+                    initialDate: selectedStartDate,
+                    onSelected: (DateTime date) => ref.read(selectedStartDateProvider.notifier).update((state) => state = date),
+                    formatDate: (DateTime date) => date.toDynamicDateText(context)
                   )
                 ),
                 const SCGap.regular(),
                 Expanded(
                   flex: 2,
                   child: SCPopupTimeButton(
-                    emptyTimeText: AppLocalizations.of(context)!.create_event_sheet_empty_time
+                    emptyTimeText: AppLocalizations.of(context)!.create_event_sheet_empty_time,
+                    initialTime: selectedStartTime,
+                    onSelected: (TimeOfDay time) => ref.read(selectedStartTimeProvider.notifier).update((state) => state = time),
+                    formatTime: (TimeOfDay time) => time.toStaticTimeText(context)
                   )
                 )
               ]
@@ -130,14 +162,20 @@ class _CreateEventSheetState extends ConsumerState<CreateEventSheet> {
                 Expanded(
                   flex: 3,
                   child: SCPopupDateButton(
-                    emptyDateText: AppLocalizations.of(context)!.create_event_sheet_empty_time
+                    emptyDateText: AppLocalizations.of(context)!.create_event_sheet_empty_time,
+                    initialDate: selectedEndDate,
+                    onSelected: (DateTime date) => ref.read(selectedEndDateProvider.notifier).update((state) => state = date),
+                    formatDate: (DateTime date) => date.toDynamicDateText(context)
                   )
                 ),
                 const SCGap.regular(),
                 Expanded(
                   flex: 2,
                   child: SCPopupTimeButton(
-                    emptyTimeText: AppLocalizations.of(context)!.create_event_sheet_empty_time
+                    emptyTimeText: AppLocalizations.of(context)!.create_event_sheet_empty_time,
+                    initialTime: selectedEndTime,
+                    onSelected: (TimeOfDay time) => ref.read(selectedEndTimeProvider.notifier).update((state) => state = time),
+                    formatTime: (TimeOfDay time) => time.toStaticTimeText(context)
                   )
                 )
               ]
@@ -256,15 +294,17 @@ class _CreateEventSheetState extends ConsumerState<CreateEventSheet> {
           CreateEventSheetSubtitle(subtitle: AppLocalizations.of(context)!.create_event_sheet_hosts_subtitle),
           const SCGap.semiBig(),
           SCEditableUsers(
-            onEditPressed: _handleSelectUsers,
-            emptyText: AppLocalizations.of(context)!.create_event_sheet_hosts_empty_hosts
+            onEditPressed: _handleSelectHosts,
+            emptyText: AppLocalizations.of(context)!.create_event_sheet_hosts_empty_hosts,
+            imageUrls: selectedHosts.map((user) => user.imageUrl).toList()
           ),
           const SCGap.semiBig(),
           CreateEventSheetSubtitle(subtitle: AppLocalizations.of(context)!.create_event_sheet_invitations_subtitle),
           const SCGap.semiBig(),
           SCEditableUsers(
-            onEditPressed: _handleSelectUsers,
-            emptyText: AppLocalizations.of(context)!.create_event_sheet_invitations_empty_invitations
+            onEditPressed: _handleSelectGuests,
+            emptyText: AppLocalizations.of(context)!.create_event_sheet_invitations_empty_invitations,
+            imageUrls: selectedGuests.map((user) => user.imageUrl).toList()
           ),
           const SCGap.semiBig(),
           SCPadding(
@@ -291,8 +331,12 @@ class _CreateEventSheetState extends ConsumerState<CreateEventSheet> {
     await showLocationSheet(context);
   }
 
-  Future<void> _handleSelectUsers() async {
-    await showSelectUsersSheet(context);
+  Future<void> _handleSelectHosts() async {
+    await showSelectUsersSheet(context, selectedHostsProvider);
+  }
+
+  Future<void> _handleSelectGuests() async {
+    await showSelectUsersSheet(context, selectedGuestsProvider);
   }
 
   Widget _locationEmptyText(Color color) {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scial_app_client/scial_app_client.dart';
-import 'package:scial_app_flutter/src/extensions/date_time_extension.dart';
+import 'package:scial_app_flutter/src/extensions/time_text_extensions.dart';
 import 'package:scial_app_flutter/src/features/notifications/presentation/widgets/notifications_friend_request_sheet.dart';
 import 'package:scial_app_flutter/src/routing/app_router.dart';
 import 'package:scial_app_ui/scial_app_ui.dart';

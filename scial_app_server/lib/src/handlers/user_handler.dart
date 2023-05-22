@@ -396,19 +396,10 @@ class UserHandler {
       }
     }
 
-    User? authUserRow = await User.findById(session, authUserId);
-
-    if (authUserRow == null) {
-      return UserSearchResponse(
-        success: false,
-        code: UserSearchResponseCode.userNotFound
-      );
-    }
-
     List<PublicUserSearchUser> users = [];
 
     if (searchText.startsWith('#')) {
-      User? userRow = await User.findSingleRow(session, where: (t) => t.uniqueCode.equals(searchText.substring(1)) & t.uniqueCode.notEquals(authUserRow.uniqueCode));
+      User? userRow = await User.findSingleRow(session, where: (t) => t.uniqueCode.equals(searchText.substring(1)) & t.id.notEquals(authUserId));
 
       if (userRow != null) {
         PublicUserSearchUser user = PublicUserSearchUser(
@@ -421,7 +412,8 @@ class UserHandler {
         users.add(user);
       }
     } else {
-      List<User> userRows = await User.find(session, where: (t) => t.name.like(searchText) & t.uniqueCode.notEquals(authUserRow.uniqueCode), limit: limit, offset: offset);
+      Expression expression = Expression("name LIKE '%$searchText%' AND id != $authUserId");
+      List<User> userRows = await User.find(session, where: (t) => expression, limit: limit, offset: offset);
 
       for (User userRow in userRows) {
         PublicUserSearchUser user = PublicUserSearchUser(

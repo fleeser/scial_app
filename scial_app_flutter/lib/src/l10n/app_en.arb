@@ -260,7 +260,6 @@
     "location_name_not_found" : "Location name not found.",
 
     "search_user_search_invalid_unique_code" : "The code must consist exactly of 8 digits and upper case letters.",
-    "search_user_search_user_not_found" : "Own user not found.",
 
     "no_internet_connection" : "No connection to the internet possible.",
 

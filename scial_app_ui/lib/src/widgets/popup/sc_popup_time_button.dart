@@ -5,12 +5,16 @@ class SCPopupTimeButton extends StatelessWidget {
 
   const SCPopupTimeButton({
     super.key,
-    this.selectedTimeText,
-    required this.emptyTimeText
+    this.initialTime,
+    required this.emptyTimeText,
+    this.onSelected,
+    required this.formatTime
   });
 
-  final String? selectedTimeText;
+  final TimeOfDay? initialTime;
   final String emptyTimeText;
+  final void Function(TimeOfDay)? onSelected;
+  final String Function(TimeOfDay) formatTime;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +25,16 @@ class SCPopupTimeButton extends StatelessWidget {
       height: 48.0,
       width: double.infinity,
       child: RawMaterialButton(
-        onPressed: () {},
+        onPressed: () async {
+          TimeOfDay? selectedTime = await showTimePicker(
+            context: context, 
+            initialTime: initialTime ?? TimeOfDay.now()
+          );
+
+          if (selectedTime != null && onSelected != null) {
+            onSelected!.call(selectedTime);
+          }
+        },
         padding: const SCEdgeInsets.symmetric(horizontal: SCGapSize.semiSmall).toEdgeInsets(theme),
         fillColor: theme.colors.popupButtonBackground,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
@@ -35,7 +48,11 @@ class SCPopupTimeButton extends StatelessWidget {
             ),
             const SCGap.semiSmall(),
             Expanded(
-              child: SCText.popupButtonText(selectedTimeText ?? emptyTimeText)
+              child: SCText.popupButtonText(
+                initialTime == null
+                  ? emptyTimeText
+                  : formatTime.call(initialTime!)
+              )
             )
           ]
         )

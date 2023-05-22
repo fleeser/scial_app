@@ -20,7 +20,6 @@ class SearchUserDataSourceImpl implements SearchUserDataSource {
     switch (response.code) {
       case UserSearchResponseCode.notAuthenticated: throw const ServerException.notAuthenticated();
       case UserSearchResponseCode.invalidUniqueCode: throw const ServerException.searchUserSearchInvalidUniqueCode();
-      case UserSearchResponseCode.userNotFound: throw const ServerException.searchUserSearchUserNotFound();
       default: throw const ServerException.unknownError();
     }
   }

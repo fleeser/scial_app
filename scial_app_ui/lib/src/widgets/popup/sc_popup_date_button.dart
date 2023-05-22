@@ -5,12 +5,16 @@ class SCPopupDateButton extends StatelessWidget {
 
   const SCPopupDateButton({
     super.key,
-    this.selectedDateText,
-    required this.emptyDateText
+    this.initialDate,
+    required this.emptyDateText,
+    this.onSelected,
+    required this.formatDate
   });
 
-  final String? selectedDateText;
+  final DateTime? initialDate;
   final String emptyDateText;
+  final void Function(DateTime)? onSelected;
+  final String Function(DateTime) formatDate;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +25,18 @@ class SCPopupDateButton extends StatelessWidget {
       height: 48.0,
       width: double.infinity,
       child: RawMaterialButton(
-        onPressed: () {},
+        onPressed: () async {
+          DateTime? selectedDateTime = await showDatePicker(
+            context: context, 
+            initialDate: initialDate ?? DateTime.now(), 
+            firstDate: DateTime.now().subtract(const Duration(days: 10)), 
+            lastDate: DateTime.now().add(const Duration(days: 100))
+          );
+
+          if (selectedDateTime != null && onSelected != null) {
+            onSelected!.call(selectedDateTime);
+          }
+        },
         padding: const SCEdgeInsets.symmetric(horizontal: SCGapSize.semiSmall).toEdgeInsets(theme),
         fillColor: theme.colors.popupButtonBackground,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
@@ -35,7 +50,11 @@ class SCPopupDateButton extends StatelessWidget {
             ),
             const SCGap.semiSmall(),
             Expanded(
-              child: SCText.popupButtonText(selectedDateText ?? emptyDateText)
+              child: SCText.popupButtonText(
+                initialDate == null
+                  ? emptyDateText
+                  : formatDate.call(initialDate!)
+              )
             )
           ]
         )

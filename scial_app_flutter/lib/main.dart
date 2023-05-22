@@ -30,6 +30,8 @@ void main() async {
 
   //await KeyValueStorage.removeAuthInfo();
 
+  //await client.test.test();
+
   // await client.openStreamingConnection(disconnectOnLostInternetConnection: false);
 
   runApp(const ProviderScope(child: App()));

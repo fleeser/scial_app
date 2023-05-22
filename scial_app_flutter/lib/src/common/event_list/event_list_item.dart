@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scial_app_client/scial_app_client.dart';
-import 'package:scial_app_flutter/src/extensions/date_time_extension.dart';
+import 'package:scial_app_flutter/src/extensions/time_text_extensions.dart';
 import 'package:scial_app_flutter/src/extensions/distance_extension.dart';
 import 'package:scial_app_flutter/src/extensions/event_type_extension.dart';
 import 'package:scial_app_flutter/src/extensions/event_visibility_extension.dart';

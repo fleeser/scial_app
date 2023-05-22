@@ -75,3 +75,22 @@ extension DateTimeExtension on DateTime {
     return number.toString().padLeft(count, '0');
   }
 }
+
+extension TimeOfDayExtension on TimeOfDay {
+
+  String toStaticTimeText(BuildContext context) {
+    Locale locale = Localizations.localeOf(context);
+
+    bool isEnglishUS = <Locale>[ const Locale('en'), const Locale('en', 'US') ].contains(locale);
+
+    if (isEnglishUS) {
+      return '${hour == 0 ? 12 : _padZeros(hour > 12 ? hour - 12 : hour, 2)}:${_padZeros(minute, 2)} ${hour < 12 ? 'AM' : 'PM'}';
+    }
+
+    return '${_padZeros(hour, 2)}:${_padZeros(minute, 2)} Uhr';
+  }
+
+  String _padZeros(int number, int count) {
+    return number.toString().padLeft(count, '0');
+  }
+}

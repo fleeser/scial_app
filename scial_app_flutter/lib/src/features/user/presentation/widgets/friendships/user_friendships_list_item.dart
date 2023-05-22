@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scial_app_client/scial_app_client.dart';
-import 'package:scial_app_flutter/src/extensions/date_time_extension.dart';
+import 'package:scial_app_flutter/src/extensions/time_text_extensions.dart';
 import 'package:scial_app_flutter/src/features/user/presentation/widgets/friendships/user_friendships_list_item_badges.dart';
 import 'package:scial_app_ui/scial_app_ui.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

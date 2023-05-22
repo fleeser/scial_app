@@ -10,8 +10,7 @@ import 'package:serverpod/serverpod.dart' as _i1;
 
 enum UserSearchResponseCode with _i1.SerializableEntity {
   notAuthenticated,
-  invalidUniqueCode,
-  userNotFound;
+  invalidUniqueCode;
 
   static UserSearchResponseCode? fromJson(int index) {
     switch (index) {
@@ -19,8 +18,6 @@ enum UserSearchResponseCode with _i1.SerializableEntity {
         return notAuthenticated;
       case 1:
         return invalidUniqueCode;
-      case 2:
-        return userNotFound;
       default:
         return null;
     }
