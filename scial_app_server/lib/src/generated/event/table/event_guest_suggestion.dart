@@ -7,15 +7,17 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod/serverpod.dart' as _i1;
+import '../../protocol.dart' as _i2;
 
 class EventGuestSuggestion extends _i1.TableRow {
   EventGuestSuggestion({
     int? id,
     required this.sender,
-    required this.user,
+    required this.users,
     required this.event,
     required this.created,
     this.text,
+    required this.status,
   }) : super(id);
 
   factory EventGuestSuggestion.fromJson(
@@ -26,12 +28,15 @@ class EventGuestSuggestion extends _i1.TableRow {
       id: serializationManager.deserialize<int?>(jsonSerialization['id']),
       sender:
           serializationManager.deserialize<int>(jsonSerialization['sender']),
-      user: serializationManager.deserialize<int>(jsonSerialization['user']),
+      users: serializationManager
+          .deserialize<List<int>>(jsonSerialization['users']),
       event: serializationManager.deserialize<int>(jsonSerialization['event']),
       created: serializationManager
           .deserialize<DateTime>(jsonSerialization['created']),
       text:
           serializationManager.deserialize<String?>(jsonSerialization['text']),
+      status: serializationManager.deserialize<_i2.EventGuestSuggestionStatus>(
+          jsonSerialization['status']),
     );
   }
 
@@ -39,13 +44,15 @@ class EventGuestSuggestion extends _i1.TableRow {
 
   int sender;
 
-  int user;
+  List<int> users;
 
   int event;
 
   DateTime created;
 
   String? text;
+
+  _i2.EventGuestSuggestionStatus status;
 
   @override
   String get tableName => 'event_guest_suggestions';
@@ -54,10 +61,11 @@ class EventGuestSuggestion extends _i1.TableRow {
     return {
       'id': id,
       'sender': sender,
-      'user': user,
+      'users': users,
       'event': event,
       'created': created,
       'text': text,
+      'status': status,
     };
   }
 
@@ -66,10 +74,11 @@ class EventGuestSuggestion extends _i1.TableRow {
     return {
       'id': id,
       'sender': sender,
-      'user': user,
+      'users': users,
       'event': event,
       'created': created,
       'text': text,
+      'status': status,
     };
   }
 
@@ -78,10 +87,11 @@ class EventGuestSuggestion extends _i1.TableRow {
     return {
       'id': id,
       'sender': sender,
-      'user': user,
+      'users': users,
       'event': event,
       'created': created,
       'text': text,
+      'status': status,
     };
   }
 
@@ -97,8 +107,8 @@ class EventGuestSuggestion extends _i1.TableRow {
       case 'sender':
         sender = value;
         return;
-      case 'user':
-        user = value;
+      case 'users':
+        users = value;
         return;
       case 'event':
         event = value;
@@ -108,6 +118,9 @@ class EventGuestSuggestion extends _i1.TableRow {
         return;
       case 'text':
         text = value;
+        return;
+      case 'status':
+        status = value;
         return;
       default:
         throw UnimplementedError();
@@ -236,7 +249,7 @@ class EventGuestSuggestionTable extends _i1.Table {
 
   final sender = _i1.ColumnInt('sender');
 
-  final user = _i1.ColumnInt('user');
+  final users = _i1.ColumnSerializable('users');
 
   final event = _i1.ColumnInt('event');
 
@@ -244,14 +257,17 @@ class EventGuestSuggestionTable extends _i1.Table {
 
   final text = _i1.ColumnString('text');
 
+  final status = _i1.ColumnEnum<_i2.EventGuestSuggestionStatus>('status');
+
   @override
   List<_i1.Column> get columns => [
         id,
         sender,
-        user,
+        users,
         event,
         created,
         text,
+        status,
       ];
 }
 

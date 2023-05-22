@@ -1,0 +1,11 @@
+class: EventGuestRequest
+
+table: event_guest_requests
+
+fields:
+  user: int
+  companions: List<int>
+  event: int
+  created: DateTime
+  text: String?
+  status: EventGuestRequestStatus

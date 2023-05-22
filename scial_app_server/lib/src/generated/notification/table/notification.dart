@@ -15,8 +15,8 @@ class Notification extends _i1.TableRow {
     required this.created,
     required this.type,
     required this.read,
-    required this.ref,
     required this.receiver,
+    required this.ref,
   }) : super(id);
 
   factory Notification.fromJson(
@@ -30,9 +30,9 @@ class Notification extends _i1.TableRow {
       type: serializationManager
           .deserialize<_i2.NotificationType>(jsonSerialization['type']),
       read: serializationManager.deserialize<bool>(jsonSerialization['read']),
-      ref: serializationManager.deserialize<int>(jsonSerialization['ref']),
       receiver:
           serializationManager.deserialize<int>(jsonSerialization['receiver']),
+      ref: serializationManager.deserialize<int>(jsonSerialization['ref']),
     );
   }
 
@@ -44,9 +44,9 @@ class Notification extends _i1.TableRow {
 
   bool read;
 
-  int ref;
-
   int receiver;
+
+  int ref;
 
   @override
   String get tableName => 'notifications';
@@ -57,8 +57,8 @@ class Notification extends _i1.TableRow {
       'created': created,
       'type': type,
       'read': read,
-      'ref': ref,
       'receiver': receiver,
+      'ref': ref,
     };
   }
 
@@ -69,8 +69,8 @@ class Notification extends _i1.TableRow {
       'created': created,
       'type': type,
       'read': read,
-      'ref': ref,
       'receiver': receiver,
+      'ref': ref,
     };
   }
 
@@ -81,8 +81,8 @@ class Notification extends _i1.TableRow {
       'created': created,
       'type': type,
       'read': read,
-      'ref': ref,
       'receiver': receiver,
+      'ref': ref,
     };
   }
 
@@ -104,11 +104,11 @@ class Notification extends _i1.TableRow {
       case 'read':
         read = value;
         return;
-      case 'ref':
-        ref = value;
-        return;
       case 'receiver':
         receiver = value;
+        return;
+      case 'ref':
+        ref = value;
         return;
       default:
         throw UnimplementedError();
@@ -241,9 +241,9 @@ class NotificationTable extends _i1.Table {
 
   final read = _i1.ColumnBool('read');
 
-  final ref = _i1.ColumnInt('ref');
-
   final receiver = _i1.ColumnInt('receiver');
+
+  final ref = _i1.ColumnInt('ref');
 
   @override
   List<_i1.Column> get columns => [
@@ -251,8 +251,8 @@ class NotificationTable extends _i1.Table {
         created,
         type,
         read,
-        ref,
         receiver,
+        ref,
       ];
 }
 

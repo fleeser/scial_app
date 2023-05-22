@@ -1,0 +1,4 @@
+enum: EventCreateResponseCode
+  
+values:
+  - notAuthenticated

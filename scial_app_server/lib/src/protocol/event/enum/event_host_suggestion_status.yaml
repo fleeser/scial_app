@@ -1,0 +1,6 @@
+enum: EventHostSuggestionStatus
+
+values:
+  - accepted
+  - denied
+  - pending

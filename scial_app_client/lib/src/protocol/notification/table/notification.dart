@@ -15,8 +15,8 @@ class Notification extends _i1.SerializableEntity {
     required this.created,
     required this.type,
     required this.read,
-    required this.ref,
     required this.receiver,
+    required this.ref,
   });
 
   factory Notification.fromJson(
@@ -30,9 +30,9 @@ class Notification extends _i1.SerializableEntity {
       type: serializationManager
           .deserialize<_i2.NotificationType>(jsonSerialization['type']),
       read: serializationManager.deserialize<bool>(jsonSerialization['read']),
-      ref: serializationManager.deserialize<int>(jsonSerialization['ref']),
       receiver:
           serializationManager.deserialize<int>(jsonSerialization['receiver']),
+      ref: serializationManager.deserialize<int>(jsonSerialization['ref']),
     );
   }
 
@@ -47,9 +47,9 @@ class Notification extends _i1.SerializableEntity {
 
   bool read;
 
-  int ref;
-
   int receiver;
+
+  int ref;
 
   @override
   Map<String, dynamic> toJson() {
@@ -58,8 +58,8 @@ class Notification extends _i1.SerializableEntity {
       'created': created,
       'type': type,
       'read': read,
-      'ref': ref,
       'receiver': receiver,
+      'ref': ref,
     };
   }
 }

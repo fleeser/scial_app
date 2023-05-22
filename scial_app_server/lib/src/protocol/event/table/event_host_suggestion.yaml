@@ -1,0 +1,11 @@
+class: EventHostSuggestion
+
+table: event_host_suggestions
+
+fields:
+  sender: int
+  users: List<int>
+  event: int
+  created: DateTime
+  text: String?
+  status: EventHostSuggestionStatus

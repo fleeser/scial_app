@@ -66,3 +66,5 @@ export 'src/widgets/popup/sc_popup_date_button.dart';
 export 'src/widgets/popup/sc_popup_time_button.dart';
 
 export 'src/widgets/editable_users/sc_editable_users.dart';
+
+export 'src/widgets/notifications/sc_notifications_list.dart';

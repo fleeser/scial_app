@@ -1,0 +1,6 @@
+enum: EventGuestRequestStatus
+
+values:
+  - accepted
+  - denied
+  - pending

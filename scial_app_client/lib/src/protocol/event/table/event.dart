@@ -17,7 +17,6 @@ class Event extends _i1.SerializableEntity {
     required this.created,
     required this.title,
     required this.verified,
-    required this.hosts,
     required this.lat,
     required this.long,
     this.description,
@@ -42,8 +41,6 @@ class Event extends _i1.SerializableEntity {
           serializationManager.deserialize<String>(jsonSerialization['title']),
       verified:
           serializationManager.deserialize<bool>(jsonSerialization['verified']),
-      hosts: serializationManager
-          .deserialize<List<int>>(jsonSerialization['hosts']),
       lat: serializationManager.deserialize<double>(jsonSerialization['lat']),
       long: serializationManager.deserialize<double>(jsonSerialization['long']),
       description: serializationManager
@@ -71,8 +68,6 @@ class Event extends _i1.SerializableEntity {
 
   bool verified;
 
-  List<int> hosts;
-
   double lat;
 
   double long;
@@ -94,7 +89,6 @@ class Event extends _i1.SerializableEntity {
       'created': created,
       'title': title,
       'verified': verified,
-      'hosts': hosts,
       'lat': lat,
       'long': long,
       'description': description,

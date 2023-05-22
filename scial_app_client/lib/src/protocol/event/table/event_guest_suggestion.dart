@@ -7,15 +7,17 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod_client/serverpod_client.dart' as _i1;
+import '../../protocol.dart' as _i2;
 
 class EventGuestSuggestion extends _i1.SerializableEntity {
   EventGuestSuggestion({
     this.id,
     required this.sender,
-    required this.user,
+    required this.users,
     required this.event,
     required this.created,
     this.text,
+    required this.status,
   });
 
   factory EventGuestSuggestion.fromJson(
@@ -26,12 +28,15 @@ class EventGuestSuggestion extends _i1.SerializableEntity {
       id: serializationManager.deserialize<int?>(jsonSerialization['id']),
       sender:
           serializationManager.deserialize<int>(jsonSerialization['sender']),
-      user: serializationManager.deserialize<int>(jsonSerialization['user']),
+      users: serializationManager
+          .deserialize<List<int>>(jsonSerialization['users']),
       event: serializationManager.deserialize<int>(jsonSerialization['event']),
       created: serializationManager
           .deserialize<DateTime>(jsonSerialization['created']),
       text:
           serializationManager.deserialize<String?>(jsonSerialization['text']),
+      status: serializationManager.deserialize<_i2.EventGuestSuggestionStatus>(
+          jsonSerialization['status']),
     );
   }
 
@@ -42,7 +47,7 @@ class EventGuestSuggestion extends _i1.SerializableEntity {
 
   int sender;
 
-  int user;
+  List<int> users;
 
   int event;
 
@@ -50,15 +55,18 @@ class EventGuestSuggestion extends _i1.SerializableEntity {
 
   String? text;
 
+  _i2.EventGuestSuggestionStatus status;
+
   @override
   Map<String, dynamic> toJson() {
     return {
       'id': id,
       'sender': sender,
-      'user': user,
+      'users': users,
       'event': event,
       'created': created,
       'text': text,
+      'status': status,
     };
   }
 }

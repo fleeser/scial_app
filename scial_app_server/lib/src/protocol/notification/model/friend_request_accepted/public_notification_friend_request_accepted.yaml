@@ -1,4 +1,0 @@
-class: PublicNotificationFriendRequestAccepted
-
-fields:
-  sender: PublicNotificationFriendRequestAcceptedSender?

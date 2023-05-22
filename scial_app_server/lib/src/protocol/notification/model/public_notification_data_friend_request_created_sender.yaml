@@ -1,0 +1,7 @@
+class: PublicNotificationDataFriendRequestCreatedSender
+
+fields:
+  id: int
+  name: String?
+  imageUrl: String?
+  verified: bool

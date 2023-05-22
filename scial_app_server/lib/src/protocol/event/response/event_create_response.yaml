@@ -1,0 +1,6 @@
+class: EventCreateResponse
+
+fields:
+  success: bool
+  code: EventCreateResponseCode?
+  eventId: int?

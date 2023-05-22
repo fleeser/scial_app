@@ -1,0 +1,6 @@
+class: PublicNotificationDataFriendRequestCreated
+
+fields:
+  created: DateTime
+  sender: PublicNotificationDataFriendRequestCreatedSender?
+  text: String?

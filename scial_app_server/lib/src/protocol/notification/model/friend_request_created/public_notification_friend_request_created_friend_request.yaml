@@ -1,8 +1,0 @@
-class: PublicNotificationFriendRequestCreatedFriendRequest
-
-fields:
-  id: int
-  created: DateTime
-  text: String?
-  status: FriendRequestStatus
-  sender: PublicNotificationFriendRequestCreatedFriendRequestSender?

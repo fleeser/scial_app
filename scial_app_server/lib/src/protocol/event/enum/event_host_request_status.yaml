@@ -1,0 +1,6 @@
+enum: EventHostRequestStatus
+
+values:
+  - accepted
+  - denied
+  - pending

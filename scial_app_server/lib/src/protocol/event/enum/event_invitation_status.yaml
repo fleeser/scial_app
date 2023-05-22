@@ -1,6 +1,0 @@
-enum: EventInvitationStatus
-
-values:
-  - accepted
-  - denied
-  - pending

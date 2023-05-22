@@ -32,91 +32,99 @@ import 'auth/table/auth_sign_up_request.dart' as _i20;
 import 'counter/table/counter.dart' as _i21;
 import 'discover/response/discover_read_response.dart' as _i22;
 import 'discover/response/discover_read_response_code.dart' as _i23;
-import 'event/enum/event_invitation_status.dart' as _i24;
-import 'event/enum/event_request_status.dart' as _i25;
-import 'event/enum/event_type.dart' as _i26;
-import 'event/enum/event_visibility.dart' as _i27;
-import 'event/model/public_event.dart' as _i28;
-import 'event/model/public_event_full_guest.dart' as _i29;
-import 'event/model/public_event_full_guest_user.dart' as _i30;
-import 'event/model/public_event_host.dart' as _i31;
-import 'event/model/public_event_location.dart' as _i32;
-import 'event/response/event_guests_response.dart' as _i33;
-import 'event/response/event_guests_response_code.dart' as _i34;
-import 'event/table/event.dart' as _i35;
-import 'event/table/event_guest.dart' as _i36;
-import 'event/table/event_guest_suggestion.dart' as _i37;
-import 'event/table/event_invitation.dart' as _i38;
-import 'event/table/event_request.dart' as _i39;
-import 'friend_request/enum/friend_request_status.dart' as _i40;
-import 'friend_request/response/friend_request_answer_response.dart' as _i41;
+import 'event/enum/event_guest_invitation_status.dart' as _i24;
+import 'event/enum/event_guest_request_status.dart' as _i25;
+import 'event/enum/event_guest_suggestion_status.dart' as _i26;
+import 'event/enum/event_host_invitation_status.dart' as _i27;
+import 'event/enum/event_host_request_status.dart' as _i28;
+import 'event/enum/event_host_suggestion_status.dart' as _i29;
+import 'event/enum/event_type.dart' as _i30;
+import 'event/enum/event_visibility.dart' as _i31;
+import 'event/model/public_event.dart' as _i32;
+import 'event/model/public_event_full_guest.dart' as _i33;
+import 'event/model/public_event_full_guest_user.dart' as _i34;
+import 'event/model/public_event_host.dart' as _i35;
+import 'event/model/public_event_location.dart' as _i36;
+import 'event/response/event_create_response.dart' as _i37;
+import 'event/response/event_create_response_code.dart' as _i38;
+import 'event/response/event_guests_response.dart' as _i39;
+import 'event/response/event_guests_response_code.dart' as _i40;
+import 'event/table/event.dart' as _i41;
+import 'event/table/event_guest.dart' as _i42;
+import 'event/table/event_guest_invitation.dart' as _i43;
+import 'event/table/event_guest_request.dart' as _i44;
+import 'event/table/event_guest_suggestion.dart' as _i45;
+import 'event/table/event_host.dart' as _i46;
+import 'event/table/event_host_invitation.dart' as _i47;
+import 'event/table/event_host_request.dart' as _i48;
+import 'event/table/event_host_suggestion.dart' as _i49;
+import 'friend_request/enum/friend_request_status.dart' as _i50;
+import 'friend_request/response/friend_request_answer_response.dart' as _i51;
 import 'friend_request/response/friend_request_answer_response_code.dart'
-    as _i42;
-import 'friend_request/response/friend_request_create_response.dart' as _i43;
+    as _i52;
+import 'friend_request/response/friend_request_create_response.dart' as _i53;
 import 'friend_request/response/friend_request_create_response_code.dart'
-    as _i44;
-import 'friend_request/response/friend_request_take_back_response.dart' as _i45;
-import 'friend_request/response/friend_request_take_back_response_code.dart'
-    as _i46;
-import 'friend_request/table/friend_request.dart' as _i47;
-import 'friendship/enum/friendship_badge.dart' as _i48;
-import 'friendship/response/friendship_remove_response.dart' as _i49;
-import 'friendship/response/friendship_remove_response_code.dart' as _i50;
-import 'friendship/table/friendship.dart' as _i51;
-import 'notification/enum/notification_type.dart' as _i52;
-import 'notification/model/friend_request_accepted/public_notification_friend_request_accepted.dart'
-    as _i53;
-import 'notification/model/friend_request_accepted/public_notification_friend_request_accepted_sender.dart'
     as _i54;
-import 'notification/model/friend_request_created/public_notification_friend_request_created.dart'
-    as _i55;
-import 'notification/model/friend_request_created/public_notification_friend_request_created_friend_request.dart'
+import 'friend_request/response/friend_request_take_back_response.dart' as _i55;
+import 'friend_request/response/friend_request_take_back_response_code.dart'
     as _i56;
-import 'notification/model/friend_request_created/public_notification_friend_request_created_friend_request_sender.dart'
-    as _i57;
-import 'notification/model/friend_request_denied/public_notification_friend_request_denied.dart'
-    as _i58;
-import 'notification/model/friend_request_denied/public_notification_friend_request_denied_sender.dart'
-    as _i59;
-import 'notification/model/public_notification.dart' as _i60;
-import 'notification/response/notification_read_response.dart' as _i61;
-import 'notification/response/notification_read_response_code.dart' as _i62;
-import 'notification/response/notification_set_all_read_response.dart' as _i63;
-import 'notification/response/notification_set_all_read_response_code.dart'
+import 'friend_request/table/friend_request.dart' as _i57;
+import 'friendship/enum/friendship_badge.dart' as _i58;
+import 'friendship/response/friendship_remove_response.dart' as _i59;
+import 'friendship/response/friendship_remove_response_code.dart' as _i60;
+import 'friendship/table/friendship.dart' as _i61;
+import 'notification/enum/notification_type.dart' as _i62;
+import 'notification/model/public_notification.dart' as _i63;
+import 'notification/model/public_notification_data_friend_request_accepted.dart'
     as _i64;
-import 'notification/response/notification_set_read_response.dart' as _i65;
-import 'notification/response/notification_set_read_response_code.dart' as _i66;
-import 'notification/table/notification.dart' as _i67;
-import 'rating/enum/rating_type.dart' as _i68;
-import 'rating/table/rating.dart' as _i69;
-import 'user/enum/user_badge.dart' as _i70;
-import 'user/model/public_user.dart' as _i71;
-import 'user/model/public_user_friend_request.dart' as _i72;
-import 'user/model/public_user_friendship.dart' as _i73;
-import 'user/model/public_user_friendship_details.dart' as _i74;
-import 'user/model/public_user_friendship_user.dart' as _i75;
-import 'user/model/public_user_rating.dart' as _i76;
-import 'user/model/public_user_rating_user.dart' as _i77;
-import 'user/model/public_user_search_user.dart' as _i78;
-import 'user/response/user_events_reponse_code.dart' as _i79;
-import 'user/response/user_events_response.dart' as _i80;
-import 'user/response/user_friendships_response.dart' as _i81;
-import 'user/response/user_friendships_response_code.dart' as _i82;
-import 'user/response/user_ratings_response.dart' as _i83;
-import 'user/response/user_ratings_response_code.dart' as _i84;
-import 'user/response/user_read_response.dart' as _i85;
-import 'user/response/user_read_response_code.dart' as _i86;
-import 'user/response/user_search_response.dart' as _i87;
-import 'user/response/user_search_response_code.dart' as _i88;
-import 'user/response/user_update_response.dart' as _i89;
-import 'user/response/user_update_response_code.dart' as _i90;
-import 'user/table/user.dart' as _i91;
-import 'protocol.dart' as _i92;
+import 'notification/model/public_notification_data_friend_request_accepted_sender.dart'
+    as _i65;
+import 'notification/model/public_notification_data_friend_request_created.dart'
+    as _i66;
+import 'notification/model/public_notification_data_friend_request_created_sender.dart'
+    as _i67;
+import 'notification/model/public_notification_data_friend_request_denied.dart'
+    as _i68;
+import 'notification/model/public_notification_data_friend_request_denied_sender.dart'
+    as _i69;
+import 'notification/response/notification_read_response.dart' as _i70;
+import 'notification/response/notification_read_response_code.dart' as _i71;
+import 'notification/response/notification_set_all_read_response.dart' as _i72;
+import 'notification/response/notification_set_all_read_response_code.dart'
+    as _i73;
+import 'notification/response/notification_set_read_response.dart' as _i74;
+import 'notification/response/notification_set_read_response_code.dart' as _i75;
+import 'notification/table/notification.dart' as _i76;
+import 'rating/enum/rating_type.dart' as _i77;
+import 'rating/table/rating.dart' as _i78;
+import 'user/enum/user_badge.dart' as _i79;
+import 'user/model/public_user.dart' as _i80;
+import 'user/model/public_user_friend_request.dart' as _i81;
+import 'user/model/public_user_friendship.dart' as _i82;
+import 'user/model/public_user_friendship_details.dart' as _i83;
+import 'user/model/public_user_friendship_user.dart' as _i84;
+import 'user/model/public_user_rating.dart' as _i85;
+import 'user/model/public_user_rating_user.dart' as _i86;
+import 'user/model/public_user_search_user.dart' as _i87;
+import 'user/response/user_events_reponse_code.dart' as _i88;
+import 'user/response/user_events_response.dart' as _i89;
+import 'user/response/user_friendships_response.dart' as _i90;
+import 'user/response/user_friendships_response_code.dart' as _i91;
+import 'user/response/user_ratings_response.dart' as _i92;
+import 'user/response/user_ratings_response_code.dart' as _i93;
+import 'user/response/user_read_response.dart' as _i94;
+import 'user/response/user_read_response_code.dart' as _i95;
+import 'user/response/user_search_response.dart' as _i96;
+import 'user/response/user_search_response_code.dart' as _i97;
+import 'user/response/user_update_response.dart' as _i98;
+import 'user/response/user_update_response_code.dart' as _i99;
+import 'user/table/user.dart' as _i100;
+import 'protocol.dart' as _i101;
 import 'package:scial_app_server/src/generated/event/enum/event_type.dart'
-    as _i93;
+    as _i102;
 import 'package:scial_app_server/src/generated/event/enum/event_visibility.dart'
-    as _i94;
-import 'package:serverpod/protocol.dart' as _i95;
+    as _i103;
+import 'package:serverpod/protocol.dart' as _i104;
 export 'auth/response/auth_change_password_response.dart';
 export 'auth/response/auth_change_password_response_code.dart';
 export 'auth/response/auth_delete_account_response.dart';
@@ -139,8 +147,12 @@ export 'auth/table/auth_sign_up_request.dart';
 export 'counter/table/counter.dart';
 export 'discover/response/discover_read_response.dart';
 export 'discover/response/discover_read_response_code.dart';
-export 'event/enum/event_invitation_status.dart';
-export 'event/enum/event_request_status.dart';
+export 'event/enum/event_guest_invitation_status.dart';
+export 'event/enum/event_guest_request_status.dart';
+export 'event/enum/event_guest_suggestion_status.dart';
+export 'event/enum/event_host_invitation_status.dart';
+export 'event/enum/event_host_request_status.dart';
+export 'event/enum/event_host_suggestion_status.dart';
 export 'event/enum/event_type.dart';
 export 'event/enum/event_visibility.dart';
 export 'event/model/public_event.dart';
@@ -148,13 +160,19 @@ export 'event/model/public_event_full_guest.dart';
 export 'event/model/public_event_full_guest_user.dart';
 export 'event/model/public_event_host.dart';
 export 'event/model/public_event_location.dart';
+export 'event/response/event_create_response.dart';
+export 'event/response/event_create_response_code.dart';
 export 'event/response/event_guests_response.dart';
 export 'event/response/event_guests_response_code.dart';
 export 'event/table/event.dart';
 export 'event/table/event_guest.dart';
+export 'event/table/event_guest_invitation.dart';
+export 'event/table/event_guest_request.dart';
 export 'event/table/event_guest_suggestion.dart';
-export 'event/table/event_invitation.dart';
-export 'event/table/event_request.dart';
+export 'event/table/event_host.dart';
+export 'event/table/event_host_invitation.dart';
+export 'event/table/event_host_request.dart';
+export 'event/table/event_host_suggestion.dart';
 export 'friend_request/enum/friend_request_status.dart';
 export 'friend_request/response/friend_request_answer_response.dart';
 export 'friend_request/response/friend_request_answer_response_code.dart';
@@ -168,14 +186,13 @@ export 'friendship/response/friendship_remove_response.dart';
 export 'friendship/response/friendship_remove_response_code.dart';
 export 'friendship/table/friendship.dart';
 export 'notification/enum/notification_type.dart';
-export 'notification/model/friend_request_accepted/public_notification_friend_request_accepted.dart';
-export 'notification/model/friend_request_accepted/public_notification_friend_request_accepted_sender.dart';
-export 'notification/model/friend_request_created/public_notification_friend_request_created.dart';
-export 'notification/model/friend_request_created/public_notification_friend_request_created_friend_request.dart';
-export 'notification/model/friend_request_created/public_notification_friend_request_created_friend_request_sender.dart';
-export 'notification/model/friend_request_denied/public_notification_friend_request_denied.dart';
-export 'notification/model/friend_request_denied/public_notification_friend_request_denied_sender.dart';
 export 'notification/model/public_notification.dart';
+export 'notification/model/public_notification_data_friend_request_accepted.dart';
+export 'notification/model/public_notification_data_friend_request_accepted_sender.dart';
+export 'notification/model/public_notification_data_friend_request_created.dart';
+export 'notification/model/public_notification_data_friend_request_created_sender.dart';
+export 'notification/model/public_notification_data_friend_request_denied.dart';
+export 'notification/model/public_notification_data_friend_request_denied_sender.dart';
 export 'notification/response/notification_read_response.dart';
 export 'notification/response/notification_read_response_code.dart';
 export 'notification/response/notification_set_all_read_response.dart';
@@ -294,216 +311,242 @@ class Protocol extends _i1.SerializationManagerServer {
     if (t == _i23.DiscoverReadResponseCode) {
       return _i23.DiscoverReadResponseCode.fromJson(data) as T;
     }
-    if (t == _i24.EventInvitationStatus) {
-      return _i24.EventInvitationStatus.fromJson(data) as T;
+    if (t == _i24.EventGuestInvitationStatus) {
+      return _i24.EventGuestInvitationStatus.fromJson(data) as T;
     }
-    if (t == _i25.EventRequestStatus) {
-      return _i25.EventRequestStatus.fromJson(data) as T;
+    if (t == _i25.EventGuestRequestStatus) {
+      return _i25.EventGuestRequestStatus.fromJson(data) as T;
     }
-    if (t == _i26.EventType) {
-      return _i26.EventType.fromJson(data) as T;
+    if (t == _i26.EventGuestSuggestionStatus) {
+      return _i26.EventGuestSuggestionStatus.fromJson(data) as T;
     }
-    if (t == _i27.EventVisibility) {
-      return _i27.EventVisibility.fromJson(data) as T;
+    if (t == _i27.EventHostInvitationStatus) {
+      return _i27.EventHostInvitationStatus.fromJson(data) as T;
     }
-    if (t == _i28.PublicEvent) {
-      return _i28.PublicEvent.fromJson(data, this) as T;
+    if (t == _i28.EventHostRequestStatus) {
+      return _i28.EventHostRequestStatus.fromJson(data) as T;
     }
-    if (t == _i29.PublicEventFullGuest) {
-      return _i29.PublicEventFullGuest.fromJson(data, this) as T;
+    if (t == _i29.EventHostSuggestionStatus) {
+      return _i29.EventHostSuggestionStatus.fromJson(data) as T;
     }
-    if (t == _i30.PublicEventFullGuestUser) {
-      return _i30.PublicEventFullGuestUser.fromJson(data, this) as T;
+    if (t == _i30.EventType) {
+      return _i30.EventType.fromJson(data) as T;
     }
-    if (t == _i31.PublicEventHost) {
-      return _i31.PublicEventHost.fromJson(data, this) as T;
+    if (t == _i31.EventVisibility) {
+      return _i31.EventVisibility.fromJson(data) as T;
     }
-    if (t == _i32.PublicEventLocation) {
-      return _i32.PublicEventLocation.fromJson(data, this) as T;
+    if (t == _i32.PublicEvent) {
+      return _i32.PublicEvent.fromJson(data, this) as T;
     }
-    if (t == _i33.EventGuestsResponse) {
-      return _i33.EventGuestsResponse.fromJson(data, this) as T;
+    if (t == _i33.PublicEventFullGuest) {
+      return _i33.PublicEventFullGuest.fromJson(data, this) as T;
     }
-    if (t == _i34.EventGuestsResponseCode) {
-      return _i34.EventGuestsResponseCode.fromJson(data) as T;
+    if (t == _i34.PublicEventFullGuestUser) {
+      return _i34.PublicEventFullGuestUser.fromJson(data, this) as T;
     }
-    if (t == _i35.Event) {
-      return _i35.Event.fromJson(data, this) as T;
+    if (t == _i35.PublicEventHost) {
+      return _i35.PublicEventHost.fromJson(data, this) as T;
     }
-    if (t == _i36.EventGuest) {
-      return _i36.EventGuest.fromJson(data, this) as T;
+    if (t == _i36.PublicEventLocation) {
+      return _i36.PublicEventLocation.fromJson(data, this) as T;
     }
-    if (t == _i37.EventGuestSuggestion) {
-      return _i37.EventGuestSuggestion.fromJson(data, this) as T;
+    if (t == _i37.EventCreateResponse) {
+      return _i37.EventCreateResponse.fromJson(data, this) as T;
     }
-    if (t == _i38.EventInvitation) {
-      return _i38.EventInvitation.fromJson(data, this) as T;
+    if (t == _i38.EventCreateResponseCode) {
+      return _i38.EventCreateResponseCode.fromJson(data) as T;
     }
-    if (t == _i39.EventRequest) {
-      return _i39.EventRequest.fromJson(data, this) as T;
+    if (t == _i39.EventGuestsResponse) {
+      return _i39.EventGuestsResponse.fromJson(data, this) as T;
     }
-    if (t == _i40.FriendRequestStatus) {
-      return _i40.FriendRequestStatus.fromJson(data) as T;
+    if (t == _i40.EventGuestsResponseCode) {
+      return _i40.EventGuestsResponseCode.fromJson(data) as T;
     }
-    if (t == _i41.FriendRequestAnswerResponse) {
-      return _i41.FriendRequestAnswerResponse.fromJson(data, this) as T;
+    if (t == _i41.Event) {
+      return _i41.Event.fromJson(data, this) as T;
     }
-    if (t == _i42.FriendRequestAnswerResponseCode) {
-      return _i42.FriendRequestAnswerResponseCode.fromJson(data) as T;
+    if (t == _i42.EventGuest) {
+      return _i42.EventGuest.fromJson(data, this) as T;
     }
-    if (t == _i43.FriendRequestCreateResponse) {
-      return _i43.FriendRequestCreateResponse.fromJson(data, this) as T;
+    if (t == _i43.EventGuestInvitation) {
+      return _i43.EventGuestInvitation.fromJson(data, this) as T;
     }
-    if (t == _i44.FriendRequestCreateResponseCode) {
-      return _i44.FriendRequestCreateResponseCode.fromJson(data) as T;
+    if (t == _i44.EventGuestRequest) {
+      return _i44.EventGuestRequest.fromJson(data, this) as T;
     }
-    if (t == _i45.FriendRequestTakeBackResponse) {
-      return _i45.FriendRequestTakeBackResponse.fromJson(data, this) as T;
+    if (t == _i45.EventGuestSuggestion) {
+      return _i45.EventGuestSuggestion.fromJson(data, this) as T;
     }
-    if (t == _i46.FriendRequestTakeBackResponseCode) {
-      return _i46.FriendRequestTakeBackResponseCode.fromJson(data) as T;
+    if (t == _i46.EventHost) {
+      return _i46.EventHost.fromJson(data, this) as T;
     }
-    if (t == _i47.FriendRequest) {
-      return _i47.FriendRequest.fromJson(data, this) as T;
+    if (t == _i47.EventHostInvitation) {
+      return _i47.EventHostInvitation.fromJson(data, this) as T;
     }
-    if (t == _i48.FriendshipBadge) {
-      return _i48.FriendshipBadge.fromJson(data) as T;
+    if (t == _i48.EventHostRequest) {
+      return _i48.EventHostRequest.fromJson(data, this) as T;
     }
-    if (t == _i49.FriendshipRemoveResponse) {
-      return _i49.FriendshipRemoveResponse.fromJson(data, this) as T;
+    if (t == _i49.EventHostSuggestion) {
+      return _i49.EventHostSuggestion.fromJson(data, this) as T;
     }
-    if (t == _i50.FriendshipRemoveResponseCode) {
-      return _i50.FriendshipRemoveResponseCode.fromJson(data) as T;
+    if (t == _i50.FriendRequestStatus) {
+      return _i50.FriendRequestStatus.fromJson(data) as T;
     }
-    if (t == _i51.Friendship) {
-      return _i51.Friendship.fromJson(data, this) as T;
+    if (t == _i51.FriendRequestAnswerResponse) {
+      return _i51.FriendRequestAnswerResponse.fromJson(data, this) as T;
     }
-    if (t == _i52.NotificationType) {
-      return _i52.NotificationType.fromJson(data) as T;
+    if (t == _i52.FriendRequestAnswerResponseCode) {
+      return _i52.FriendRequestAnswerResponseCode.fromJson(data) as T;
     }
-    if (t == _i53.PublicNotificationFriendRequestAccepted) {
-      return _i53.PublicNotificationFriendRequestAccepted.fromJson(data, this)
-          as T;
+    if (t == _i53.FriendRequestCreateResponse) {
+      return _i53.FriendRequestCreateResponse.fromJson(data, this) as T;
     }
-    if (t == _i54.PublicNotificationFriendRequestAcceptedSender) {
-      return _i54.PublicNotificationFriendRequestAcceptedSender.fromJson(
+    if (t == _i54.FriendRequestCreateResponseCode) {
+      return _i54.FriendRequestCreateResponseCode.fromJson(data) as T;
+    }
+    if (t == _i55.FriendRequestTakeBackResponse) {
+      return _i55.FriendRequestTakeBackResponse.fromJson(data, this) as T;
+    }
+    if (t == _i56.FriendRequestTakeBackResponseCode) {
+      return _i56.FriendRequestTakeBackResponseCode.fromJson(data) as T;
+    }
+    if (t == _i57.FriendRequest) {
+      return _i57.FriendRequest.fromJson(data, this) as T;
+    }
+    if (t == _i58.FriendshipBadge) {
+      return _i58.FriendshipBadge.fromJson(data) as T;
+    }
+    if (t == _i59.FriendshipRemoveResponse) {
+      return _i59.FriendshipRemoveResponse.fromJson(data, this) as T;
+    }
+    if (t == _i60.FriendshipRemoveResponseCode) {
+      return _i60.FriendshipRemoveResponseCode.fromJson(data) as T;
+    }
+    if (t == _i61.Friendship) {
+      return _i61.Friendship.fromJson(data, this) as T;
+    }
+    if (t == _i62.NotificationType) {
+      return _i62.NotificationType.fromJson(data) as T;
+    }
+    if (t == _i63.PublicNotification) {
+      return _i63.PublicNotification.fromJson(data, this) as T;
+    }
+    if (t == _i64.PublicNotificationDataFriendRequestAccepted) {
+      return _i64.PublicNotificationDataFriendRequestAccepted.fromJson(
           data, this) as T;
     }
-    if (t == _i55.PublicNotificationFriendRequestCreated) {
-      return _i55.PublicNotificationFriendRequestCreated.fromJson(data, this)
-          as T;
-    }
-    if (t == _i56.PublicNotificationFriendRequestCreatedFriendRequest) {
-      return _i56.PublicNotificationFriendRequestCreatedFriendRequest.fromJson(
+    if (t == _i65.PublicNotificationDataFriendRequestAcceptedSender) {
+      return _i65.PublicNotificationDataFriendRequestAcceptedSender.fromJson(
           data, this) as T;
     }
-    if (t == _i57.PublicNotificationFriendRequestCreatedFriendRequestSender) {
-      return _i57.PublicNotificationFriendRequestCreatedFriendRequestSender
-          .fromJson(data, this) as T;
-    }
-    if (t == _i58.PublicNotificationFriendRequestDenied) {
-      return _i58.PublicNotificationFriendRequestDenied.fromJson(data, this)
-          as T;
-    }
-    if (t == _i59.PublicNotificationFriendRequestDeniedSender) {
-      return _i59.PublicNotificationFriendRequestDeniedSender.fromJson(
+    if (t == _i66.PublicNotificationDataFriendRequestCreated) {
+      return _i66.PublicNotificationDataFriendRequestCreated.fromJson(
           data, this) as T;
     }
-    if (t == _i60.PublicNotification) {
-      return _i60.PublicNotification.fromJson(data, this) as T;
+    if (t == _i67.PublicNotificationDataFriendRequestCreatedSender) {
+      return _i67.PublicNotificationDataFriendRequestCreatedSender.fromJson(
+          data, this) as T;
     }
-    if (t == _i61.NotificationReadResponse) {
-      return _i61.NotificationReadResponse.fromJson(data, this) as T;
+    if (t == _i68.PublicNotificationDataFriendRequestDenied) {
+      return _i68.PublicNotificationDataFriendRequestDenied.fromJson(data, this)
+          as T;
     }
-    if (t == _i62.NotificationReadResponseCode) {
-      return _i62.NotificationReadResponseCode.fromJson(data) as T;
+    if (t == _i69.PublicNotificationDataFriendRequestDeniedSender) {
+      return _i69.PublicNotificationDataFriendRequestDeniedSender.fromJson(
+          data, this) as T;
     }
-    if (t == _i63.NotificationSetAllReadResponse) {
-      return _i63.NotificationSetAllReadResponse.fromJson(data, this) as T;
+    if (t == _i70.NotificationReadResponse) {
+      return _i70.NotificationReadResponse.fromJson(data, this) as T;
     }
-    if (t == _i64.NotificationSetAllReadResponseCode) {
-      return _i64.NotificationSetAllReadResponseCode.fromJson(data) as T;
+    if (t == _i71.NotificationReadResponseCode) {
+      return _i71.NotificationReadResponseCode.fromJson(data) as T;
     }
-    if (t == _i65.NotificationSetReadResponse) {
-      return _i65.NotificationSetReadResponse.fromJson(data, this) as T;
+    if (t == _i72.NotificationSetAllReadResponse) {
+      return _i72.NotificationSetAllReadResponse.fromJson(data, this) as T;
     }
-    if (t == _i66.NotificationSetReadResponseCode) {
-      return _i66.NotificationSetReadResponseCode.fromJson(data) as T;
+    if (t == _i73.NotificationSetAllReadResponseCode) {
+      return _i73.NotificationSetAllReadResponseCode.fromJson(data) as T;
     }
-    if (t == _i67.Notification) {
-      return _i67.Notification.fromJson(data, this) as T;
+    if (t == _i74.NotificationSetReadResponse) {
+      return _i74.NotificationSetReadResponse.fromJson(data, this) as T;
     }
-    if (t == _i68.RatingType) {
-      return _i68.RatingType.fromJson(data) as T;
+    if (t == _i75.NotificationSetReadResponseCode) {
+      return _i75.NotificationSetReadResponseCode.fromJson(data) as T;
     }
-    if (t == _i69.Rating) {
-      return _i69.Rating.fromJson(data, this) as T;
+    if (t == _i76.Notification) {
+      return _i76.Notification.fromJson(data, this) as T;
     }
-    if (t == _i70.UserBadge) {
-      return _i70.UserBadge.fromJson(data) as T;
+    if (t == _i77.RatingType) {
+      return _i77.RatingType.fromJson(data) as T;
     }
-    if (t == _i71.PublicUser) {
-      return _i71.PublicUser.fromJson(data, this) as T;
+    if (t == _i78.Rating) {
+      return _i78.Rating.fromJson(data, this) as T;
     }
-    if (t == _i72.PublicUserFriendRequest) {
-      return _i72.PublicUserFriendRequest.fromJson(data, this) as T;
+    if (t == _i79.UserBadge) {
+      return _i79.UserBadge.fromJson(data) as T;
     }
-    if (t == _i73.PublicUserFriendship) {
-      return _i73.PublicUserFriendship.fromJson(data, this) as T;
+    if (t == _i80.PublicUser) {
+      return _i80.PublicUser.fromJson(data, this) as T;
     }
-    if (t == _i74.PublicUserFriendshipDetails) {
-      return _i74.PublicUserFriendshipDetails.fromJson(data, this) as T;
+    if (t == _i81.PublicUserFriendRequest) {
+      return _i81.PublicUserFriendRequest.fromJson(data, this) as T;
     }
-    if (t == _i75.PublicUserFriendshipUser) {
-      return _i75.PublicUserFriendshipUser.fromJson(data, this) as T;
+    if (t == _i82.PublicUserFriendship) {
+      return _i82.PublicUserFriendship.fromJson(data, this) as T;
     }
-    if (t == _i76.PublicUserRating) {
-      return _i76.PublicUserRating.fromJson(data, this) as T;
+    if (t == _i83.PublicUserFriendshipDetails) {
+      return _i83.PublicUserFriendshipDetails.fromJson(data, this) as T;
     }
-    if (t == _i77.PublicUserRatingUser) {
-      return _i77.PublicUserRatingUser.fromJson(data, this) as T;
+    if (t == _i84.PublicUserFriendshipUser) {
+      return _i84.PublicUserFriendshipUser.fromJson(data, this) as T;
     }
-    if (t == _i78.PublicUserSearchUser) {
-      return _i78.PublicUserSearchUser.fromJson(data, this) as T;
+    if (t == _i85.PublicUserRating) {
+      return _i85.PublicUserRating.fromJson(data, this) as T;
     }
-    if (t == _i79.UserEventsResponseCode) {
-      return _i79.UserEventsResponseCode.fromJson(data) as T;
+    if (t == _i86.PublicUserRatingUser) {
+      return _i86.PublicUserRatingUser.fromJson(data, this) as T;
     }
-    if (t == _i80.UserEventsResponse) {
-      return _i80.UserEventsResponse.fromJson(data, this) as T;
+    if (t == _i87.PublicUserSearchUser) {
+      return _i87.PublicUserSearchUser.fromJson(data, this) as T;
     }
-    if (t == _i81.UserFriendshipsResponse) {
-      return _i81.UserFriendshipsResponse.fromJson(data, this) as T;
+    if (t == _i88.UserEventsResponseCode) {
+      return _i88.UserEventsResponseCode.fromJson(data) as T;
     }
-    if (t == _i82.UserFriendshipsResponseCode) {
-      return _i82.UserFriendshipsResponseCode.fromJson(data) as T;
+    if (t == _i89.UserEventsResponse) {
+      return _i89.UserEventsResponse.fromJson(data, this) as T;
     }
-    if (t == _i83.UserRatingsResponse) {
-      return _i83.UserRatingsResponse.fromJson(data, this) as T;
+    if (t == _i90.UserFriendshipsResponse) {
+      return _i90.UserFriendshipsResponse.fromJson(data, this) as T;
     }
-    if (t == _i84.UserRatingsResponseCode) {
-      return _i84.UserRatingsResponseCode.fromJson(data) as T;
+    if (t == _i91.UserFriendshipsResponseCode) {
+      return _i91.UserFriendshipsResponseCode.fromJson(data) as T;
     }
-    if (t == _i85.UserReadResponse) {
-      return _i85.UserReadResponse.fromJson(data, this) as T;
+    if (t == _i92.UserRatingsResponse) {
+      return _i92.UserRatingsResponse.fromJson(data, this) as T;
     }
-    if (t == _i86.UserReadResponseCode) {
-      return _i86.UserReadResponseCode.fromJson(data) as T;
+    if (t == _i93.UserRatingsResponseCode) {
+      return _i93.UserRatingsResponseCode.fromJson(data) as T;
     }
-    if (t == _i87.UserSearchResponse) {
-      return _i87.UserSearchResponse.fromJson(data, this) as T;
+    if (t == _i94.UserReadResponse) {
+      return _i94.UserReadResponse.fromJson(data, this) as T;
     }
-    if (t == _i88.UserSearchResponseCode) {
-      return _i88.UserSearchResponseCode.fromJson(data) as T;
+    if (t == _i95.UserReadResponseCode) {
+      return _i95.UserReadResponseCode.fromJson(data) as T;
     }
-    if (t == _i89.UserUpdateResponse) {
-      return _i89.UserUpdateResponse.fromJson(data, this) as T;
+    if (t == _i96.UserSearchResponse) {
+      return _i96.UserSearchResponse.fromJson(data, this) as T;
     }
-    if (t == _i90.UserUpdateResponseCode) {
-      return _i90.UserUpdateResponseCode.fromJson(data) as T;
+    if (t == _i97.UserSearchResponseCode) {
+      return _i97.UserSearchResponseCode.fromJson(data) as T;
     }
-    if (t == _i91.User) {
-      return _i91.User.fromJson(data, this) as T;
+    if (t == _i98.UserUpdateResponse) {
+      return _i98.UserUpdateResponse.fromJson(data, this) as T;
+    }
+    if (t == _i99.UserUpdateResponseCode) {
+      return _i99.UserUpdateResponseCode.fromJson(data) as T;
+    }
+    if (t == _i100.User) {
+      return _i100.User.fromJson(data, this) as T;
     }
     if (t == _i1.getType<_i2.AuthChangePasswordResponse?>()) {
       return (data != null
@@ -608,390 +651,438 @@ class Protocol extends _i1.SerializationManagerServer {
           ? _i23.DiscoverReadResponseCode.fromJson(data)
           : null) as T;
     }
-    if (t == _i1.getType<_i24.EventInvitationStatus?>()) {
-      return (data != null ? _i24.EventInvitationStatus.fromJson(data) : null)
+    if (t == _i1.getType<_i24.EventGuestInvitationStatus?>()) {
+      return (data != null
+          ? _i24.EventGuestInvitationStatus.fromJson(data)
+          : null) as T;
+    }
+    if (t == _i1.getType<_i25.EventGuestRequestStatus?>()) {
+      return (data != null ? _i25.EventGuestRequestStatus.fromJson(data) : null)
           as T;
     }
-    if (t == _i1.getType<_i25.EventRequestStatus?>()) {
-      return (data != null ? _i25.EventRequestStatus.fromJson(data) : null)
+    if (t == _i1.getType<_i26.EventGuestSuggestionStatus?>()) {
+      return (data != null
+          ? _i26.EventGuestSuggestionStatus.fromJson(data)
+          : null) as T;
+    }
+    if (t == _i1.getType<_i27.EventHostInvitationStatus?>()) {
+      return (data != null
+          ? _i27.EventHostInvitationStatus.fromJson(data)
+          : null) as T;
+    }
+    if (t == _i1.getType<_i28.EventHostRequestStatus?>()) {
+      return (data != null ? _i28.EventHostRequestStatus.fromJson(data) : null)
           as T;
     }
-    if (t == _i1.getType<_i26.EventType?>()) {
-      return (data != null ? _i26.EventType.fromJson(data) : null) as T;
-    }
-    if (t == _i1.getType<_i27.EventVisibility?>()) {
-      return (data != null ? _i27.EventVisibility.fromJson(data) : null) as T;
-    }
-    if (t == _i1.getType<_i28.PublicEvent?>()) {
-      return (data != null ? _i28.PublicEvent.fromJson(data, this) : null) as T;
-    }
-    if (t == _i1.getType<_i29.PublicEventFullGuest?>()) {
+    if (t == _i1.getType<_i29.EventHostSuggestionStatus?>()) {
       return (data != null
-          ? _i29.PublicEventFullGuest.fromJson(data, this)
+          ? _i29.EventHostSuggestionStatus.fromJson(data)
           : null) as T;
     }
-    if (t == _i1.getType<_i30.PublicEventFullGuestUser?>()) {
+    if (t == _i1.getType<_i30.EventType?>()) {
+      return (data != null ? _i30.EventType.fromJson(data) : null) as T;
+    }
+    if (t == _i1.getType<_i31.EventVisibility?>()) {
+      return (data != null ? _i31.EventVisibility.fromJson(data) : null) as T;
+    }
+    if (t == _i1.getType<_i32.PublicEvent?>()) {
+      return (data != null ? _i32.PublicEvent.fromJson(data, this) : null) as T;
+    }
+    if (t == _i1.getType<_i33.PublicEventFullGuest?>()) {
       return (data != null
-          ? _i30.PublicEventFullGuestUser.fromJson(data, this)
+          ? _i33.PublicEventFullGuest.fromJson(data, this)
           : null) as T;
     }
-    if (t == _i1.getType<_i31.PublicEventHost?>()) {
-      return (data != null ? _i31.PublicEventHost.fromJson(data, this) : null)
+    if (t == _i1.getType<_i34.PublicEventFullGuestUser?>()) {
+      return (data != null
+          ? _i34.PublicEventFullGuestUser.fromJson(data, this)
+          : null) as T;
+    }
+    if (t == _i1.getType<_i35.PublicEventHost?>()) {
+      return (data != null ? _i35.PublicEventHost.fromJson(data, this) : null)
           as T;
     }
-    if (t == _i1.getType<_i32.PublicEventLocation?>()) {
+    if (t == _i1.getType<_i36.PublicEventLocation?>()) {
       return (data != null
-          ? _i32.PublicEventLocation.fromJson(data, this)
+          ? _i36.PublicEventLocation.fromJson(data, this)
           : null) as T;
     }
-    if (t == _i1.getType<_i33.EventGuestsResponse?>()) {
+    if (t == _i1.getType<_i37.EventCreateResponse?>()) {
       return (data != null
-          ? _i33.EventGuestsResponse.fromJson(data, this)
+          ? _i37.EventCreateResponse.fromJson(data, this)
           : null) as T;
     }
-    if (t == _i1.getType<_i34.EventGuestsResponseCode?>()) {
-      return (data != null ? _i34.EventGuestsResponseCode.fromJson(data) : null)
+    if (t == _i1.getType<_i38.EventCreateResponseCode?>()) {
+      return (data != null ? _i38.EventCreateResponseCode.fromJson(data) : null)
           as T;
     }
-    if (t == _i1.getType<_i35.Event?>()) {
-      return (data != null ? _i35.Event.fromJson(data, this) : null) as T;
-    }
-    if (t == _i1.getType<_i36.EventGuest?>()) {
-      return (data != null ? _i36.EventGuest.fromJson(data, this) : null) as T;
-    }
-    if (t == _i1.getType<_i37.EventGuestSuggestion?>()) {
+    if (t == _i1.getType<_i39.EventGuestsResponse?>()) {
       return (data != null
-          ? _i37.EventGuestSuggestion.fromJson(data, this)
+          ? _i39.EventGuestsResponse.fromJson(data, this)
           : null) as T;
     }
-    if (t == _i1.getType<_i38.EventInvitation?>()) {
-      return (data != null ? _i38.EventInvitation.fromJson(data, this) : null)
+    if (t == _i1.getType<_i40.EventGuestsResponseCode?>()) {
+      return (data != null ? _i40.EventGuestsResponseCode.fromJson(data) : null)
           as T;
     }
-    if (t == _i1.getType<_i39.EventRequest?>()) {
-      return (data != null ? _i39.EventRequest.fromJson(data, this) : null)
+    if (t == _i1.getType<_i41.Event?>()) {
+      return (data != null ? _i41.Event.fromJson(data, this) : null) as T;
+    }
+    if (t == _i1.getType<_i42.EventGuest?>()) {
+      return (data != null ? _i42.EventGuest.fromJson(data, this) : null) as T;
+    }
+    if (t == _i1.getType<_i43.EventGuestInvitation?>()) {
+      return (data != null
+          ? _i43.EventGuestInvitation.fromJson(data, this)
+          : null) as T;
+    }
+    if (t == _i1.getType<_i44.EventGuestRequest?>()) {
+      return (data != null ? _i44.EventGuestRequest.fromJson(data, this) : null)
           as T;
     }
-    if (t == _i1.getType<_i40.FriendRequestStatus?>()) {
-      return (data != null ? _i40.FriendRequestStatus.fromJson(data) : null)
+    if (t == _i1.getType<_i45.EventGuestSuggestion?>()) {
+      return (data != null
+          ? _i45.EventGuestSuggestion.fromJson(data, this)
+          : null) as T;
+    }
+    if (t == _i1.getType<_i46.EventHost?>()) {
+      return (data != null ? _i46.EventHost.fromJson(data, this) : null) as T;
+    }
+    if (t == _i1.getType<_i47.EventHostInvitation?>()) {
+      return (data != null
+          ? _i47.EventHostInvitation.fromJson(data, this)
+          : null) as T;
+    }
+    if (t == _i1.getType<_i48.EventHostRequest?>()) {
+      return (data != null ? _i48.EventHostRequest.fromJson(data, this) : null)
           as T;
     }
-    if (t == _i1.getType<_i41.FriendRequestAnswerResponse?>()) {
+    if (t == _i1.getType<_i49.EventHostSuggestion?>()) {
       return (data != null
-          ? _i41.FriendRequestAnswerResponse.fromJson(data, this)
+          ? _i49.EventHostSuggestion.fromJson(data, this)
           : null) as T;
     }
-    if (t == _i1.getType<_i42.FriendRequestAnswerResponseCode?>()) {
-      return (data != null
-          ? _i42.FriendRequestAnswerResponseCode.fromJson(data)
-          : null) as T;
-    }
-    if (t == _i1.getType<_i43.FriendRequestCreateResponse?>()) {
-      return (data != null
-          ? _i43.FriendRequestCreateResponse.fromJson(data, this)
-          : null) as T;
-    }
-    if (t == _i1.getType<_i44.FriendRequestCreateResponseCode?>()) {
-      return (data != null
-          ? _i44.FriendRequestCreateResponseCode.fromJson(data)
-          : null) as T;
-    }
-    if (t == _i1.getType<_i45.FriendRequestTakeBackResponse?>()) {
-      return (data != null
-          ? _i45.FriendRequestTakeBackResponse.fromJson(data, this)
-          : null) as T;
-    }
-    if (t == _i1.getType<_i46.FriendRequestTakeBackResponseCode?>()) {
-      return (data != null
-          ? _i46.FriendRequestTakeBackResponseCode.fromJson(data)
-          : null) as T;
-    }
-    if (t == _i1.getType<_i47.FriendRequest?>()) {
-      return (data != null ? _i47.FriendRequest.fromJson(data, this) : null)
+    if (t == _i1.getType<_i50.FriendRequestStatus?>()) {
+      return (data != null ? _i50.FriendRequestStatus.fromJson(data) : null)
           as T;
     }
-    if (t == _i1.getType<_i48.FriendshipBadge?>()) {
-      return (data != null ? _i48.FriendshipBadge.fromJson(data) : null) as T;
-    }
-    if (t == _i1.getType<_i49.FriendshipRemoveResponse?>()) {
+    if (t == _i1.getType<_i51.FriendRequestAnswerResponse?>()) {
       return (data != null
-          ? _i49.FriendshipRemoveResponse.fromJson(data, this)
+          ? _i51.FriendRequestAnswerResponse.fromJson(data, this)
           : null) as T;
     }
-    if (t == _i1.getType<_i50.FriendshipRemoveResponseCode?>()) {
+    if (t == _i1.getType<_i52.FriendRequestAnswerResponseCode?>()) {
       return (data != null
-          ? _i50.FriendshipRemoveResponseCode.fromJson(data)
+          ? _i52.FriendRequestAnswerResponseCode.fromJson(data)
           : null) as T;
     }
-    if (t == _i1.getType<_i51.Friendship?>()) {
-      return (data != null ? _i51.Friendship.fromJson(data, this) : null) as T;
-    }
-    if (t == _i1.getType<_i52.NotificationType?>()) {
-      return (data != null ? _i52.NotificationType.fromJson(data) : null) as T;
-    }
-    if (t == _i1.getType<_i53.PublicNotificationFriendRequestAccepted?>()) {
+    if (t == _i1.getType<_i53.FriendRequestCreateResponse?>()) {
       return (data != null
-          ? _i53.PublicNotificationFriendRequestAccepted.fromJson(data, this)
+          ? _i53.FriendRequestCreateResponse.fromJson(data, this)
           : null) as T;
     }
-    if (t ==
-        _i1.getType<_i54.PublicNotificationFriendRequestAcceptedSender?>()) {
+    if (t == _i1.getType<_i54.FriendRequestCreateResponseCode?>()) {
       return (data != null
-          ? _i54.PublicNotificationFriendRequestAcceptedSender.fromJson(
+          ? _i54.FriendRequestCreateResponseCode.fromJson(data)
+          : null) as T;
+    }
+    if (t == _i1.getType<_i55.FriendRequestTakeBackResponse?>()) {
+      return (data != null
+          ? _i55.FriendRequestTakeBackResponse.fromJson(data, this)
+          : null) as T;
+    }
+    if (t == _i1.getType<_i56.FriendRequestTakeBackResponseCode?>()) {
+      return (data != null
+          ? _i56.FriendRequestTakeBackResponseCode.fromJson(data)
+          : null) as T;
+    }
+    if (t == _i1.getType<_i57.FriendRequest?>()) {
+      return (data != null ? _i57.FriendRequest.fromJson(data, this) : null)
+          as T;
+    }
+    if (t == _i1.getType<_i58.FriendshipBadge?>()) {
+      return (data != null ? _i58.FriendshipBadge.fromJson(data) : null) as T;
+    }
+    if (t == _i1.getType<_i59.FriendshipRemoveResponse?>()) {
+      return (data != null
+          ? _i59.FriendshipRemoveResponse.fromJson(data, this)
+          : null) as T;
+    }
+    if (t == _i1.getType<_i60.FriendshipRemoveResponseCode?>()) {
+      return (data != null
+          ? _i60.FriendshipRemoveResponseCode.fromJson(data)
+          : null) as T;
+    }
+    if (t == _i1.getType<_i61.Friendship?>()) {
+      return (data != null ? _i61.Friendship.fromJson(data, this) : null) as T;
+    }
+    if (t == _i1.getType<_i62.NotificationType?>()) {
+      return (data != null ? _i62.NotificationType.fromJson(data) : null) as T;
+    }
+    if (t == _i1.getType<_i63.PublicNotification?>()) {
+      return (data != null
+          ? _i63.PublicNotification.fromJson(data, this)
+          : null) as T;
+    }
+    if (t == _i1.getType<_i64.PublicNotificationDataFriendRequestAccepted?>()) {
+      return (data != null
+          ? _i64.PublicNotificationDataFriendRequestAccepted.fromJson(
               data, this)
-          : null) as T;
-    }
-    if (t == _i1.getType<_i55.PublicNotificationFriendRequestCreated?>()) {
-      return (data != null
-          ? _i55.PublicNotificationFriendRequestCreated.fromJson(data, this)
           : null) as T;
     }
     if (t ==
         _i1.getType<
-            _i56.PublicNotificationFriendRequestCreatedFriendRequest?>()) {
+            _i65.PublicNotificationDataFriendRequestAcceptedSender?>()) {
       return (data != null
-          ? _i56.PublicNotificationFriendRequestCreatedFriendRequest.fromJson(
+          ? _i65.PublicNotificationDataFriendRequestAcceptedSender.fromJson(
               data, this)
+          : null) as T;
+    }
+    if (t == _i1.getType<_i66.PublicNotificationDataFriendRequestCreated?>()) {
+      return (data != null
+          ? _i66.PublicNotificationDataFriendRequestCreated.fromJson(data, this)
           : null) as T;
     }
     if (t ==
-        _i1.getType<
-            _i57.PublicNotificationFriendRequestCreatedFriendRequestSender?>()) {
+        _i1.getType<_i67.PublicNotificationDataFriendRequestCreatedSender?>()) {
       return (data != null
-          ? _i57.PublicNotificationFriendRequestCreatedFriendRequestSender
-              .fromJson(data, this)
-          : null) as T;
-    }
-    if (t == _i1.getType<_i58.PublicNotificationFriendRequestDenied?>()) {
-      return (data != null
-          ? _i58.PublicNotificationFriendRequestDenied.fromJson(data, this)
-          : null) as T;
-    }
-    if (t == _i1.getType<_i59.PublicNotificationFriendRequestDeniedSender?>()) {
-      return (data != null
-          ? _i59.PublicNotificationFriendRequestDeniedSender.fromJson(
+          ? _i67.PublicNotificationDataFriendRequestCreatedSender.fromJson(
               data, this)
           : null) as T;
     }
-    if (t == _i1.getType<_i60.PublicNotification?>()) {
+    if (t == _i1.getType<_i68.PublicNotificationDataFriendRequestDenied?>()) {
       return (data != null
-          ? _i60.PublicNotification.fromJson(data, this)
+          ? _i68.PublicNotificationDataFriendRequestDenied.fromJson(data, this)
           : null) as T;
     }
-    if (t == _i1.getType<_i61.NotificationReadResponse?>()) {
+    if (t ==
+        _i1.getType<_i69.PublicNotificationDataFriendRequestDeniedSender?>()) {
       return (data != null
-          ? _i61.NotificationReadResponse.fromJson(data, this)
+          ? _i69.PublicNotificationDataFriendRequestDeniedSender.fromJson(
+              data, this)
           : null) as T;
     }
-    if (t == _i1.getType<_i62.NotificationReadResponseCode?>()) {
+    if (t == _i1.getType<_i70.NotificationReadResponse?>()) {
       return (data != null
-          ? _i62.NotificationReadResponseCode.fromJson(data)
+          ? _i70.NotificationReadResponse.fromJson(data, this)
           : null) as T;
     }
-    if (t == _i1.getType<_i63.NotificationSetAllReadResponse?>()) {
+    if (t == _i1.getType<_i71.NotificationReadResponseCode?>()) {
       return (data != null
-          ? _i63.NotificationSetAllReadResponse.fromJson(data, this)
+          ? _i71.NotificationReadResponseCode.fromJson(data)
           : null) as T;
     }
-    if (t == _i1.getType<_i64.NotificationSetAllReadResponseCode?>()) {
+    if (t == _i1.getType<_i72.NotificationSetAllReadResponse?>()) {
       return (data != null
-          ? _i64.NotificationSetAllReadResponseCode.fromJson(data)
+          ? _i72.NotificationSetAllReadResponse.fromJson(data, this)
           : null) as T;
     }
-    if (t == _i1.getType<_i65.NotificationSetReadResponse?>()) {
+    if (t == _i1.getType<_i73.NotificationSetAllReadResponseCode?>()) {
       return (data != null
-          ? _i65.NotificationSetReadResponse.fromJson(data, this)
+          ? _i73.NotificationSetAllReadResponseCode.fromJson(data)
           : null) as T;
     }
-    if (t == _i1.getType<_i66.NotificationSetReadResponseCode?>()) {
+    if (t == _i1.getType<_i74.NotificationSetReadResponse?>()) {
       return (data != null
-          ? _i66.NotificationSetReadResponseCode.fromJson(data)
+          ? _i74.NotificationSetReadResponse.fromJson(data, this)
           : null) as T;
     }
-    if (t == _i1.getType<_i67.Notification?>()) {
-      return (data != null ? _i67.Notification.fromJson(data, this) : null)
+    if (t == _i1.getType<_i75.NotificationSetReadResponseCode?>()) {
+      return (data != null
+          ? _i75.NotificationSetReadResponseCode.fromJson(data)
+          : null) as T;
+    }
+    if (t == _i1.getType<_i76.Notification?>()) {
+      return (data != null ? _i76.Notification.fromJson(data, this) : null)
           as T;
     }
-    if (t == _i1.getType<_i68.RatingType?>()) {
-      return (data != null ? _i68.RatingType.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i77.RatingType?>()) {
+      return (data != null ? _i77.RatingType.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i69.Rating?>()) {
-      return (data != null ? _i69.Rating.fromJson(data, this) : null) as T;
+    if (t == _i1.getType<_i78.Rating?>()) {
+      return (data != null ? _i78.Rating.fromJson(data, this) : null) as T;
     }
-    if (t == _i1.getType<_i70.UserBadge?>()) {
-      return (data != null ? _i70.UserBadge.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i79.UserBadge?>()) {
+      return (data != null ? _i79.UserBadge.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i71.PublicUser?>()) {
-      return (data != null ? _i71.PublicUser.fromJson(data, this) : null) as T;
+    if (t == _i1.getType<_i80.PublicUser?>()) {
+      return (data != null ? _i80.PublicUser.fromJson(data, this) : null) as T;
     }
-    if (t == _i1.getType<_i72.PublicUserFriendRequest?>()) {
+    if (t == _i1.getType<_i81.PublicUserFriendRequest?>()) {
       return (data != null
-          ? _i72.PublicUserFriendRequest.fromJson(data, this)
+          ? _i81.PublicUserFriendRequest.fromJson(data, this)
           : null) as T;
     }
-    if (t == _i1.getType<_i73.PublicUserFriendship?>()) {
+    if (t == _i1.getType<_i82.PublicUserFriendship?>()) {
       return (data != null
-          ? _i73.PublicUserFriendship.fromJson(data, this)
+          ? _i82.PublicUserFriendship.fromJson(data, this)
           : null) as T;
     }
-    if (t == _i1.getType<_i74.PublicUserFriendshipDetails?>()) {
+    if (t == _i1.getType<_i83.PublicUserFriendshipDetails?>()) {
       return (data != null
-          ? _i74.PublicUserFriendshipDetails.fromJson(data, this)
+          ? _i83.PublicUserFriendshipDetails.fromJson(data, this)
           : null) as T;
     }
-    if (t == _i1.getType<_i75.PublicUserFriendshipUser?>()) {
+    if (t == _i1.getType<_i84.PublicUserFriendshipUser?>()) {
       return (data != null
-          ? _i75.PublicUserFriendshipUser.fromJson(data, this)
+          ? _i84.PublicUserFriendshipUser.fromJson(data, this)
           : null) as T;
     }
-    if (t == _i1.getType<_i76.PublicUserRating?>()) {
-      return (data != null ? _i76.PublicUserRating.fromJson(data, this) : null)
+    if (t == _i1.getType<_i85.PublicUserRating?>()) {
+      return (data != null ? _i85.PublicUserRating.fromJson(data, this) : null)
           as T;
     }
-    if (t == _i1.getType<_i77.PublicUserRatingUser?>()) {
+    if (t == _i1.getType<_i86.PublicUserRatingUser?>()) {
       return (data != null
-          ? _i77.PublicUserRatingUser.fromJson(data, this)
+          ? _i86.PublicUserRatingUser.fromJson(data, this)
           : null) as T;
     }
-    if (t == _i1.getType<_i78.PublicUserSearchUser?>()) {
+    if (t == _i1.getType<_i87.PublicUserSearchUser?>()) {
       return (data != null
-          ? _i78.PublicUserSearchUser.fromJson(data, this)
+          ? _i87.PublicUserSearchUser.fromJson(data, this)
           : null) as T;
     }
-    if (t == _i1.getType<_i79.UserEventsResponseCode?>()) {
-      return (data != null ? _i79.UserEventsResponseCode.fromJson(data) : null)
+    if (t == _i1.getType<_i88.UserEventsResponseCode?>()) {
+      return (data != null ? _i88.UserEventsResponseCode.fromJson(data) : null)
           as T;
     }
-    if (t == _i1.getType<_i80.UserEventsResponse?>()) {
+    if (t == _i1.getType<_i89.UserEventsResponse?>()) {
       return (data != null
-          ? _i80.UserEventsResponse.fromJson(data, this)
+          ? _i89.UserEventsResponse.fromJson(data, this)
           : null) as T;
     }
-    if (t == _i1.getType<_i81.UserFriendshipsResponse?>()) {
+    if (t == _i1.getType<_i90.UserFriendshipsResponse?>()) {
       return (data != null
-          ? _i81.UserFriendshipsResponse.fromJson(data, this)
+          ? _i90.UserFriendshipsResponse.fromJson(data, this)
           : null) as T;
     }
-    if (t == _i1.getType<_i82.UserFriendshipsResponseCode?>()) {
+    if (t == _i1.getType<_i91.UserFriendshipsResponseCode?>()) {
       return (data != null
-          ? _i82.UserFriendshipsResponseCode.fromJson(data)
+          ? _i91.UserFriendshipsResponseCode.fromJson(data)
           : null) as T;
     }
-    if (t == _i1.getType<_i83.UserRatingsResponse?>()) {
+    if (t == _i1.getType<_i92.UserRatingsResponse?>()) {
       return (data != null
-          ? _i83.UserRatingsResponse.fromJson(data, this)
+          ? _i92.UserRatingsResponse.fromJson(data, this)
           : null) as T;
     }
-    if (t == _i1.getType<_i84.UserRatingsResponseCode?>()) {
-      return (data != null ? _i84.UserRatingsResponseCode.fromJson(data) : null)
+    if (t == _i1.getType<_i93.UserRatingsResponseCode?>()) {
+      return (data != null ? _i93.UserRatingsResponseCode.fromJson(data) : null)
           as T;
     }
-    if (t == _i1.getType<_i85.UserReadResponse?>()) {
-      return (data != null ? _i85.UserReadResponse.fromJson(data, this) : null)
+    if (t == _i1.getType<_i94.UserReadResponse?>()) {
+      return (data != null ? _i94.UserReadResponse.fromJson(data, this) : null)
           as T;
     }
-    if (t == _i1.getType<_i86.UserReadResponseCode?>()) {
-      return (data != null ? _i86.UserReadResponseCode.fromJson(data) : null)
+    if (t == _i1.getType<_i95.UserReadResponseCode?>()) {
+      return (data != null ? _i95.UserReadResponseCode.fromJson(data) : null)
           as T;
     }
-    if (t == _i1.getType<_i87.UserSearchResponse?>()) {
+    if (t == _i1.getType<_i96.UserSearchResponse?>()) {
       return (data != null
-          ? _i87.UserSearchResponse.fromJson(data, this)
+          ? _i96.UserSearchResponse.fromJson(data, this)
           : null) as T;
     }
-    if (t == _i1.getType<_i88.UserSearchResponseCode?>()) {
-      return (data != null ? _i88.UserSearchResponseCode.fromJson(data) : null)
+    if (t == _i1.getType<_i97.UserSearchResponseCode?>()) {
+      return (data != null ? _i97.UserSearchResponseCode.fromJson(data) : null)
           as T;
     }
-    if (t == _i1.getType<_i89.UserUpdateResponse?>()) {
+    if (t == _i1.getType<_i98.UserUpdateResponse?>()) {
       return (data != null
-          ? _i89.UserUpdateResponse.fromJson(data, this)
+          ? _i98.UserUpdateResponse.fromJson(data, this)
           : null) as T;
     }
-    if (t == _i1.getType<_i90.UserUpdateResponseCode?>()) {
-      return (data != null ? _i90.UserUpdateResponseCode.fromJson(data) : null)
+    if (t == _i1.getType<_i99.UserUpdateResponseCode?>()) {
+      return (data != null ? _i99.UserUpdateResponseCode.fromJson(data) : null)
           as T;
     }
-    if (t == _i1.getType<_i91.User?>()) {
-      return (data != null ? _i91.User.fromJson(data, this) : null) as T;
+    if (t == _i1.getType<_i100.User?>()) {
+      return (data != null ? _i100.User.fromJson(data, this) : null) as T;
     }
-    if (t == _i1.getType<List<_i92.PublicEvent>?>()) {
+    if (t == _i1.getType<List<_i101.PublicEvent>?>()) {
       return (data != null
-          ? (data as List).map((e) => deserialize<_i92.PublicEvent>(e)).toList()
+          ? (data as List)
+              .map((e) => deserialize<_i101.PublicEvent>(e))
+              .toList()
           : null) as dynamic;
     }
-    if (t == List<_i92.PublicEventHost?>) {
+    if (t == List<_i101.PublicEventHost?>) {
       return (data as List)
-          .map((e) => deserialize<_i92.PublicEventHost?>(e))
+          .map((e) => deserialize<_i101.PublicEventHost?>(e))
           .toList() as dynamic;
     }
     if (t == List<String?>) {
       return (data as List).map((e) => deserialize<String?>(e)).toList()
           as dynamic;
     }
-    if (t == _i1.getType<List<_i92.PublicEventFullGuest>?>()) {
+    if (t == _i1.getType<List<_i101.PublicEventFullGuest>?>()) {
       return (data != null
           ? (data as List)
-              .map((e) => deserialize<_i92.PublicEventFullGuest>(e))
+              .map((e) => deserialize<_i101.PublicEventFullGuest>(e))
               .toList()
           : null) as dynamic;
     }
     if (t == List<int>) {
       return (data as List).map((e) => deserialize<int>(e)).toList() as dynamic;
     }
-    if (t == List<_i92.FriendshipBadge>) {
+    if (t == List<_i101.FriendshipBadge>) {
       return (data as List)
-          .map((e) => deserialize<_i92.FriendshipBadge>(e))
+          .map((e) => deserialize<_i101.FriendshipBadge>(e))
           .toList() as dynamic;
     }
-    if (t == _i1.getType<List<_i92.PublicNotification>?>()) {
+    if (t == _i1.getType<List<_i101.PublicNotification>?>()) {
       return (data != null
           ? (data as List)
-              .map((e) => deserialize<_i92.PublicNotification>(e))
+              .map((e) => deserialize<_i101.PublicNotification>(e))
               .toList()
           : null) as dynamic;
     }
-    if (t == List<_i92.UserBadge>) {
-      return (data as List).map((e) => deserialize<_i92.UserBadge>(e)).toList()
+    if (t == List<_i101.UserBadge>) {
+      return (data as List).map((e) => deserialize<_i101.UserBadge>(e)).toList()
           as dynamic;
     }
-    if (t == _i1.getType<List<_i92.PublicEvent>?>()) {
-      return (data != null
-          ? (data as List).map((e) => deserialize<_i92.PublicEvent>(e)).toList()
-          : null) as dynamic;
-    }
-    if (t == _i1.getType<List<_i92.PublicUserFriendship>?>()) {
+    if (t == _i1.getType<List<_i101.PublicEvent>?>()) {
       return (data != null
           ? (data as List)
-              .map((e) => deserialize<_i92.PublicUserFriendship>(e))
+              .map((e) => deserialize<_i101.PublicEvent>(e))
               .toList()
           : null) as dynamic;
     }
-    if (t == _i1.getType<List<_i92.PublicUserRating>?>()) {
+    if (t == _i1.getType<List<_i101.PublicUserFriendship>?>()) {
       return (data != null
           ? (data as List)
-              .map((e) => deserialize<_i92.PublicUserRating>(e))
+              .map((e) => deserialize<_i101.PublicUserFriendship>(e))
               .toList()
           : null) as dynamic;
     }
-    if (t == _i1.getType<List<_i92.PublicUserSearchUser>?>()) {
+    if (t == _i1.getType<List<_i101.PublicUserRating>?>()) {
       return (data != null
           ? (data as List)
-              .map((e) => deserialize<_i92.PublicUserSearchUser>(e))
+              .map((e) => deserialize<_i101.PublicUserRating>(e))
               .toList()
           : null) as dynamic;
     }
-    if (t == List<_i93.EventType>) {
-      return (data as List).map((e) => deserialize<_i93.EventType>(e)).toList()
+    if (t == _i1.getType<List<_i101.PublicUserSearchUser>?>()) {
+      return (data != null
+          ? (data as List)
+              .map((e) => deserialize<_i101.PublicUserSearchUser>(e))
+              .toList()
+          : null) as dynamic;
+    }
+    if (t == List<_i102.EventType>) {
+      return (data as List).map((e) => deserialize<_i102.EventType>(e)).toList()
           as dynamic;
     }
-    if (t == List<_i94.EventVisibility>) {
+    if (t == List<_i103.EventVisibility>) {
       return (data as List)
-          .map((e) => deserialize<_i94.EventVisibility>(e))
+          .map((e) => deserialize<_i103.EventVisibility>(e))
           .toList() as dynamic;
+    }
+    if (t == List<int>) {
+      return (data as List).map((e) => deserialize<int>(e)).toList() as dynamic;
     }
     try {
-      return _i95.Protocol().deserialize<T>(data, t);
+      return _i104.Protocol().deserialize<T>(data, t);
     } catch (_) {}
     return super.deserialize<T>(data, t);
   }
@@ -1064,209 +1155,235 @@ class Protocol extends _i1.SerializationManagerServer {
     if (data is _i23.DiscoverReadResponseCode) {
       return 'DiscoverReadResponseCode';
     }
-    if (data is _i24.EventInvitationStatus) {
-      return 'EventInvitationStatus';
+    if (data is _i24.EventGuestInvitationStatus) {
+      return 'EventGuestInvitationStatus';
     }
-    if (data is _i25.EventRequestStatus) {
-      return 'EventRequestStatus';
+    if (data is _i25.EventGuestRequestStatus) {
+      return 'EventGuestRequestStatus';
     }
-    if (data is _i26.EventType) {
+    if (data is _i26.EventGuestSuggestionStatus) {
+      return 'EventGuestSuggestionStatus';
+    }
+    if (data is _i27.EventHostInvitationStatus) {
+      return 'EventHostInvitationStatus';
+    }
+    if (data is _i28.EventHostRequestStatus) {
+      return 'EventHostRequestStatus';
+    }
+    if (data is _i29.EventHostSuggestionStatus) {
+      return 'EventHostSuggestionStatus';
+    }
+    if (data is _i30.EventType) {
       return 'EventType';
     }
-    if (data is _i27.EventVisibility) {
+    if (data is _i31.EventVisibility) {
       return 'EventVisibility';
     }
-    if (data is _i28.PublicEvent) {
+    if (data is _i32.PublicEvent) {
       return 'PublicEvent';
     }
-    if (data is _i29.PublicEventFullGuest) {
+    if (data is _i33.PublicEventFullGuest) {
       return 'PublicEventFullGuest';
     }
-    if (data is _i30.PublicEventFullGuestUser) {
+    if (data is _i34.PublicEventFullGuestUser) {
       return 'PublicEventFullGuestUser';
     }
-    if (data is _i31.PublicEventHost) {
+    if (data is _i35.PublicEventHost) {
       return 'PublicEventHost';
     }
-    if (data is _i32.PublicEventLocation) {
+    if (data is _i36.PublicEventLocation) {
       return 'PublicEventLocation';
     }
-    if (data is _i33.EventGuestsResponse) {
+    if (data is _i37.EventCreateResponse) {
+      return 'EventCreateResponse';
+    }
+    if (data is _i38.EventCreateResponseCode) {
+      return 'EventCreateResponseCode';
+    }
+    if (data is _i39.EventGuestsResponse) {
       return 'EventGuestsResponse';
     }
-    if (data is _i34.EventGuestsResponseCode) {
+    if (data is _i40.EventGuestsResponseCode) {
       return 'EventGuestsResponseCode';
     }
-    if (data is _i35.Event) {
+    if (data is _i41.Event) {
       return 'Event';
     }
-    if (data is _i36.EventGuest) {
+    if (data is _i42.EventGuest) {
       return 'EventGuest';
     }
-    if (data is _i37.EventGuestSuggestion) {
+    if (data is _i43.EventGuestInvitation) {
+      return 'EventGuestInvitation';
+    }
+    if (data is _i44.EventGuestRequest) {
+      return 'EventGuestRequest';
+    }
+    if (data is _i45.EventGuestSuggestion) {
       return 'EventGuestSuggestion';
     }
-    if (data is _i38.EventInvitation) {
-      return 'EventInvitation';
+    if (data is _i46.EventHost) {
+      return 'EventHost';
     }
-    if (data is _i39.EventRequest) {
-      return 'EventRequest';
+    if (data is _i47.EventHostInvitation) {
+      return 'EventHostInvitation';
     }
-    if (data is _i40.FriendRequestStatus) {
+    if (data is _i48.EventHostRequest) {
+      return 'EventHostRequest';
+    }
+    if (data is _i49.EventHostSuggestion) {
+      return 'EventHostSuggestion';
+    }
+    if (data is _i50.FriendRequestStatus) {
       return 'FriendRequestStatus';
     }
-    if (data is _i41.FriendRequestAnswerResponse) {
+    if (data is _i51.FriendRequestAnswerResponse) {
       return 'FriendRequestAnswerResponse';
     }
-    if (data is _i42.FriendRequestAnswerResponseCode) {
+    if (data is _i52.FriendRequestAnswerResponseCode) {
       return 'FriendRequestAnswerResponseCode';
     }
-    if (data is _i43.FriendRequestCreateResponse) {
+    if (data is _i53.FriendRequestCreateResponse) {
       return 'FriendRequestCreateResponse';
     }
-    if (data is _i44.FriendRequestCreateResponseCode) {
+    if (data is _i54.FriendRequestCreateResponseCode) {
       return 'FriendRequestCreateResponseCode';
     }
-    if (data is _i45.FriendRequestTakeBackResponse) {
+    if (data is _i55.FriendRequestTakeBackResponse) {
       return 'FriendRequestTakeBackResponse';
     }
-    if (data is _i46.FriendRequestTakeBackResponseCode) {
+    if (data is _i56.FriendRequestTakeBackResponseCode) {
       return 'FriendRequestTakeBackResponseCode';
     }
-    if (data is _i47.FriendRequest) {
+    if (data is _i57.FriendRequest) {
       return 'FriendRequest';
     }
-    if (data is _i48.FriendshipBadge) {
+    if (data is _i58.FriendshipBadge) {
       return 'FriendshipBadge';
     }
-    if (data is _i49.FriendshipRemoveResponse) {
+    if (data is _i59.FriendshipRemoveResponse) {
       return 'FriendshipRemoveResponse';
     }
-    if (data is _i50.FriendshipRemoveResponseCode) {
+    if (data is _i60.FriendshipRemoveResponseCode) {
       return 'FriendshipRemoveResponseCode';
     }
-    if (data is _i51.Friendship) {
+    if (data is _i61.Friendship) {
       return 'Friendship';
     }
-    if (data is _i52.NotificationType) {
+    if (data is _i62.NotificationType) {
       return 'NotificationType';
     }
-    if (data is _i53.PublicNotificationFriendRequestAccepted) {
-      return 'PublicNotificationFriendRequestAccepted';
-    }
-    if (data is _i54.PublicNotificationFriendRequestAcceptedSender) {
-      return 'PublicNotificationFriendRequestAcceptedSender';
-    }
-    if (data is _i55.PublicNotificationFriendRequestCreated) {
-      return 'PublicNotificationFriendRequestCreated';
-    }
-    if (data is _i56.PublicNotificationFriendRequestCreatedFriendRequest) {
-      return 'PublicNotificationFriendRequestCreatedFriendRequest';
-    }
-    if (data
-        is _i57.PublicNotificationFriendRequestCreatedFriendRequestSender) {
-      return 'PublicNotificationFriendRequestCreatedFriendRequestSender';
-    }
-    if (data is _i58.PublicNotificationFriendRequestDenied) {
-      return 'PublicNotificationFriendRequestDenied';
-    }
-    if (data is _i59.PublicNotificationFriendRequestDeniedSender) {
-      return 'PublicNotificationFriendRequestDeniedSender';
-    }
-    if (data is _i60.PublicNotification) {
+    if (data is _i63.PublicNotification) {
       return 'PublicNotification';
     }
-    if (data is _i61.NotificationReadResponse) {
+    if (data is _i64.PublicNotificationDataFriendRequestAccepted) {
+      return 'PublicNotificationDataFriendRequestAccepted';
+    }
+    if (data is _i65.PublicNotificationDataFriendRequestAcceptedSender) {
+      return 'PublicNotificationDataFriendRequestAcceptedSender';
+    }
+    if (data is _i66.PublicNotificationDataFriendRequestCreated) {
+      return 'PublicNotificationDataFriendRequestCreated';
+    }
+    if (data is _i67.PublicNotificationDataFriendRequestCreatedSender) {
+      return 'PublicNotificationDataFriendRequestCreatedSender';
+    }
+    if (data is _i68.PublicNotificationDataFriendRequestDenied) {
+      return 'PublicNotificationDataFriendRequestDenied';
+    }
+    if (data is _i69.PublicNotificationDataFriendRequestDeniedSender) {
+      return 'PublicNotificationDataFriendRequestDeniedSender';
+    }
+    if (data is _i70.NotificationReadResponse) {
       return 'NotificationReadResponse';
     }
-    if (data is _i62.NotificationReadResponseCode) {
+    if (data is _i71.NotificationReadResponseCode) {
       return 'NotificationReadResponseCode';
     }
-    if (data is _i63.NotificationSetAllReadResponse) {
+    if (data is _i72.NotificationSetAllReadResponse) {
       return 'NotificationSetAllReadResponse';
     }
-    if (data is _i64.NotificationSetAllReadResponseCode) {
+    if (data is _i73.NotificationSetAllReadResponseCode) {
       return 'NotificationSetAllReadResponseCode';
     }
-    if (data is _i65.NotificationSetReadResponse) {
+    if (data is _i74.NotificationSetReadResponse) {
       return 'NotificationSetReadResponse';
     }
-    if (data is _i66.NotificationSetReadResponseCode) {
+    if (data is _i75.NotificationSetReadResponseCode) {
       return 'NotificationSetReadResponseCode';
     }
-    if (data is _i67.Notification) {
+    if (data is _i76.Notification) {
       return 'Notification';
     }
-    if (data is _i68.RatingType) {
+    if (data is _i77.RatingType) {
       return 'RatingType';
     }
-    if (data is _i69.Rating) {
+    if (data is _i78.Rating) {
       return 'Rating';
     }
-    if (data is _i70.UserBadge) {
+    if (data is _i79.UserBadge) {
       return 'UserBadge';
     }
-    if (data is _i71.PublicUser) {
+    if (data is _i80.PublicUser) {
       return 'PublicUser';
     }
-    if (data is _i72.PublicUserFriendRequest) {
+    if (data is _i81.PublicUserFriendRequest) {
       return 'PublicUserFriendRequest';
     }
-    if (data is _i73.PublicUserFriendship) {
+    if (data is _i82.PublicUserFriendship) {
       return 'PublicUserFriendship';
     }
-    if (data is _i74.PublicUserFriendshipDetails) {
+    if (data is _i83.PublicUserFriendshipDetails) {
       return 'PublicUserFriendshipDetails';
     }
-    if (data is _i75.PublicUserFriendshipUser) {
+    if (data is _i84.PublicUserFriendshipUser) {
       return 'PublicUserFriendshipUser';
     }
-    if (data is _i76.PublicUserRating) {
+    if (data is _i85.PublicUserRating) {
       return 'PublicUserRating';
     }
-    if (data is _i77.PublicUserRatingUser) {
+    if (data is _i86.PublicUserRatingUser) {
       return 'PublicUserRatingUser';
     }
-    if (data is _i78.PublicUserSearchUser) {
+    if (data is _i87.PublicUserSearchUser) {
       return 'PublicUserSearchUser';
     }
-    if (data is _i79.UserEventsResponseCode) {
+    if (data is _i88.UserEventsResponseCode) {
       return 'UserEventsResponseCode';
     }
-    if (data is _i80.UserEventsResponse) {
+    if (data is _i89.UserEventsResponse) {
       return 'UserEventsResponse';
     }
-    if (data is _i81.UserFriendshipsResponse) {
+    if (data is _i90.UserFriendshipsResponse) {
       return 'UserFriendshipsResponse';
     }
-    if (data is _i82.UserFriendshipsResponseCode) {
+    if (data is _i91.UserFriendshipsResponseCode) {
       return 'UserFriendshipsResponseCode';
     }
-    if (data is _i83.UserRatingsResponse) {
+    if (data is _i92.UserRatingsResponse) {
       return 'UserRatingsResponse';
     }
-    if (data is _i84.UserRatingsResponseCode) {
+    if (data is _i93.UserRatingsResponseCode) {
       return 'UserRatingsResponseCode';
     }
-    if (data is _i85.UserReadResponse) {
+    if (data is _i94.UserReadResponse) {
       return 'UserReadResponse';
     }
-    if (data is _i86.UserReadResponseCode) {
+    if (data is _i95.UserReadResponseCode) {
       return 'UserReadResponseCode';
     }
-    if (data is _i87.UserSearchResponse) {
+    if (data is _i96.UserSearchResponse) {
       return 'UserSearchResponse';
     }
-    if (data is _i88.UserSearchResponseCode) {
+    if (data is _i97.UserSearchResponseCode) {
       return 'UserSearchResponseCode';
     }
-    if (data is _i89.UserUpdateResponse) {
+    if (data is _i98.UserUpdateResponse) {
       return 'UserUpdateResponse';
     }
-    if (data is _i90.UserUpdateResponseCode) {
+    if (data is _i99.UserUpdateResponseCode) {
       return 'UserUpdateResponseCode';
     }
-    if (data is _i91.User) {
+    if (data is _i100.User) {
       return 'User';
     }
     return super.getClassNameForObject(data);
@@ -1344,220 +1461,245 @@ class Protocol extends _i1.SerializationManagerServer {
     if (data['className'] == 'DiscoverReadResponseCode') {
       return deserialize<_i23.DiscoverReadResponseCode>(data['data']);
     }
-    if (data['className'] == 'EventInvitationStatus') {
-      return deserialize<_i24.EventInvitationStatus>(data['data']);
+    if (data['className'] == 'EventGuestInvitationStatus') {
+      return deserialize<_i24.EventGuestInvitationStatus>(data['data']);
     }
-    if (data['className'] == 'EventRequestStatus') {
-      return deserialize<_i25.EventRequestStatus>(data['data']);
+    if (data['className'] == 'EventGuestRequestStatus') {
+      return deserialize<_i25.EventGuestRequestStatus>(data['data']);
+    }
+    if (data['className'] == 'EventGuestSuggestionStatus') {
+      return deserialize<_i26.EventGuestSuggestionStatus>(data['data']);
+    }
+    if (data['className'] == 'EventHostInvitationStatus') {
+      return deserialize<_i27.EventHostInvitationStatus>(data['data']);
+    }
+    if (data['className'] == 'EventHostRequestStatus') {
+      return deserialize<_i28.EventHostRequestStatus>(data['data']);
+    }
+    if (data['className'] == 'EventHostSuggestionStatus') {
+      return deserialize<_i29.EventHostSuggestionStatus>(data['data']);
     }
     if (data['className'] == 'EventType') {
-      return deserialize<_i26.EventType>(data['data']);
+      return deserialize<_i30.EventType>(data['data']);
     }
     if (data['className'] == 'EventVisibility') {
-      return deserialize<_i27.EventVisibility>(data['data']);
+      return deserialize<_i31.EventVisibility>(data['data']);
     }
     if (data['className'] == 'PublicEvent') {
-      return deserialize<_i28.PublicEvent>(data['data']);
+      return deserialize<_i32.PublicEvent>(data['data']);
     }
     if (data['className'] == 'PublicEventFullGuest') {
-      return deserialize<_i29.PublicEventFullGuest>(data['data']);
+      return deserialize<_i33.PublicEventFullGuest>(data['data']);
     }
     if (data['className'] == 'PublicEventFullGuestUser') {
-      return deserialize<_i30.PublicEventFullGuestUser>(data['data']);
+      return deserialize<_i34.PublicEventFullGuestUser>(data['data']);
     }
     if (data['className'] == 'PublicEventHost') {
-      return deserialize<_i31.PublicEventHost>(data['data']);
+      return deserialize<_i35.PublicEventHost>(data['data']);
     }
     if (data['className'] == 'PublicEventLocation') {
-      return deserialize<_i32.PublicEventLocation>(data['data']);
+      return deserialize<_i36.PublicEventLocation>(data['data']);
+    }
+    if (data['className'] == 'EventCreateResponse') {
+      return deserialize<_i37.EventCreateResponse>(data['data']);
+    }
+    if (data['className'] == 'EventCreateResponseCode') {
+      return deserialize<_i38.EventCreateResponseCode>(data['data']);
     }
     if (data['className'] == 'EventGuestsResponse') {
-      return deserialize<_i33.EventGuestsResponse>(data['data']);
+      return deserialize<_i39.EventGuestsResponse>(data['data']);
     }
     if (data['className'] == 'EventGuestsResponseCode') {
-      return deserialize<_i34.EventGuestsResponseCode>(data['data']);
+      return deserialize<_i40.EventGuestsResponseCode>(data['data']);
     }
     if (data['className'] == 'Event') {
-      return deserialize<_i35.Event>(data['data']);
+      return deserialize<_i41.Event>(data['data']);
     }
     if (data['className'] == 'EventGuest') {
-      return deserialize<_i36.EventGuest>(data['data']);
+      return deserialize<_i42.EventGuest>(data['data']);
+    }
+    if (data['className'] == 'EventGuestInvitation') {
+      return deserialize<_i43.EventGuestInvitation>(data['data']);
+    }
+    if (data['className'] == 'EventGuestRequest') {
+      return deserialize<_i44.EventGuestRequest>(data['data']);
     }
     if (data['className'] == 'EventGuestSuggestion') {
-      return deserialize<_i37.EventGuestSuggestion>(data['data']);
+      return deserialize<_i45.EventGuestSuggestion>(data['data']);
     }
-    if (data['className'] == 'EventInvitation') {
-      return deserialize<_i38.EventInvitation>(data['data']);
+    if (data['className'] == 'EventHost') {
+      return deserialize<_i46.EventHost>(data['data']);
     }
-    if (data['className'] == 'EventRequest') {
-      return deserialize<_i39.EventRequest>(data['data']);
+    if (data['className'] == 'EventHostInvitation') {
+      return deserialize<_i47.EventHostInvitation>(data['data']);
+    }
+    if (data['className'] == 'EventHostRequest') {
+      return deserialize<_i48.EventHostRequest>(data['data']);
+    }
+    if (data['className'] == 'EventHostSuggestion') {
+      return deserialize<_i49.EventHostSuggestion>(data['data']);
     }
     if (data['className'] == 'FriendRequestStatus') {
-      return deserialize<_i40.FriendRequestStatus>(data['data']);
+      return deserialize<_i50.FriendRequestStatus>(data['data']);
     }
     if (data['className'] == 'FriendRequestAnswerResponse') {
-      return deserialize<_i41.FriendRequestAnswerResponse>(data['data']);
+      return deserialize<_i51.FriendRequestAnswerResponse>(data['data']);
     }
     if (data['className'] == 'FriendRequestAnswerResponseCode') {
-      return deserialize<_i42.FriendRequestAnswerResponseCode>(data['data']);
+      return deserialize<_i52.FriendRequestAnswerResponseCode>(data['data']);
     }
     if (data['className'] == 'FriendRequestCreateResponse') {
-      return deserialize<_i43.FriendRequestCreateResponse>(data['data']);
+      return deserialize<_i53.FriendRequestCreateResponse>(data['data']);
     }
     if (data['className'] == 'FriendRequestCreateResponseCode') {
-      return deserialize<_i44.FriendRequestCreateResponseCode>(data['data']);
+      return deserialize<_i54.FriendRequestCreateResponseCode>(data['data']);
     }
     if (data['className'] == 'FriendRequestTakeBackResponse') {
-      return deserialize<_i45.FriendRequestTakeBackResponse>(data['data']);
+      return deserialize<_i55.FriendRequestTakeBackResponse>(data['data']);
     }
     if (data['className'] == 'FriendRequestTakeBackResponseCode') {
-      return deserialize<_i46.FriendRequestTakeBackResponseCode>(data['data']);
+      return deserialize<_i56.FriendRequestTakeBackResponseCode>(data['data']);
     }
     if (data['className'] == 'FriendRequest') {
-      return deserialize<_i47.FriendRequest>(data['data']);
+      return deserialize<_i57.FriendRequest>(data['data']);
     }
     if (data['className'] == 'FriendshipBadge') {
-      return deserialize<_i48.FriendshipBadge>(data['data']);
+      return deserialize<_i58.FriendshipBadge>(data['data']);
     }
     if (data['className'] == 'FriendshipRemoveResponse') {
-      return deserialize<_i49.FriendshipRemoveResponse>(data['data']);
+      return deserialize<_i59.FriendshipRemoveResponse>(data['data']);
     }
     if (data['className'] == 'FriendshipRemoveResponseCode') {
-      return deserialize<_i50.FriendshipRemoveResponseCode>(data['data']);
+      return deserialize<_i60.FriendshipRemoveResponseCode>(data['data']);
     }
     if (data['className'] == 'Friendship') {
-      return deserialize<_i51.Friendship>(data['data']);
+      return deserialize<_i61.Friendship>(data['data']);
     }
     if (data['className'] == 'NotificationType') {
-      return deserialize<_i52.NotificationType>(data['data']);
-    }
-    if (data['className'] == 'PublicNotificationFriendRequestAccepted') {
-      return deserialize<_i53.PublicNotificationFriendRequestAccepted>(
-          data['data']);
-    }
-    if (data['className'] == 'PublicNotificationFriendRequestAcceptedSender') {
-      return deserialize<_i54.PublicNotificationFriendRequestAcceptedSender>(
-          data['data']);
-    }
-    if (data['className'] == 'PublicNotificationFriendRequestCreated') {
-      return deserialize<_i55.PublicNotificationFriendRequestCreated>(
-          data['data']);
-    }
-    if (data['className'] ==
-        'PublicNotificationFriendRequestCreatedFriendRequest') {
-      return deserialize<
-              _i56.PublicNotificationFriendRequestCreatedFriendRequest>(
-          data['data']);
-    }
-    if (data['className'] ==
-        'PublicNotificationFriendRequestCreatedFriendRequestSender') {
-      return deserialize<
-              _i57.PublicNotificationFriendRequestCreatedFriendRequestSender>(
-          data['data']);
-    }
-    if (data['className'] == 'PublicNotificationFriendRequestDenied') {
-      return deserialize<_i58.PublicNotificationFriendRequestDenied>(
-          data['data']);
-    }
-    if (data['className'] == 'PublicNotificationFriendRequestDeniedSender') {
-      return deserialize<_i59.PublicNotificationFriendRequestDeniedSender>(
-          data['data']);
+      return deserialize<_i62.NotificationType>(data['data']);
     }
     if (data['className'] == 'PublicNotification') {
-      return deserialize<_i60.PublicNotification>(data['data']);
+      return deserialize<_i63.PublicNotification>(data['data']);
+    }
+    if (data['className'] == 'PublicNotificationDataFriendRequestAccepted') {
+      return deserialize<_i64.PublicNotificationDataFriendRequestAccepted>(
+          data['data']);
+    }
+    if (data['className'] ==
+        'PublicNotificationDataFriendRequestAcceptedSender') {
+      return deserialize<
+          _i65.PublicNotificationDataFriendRequestAcceptedSender>(data['data']);
+    }
+    if (data['className'] == 'PublicNotificationDataFriendRequestCreated') {
+      return deserialize<_i66.PublicNotificationDataFriendRequestCreated>(
+          data['data']);
+    }
+    if (data['className'] ==
+        'PublicNotificationDataFriendRequestCreatedSender') {
+      return deserialize<_i67.PublicNotificationDataFriendRequestCreatedSender>(
+          data['data']);
+    }
+    if (data['className'] == 'PublicNotificationDataFriendRequestDenied') {
+      return deserialize<_i68.PublicNotificationDataFriendRequestDenied>(
+          data['data']);
+    }
+    if (data['className'] ==
+        'PublicNotificationDataFriendRequestDeniedSender') {
+      return deserialize<_i69.PublicNotificationDataFriendRequestDeniedSender>(
+          data['data']);
     }
     if (data['className'] == 'NotificationReadResponse') {
-      return deserialize<_i61.NotificationReadResponse>(data['data']);
+      return deserialize<_i70.NotificationReadResponse>(data['data']);
     }
     if (data['className'] == 'NotificationReadResponseCode') {
-      return deserialize<_i62.NotificationReadResponseCode>(data['data']);
+      return deserialize<_i71.NotificationReadResponseCode>(data['data']);
     }
     if (data['className'] == 'NotificationSetAllReadResponse') {
-      return deserialize<_i63.NotificationSetAllReadResponse>(data['data']);
+      return deserialize<_i72.NotificationSetAllReadResponse>(data['data']);
     }
     if (data['className'] == 'NotificationSetAllReadResponseCode') {
-      return deserialize<_i64.NotificationSetAllReadResponseCode>(data['data']);
+      return deserialize<_i73.NotificationSetAllReadResponseCode>(data['data']);
     }
     if (data['className'] == 'NotificationSetReadResponse') {
-      return deserialize<_i65.NotificationSetReadResponse>(data['data']);
+      return deserialize<_i74.NotificationSetReadResponse>(data['data']);
     }
     if (data['className'] == 'NotificationSetReadResponseCode') {
-      return deserialize<_i66.NotificationSetReadResponseCode>(data['data']);
+      return deserialize<_i75.NotificationSetReadResponseCode>(data['data']);
     }
     if (data['className'] == 'Notification') {
-      return deserialize<_i67.Notification>(data['data']);
+      return deserialize<_i76.Notification>(data['data']);
     }
     if (data['className'] == 'RatingType') {
-      return deserialize<_i68.RatingType>(data['data']);
+      return deserialize<_i77.RatingType>(data['data']);
     }
     if (data['className'] == 'Rating') {
-      return deserialize<_i69.Rating>(data['data']);
+      return deserialize<_i78.Rating>(data['data']);
     }
     if (data['className'] == 'UserBadge') {
-      return deserialize<_i70.UserBadge>(data['data']);
+      return deserialize<_i79.UserBadge>(data['data']);
     }
     if (data['className'] == 'PublicUser') {
-      return deserialize<_i71.PublicUser>(data['data']);
+      return deserialize<_i80.PublicUser>(data['data']);
     }
     if (data['className'] == 'PublicUserFriendRequest') {
-      return deserialize<_i72.PublicUserFriendRequest>(data['data']);
+      return deserialize<_i81.PublicUserFriendRequest>(data['data']);
     }
     if (data['className'] == 'PublicUserFriendship') {
-      return deserialize<_i73.PublicUserFriendship>(data['data']);
+      return deserialize<_i82.PublicUserFriendship>(data['data']);
     }
     if (data['className'] == 'PublicUserFriendshipDetails') {
-      return deserialize<_i74.PublicUserFriendshipDetails>(data['data']);
+      return deserialize<_i83.PublicUserFriendshipDetails>(data['data']);
     }
     if (data['className'] == 'PublicUserFriendshipUser') {
-      return deserialize<_i75.PublicUserFriendshipUser>(data['data']);
+      return deserialize<_i84.PublicUserFriendshipUser>(data['data']);
     }
     if (data['className'] == 'PublicUserRating') {
-      return deserialize<_i76.PublicUserRating>(data['data']);
+      return deserialize<_i85.PublicUserRating>(data['data']);
     }
     if (data['className'] == 'PublicUserRatingUser') {
-      return deserialize<_i77.PublicUserRatingUser>(data['data']);
+      return deserialize<_i86.PublicUserRatingUser>(data['data']);
     }
     if (data['className'] == 'PublicUserSearchUser') {
-      return deserialize<_i78.PublicUserSearchUser>(data['data']);
+      return deserialize<_i87.PublicUserSearchUser>(data['data']);
     }
     if (data['className'] == 'UserEventsResponseCode') {
-      return deserialize<_i79.UserEventsResponseCode>(data['data']);
+      return deserialize<_i88.UserEventsResponseCode>(data['data']);
     }
     if (data['className'] == 'UserEventsResponse') {
-      return deserialize<_i80.UserEventsResponse>(data['data']);
+      return deserialize<_i89.UserEventsResponse>(data['data']);
     }
     if (data['className'] == 'UserFriendshipsResponse') {
-      return deserialize<_i81.UserFriendshipsResponse>(data['data']);
+      return deserialize<_i90.UserFriendshipsResponse>(data['data']);
     }
     if (data['className'] == 'UserFriendshipsResponseCode') {
-      return deserialize<_i82.UserFriendshipsResponseCode>(data['data']);
+      return deserialize<_i91.UserFriendshipsResponseCode>(data['data']);
     }
     if (data['className'] == 'UserRatingsResponse') {
-      return deserialize<_i83.UserRatingsResponse>(data['data']);
+      return deserialize<_i92.UserRatingsResponse>(data['data']);
     }
     if (data['className'] == 'UserRatingsResponseCode') {
-      return deserialize<_i84.UserRatingsResponseCode>(data['data']);
+      return deserialize<_i93.UserRatingsResponseCode>(data['data']);
     }
     if (data['className'] == 'UserReadResponse') {
-      return deserialize<_i85.UserReadResponse>(data['data']);
+      return deserialize<_i94.UserReadResponse>(data['data']);
     }
     if (data['className'] == 'UserReadResponseCode') {
-      return deserialize<_i86.UserReadResponseCode>(data['data']);
+      return deserialize<_i95.UserReadResponseCode>(data['data']);
     }
     if (data['className'] == 'UserSearchResponse') {
-      return deserialize<_i87.UserSearchResponse>(data['data']);
+      return deserialize<_i96.UserSearchResponse>(data['data']);
     }
     if (data['className'] == 'UserSearchResponseCode') {
-      return deserialize<_i88.UserSearchResponseCode>(data['data']);
+      return deserialize<_i97.UserSearchResponseCode>(data['data']);
     }
     if (data['className'] == 'UserUpdateResponse') {
-      return deserialize<_i89.UserUpdateResponse>(data['data']);
+      return deserialize<_i98.UserUpdateResponse>(data['data']);
     }
     if (data['className'] == 'UserUpdateResponseCode') {
-      return deserialize<_i90.UserUpdateResponseCode>(data['data']);
+      return deserialize<_i99.UserUpdateResponseCode>(data['data']);
     }
     if (data['className'] == 'User') {
-      return deserialize<_i91.User>(data['data']);
+      return deserialize<_i100.User>(data['data']);
     }
     return super.deserializeByClassName(data);
   }
@@ -1565,7 +1707,7 @@ class Protocol extends _i1.SerializationManagerServer {
   @override
   _i1.Table? getTableForType(Type t) {
     {
-      var table = _i95.Protocol().getTableForType(t);
+      var table = _i104.Protocol().getTableForType(t);
       if (table != null) {
         return table;
       }
@@ -1579,26 +1721,34 @@ class Protocol extends _i1.SerializationManagerServer {
         return _i20.AuthSignUpRequest.t;
       case _i21.Counter:
         return _i21.Counter.t;
-      case _i35.Event:
-        return _i35.Event.t;
-      case _i36.EventGuest:
-        return _i36.EventGuest.t;
-      case _i37.EventGuestSuggestion:
-        return _i37.EventGuestSuggestion.t;
-      case _i38.EventInvitation:
-        return _i38.EventInvitation.t;
-      case _i39.EventRequest:
-        return _i39.EventRequest.t;
-      case _i47.FriendRequest:
-        return _i47.FriendRequest.t;
-      case _i51.Friendship:
-        return _i51.Friendship.t;
-      case _i67.Notification:
-        return _i67.Notification.t;
-      case _i69.Rating:
-        return _i69.Rating.t;
-      case _i91.User:
-        return _i91.User.t;
+      case _i41.Event:
+        return _i41.Event.t;
+      case _i42.EventGuest:
+        return _i42.EventGuest.t;
+      case _i43.EventGuestInvitation:
+        return _i43.EventGuestInvitation.t;
+      case _i44.EventGuestRequest:
+        return _i44.EventGuestRequest.t;
+      case _i45.EventGuestSuggestion:
+        return _i45.EventGuestSuggestion.t;
+      case _i46.EventHost:
+        return _i46.EventHost.t;
+      case _i47.EventHostInvitation:
+        return _i47.EventHostInvitation.t;
+      case _i48.EventHostRequest:
+        return _i48.EventHostRequest.t;
+      case _i49.EventHostSuggestion:
+        return _i49.EventHostSuggestion.t;
+      case _i57.FriendRequest:
+        return _i57.FriendRequest.t;
+      case _i61.Friendship:
+        return _i61.Friendship.t;
+      case _i76.Notification:
+        return _i76.Notification.t;
+      case _i78.Rating:
+        return _i78.Rating.t;
+      case _i100.User:
+        return _i100.User.t;
     }
     return null;
   }

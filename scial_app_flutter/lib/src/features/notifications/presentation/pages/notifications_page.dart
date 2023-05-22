@@ -45,7 +45,19 @@ class _NotificationsPageState extends ConsumerState<NotificationsPage> {
             Expanded(
               child: notificationsController.when(
                 data: (List<PublicNotification> notifications) => notifications.isNotEmpty
-                  ? NotificationsList(
+                  ? SCNotificationsList(
+                    notifications: notifications.map((e) {
+                      return SCNotification(
+                        type: ,
+                        created: 
+                      );
+                    }).toList()
+                  )
+                  
+                  
+                  
+                  
+                  NotificationsList(
                     notifications: notifications,
                     setRead: (int notificationId) => _setRead(notificationId),
                     acceptRequest: _acceptRequest,

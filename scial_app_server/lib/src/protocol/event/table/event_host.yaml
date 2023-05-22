@@ -1,0 +1,7 @@
+class: EventHost
+
+table: event_hosts
+
+fields:
+  user: int
+  event: int

@@ -1,0 +1,6 @@
+class: PublicNotificationDataFriendRequestDenied
+
+fields:
+  created: DateTime
+  sender: PublicNotificationDataFriendRequestDeniedSender?
+  text: String?

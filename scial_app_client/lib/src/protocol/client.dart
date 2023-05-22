@@ -30,36 +30,38 @@ import 'package:scial_app_client/src/protocol/event/enum/event_type.dart'
     as _i12;
 import 'package:scial_app_client/src/protocol/event/enum/event_visibility.dart'
     as _i13;
-import 'package:scial_app_client/src/protocol/event/response/event_guests_response.dart'
+import 'package:scial_app_client/src/protocol/event/response/event_create_response.dart'
     as _i14;
-import 'package:scial_app_client/src/protocol/friend_request/response/friend_request_create_response.dart'
+import 'package:scial_app_client/src/protocol/event/response/event_guests_response.dart'
     as _i15;
-import 'package:scial_app_client/src/protocol/friend_request/response/friend_request_answer_response.dart'
+import 'package:scial_app_client/src/protocol/friend_request/response/friend_request_create_response.dart'
     as _i16;
-import 'package:scial_app_client/src/protocol/friend_request/response/friend_request_take_back_response.dart'
+import 'package:scial_app_client/src/protocol/friend_request/response/friend_request_answer_response.dart'
     as _i17;
-import 'package:scial_app_client/src/protocol/friendship/response/friendship_remove_response.dart'
+import 'package:scial_app_client/src/protocol/friend_request/response/friend_request_take_back_response.dart'
     as _i18;
-import 'package:scial_app_client/src/protocol/notification/response/notification_read_response.dart'
+import 'package:scial_app_client/src/protocol/friendship/response/friendship_remove_response.dart'
     as _i19;
-import 'package:scial_app_client/src/protocol/notification/response/notification_set_read_response.dart'
+import 'package:scial_app_client/src/protocol/notification/response/notification_read_response.dart'
     as _i20;
-import 'package:scial_app_client/src/protocol/notification/response/notification_set_all_read_response.dart'
+import 'package:scial_app_client/src/protocol/notification/response/notification_set_read_response.dart'
     as _i21;
-import 'package:scial_app_client/src/protocol/user/response/user_read_response.dart'
+import 'package:scial_app_client/src/protocol/notification/response/notification_set_all_read_response.dart'
     as _i22;
-import 'package:scial_app_client/src/protocol/user/response/user_update_response.dart'
+import 'package:scial_app_client/src/protocol/user/response/user_read_response.dart'
     as _i23;
-import 'package:scial_app_client/src/protocol/user/response/user_events_response.dart'
+import 'package:scial_app_client/src/protocol/user/response/user_update_response.dart'
     as _i24;
-import 'package:scial_app_client/src/protocol/user/response/user_friendships_response.dart'
+import 'package:scial_app_client/src/protocol/user/response/user_events_response.dart'
     as _i25;
-import 'package:scial_app_client/src/protocol/user/response/user_ratings_response.dart'
+import 'package:scial_app_client/src/protocol/user/response/user_friendships_response.dart'
     as _i26;
-import 'package:scial_app_client/src/protocol/user/response/user_search_response.dart'
+import 'package:scial_app_client/src/protocol/user/response/user_ratings_response.dart'
     as _i27;
-import 'dart:io' as _i28;
-import 'protocol.dart' as _i29;
+import 'package:scial_app_client/src/protocol/user/response/user_search_response.dart'
+    as _i28;
+import 'dart:io' as _i29;
+import 'protocol.dart' as _i30;
 
 class _EndpointAuth extends _i1.EndpointRef {
   _EndpointAuth(_i1.EndpointCaller caller) : super(caller);
@@ -195,8 +197,37 @@ class _EndpointEvent extends _i1.EndpointRef {
   @override
   String get name => 'event';
 
-  _i2.Future<_i14.EventGuestsResponse> guests(int eventId) =>
-      caller.callServerEndpoint<_i14.EventGuestsResponse>(
+  _i2.Future<_i14.EventCreateResponse> create(
+    String title,
+    String? description,
+    _i12.EventType type,
+    _i13.EventVisibility visibility,
+    DateTime start,
+    DateTime end,
+    double lat,
+    double long,
+    List<int> hosts,
+    List<int> guests,
+  ) =>
+      caller.callServerEndpoint<_i14.EventCreateResponse>(
+        'event',
+        'create',
+        {
+          'title': title,
+          'description': description,
+          'type': type,
+          'visibility': visibility,
+          'start': start,
+          'end': end,
+          'lat': lat,
+          'long': long,
+          'hosts': hosts,
+          'guests': guests,
+        },
+      );
+
+  _i2.Future<_i15.EventGuestsResponse> guests(int eventId) =>
+      caller.callServerEndpoint<_i15.EventGuestsResponse>(
         'event',
         'guests',
         {'eventId': eventId},
@@ -209,11 +240,11 @@ class _EndpointFriendRequest extends _i1.EndpointRef {
   @override
   String get name => 'friendRequest';
 
-  _i2.Future<_i15.FriendRequestCreateResponse> create(
+  _i2.Future<_i16.FriendRequestCreateResponse> create(
     int userId,
     String? text,
   ) =>
-      caller.callServerEndpoint<_i15.FriendRequestCreateResponse>(
+      caller.callServerEndpoint<_i16.FriendRequestCreateResponse>(
         'friendRequest',
         'create',
         {
@@ -222,11 +253,11 @@ class _EndpointFriendRequest extends _i1.EndpointRef {
         },
       );
 
-  _i2.Future<_i16.FriendRequestAnswerResponse> answer(
+  _i2.Future<_i17.FriendRequestAnswerResponse> answer(
     int friendRequestId,
     bool answer,
   ) =>
-      caller.callServerEndpoint<_i16.FriendRequestAnswerResponse>(
+      caller.callServerEndpoint<_i17.FriendRequestAnswerResponse>(
         'friendRequest',
         'answer',
         {
@@ -235,9 +266,9 @@ class _EndpointFriendRequest extends _i1.EndpointRef {
         },
       );
 
-  _i2.Future<_i17.FriendRequestTakeBackResponse> takeBack(
+  _i2.Future<_i18.FriendRequestTakeBackResponse> takeBack(
           int friendRequestId) =>
-      caller.callServerEndpoint<_i17.FriendRequestTakeBackResponse>(
+      caller.callServerEndpoint<_i18.FriendRequestTakeBackResponse>(
         'friendRequest',
         'takeBack',
         {'friendRequestId': friendRequestId},
@@ -250,8 +281,8 @@ class _EndpointFriendship extends _i1.EndpointRef {
   @override
   String get name => 'friendship';
 
-  _i2.Future<_i18.FriendshipRemoveResponse> remove(int friendshipId) =>
-      caller.callServerEndpoint<_i18.FriendshipRemoveResponse>(
+  _i2.Future<_i19.FriendshipRemoveResponse> remove(int friendshipId) =>
+      caller.callServerEndpoint<_i19.FriendshipRemoveResponse>(
         'friendship',
         'remove',
         {'friendshipId': friendshipId},
@@ -264,22 +295,22 @@ class _EndpointNotification extends _i1.EndpointRef {
   @override
   String get name => 'notification';
 
-  _i2.Future<_i19.NotificationReadResponse> read() =>
-      caller.callServerEndpoint<_i19.NotificationReadResponse>(
+  _i2.Future<_i20.NotificationReadResponse> read() =>
+      caller.callServerEndpoint<_i20.NotificationReadResponse>(
         'notification',
         'read',
         {},
       );
 
-  _i2.Future<_i20.NotificationSetReadResponse> setRead(int notificationId) =>
-      caller.callServerEndpoint<_i20.NotificationSetReadResponse>(
+  _i2.Future<_i21.NotificationSetReadResponse> setRead(int notificationId) =>
+      caller.callServerEndpoint<_i21.NotificationSetReadResponse>(
         'notification',
         'setRead',
         {'notificationId': notificationId},
       );
 
-  _i2.Future<_i21.NotificationSetAllReadResponse> setAllRead() =>
-      caller.callServerEndpoint<_i21.NotificationSetAllReadResponse>(
+  _i2.Future<_i22.NotificationSetAllReadResponse> setAllRead() =>
+      caller.callServerEndpoint<_i22.NotificationSetAllReadResponse>(
         'notification',
         'setAllRead',
         {},
@@ -305,20 +336,20 @@ class _EndpointUser extends _i1.EndpointRef {
   @override
   String get name => 'user';
 
-  _i2.Future<_i22.UserReadResponse> read(int userId) =>
-      caller.callServerEndpoint<_i22.UserReadResponse>(
+  _i2.Future<_i23.UserReadResponse> read(int userId) =>
+      caller.callServerEndpoint<_i23.UserReadResponse>(
         'user',
         'read',
         {'userId': userId},
       );
 
-  _i2.Future<_i23.UserUpdateResponse> update({
+  _i2.Future<_i24.UserUpdateResponse> update({
     String? name,
     bool? isPrivate,
     required bool updateName,
     required bool updateIsPrivate,
   }) =>
-      caller.callServerEndpoint<_i23.UserUpdateResponse>(
+      caller.callServerEndpoint<_i24.UserUpdateResponse>(
         'user',
         'update',
         {
@@ -329,14 +360,14 @@ class _EndpointUser extends _i1.EndpointRef {
         },
       );
 
-  _i2.Future<_i24.UserEventsResponse> events(
+  _i2.Future<_i25.UserEventsResponse> events(
     int userId,
     double? lat,
     double? long, {
     int? limit,
     int? offset,
   }) =>
-      caller.callServerEndpoint<_i24.UserEventsResponse>(
+      caller.callServerEndpoint<_i25.UserEventsResponse>(
         'user',
         'events',
         {
@@ -348,12 +379,12 @@ class _EndpointUser extends _i1.EndpointRef {
         },
       );
 
-  _i2.Future<_i25.UserFriendshipsResponse> friendships(
+  _i2.Future<_i26.UserFriendshipsResponse> friendships(
     int userId, {
     int? limit,
     int? offset,
   }) =>
-      caller.callServerEndpoint<_i25.UserFriendshipsResponse>(
+      caller.callServerEndpoint<_i26.UserFriendshipsResponse>(
         'user',
         'friendships',
         {
@@ -363,12 +394,12 @@ class _EndpointUser extends _i1.EndpointRef {
         },
       );
 
-  _i2.Future<_i26.UserRatingsResponse> ratings(
+  _i2.Future<_i27.UserRatingsResponse> ratings(
     int userId, {
     int? limit,
     int? offset,
   }) =>
-      caller.callServerEndpoint<_i26.UserRatingsResponse>(
+      caller.callServerEndpoint<_i27.UserRatingsResponse>(
         'user',
         'ratings',
         {
@@ -378,12 +409,12 @@ class _EndpointUser extends _i1.EndpointRef {
         },
       );
 
-  _i2.Future<_i27.UserSearchResponse> search(
+  _i2.Future<_i28.UserSearchResponse> search(
     String searchText, {
     int? limit,
     int? offset,
   }) =>
-      caller.callServerEndpoint<_i27.UserSearchResponse>(
+      caller.callServerEndpoint<_i28.UserSearchResponse>(
         'user',
         'search',
         {
@@ -397,11 +428,11 @@ class _EndpointUser extends _i1.EndpointRef {
 class Client extends _i1.ServerpodClient {
   Client(
     String host, {
-    _i28.SecurityContext? context,
+    _i29.SecurityContext? context,
     _i1.AuthenticationKeyManager? authenticationKeyManager,
   }) : super(
           host,
-          _i29.Protocol(),
+          _i30.Protocol(),
           context: context,
           authenticationKeyManager: authenticationKeyManager,
         ) {

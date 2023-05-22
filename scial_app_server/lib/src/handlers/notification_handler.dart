@@ -17,22 +17,22 @@ class NotificationHandler {
     List<PublicNotification> notifications = [];
     for (Notification notificationRow in notificationRows) {
 
-      dynamic data;
+      late dynamic data;
 
       if (notificationRow.type == NotificationType.friendRequestCreated) {
 
-        PublicNotificationFriendRequestCreatedFriendRequest? friendRequest;
+        PublicNotificationDataFriendRequestCreated? notificationDataFriendRequestCreated;
 
         FriendRequest? friendRequestRow = await FriendRequest.findById(session, notificationRow.ref);
 
         if (friendRequestRow != null) {
 
-          PublicNotificationFriendRequestCreatedFriendRequestSender? sender;
+          PublicNotificationDataFriendRequestCreatedSender? sender;
           
           User? senderRow = await User.findById(session, friendRequestRow.sender);
 
           if (senderRow != null) {
-            sender = PublicNotificationFriendRequestCreatedFriendRequestSender(
+            sender = PublicNotificationDataFriendRequestCreatedSender(
               id: senderRow.id!,
               name: senderRow.name,
               imageUrl: senderRow.imageUrl,
@@ -40,20 +40,19 @@ class NotificationHandler {
             );
           }
 
-          friendRequest = PublicNotificationFriendRequestCreatedFriendRequest(
-            id: friendRequestRow.id!,
+          notificationDataFriendRequestCreated = PublicNotificationDataFriendRequestCreated(
             created: friendRequestRow.created,
-            text: friendRequestRow.text,
-            status: friendRequestRow.status,
-            sender: sender
+            sender: sender,
+            text: friendRequestRow.text
           );
-        }
 
-        data = PublicNotificationFriendRequestCreated(
-          friendRequest: friendRequest
-        );
+          data = notificationDataFriendRequestCreated;
+        }
       } else if (notificationRow.type == NotificationType.friendRequestAccepted) {
-        PublicNotificationFriendRequestAcceptedSender? sender;
+
+        PublicNotificationDataFriendRequestCreated? notificationDataFriendRequestCreated;
+
+        FriendRequest? friendRequestRow = await FriendRequest.findById(session, notificationRow.ref);
 
         FriendRequest? friendRequestRow = await FriendRequest.findById(session, notificationRow.ref);
 

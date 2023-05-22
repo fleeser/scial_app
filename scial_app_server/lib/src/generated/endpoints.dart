@@ -318,6 +318,78 @@ class Endpoints extends _i1.EndpointDispatch {
       name: 'event',
       endpoint: endpoints['event']!,
       methodConnectors: {
+        'create': _i1.MethodConnector(
+          name: 'create',
+          params: {
+            'title': _i1.ParameterDescription(
+              name: 'title',
+              type: _i1.getType<String>(),
+              nullable: false,
+            ),
+            'description': _i1.ParameterDescription(
+              name: 'description',
+              type: _i1.getType<String?>(),
+              nullable: true,
+            ),
+            'type': _i1.ParameterDescription(
+              name: 'type',
+              type: _i1.getType<_i10.EventType>(),
+              nullable: false,
+            ),
+            'visibility': _i1.ParameterDescription(
+              name: 'visibility',
+              type: _i1.getType<_i11.EventVisibility>(),
+              nullable: false,
+            ),
+            'start': _i1.ParameterDescription(
+              name: 'start',
+              type: _i1.getType<DateTime>(),
+              nullable: false,
+            ),
+            'end': _i1.ParameterDescription(
+              name: 'end',
+              type: _i1.getType<DateTime>(),
+              nullable: false,
+            ),
+            'lat': _i1.ParameterDescription(
+              name: 'lat',
+              type: _i1.getType<double>(),
+              nullable: false,
+            ),
+            'long': _i1.ParameterDescription(
+              name: 'long',
+              type: _i1.getType<double>(),
+              nullable: false,
+            ),
+            'hosts': _i1.ParameterDescription(
+              name: 'hosts',
+              type: _i1.getType<List<int>>(),
+              nullable: false,
+            ),
+            'guests': _i1.ParameterDescription(
+              name: 'guests',
+              type: _i1.getType<List<int>>(),
+              nullable: false,
+            ),
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['event'] as _i4.EventEndpoint).create(
+            session,
+            params['title'],
+            params['description'],
+            params['type'],
+            params['visibility'],
+            params['start'],
+            params['end'],
+            params['lat'],
+            params['long'],
+            params['hosts'],
+            params['guests'],
+          ),
+        ),
         'guests': _i1.MethodConnector(
           name: 'guests',
           params: {
@@ -335,7 +407,7 @@ class Endpoints extends _i1.EndpointDispatch {
             session,
             params['eventId'],
           ),
-        )
+        ),
       },
     );
     connectors['friendRequest'] = _i1.EndpointConnector(

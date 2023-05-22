@@ -1,7 +1,0 @@
-class: PublicNotificationFriendRequestCreatedFriendRequestSender
-
-fields:
-  id: int
-  name: String?
-  imageUrl: String?
-  verified: bool

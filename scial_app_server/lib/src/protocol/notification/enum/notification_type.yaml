@@ -4,3 +4,21 @@ values:
   - friendRequestCreated
   - friendRequestAccepted
   - friendRequestDenied
+  - eventGuestInvitationCreated
+  - eventGuestInvitationAccepted
+  - eventGuestInvitationDenied
+  - eventGuestRequestCreated
+  - eventGuestRequestAccepted
+  - eventGuestRequestDenied
+  - eventGuestSuggestionCreated
+  - eventGuestSuggestionAccepted
+  - eventGuestSuggestionDenied
+  - eventHostInvitationCreated
+  - eventHostInvitationAccepted
+  - eventHostInvitationDenied
+  - eventHostRequestCreated
+  - eventHostRequestAccepted
+  - eventHostRequestDenied
+  - eventHostSuggestionCreated
+  - eventHostSuggestionAccepted
+  - eventHostSuggestionDenied

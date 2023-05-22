@@ -63,16 +63,53 @@ ALTER TABLE ONLY "counters"
 
 
 --
+-- Class EventGuestInvitation as table event_guest_invitations
+--
+
+CREATE TABLE "event_guest_invitations" (
+  "id" serial,
+  "user" integer NOT NULL,
+  "sender" integer NOT NULL,
+  "event" integer NOT NULL,
+  "created" timestamp without time zone NOT NULL,
+  "text" text,
+  "status" integer NOT NULL
+);
+
+ALTER TABLE ONLY "event_guest_invitations"
+  ADD CONSTRAINT event_guest_invitations_pkey PRIMARY KEY (id);
+
+
+--
+-- Class EventGuestRequest as table event_guest_requests
+--
+
+CREATE TABLE "event_guest_requests" (
+  "id" serial,
+  "user" integer NOT NULL,
+  "companions" json NOT NULL,
+  "event" integer NOT NULL,
+  "created" timestamp without time zone NOT NULL,
+  "text" text,
+  "status" integer NOT NULL
+);
+
+ALTER TABLE ONLY "event_guest_requests"
+  ADD CONSTRAINT event_guest_requests_pkey PRIMARY KEY (id);
+
+
+--
 -- Class EventGuestSuggestion as table event_guest_suggestions
 --
 
 CREATE TABLE "event_guest_suggestions" (
   "id" serial,
   "sender" integer NOT NULL,
-  "user" integer NOT NULL,
+  "users" json NOT NULL,
   "event" integer NOT NULL,
   "created" timestamp without time zone NOT NULL,
-  "text" text
+  "text" text,
+  "status" integer NOT NULL
 );
 
 ALTER TABLE ONLY "event_guest_suggestions"
@@ -95,10 +132,10 @@ ALTER TABLE ONLY "event_guests"
 
 
 --
--- Class EventInvitation as table event_invitations
+-- Class EventHostInvitation as table event_host_invitations
 --
 
-CREATE TABLE "event_invitations" (
+CREATE TABLE "event_host_invitations" (
   "id" serial,
   "user" integer NOT NULL,
   "sender" integer NOT NULL,
@@ -108,15 +145,15 @@ CREATE TABLE "event_invitations" (
   "status" integer NOT NULL
 );
 
-ALTER TABLE ONLY "event_invitations"
-  ADD CONSTRAINT event_invitations_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY "event_host_invitations"
+  ADD CONSTRAINT event_host_invitations_pkey PRIMARY KEY (id);
 
 
 --
--- Class EventRequest as table event_requests
+-- Class EventHostRequest as table event_host_requests
 --
 
-CREATE TABLE "event_requests" (
+CREATE TABLE "event_host_requests" (
   "id" serial,
   "user" integer NOT NULL,
   "companions" json NOT NULL,
@@ -126,8 +163,40 @@ CREATE TABLE "event_requests" (
   "status" integer NOT NULL
 );
 
-ALTER TABLE ONLY "event_requests"
-  ADD CONSTRAINT event_requests_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY "event_host_requests"
+  ADD CONSTRAINT event_host_requests_pkey PRIMARY KEY (id);
+
+
+--
+-- Class EventHostSuggestion as table event_host_suggestions
+--
+
+CREATE TABLE "event_host_suggestions" (
+  "id" serial,
+  "sender" integer NOT NULL,
+  "users" json NOT NULL,
+  "event" integer NOT NULL,
+  "created" timestamp without time zone NOT NULL,
+  "text" text,
+  "status" integer NOT NULL
+);
+
+ALTER TABLE ONLY "event_host_suggestions"
+  ADD CONSTRAINT event_host_suggestions_pkey PRIMARY KEY (id);
+
+
+--
+-- Class EventHost as table event_hosts
+--
+
+CREATE TABLE "event_hosts" (
+  "id" serial,
+  "user" integer NOT NULL,
+  "event" integer NOT NULL
+);
+
+ALTER TABLE ONLY "event_hosts"
+  ADD CONSTRAINT event_hosts_pkey PRIMARY KEY (id);
 
 
 --
@@ -141,7 +210,6 @@ CREATE TABLE "events" (
   "created" timestamp without time zone NOT NULL,
   "title" text NOT NULL,
   "verified" boolean NOT NULL,
-  "hosts" json NOT NULL,
   "lat" double precision NOT NULL,
   "long" double precision NOT NULL,
   "description" text,
@@ -195,8 +263,8 @@ CREATE TABLE "notifications" (
   "created" timestamp without time zone NOT NULL,
   "type" integer NOT NULL,
   "read" boolean NOT NULL,
-  "ref" integer NOT NULL,
-  "receiver" integer NOT NULL
+  "receiver" integer NOT NULL,
+  "ref" integer NOT NULL
 );
 
 ALTER TABLE ONLY "notifications"

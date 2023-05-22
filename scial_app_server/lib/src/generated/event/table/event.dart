@@ -17,7 +17,6 @@ class Event extends _i1.TableRow {
     required this.created,
     required this.title,
     required this.verified,
-    required this.hosts,
     required this.lat,
     required this.long,
     this.description,
@@ -42,8 +41,6 @@ class Event extends _i1.TableRow {
           serializationManager.deserialize<String>(jsonSerialization['title']),
       verified:
           serializationManager.deserialize<bool>(jsonSerialization['verified']),
-      hosts: serializationManager
-          .deserialize<List<int>>(jsonSerialization['hosts']),
       lat: serializationManager.deserialize<double>(jsonSerialization['lat']),
       long: serializationManager.deserialize<double>(jsonSerialization['long']),
       description: serializationManager
@@ -68,8 +65,6 @@ class Event extends _i1.TableRow {
 
   bool verified;
 
-  List<int> hosts;
-
   double lat;
 
   double long;
@@ -93,7 +88,6 @@ class Event extends _i1.TableRow {
       'created': created,
       'title': title,
       'verified': verified,
-      'hosts': hosts,
       'lat': lat,
       'long': long,
       'description': description,
@@ -112,7 +106,6 @@ class Event extends _i1.TableRow {
       'created': created,
       'title': title,
       'verified': verified,
-      'hosts': hosts,
       'lat': lat,
       'long': long,
       'description': description,
@@ -131,7 +124,6 @@ class Event extends _i1.TableRow {
       'created': created,
       'title': title,
       'verified': verified,
-      'hosts': hosts,
       'lat': lat,
       'long': long,
       'description': description,
@@ -164,9 +156,6 @@ class Event extends _i1.TableRow {
         return;
       case 'verified':
         verified = value;
-        return;
-      case 'hosts':
-        hosts = value;
         return;
       case 'lat':
         lat = value;
@@ -320,8 +309,6 @@ class EventTable extends _i1.Table {
 
   final verified = _i1.ColumnBool('verified');
 
-  final hosts = _i1.ColumnSerializable('hosts');
-
   final lat = _i1.ColumnDouble('lat');
 
   final long = _i1.ColumnDouble('long');
@@ -342,7 +329,6 @@ class EventTable extends _i1.Table {
         created,
         title,
         verified,
-        hosts,
         lat,
         long,
         description,

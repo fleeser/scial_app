@@ -1,0 +1,6 @@
+enum: EventGuestSuggestionStatus
+
+values:
+  - accepted
+  - denied
+  - pending

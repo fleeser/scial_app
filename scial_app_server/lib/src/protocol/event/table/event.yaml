@@ -8,7 +8,6 @@ fields:
   created: DateTime
   title: String
   verified: bool
-  hosts: List<int>
   lat: double
   long: double
   description: String?
