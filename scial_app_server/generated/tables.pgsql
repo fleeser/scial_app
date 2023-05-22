@@ -50,6 +50,19 @@ CREATE UNIQUE INDEX auth_sign_up_request_email_idx ON "auth_sign_up_request" USI
 
 
 --
+-- Class Counter as table counters
+--
+
+CREATE TABLE "counters" (
+  "id" serial,
+  "value" integer NOT NULL
+);
+
+ALTER TABLE ONLY "counters"
+  ADD CONSTRAINT counters_pkey PRIMARY KEY (id);
+
+
+--
 -- Class EventGuestSuggestion as table event_guest_suggestions
 --
 

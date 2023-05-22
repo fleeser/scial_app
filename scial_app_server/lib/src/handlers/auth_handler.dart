@@ -1,26 +1,6 @@
-import 'package:scial_app_server/src/generated/auth/response/auth_change_password_response.dart';
-import 'package:scial_app_server/src/generated/auth/response/auth_change_password_response_code.dart';
-import 'package:scial_app_server/src/generated/auth/response/auth_delete_account_response.dart';
-import 'package:scial_app_server/src/generated/auth/response/auth_delete_account_response_code.dart';
-import 'package:scial_app_server/src/generated/auth/response/auth_forgot_password_response.dart';
-import 'package:scial_app_server/src/generated/auth/response/auth_forgot_password_response_code.dart';
-import 'package:scial_app_server/src/generated/auth/response/auth_forgot_password_submission_response.dart';
-import 'package:scial_app_server/src/generated/auth/response/auth_forgot_password_submission_response_code.dart';
-import 'package:scial_app_server/src/generated/auth/response/auth_forgot_password_verification_response.dart';
-import 'package:scial_app_server/src/generated/auth/response/auth_forgot_password_verification_response_code.dart';
-import 'package:scial_app_server/src/generated/auth/response/auth_sign_in_response.dart';
-import 'package:scial_app_server/src/generated/auth/response/auth_sign_in_response_code.dart';
-import 'package:scial_app_server/src/generated/auth/response/auth_sign_up_response.dart';
-import 'package:scial_app_server/src/generated/auth/response/auth_sign_up_response_code.dart';
-import 'package:scial_app_server/src/generated/auth/response/auth_sign_up_verification_response.dart';
-import 'package:scial_app_server/src/generated/auth/response/auth_sign_up_verification_response_code.dart';
-import 'package:scial_app_server/src/generated/auth/table/auth_email.dart';
-import 'package:scial_app_server/src/generated/auth/table/auth_forgot_password_request.dart';
-import 'package:scial_app_server/src/generated/auth/table/auth_sign_up_request.dart';
-import 'package:scial_app_server/src/generated/user/table/user.dart';
+import 'package:scial_app_server/src/generated/protocol.dart';
 import 'package:scial_app_server/src/util/emailer.dart';
 import 'package:scial_app_server/src/util/password_hash_generator.dart';
-import 'package:scial_app_server/src/util/unique_code_generator.dart';
 import 'package:scial_app_server/src/util/verification_code_generator.dart';
 import 'package:serverpod/protocol.dart';
 import 'package:serverpod/serverpod.dart';
@@ -116,10 +96,11 @@ class AuthHandler {
       );
     }
 
-    late String uniqueCode;
-    do {
-      uniqueCode = UniqueCodeGenerator.generate();
-    } while ((await User.findSingleRow(session, where: (t) => t.uniqueCode.equals(uniqueCode))) != null);
+    Counter? counter = await Counter.findById(session, 1);
+    counter!.value = counter.value + 1;
+    await Counter.update(session, counter);
+
+    String uniqueCode = "${ counter.value }".padLeft(8, '0'); // TODO
 
     User user = User(
       created: DateTime.now(),
