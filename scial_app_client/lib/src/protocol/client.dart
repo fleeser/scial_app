@@ -56,8 +56,10 @@ import 'package:scial_app_client/src/protocol/user/response/user_friendships_res
     as _i25;
 import 'package:scial_app_client/src/protocol/user/response/user_ratings_response.dart'
     as _i26;
-import 'dart:io' as _i27;
-import 'protocol.dart' as _i28;
+import 'package:scial_app_client/src/protocol/user/response/user_search_response.dart'
+    as _i27;
+import 'dart:io' as _i28;
+import 'protocol.dart' as _i29;
 
 class _EndpointAuth extends _i1.EndpointRef {
   _EndpointAuth(_i1.EndpointCaller caller) : super(caller);
@@ -375,16 +377,31 @@ class _EndpointUser extends _i1.EndpointRef {
           'offset': offset,
         },
       );
+
+  _i2.Future<_i27.UserSearchResponse> search(
+    String searchText, {
+    int? limit,
+    int? offset,
+  }) =>
+      caller.callServerEndpoint<_i27.UserSearchResponse>(
+        'user',
+        'search',
+        {
+          'searchText': searchText,
+          'limit': limit,
+          'offset': offset,
+        },
+      );
 }
 
 class Client extends _i1.ServerpodClient {
   Client(
     String host, {
-    _i27.SecurityContext? context,
+    _i28.SecurityContext? context,
     _i1.AuthenticationKeyManager? authenticationKeyManager,
   }) : super(
           host,
-          _i28.Protocol(),
+          _i29.Protocol(),
           context: context,
           authenticationKeyManager: authenticationKeyManager,
         ) {

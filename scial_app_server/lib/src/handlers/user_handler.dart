@@ -1,5 +1,6 @@
 import 'package:mapbox_search/mapbox_search.dart';
 import 'package:scial_app_server/src/generated/protocol.dart';
+import 'package:scial_app_shared/scial_app_shared.dart';
 import 'package:serverpod/serverpod.dart';
 
 class UserHandler {
@@ -370,6 +371,73 @@ class UserHandler {
     return UserRatingsResponse(
       success: true,
       ratings: ratings
+    );
+  }
+
+  static Future<UserSearchResponse> search(Session session, String searchText, int? limit, int? offset) async {
+    int? authUserId = await session.auth.authenticatedUserId;
+    if (authUserId == null) {
+      return UserSearchResponse(
+        success: false,
+        code: UserSearchResponseCode.notAuthenticated
+      );
+    }
+
+    searchText = searchText.trim();
+
+    if (searchText.startsWith('#')) {
+      searchText = searchText.toUpperCase();
+      bool uniqueCodeIsValid = Validator.validateUniqueCode(searchText.substring(1));
+      if (!uniqueCodeIsValid) {
+        return UserSearchResponse(
+          success: false,
+          code: UserSearchResponseCode.invalidUniqueCode
+        );
+      }
+    }
+
+    User? authUserRow = await User.findById(session, authUserId);
+
+    if (authUserRow == null) {
+      return UserSearchResponse(
+        success: false,
+        code: UserSearchResponseCode.userNotFound
+      );
+    }
+
+    List<PublicUserSearchUser> users = [];
+
+    if (searchText.startsWith('#')) {
+      User? userRow = await User.findSingleRow(session, where: (t) => t.uniqueCode.equals(searchText.substring(1)) & t.uniqueCode.notEquals(authUserRow.uniqueCode));
+
+      if (userRow != null) {
+        PublicUserSearchUser user = PublicUserSearchUser(
+          id: userRow.id!, 
+          name: userRow.name,
+          imageUrl: userRow.imageUrl,
+          verified: userRow.verified
+        );
+
+        users.add(user);
+      }
+    } else {
+      List<User> userRows = await User.find(session, where: (t) => t.name.like(searchText) & t.uniqueCode.notEquals(authUserRow.uniqueCode), limit: limit, offset: offset);
+
+      for (User userRow in userRows) {
+        PublicUserSearchUser user = PublicUserSearchUser(
+          id: userRow.id!, 
+          name: userRow.name,
+          imageUrl: userRow.imageUrl,
+          verified: userRow.verified
+        );
+
+        users.add(user);
+      }
+    }
+
+    return UserSearchResponse(
+      success: true,
+      users: users
     );
   }
 }

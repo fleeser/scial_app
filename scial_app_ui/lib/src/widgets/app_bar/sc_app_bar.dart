@@ -49,7 +49,7 @@ class SCAppBar extends ConsumerWidget implements PreferredSizeWidget {
       ),
       child: Row(
         children: [
-          if (backButton != null) AnimatedVisibilityWidget(
+          if (backButton != null) SCAnimatedVisibilityWidget(
             isVisible: !searchIsExpanded,
             child: SCPadding(
               padding: const SCEdgeInsets.only(right: SCGapSize.semiBig),
@@ -57,7 +57,7 @@ class SCAppBar extends ConsumerWidget implements PreferredSizeWidget {
             )
           ),
           Expanded(
-            child: AnimatedVisibilityWidget(
+            child: SCAnimatedVisibilityWidget(
               isVisible: !searchIsExpanded,
               child: Row(
                 children: [
@@ -77,7 +77,7 @@ class SCAppBar extends ConsumerWidget implements PreferredSizeWidget {
               ),
               child: searchButton
             )
-            : AnimatedVisibilityWidget(
+            : SCAnimatedVisibilityWidget(
               isVisible: !searchIsExpanded, 
               child: SCPadding(
                 padding: SCEdgeInsets.only(
@@ -98,9 +98,9 @@ class SCAppBar extends ConsumerWidget implements PreferredSizeWidget {
   Size get preferredSize => Size(double.maxFinite, MediaQuery.of(context).padding.top + kToolbarHeight);
 }
 
-class AnimatedVisibilityWidget extends StatefulWidget {
+class SCAnimatedVisibilityWidget extends StatefulWidget {
 
-  const AnimatedVisibilityWidget({
+  const SCAnimatedVisibilityWidget({
     super.key,
     required this.isVisible,
     required this.child
@@ -110,10 +110,10 @@ class AnimatedVisibilityWidget extends StatefulWidget {
   final Widget child;
 
   @override
-  State<AnimatedVisibilityWidget> createState() => _AnimatedVisibilityWidgetState();
+  State<SCAnimatedVisibilityWidget> createState() => _SCAnimatedVisibilityWidgetState();
 }
 
-class _AnimatedVisibilityWidgetState extends State<AnimatedVisibilityWidget> with SingleTickerProviderStateMixin {
+class _SCAnimatedVisibilityWidgetState extends State<SCAnimatedVisibilityWidget> with SingleTickerProviderStateMixin {
 
   late AnimationController _animationController;
   late Animation<double> _animation;
@@ -126,7 +126,7 @@ class _AnimatedVisibilityWidgetState extends State<AnimatedVisibilityWidget> wit
   }
 
   @override
-  void didUpdateWidget(AnimatedVisibilityWidget oldWidget) {
+  void didUpdateWidget(SCAnimatedVisibilityWidget oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (widget.isVisible) {
       _animationController.reverse();

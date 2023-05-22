@@ -654,6 +654,36 @@ class Endpoints extends _i1.EndpointDispatch {
             offset: params['offset'],
           ),
         ),
+        'search': _i1.MethodConnector(
+          name: 'search',
+          params: {
+            'searchText': _i1.ParameterDescription(
+              name: 'searchText',
+              type: _i1.getType<String>(),
+              nullable: false,
+            ),
+            'limit': _i1.ParameterDescription(
+              name: 'limit',
+              type: _i1.getType<int?>(),
+              nullable: true,
+            ),
+            'offset': _i1.ParameterDescription(
+              name: 'offset',
+              type: _i1.getType<int?>(),
+              nullable: true,
+            ),
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['user'] as _i9.UserEndpoint).search(
+            session,
+            params['searchText'],
+            limit: params['limit'],
+            offset: params['offset'],
+          ),
+        ),
       },
     );
   }

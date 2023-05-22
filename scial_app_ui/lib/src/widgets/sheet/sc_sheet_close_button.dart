@@ -16,20 +16,20 @@ class SCSheetCloseButton extends StatelessWidget {
     SCThemeData theme = SCTheme.of(context);
 
     return SizedBox(
-      width: 40.0,
-      height: 40.0,
+      width: kToolbarHeight - 10.0,
+      height: kToolbarHeight - 10.0,
       child: RawMaterialButton(
         onPressed: () => isEnabled 
           ? _onPressed(context) 
           : null,
         elevation: 0.0,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular((kToolbarHeight - 10.0) / 1.0)),
         fillColor: theme.colors.sheetCancelButtonBackground,
         enableFeedback: isEnabled,
         child: SCIcon(
           icon: SCIcons.x,
           color: theme.colors.sheetCancelButtonForeground,
-          size: 20.0
+          size: (kToolbarHeight - 10.0) / 2.0
         )
       )
     );

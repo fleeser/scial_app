@@ -109,6 +109,12 @@
     "create_event_sheet_invitations_empty_invitations" : "Keine eingeladenen Benutzer",
     "create_event_sheet_create_button_title" : "Erstellen",
 
+    "location_sheet_title" : "Veranstaltungsort ändern",
+    "location_sheet_search_hint" : "Suche",
+
+    "select_users_sheet_title" : "Benutzer suchen",
+    "select_users_sheet_search_hint" : "Suche",
+
     "event_tab_bar_general" : "Allgemein",
     "event_tab_bar_guests" : "Gäste",
 
@@ -253,6 +259,9 @@
     "location_denied" : "Standorterlaubnis nicht erteilt.",
     "location_point_not_found" : "Standort wurde nicht gefunden.",
     "location_name_not_found" : "Name des Standorts nicht gefunden.",
+
+    "search_user_search_invalid_unique_code" : "Der Code muss genau aus 8 Ziffern und Buchstaben bestehen.",
+    "search_user_search_user_not_found" : "Eigener Benutzer nicht gefunden.",
 
     "no_internet_connection" : "Keine Internetverbindung möglich.",
 

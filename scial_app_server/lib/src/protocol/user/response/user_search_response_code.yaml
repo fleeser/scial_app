@@ -1,0 +1,6 @@
+enum: UserSearchResponseCode
+  
+values:
+  - notAuthenticated
+  - invalidUniqueCode
+  - userNotFound

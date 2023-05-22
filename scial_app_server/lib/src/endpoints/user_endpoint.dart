@@ -1,9 +1,5 @@
+import 'package:scial_app_server/src/generated/protocol.dart';
 import 'package:scial_app_server/src/handlers/user_handler.dart';
-import 'package:scial_app_server/src/generated/user/response/user_events_response.dart';
-import 'package:scial_app_server/src/generated/user/response/user_friendships_response.dart';
-import 'package:scial_app_server/src/generated/user/response/user_update_response.dart';
-import 'package:scial_app_server/src/generated/user/response/user_ratings_response.dart';
-import 'package:scial_app_server/src/generated/user/response/user_read_response.dart';
 import 'package:serverpod/serverpod.dart';
 
 class UserEndpoint extends Endpoint {
@@ -27,4 +23,10 @@ class UserEndpoint extends Endpoint {
   Future<UserRatingsResponse> ratings(Session session, int userId, { int? limit, int? offset }) async {
     return await UserHandler.ratings(session, userId, limit, offset);
   }
+
+  Future<UserSearchResponse> search(Session session, String searchText, { int? limit, int? offset }) async {
+    return await UserHandler.search(session, searchText, limit, offset);
+  }
 }
+
+// TODO: Kein # am anfang des namens constraint

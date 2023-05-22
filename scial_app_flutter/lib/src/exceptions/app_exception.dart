@@ -41,6 +41,8 @@ class AppException with _$AppException {
   const factory AppException.locationPointNotFound() = LocationPointNotFound;
   const factory AppException.locationNameNotFound() = LocationNameNotFound;
 
+  const factory AppException.searchUserSearchInvalidUniqueCode() = SearchUserSearchInvalidUniqueCode;
+
   const factory AppException.noInternetConnection() = NoInternetConnection;
 
   const factory AppException.unknownError() = UnknownError;
@@ -83,6 +85,8 @@ extension AppExceptionExtension on AppException {
       locationDenied: () => AppLocalizations.of(context)!.location_denied,
       locationPointNotFound: () => AppLocalizations.of(context)!.location_point_not_found,
       locationNameNotFound: () => AppLocalizations.of(context)!.location_name_not_found,
+
+      searchUserSearchInvalidUniqueCode: () => AppLocalizations.of(context)!.search_user_search_invalid_unique_code,
 
       noInternetConnection: () => AppLocalizations.of(context)!.no_internet_connection,
 

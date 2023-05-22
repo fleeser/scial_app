@@ -1,0 +1,6 @@
+class: UserSearchResponse
+
+fields:
+  success: bool
+  code: UserSearchResponseCode?
+  users: List<PublicUserSearchUser>?

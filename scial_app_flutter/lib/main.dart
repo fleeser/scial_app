@@ -28,7 +28,7 @@ void main() async {
     authenticationKeyManager: AuthKeyManager()
   )..connectivityMonitor = FlutterConnectivityMonitor();
 
-  await KeyValueStorage.removeAuthInfo();
+  //await KeyValueStorage.removeAuthInfo();
 
   // await client.openStreamingConnection(disconnectOnLostInternetConnection: false);
 
