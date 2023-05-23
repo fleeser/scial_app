@@ -1,6 +1,8 @@
 class: PublicNotificationDataFriendRequestCreated
 
 fields:
+  id: int
   created: DateTime
   sender: PublicNotificationDataFriendRequestCreatedSender?
+  status: FriendRequestStatus
   text: String?

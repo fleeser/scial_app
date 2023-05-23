@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:scial_app_ui/scial_app_ui.dart';
-import 'package:scial_app_ui/src/widgets/base/sc_circular_progress_indicator.dart';
 
 class SCCTA extends StatelessWidget {
 
@@ -8,16 +7,12 @@ class SCCTA extends StatelessWidget {
     super.key,
     this.onPressed,
     required this.text,
-    required this.buttonTitle,
-    this.isLoading = false,
-    this.isEnabled = true
+    required this.buttonTitle
   });
 
   final void Function()? onPressed;
   final String text;
   final String buttonTitle;
-  final bool isLoading;
-  final bool isEnabled;
 
   @override
   Widget build(BuildContext context) {
@@ -31,11 +26,7 @@ class SCCTA extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          if (isLoading) SCCircularProgressIndicator(
-            color: theme.colors.ctaText, 
-            size: 14.0
-          ),
-          if (!isLoading) Expanded(child: SCText.ctaText(text)),
+          Expanded(child: SCText.ctaText(text)),
           const SCGap.semiBig(),
           SizedBox(
             height: 40.0,

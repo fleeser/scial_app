@@ -76,7 +76,19 @@ class SCTypographyData {
 
     // Editable Users
 
-    required this.editableUsersText
+    required this.editableUsersText,
+
+    // Settings
+
+    required this.settingsSectionTitle,
+    required this.settingsSectionItemTitle,
+
+    // Selectable List
+
+    required this.selectableListItemTitleSelected,
+    required this.selectableListItemTitleUnselected,
+    required this.selectableLangListItemTitleSelected,
+    required this.selectableLangListItemTitleUnselected
   });
 
   factory SCTypographyData.regular() => const SCTypographyData(
@@ -473,6 +485,54 @@ class SCTypographyData {
       fontSize: 14.0,
       fontWeight: FontWeight.w400,
       decoration: TextDecoration.none
+    ),
+
+    // Settings
+
+    settingsSectionTitle: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 16.0,
+      fontWeight: FontWeight.bold,
+      decoration: TextDecoration.none
+    ),
+    settingsSectionItemTitle: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 14.0,
+      fontWeight: FontWeight.w400,
+      decoration: TextDecoration.none
+    ),
+
+    // Selectable List
+
+    selectableListItemTitleSelected: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 14.0,
+      fontWeight: FontWeight.bold,
+      decoration: TextDecoration.none
+    ),
+    selectableListItemTitleUnselected: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 14.0,
+      fontWeight: FontWeight.w400,
+      decoration: TextDecoration.none
+    ),
+    selectableLangListItemTitleSelected: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 14.0,
+      fontWeight: FontWeight.bold,
+      decoration: TextDecoration.none
+    ),
+    selectableLangListItemTitleUnselected: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 14.0,
+      fontWeight: FontWeight.w400,
+      decoration: TextDecoration.none
     )
   );
 
@@ -550,4 +610,16 @@ class SCTypographyData {
   // Editable Users
 
   final TextStyle editableUsersText;
+
+  // Settings
+
+  final TextStyle settingsSectionTitle;
+  final TextStyle settingsSectionItemTitle;
+
+  // Selectable List
+
+  final TextStyle selectableListItemTitleSelected;
+  final TextStyle selectableListItemTitleUnselected;
+  final TextStyle selectableLangListItemTitleSelected;
+  final TextStyle selectableLangListItemTitleUnselected;
 }

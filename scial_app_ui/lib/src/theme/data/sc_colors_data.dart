@@ -133,7 +133,26 @@ class SCColorsData {
 
     required this.editableUsersButtonBackground,
     required this.editableUsersButtonIcon,
-    required this.editableUsersText
+    required this.editableUsersText,
+
+    // Settings
+
+    required this.settingsSectionTitle,
+    required this.settingsSectionItemIcon,
+    required this.settingsSectionItemTitle,
+
+    // Selectable List
+
+    required this.selectableListItemIconSelected,
+    required this.selectableListItemIconUnselected,
+    required this.selectableListItemTitleSelected,
+    required this.selectableListItemTitleUnselected,
+    required this.selectableListItemIndicatorSelected,
+    required this.selectableListItemIndicatorUnselected,
+    required this.selectableLangListItemTitleSelected,
+    required this.selectableLangListItemTitleUnselected,
+    required this.selectableLangListItemIndicatorSelected,
+    required this.selectableLangListItemIndicatorUnselected
   });
 
   factory SCColorsData.light() => const SCColorsData(
@@ -266,7 +285,26 @@ class SCColorsData {
 
     editableUsersButtonBackground: SCPalette.gray300,
     editableUsersButtonIcon: SCPalette.gray900,
-    editableUsersText: SCPalette.gray900
+    editableUsersText: SCPalette.gray900,
+
+    // Settings
+
+    settingsSectionTitle: SCPalette.gray900,
+    settingsSectionItemIcon: SCPalette.gray500,
+    settingsSectionItemTitle: SCPalette.gray500,
+
+    // Selectable List
+
+    selectableListItemIconSelected: SCPalette.gray900,
+    selectableListItemIconUnselected: SCPalette.gray500,
+    selectableListItemTitleSelected: SCPalette.gray900,
+    selectableListItemTitleUnselected: SCPalette.gray500,
+    selectableListItemIndicatorSelected: SCPalette.blue500,
+    selectableListItemIndicatorUnselected: SCPalette.gray500,
+    selectableLangListItemTitleSelected: SCPalette.gray900,
+    selectableLangListItemTitleUnselected: SCPalette.gray500,
+    selectableLangListItemIndicatorSelected: SCPalette.blue500,
+    selectableLangListItemIndicatorUnselected: SCPalette.gray500
   );
 
   factory SCColorsData.dark() => const SCColorsData(
@@ -399,7 +437,26 @@ class SCColorsData {
 
     editableUsersButtonBackground: SCPalette.gray700,
     editableUsersButtonIcon: SCPalette.gray100,
-    editableUsersText: SCPalette.gray100
+    editableUsersText: SCPalette.gray100,
+
+    // Settings
+
+    settingsSectionTitle: SCPalette.gray100,
+    settingsSectionItemIcon: SCPalette.gray400,
+    settingsSectionItemTitle: SCPalette.gray400,
+
+    // Selectable List
+
+    selectableListItemIconSelected: SCPalette.gray100,
+    selectableListItemIconUnselected: SCPalette.gray400,
+    selectableListItemTitleSelected: SCPalette.gray100,
+    selectableListItemTitleUnselected: SCPalette.gray400,
+    selectableListItemIndicatorSelected: SCPalette.blue600,
+    selectableListItemIndicatorUnselected: SCPalette.gray400,
+    selectableLangListItemTitleSelected: SCPalette.gray100,
+    selectableLangListItemTitleUnselected: SCPalette.gray400,
+    selectableLangListItemIndicatorSelected: SCPalette.blue600,
+    selectableLangListItemIndicatorUnselected: SCPalette.gray400
   );
 
   final Color accent;
@@ -532,4 +589,23 @@ class SCColorsData {
   final Color editableUsersButtonBackground;
   final Color editableUsersButtonIcon;
   final Color editableUsersText;
+
+  // Settings
+
+  final Color settingsSectionTitle;
+  final Color settingsSectionItemIcon;
+  final Color settingsSectionItemTitle;
+
+  // Selectable List
+
+  final Color selectableListItemIconSelected;
+  final Color selectableListItemIconUnselected;
+  final Color selectableListItemTitleSelected;
+  final Color selectableListItemTitleUnselected;
+  final Color selectableListItemIndicatorSelected;
+  final Color selectableListItemIndicatorUnselected;
+  final Color selectableLangListItemTitleSelected;
+  final Color selectableLangListItemTitleUnselected;
+  final Color selectableLangListItemIndicatorSelected;
+  final Color selectableLangListItemIndicatorUnselected;
 }

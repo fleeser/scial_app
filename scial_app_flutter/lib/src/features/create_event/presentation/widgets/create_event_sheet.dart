@@ -6,15 +6,15 @@ import 'package:scial_app_flutter/src/extensions/event_type_extension.dart';
 import 'package:scial_app_flutter/src/extensions/event_visibility_extension.dart';
 import 'package:scial_app_flutter/src/features/create_event/presentation/controller/create_event_controller.dart';
 import 'package:scial_app_flutter/src/features/create_event/presentation/widgets/create_event_sheet_subtitle.dart';
+import 'package:scial_app_flutter/src/features/location/domain/entities/base_location.dart';
 import 'package:scial_app_flutter/src/features/location/presentation/controller/location_controller.dart';
-import 'package:scial_app_flutter/src/features/location/presentation/widgets/location_sheet.dart';
 import 'package:scial_app_flutter/src/features/search_user/presentation/widgets/select_users_sheet.dart';
 import 'package:scial_app_ui/scial_app_ui.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 final AutoDisposeStateProvider<EventType> createEventSelectedEventTypeProvider = AutoDisposeStateProvider<EventType>((ref) => EventType.values.first);
 final AutoDisposeStateProvider<EventVisibility> createEventSelectedEventVisibilityProvider = AutoDisposeStateProvider<EventVisibility>((ref) => EventVisibility.values.first);
-final AutoDisposeStateProvider<LocationModel?> createEventSelectedLocationProvider = AutoDisposeStateProvider<LocationModel?>((ref) => null);
+//final AutoDisposeStateProvider<LocationModel?> createEventSelectedLocationProvider = AutoDisposeStateProvider<LocationModel?>((ref) => null);
 
 Future<void> showCreateEventSheet(BuildContext context) async {
   
@@ -187,62 +187,40 @@ class _CreateEventSheetState extends ConsumerState<CreateEventSheet> {
           SCPadding(
             padding: const SCEdgeInsets.symmetric(horizontal: SCGapSize.semiBig),
             child: locationController.when(
-              data: (LocationModel? location) => location != null
-                ? Row(
-                  children: [
-                    Expanded(
-                      child: Text(
-                        location.name!,
-                        maxLines: 3,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          fontFamily: 'Poppins',
-                          package: 'scial_app_ui',
-                          fontWeight: FontWeight.w400,
-                          color: theme.colors.emptyBadges,
-                          fontSize: 14.0
-                        )
-                      )
-                    ),
-                    const SCGap.regular(),
-                    SizedBox(
-                      width: 46.0,
-                      height: 46.0,
-                      child: RawMaterialButton(
-                        onPressed: _handleChangeLocation,
-                        elevation: 0.0,
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(46.0 / 2.0)),
-                        fillColor: theme.colors.editableUsersButtonBackground,
-                        child: SCIcon(
-                          icon: SCIcons.edit2,
-                          color: theme.colors.editableUsersButtonIcon,
-                          size: 46.0 / 2.0
-                        )
+              data: (BaseLocation location) => Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      location.name!,
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                        package: 'scial_app_ui',
+                        fontWeight: FontWeight.w400,
+                        color: theme.colors.emptyBadges,
+                        fontSize: 14.0
                       )
                     )
-                  ]
-                )
-                : Row(
-                  children: [
-                    _locationEmptyText(theme.colors.emptyBadges),
-                    const SCGap.regular(),
-                    SizedBox(
-                      width: 46.0,
-                      height: 46.0,
-                      child: RawMaterialButton(
-                        onPressed: _handleChangeLocation,
-                        elevation: 0.0,
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(46.0 / 2.0)),
-                        fillColor: theme.colors.editableUsersButtonBackground,
-                        child: SCIcon(
-                          icon: SCIcons.edit2,
-                          color: theme.colors.editableUsersButtonIcon,
-                          size: 46.0 / 2.0
-                        )
+                  ),
+                  const SCGap.regular(),
+                  SizedBox(
+                    width: 46.0,
+                    height: 46.0,
+                    child: RawMaterialButton(
+                      onPressed: _handleChangeLocation,
+                      elevation: 0.0,
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(46.0 / 2.0)),
+                      fillColor: theme.colors.editableUsersButtonBackground,
+                      child: SCIcon(
+                        icon: SCIcons.edit2,
+                        color: theme.colors.editableUsersButtonIcon,
+                        size: 46.0 / 2.0
                       )
                     )
-                  ]
-                ), 
+                  )
+                ]
+              ), 
               error: (Object e, StackTrace s) => Row(
                 children: [
                   _locationEmptyText(theme.colors.emptyBadges),
@@ -328,7 +306,7 @@ class _CreateEventSheetState extends ConsumerState<CreateEventSheet> {
   }
 
   Future<void> _handleChangeLocation() async {
-    await showLocationSheet(context);
+    // TODO await showLocationSheet(context);
   }
 
   Future<void> _handleSelectHosts() async {

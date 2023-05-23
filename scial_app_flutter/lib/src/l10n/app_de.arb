@@ -118,6 +118,22 @@
     "event_tab_bar_general" : "Allgemein",
     "event_tab_bar_guests" : "Gäste",
 
+    "settings_app_bar_title" : "Einstellungen",
+    "settings_section_appearance_title" : "Darstellung",
+    "settings_section_appearance_item_change_theme_title" : "Farbschema ändern",
+    "settings_section_language_and_region_title" : "Sprache & Region",
+    "settings_section_language_and_region_item_change_language_title" : "Sprache ändern",
+
+    "change_theme_app_bar_title" : "Farbschema ändern",
+    "change_theme_system_title" : "System",
+    "change_theme_light_title" : "Hell",
+    "change_theme_dark_title" : "Dunkel",
+
+    "change_language_app_bar_title" : "Sprache ändern",
+    "change_language_system_title" : "System",
+
+    "scial_day_app_bar_title" : "SCIAL DAY 🎉",
+
     "discover_app_bar_title" : "Entdecken",
     "discover_filters_sheet_title" : "Filter",
     "discover_tab_bar_all" : "Alle",
@@ -257,7 +273,6 @@
     "location_denied_forever" : "Standort-Erlaubnis ist in den Geräteeinstellungen deaktiviert.",
     "location_denied" : "Standorterlaubnis nicht erteilt.",
     "location_point_not_found" : "Standort wurde nicht gefunden.",
-    "location_name_not_found" : "Name des Standorts nicht gefunden.",
 
     "search_user_search_invalid_unique_code" : "Der Code muss genau aus 8 Ziffern und Buchstaben bestehen.",
 

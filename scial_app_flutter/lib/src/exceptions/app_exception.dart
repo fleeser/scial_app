@@ -39,7 +39,6 @@ class AppException with _$AppException {
   const factory AppException.locationDeniedForever() = LocationDeniedForever;
   const factory AppException.locationDenied() = LocationDenied;
   const factory AppException.locationPointNotFound() = LocationPointNotFound;
-  const factory AppException.locationNameNotFound() = LocationNameNotFound;
 
   const factory AppException.searchUserSearchInvalidUniqueCode() = SearchUserSearchInvalidUniqueCode;
 
@@ -84,7 +83,6 @@ extension AppExceptionExtension on AppException {
       locationDeniedForever: () => AppLocalizations.of(context)!.location_denied_forever,
       locationDenied: () => AppLocalizations.of(context)!.location_denied,
       locationPointNotFound: () => AppLocalizations.of(context)!.location_point_not_found,
-      locationNameNotFound: () => AppLocalizations.of(context)!.location_name_not_found,
 
       searchUserSearchInvalidUniqueCode: () => AppLocalizations.of(context)!.search_user_search_invalid_unique_code,
 

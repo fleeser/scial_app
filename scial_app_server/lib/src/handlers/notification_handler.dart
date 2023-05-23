@@ -17,83 +17,7 @@ class NotificationHandler {
     List<PublicNotification> notifications = [];
     for (Notification notificationRow in notificationRows) {
 
-      late dynamic data;
-
-      if (notificationRow.type == NotificationType.friendRequestCreated) {
-
-        PublicNotificationDataFriendRequestCreated? notificationDataFriendRequestCreated;
-
-        FriendRequest? friendRequestRow = await FriendRequest.findById(session, notificationRow.ref);
-
-        if (friendRequestRow != null) {
-
-          PublicNotificationDataFriendRequestCreatedSender? sender;
-          
-          User? senderRow = await User.findById(session, friendRequestRow.sender);
-
-          if (senderRow != null) {
-            sender = PublicNotificationDataFriendRequestCreatedSender(
-              id: senderRow.id!,
-              name: senderRow.name,
-              imageUrl: senderRow.imageUrl,
-              verified: senderRow.verified
-            );
-          }
-
-          notificationDataFriendRequestCreated = PublicNotificationDataFriendRequestCreated(
-            created: friendRequestRow.created,
-            sender: sender,
-            text: friendRequestRow.text
-          );
-
-          data = notificationDataFriendRequestCreated;
-        }
-      } else if (notificationRow.type == NotificationType.friendRequestAccepted) {
-
-        PublicNotificationDataFriendRequestCreated? notificationDataFriendRequestCreated;
-
-        FriendRequest? friendRequestRow = await FriendRequest.findById(session, notificationRow.ref);
-
-        FriendRequest? friendRequestRow = await FriendRequest.findById(session, notificationRow.ref);
-
-        if (friendRequestRow != null) {
-          User? senderRow = await User.findById(session, friendRequestRow.receiver);
-
-          if (senderRow != null) {
-            sender = PublicNotificationFriendRequestAcceptedSender(
-              id: senderRow.id!,
-              name: senderRow.name,
-              imageUrl: senderRow.imageUrl,
-              verified: senderRow.verified
-            );
-          }
-        }
-
-        data = PublicNotificationFriendRequestAccepted(
-          sender: sender
-        );
-      } else if (notificationRow.type == NotificationType.friendRequestDenied) {
-        PublicNotificationFriendRequestDeniedSender? sender;
-
-        FriendRequest? friendRequestRow = await FriendRequest.findById(session, notificationRow.ref);
-
-        if (friendRequestRow != null) {
-          User? senderRow = await User.findById(session, friendRequestRow.receiver);
-
-          if (senderRow != null) {
-            sender = PublicNotificationFriendRequestDeniedSender(
-              id: senderRow.id!,
-              name: senderRow.name,
-              imageUrl: senderRow.imageUrl,
-              verified: senderRow.verified
-            );
-          }
-        }
-
-        data = PublicNotificationFriendRequestDenied(
-          sender: sender
-        );
-      }
+      dynamic data = await _fetchNotificationData(session, notificationRow);
 
       PublicNotification notification = PublicNotification(
         id: notificationRow.id!, 
@@ -158,5 +82,95 @@ class NotificationHandler {
     }
 
     return NotificationSetAllReadResponse(success: true);
+  }
+
+  static Future<dynamic> _fetchNotificationData(Session session, Notification notificationRow) async {
+    switch (notificationRow.type) {
+      case NotificationType.friendRequestCreated: return await _fetchNotificationDataFriendRequestCreated(session, notificationRow.ref);
+      case NotificationType.friendRequestAccepted: return await _fetchNotificationDataFriendRequestAccepted(session, notificationRow.ref);
+      default: return await _fetchNotificationDataFriendRequestDenied(session, notificationRow.ref);
+    }
+  }
+
+  static Future<PublicNotificationDataFriendRequestCreated?> _fetchNotificationDataFriendRequestCreated(Session session, int friendRequestId) async {
+    FriendRequest? friendRequestRow = await FriendRequest.findById(session, friendRequestId);
+    
+    if (friendRequestRow == null) return null;
+
+    PublicNotificationDataFriendRequestCreated notificationDataFriendRequestCreated = PublicNotificationDataFriendRequestCreated(
+      id: friendRequestRow.id!,
+      created: friendRequestRow.created,
+      status: friendRequestRow.status,
+      text: friendRequestRow.text
+    );
+
+    User? senderRow = await User.findById(session, friendRequestRow.sender);
+
+    if (senderRow == null) return notificationDataFriendRequestCreated;
+
+    PublicNotificationDataFriendRequestCreatedSender sender = PublicNotificationDataFriendRequestCreatedSender(
+      id: senderRow.id!,
+      name: senderRow.name,
+      imageUrl: senderRow.imageUrl,
+      verified: senderRow.verified
+    );
+
+    notificationDataFriendRequestCreated.sender = sender;
+
+    return notificationDataFriendRequestCreated;
+  }
+
+  static Future<PublicNotificationDataFriendRequestAccepted?> _fetchNotificationDataFriendRequestAccepted(Session session, int friendRequestId) async {
+    FriendRequest? friendRequestRow = await FriendRequest.findById(session, friendRequestId);
+    
+    if (friendRequestRow == null) return null;
+
+    PublicNotificationDataFriendRequestAccepted notificationDataFriendRequestAccepted = PublicNotificationDataFriendRequestAccepted(
+      id: friendRequestRow.id!,
+      created: friendRequestRow.created,
+      text: friendRequestRow.text
+    );
+
+    User? senderRow = await User.findById(session, friendRequestRow.sender);
+
+    if (senderRow == null) return notificationDataFriendRequestAccepted;
+
+    PublicNotificationDataFriendRequestAcceptedSender sender = PublicNotificationDataFriendRequestAcceptedSender(
+      id: senderRow.id!,
+      name: senderRow.name,
+      imageUrl: senderRow.imageUrl,
+      verified: senderRow.verified
+    );
+
+    notificationDataFriendRequestAccepted.sender = sender;
+
+    return notificationDataFriendRequestAccepted;
+  }
+
+  static Future<PublicNotificationDataFriendRequestDenied?> _fetchNotificationDataFriendRequestDenied(Session session, int friendRequestId) async {
+    FriendRequest? friendRequestRow = await FriendRequest.findById(session, friendRequestId);
+    
+    if (friendRequestRow == null) return null;
+
+    PublicNotificationDataFriendRequestDenied notificationDataFriendRequestDenied = PublicNotificationDataFriendRequestDenied(
+      id: friendRequestRow.id!,
+      created: friendRequestRow.created,
+      text: friendRequestRow.text
+    );
+
+    User? senderRow = await User.findById(session, friendRequestRow.sender);
+
+    if (senderRow == null) return notificationDataFriendRequestDenied;
+
+    PublicNotificationDataFriendRequestDeniedSender sender = PublicNotificationDataFriendRequestDeniedSender(
+      id: senderRow.id!,
+      name: senderRow.name,
+      imageUrl: senderRow.imageUrl,
+      verified: senderRow.verified
+    );
+
+    notificationDataFriendRequestDenied.sender = sender;
+
+    return notificationDataFriendRequestDenied;
   }
 }

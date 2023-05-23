@@ -2,36 +2,20 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:mapbox_search/mapbox_search.dart' as mbs;
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:location/location.dart';
+import 'package:scial_app_flutter/src/exceptions/app_exception.dart';
+import 'package:scial_app_flutter/src/features/location/domain/entities/base_location.dart';
 
 part 'location_controller.g.dart';
-
-class LocationModel {
-
-  const LocationModel({
-    required this.lat,
-    required this.long,
-    this.name
-  });
-
-  final double lat;
-  final double long;
-  final String? name;
-}
 
 @riverpod
 class LocationController extends _$LocationController {
 
   @override
-  FutureOr<LocationModel?> build() async {
-    return await _fetch();
+  FutureOr<BaseLocation> build() async {
+    return await _fetchCurrentLocation();
   }
 
-  Future<void> refetch() async {
-    state = const AsyncLoading();
-    state = await AsyncValue.guard(() => _fetch());
-  }
-
-  Future<LocationModel?> _fetch() async {
+  Future<BaseLocation> _fetchCurrentLocation() async {
     Location location = Location();
 
     bool serviceEnabled = await location.serviceEnabled();
@@ -39,44 +23,44 @@ class LocationController extends _$LocationController {
     if (!serviceEnabled) {
       serviceEnabled = await location.requestService();
 
-      if (!serviceEnabled) return null; // throw const AppException.locationServiceDisabled();
+      if (!serviceEnabled) throw const AppException.locationServiceDisabled();
     }
 
     PermissionStatus permissionStatus = await location.hasPermission();
 
-    if (permissionStatus == PermissionStatus.deniedForever) return null; // throw const AppException.locationDeniedForever();
+    if (permissionStatus == PermissionStatus.deniedForever) throw const AppException.locationDeniedForever();
 
     if (permissionStatus == PermissionStatus.denied) {
       permissionStatus = await location.requestPermission();
 
-      if (permissionStatus == PermissionStatus.deniedForever) return null; // throw const AppException.locationDeniedForever();
+      if (permissionStatus == PermissionStatus.deniedForever) throw const AppException.locationDeniedForever();
 
-      if (permissionStatus == PermissionStatus.denied) return null; // throw const AppException.locationDenied();
+      if (permissionStatus == PermissionStatus.denied) throw const AppException.locationDenied();
     }
 
     LocationData locationData = await location.getLocation();
 
-    if (locationData.latitude == null || locationData.longitude == null) return null; // throw const AppException.locationPointNotFound();
+    if (locationData.latitude == null || locationData.longitude == null) throw const AppException.locationPointNotFound();
 
     mbs.ReverseGeoCoding reverseGeoCoding = mbs.ReverseGeoCoding(apiKey: dotenv.env['MAPBOX_API_KEY']!);
 
     List<mbs.MapBoxPlace>? addresses = await reverseGeoCoding.getAddress(mbs.Location(lat: locationData.latitude!, lng: locationData.longitude!));
 
-    String? name;
     if (addresses == null || addresses.isEmpty) {
-      // throw const AppException.locationPointNotFound();
-    } else {
-      name = addresses.first.placeName;
+      return BaseLocation(
+        lat: locationData.latitude!,
+        long: locationData.longitude!
+      );
     }
 
-    return LocationModel(
+    return BaseLocation(
       lat: locationData.latitude!, 
       long: locationData.longitude!,
-      name: name
+      name: addresses.first.placeName
     );
   }
 
-  void setLocation(LocationModel location) {
+  void setLocation(BaseLocation location) {
     state = AsyncValue.data(location);
   }
 }

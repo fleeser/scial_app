@@ -8,11 +8,13 @@ class SCNotificationsList extends StatelessWidget {
   const SCNotificationsList({
     super.key,
     required this.notifications,
-    this.addBottomPadding = false
+    this.addBottomPadding = false,
+    required this.formatTime
   });
 
   final List<SCNotification> notifications; 
   final bool addBottomPadding;
+  final String Function(DateTime) formatTime;
 
   @override
   Widget build(BuildContext context) {
@@ -29,9 +31,9 @@ class SCNotificationsList extends StatelessWidget {
         SCNotification notification = notifications[index];
 
         switch (notification.type) {
-          case SCNotificationType.friendRequestCreated: return SCNotificationsListItemFriendRequestCreated(read: notification.read, created: notification.created, data: notification.data as SCNotificationDataFriendRequestCreated);
-          case SCNotificationType.friendRequestAccepted: return SCNotificationsListItemFriendRequestAccepted(read: notification.read, created: notification.created, data: notification.data as SCNotificationDataFriendRequestAccepted);
-          default: return SCNotificationsListItemFriendRequestDenied(read: notification.read, created: notification.created, data: notification.data as SCNotificationDataFriendRequestDenied);
+          case SCNotificationType.friendRequestCreated: return SCNotificationsListItemFriendRequestCreated(read: notification.read, created: notification.created, data: notification.data as SCNotificationDataFriendRequestCreated, formatTime: formatTime);
+          case SCNotificationType.friendRequestAccepted: return SCNotificationsListItemFriendRequestAccepted(read: notification.read, created: notification.created, data: notification.data as SCNotificationDataFriendRequestAccepted, formatTime: formatTime);
+          default: return SCNotificationsListItemFriendRequestDenied(read: notification.read, created: notification.created, data: notification.data as SCNotificationDataFriendRequestDenied, formatTime: formatTime);
         }
       }
     );
@@ -62,6 +64,12 @@ enum SCNotificationType {
   eventHostSuggestionDenied
 }
 
+enum SCNotificationDataFriendRequestCreatedStatus {
+  pending,
+  accepted,
+  denied
+}
+
 class SCNotification {
 
   const SCNotification({
@@ -81,11 +89,13 @@ class SCNotificationDataFriendRequestCreated {
 
   const SCNotificationDataFriendRequestCreated({
     required this.created,
+    required this.status,
     this.sender,
     this.text
   });
 
   final DateTime created;
+  final SCNotificationDataFriendRequestCreatedStatus status;
   final SCNotificationDataFriendRequestCreatedSender? sender;
   final String? text;
 }
@@ -108,10 +118,12 @@ class SCNotificationDataFriendRequestAccepted {
   const SCNotificationDataFriendRequestAccepted({
     required this.created,
     this.sender,
+    this.text
   });
 
   final DateTime created;
   final SCNotificationDataFriendRequestAcceptedSender? sender;
+  final String? text;
 }
 
 class SCNotificationDataFriendRequestAcceptedSender {
@@ -132,10 +144,12 @@ class SCNotificationDataFriendRequestDenied {
   const SCNotificationDataFriendRequestDenied({
     required this.created,
     this.sender,
+    this.text
   });
 
   final DateTime created;
   final SCNotificationDataFriendRequestDeniedSender? sender;
+  final String? text;
 }
 
 class SCNotificationDataFriendRequestDeniedSender {

@@ -8,12 +8,15 @@ import 'package:scial_app_flutter/src/features/auth/presentation/pages/forgot_pa
 import 'package:scial_app_flutter/src/features/auth/presentation/pages/sign_in_page.dart';
 import 'package:scial_app_flutter/src/features/auth/presentation/pages/sign_up_page.dart';
 import 'package:scial_app_flutter/src/features/auth/presentation/pages/sign_up_verification_page.dart';
-import 'package:scial_app_flutter/src/features/chat/presentation/pages/chats_page.dart';
 import 'package:scial_app_flutter/src/features/discover/presentation/pages/discover_page.dart';
 import 'package:scial_app_flutter/src/features/event/presentation/pages/event_page.dart';
 import 'package:scial_app_flutter/src/features/home/presentation/pages/home_page.dart';
+import 'package:scial_app_flutter/src/features/localization/presentation/pages/change_language_page.dart';
 import 'package:scial_app_flutter/src/features/location/presentation/pages/location_page.dart';
 import 'package:scial_app_flutter/src/features/notifications/presentation/pages/notifications_page.dart';
+import 'package:scial_app_flutter/src/features/scial_day/presentation/pages/scial_day_page.dart';
+import 'package:scial_app_flutter/src/features/settings/presentation/pages/settings_page.dart';
+import 'package:scial_app_flutter/src/features/theme/presentation/pages/change_theme_page.dart';
 import 'package:scial_app_flutter/src/features/user/presentation/pages/user_page.dart';
 import 'package:scial_app_flutter/src/services/key_value_storage.dart';
 
@@ -31,8 +34,9 @@ enum AppRoute {
   discover('/discover'),
   notifications('/notifications'),
   profile('/profile'),
-  chats('/chats'),
-  location('/location');
+  location('/location'),
+  settings('/settings'),
+  scialDay('/scial-day');
 
   const AppRoute(this.path);
 
@@ -168,13 +172,30 @@ GoRouter appRouter(AppRouterRef ref) {
       ),
       GoRoute(
         parentNavigatorKey: _rootNavigatorKey,
-        path: AppRoute.chats.path,
-        builder: (BuildContext context, GoRouterState state) => const ChatsPage()
+        path: AppRoute.location.path,
+        builder: (BuildContext context, GoRouterState state) => const LocationPage()
       ),
       GoRoute(
         parentNavigatorKey: _rootNavigatorKey,
-        path: AppRoute.location.path,
-        builder: (BuildContext context, GoRouterState state) => const LocationPage()
+        path: AppRoute.settings.path,
+        builder: (BuildContext context, GoRouterState state) => const SettingsPage(),
+        routes: [
+          GoRoute(
+            parentNavigatorKey: _rootNavigatorKey,
+            path: 'change-theme',
+            builder: (BuildContext context, GoRouterState state) => const ChangeThemePage()
+          ),
+          GoRoute(
+            parentNavigatorKey: _rootNavigatorKey,
+            path: 'change-language',
+            builder: (BuildContext context, GoRouterState state) => const ChangeLanguagePage()
+          )
+        ]
+      ),
+      GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
+        path: AppRoute.scialDay.path,
+        builder: (BuildContext context, GoRouterState state) => const ScialDayPage()
       )
     ],
     errorBuilder: (BuildContext context, GoRouterState state) => Container() // TODO add error
@@ -227,11 +248,23 @@ extension AppRouterExtension on BuildContext {
     push('/event/$eventId');
   }
 
-  void navigateToChatsPage() {
-    push(AppRoute.chats.path);
-  }
-
   void navigateToLocationPage() {
     push(AppRoute.location.path);
+  }
+
+  void navigateToSettingsPage() {
+    push(AppRoute.settings.path);
+  }
+
+  void navigateToChangeThemePage() {
+    push('${AppRoute.settings.path}/change-theme');
+  }
+
+  void navigateToChangeLanguagePage() {
+    push('${AppRoute.settings.path}/change-language');
+  }
+
+  void navigateToScialDayPage() {
+    push(AppRoute.scialDay.path);
   }
 }

@@ -8,6 +8,7 @@ import 'package:scial_app_flutter/src/features/user/domain/use_cases/user_remove
 import 'package:scial_app_flutter/src/features/user/domain/use_cases/user_take_back_friend_request_use_case.dart';
 import 'package:scial_app_flutter/src/features/user/domain/use_cases/user_update_use_case.dart';
 import 'package:scial_app_flutter/src/features/user/presentation/widgets/user_update_user_switch.dart';
+import 'package:scial_app_flutter/src/routing/app_router.dart';
 import 'package:scial_app_ui/scial_app_ui.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -23,6 +24,10 @@ class UserController extends _$UserController {
 
   Future<PublicUser> _read(int userId) async {
     return await ref.read(userReadUseCaseProvider).call(UserReadUseCaseParams(userId: userId));
+  }
+
+  void handleSettings(BuildContext context) {
+    context.navigateToSettingsPage();
   }
 
   Future<void> updateUser(BuildContext context) async {

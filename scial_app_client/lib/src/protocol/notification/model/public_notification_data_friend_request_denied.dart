@@ -11,8 +11,10 @@ import '../../protocol.dart' as _i2;
 
 class PublicNotificationDataFriendRequestDenied extends _i1.SerializableEntity {
   PublicNotificationDataFriendRequestDenied({
+    required this.id,
     required this.created,
     this.sender,
+    this.text,
   });
 
   factory PublicNotificationDataFriendRequestDenied.fromJson(
@@ -20,23 +22,32 @@ class PublicNotificationDataFriendRequestDenied extends _i1.SerializableEntity {
     _i1.SerializationManager serializationManager,
   ) {
     return PublicNotificationDataFriendRequestDenied(
+      id: serializationManager.deserialize<int>(jsonSerialization['id']),
       created: serializationManager
           .deserialize<DateTime>(jsonSerialization['created']),
       sender: serializationManager
           .deserialize<_i2.PublicNotificationDataFriendRequestDeniedSender?>(
               jsonSerialization['sender']),
+      text:
+          serializationManager.deserialize<String?>(jsonSerialization['text']),
     );
   }
+
+  int id;
 
   DateTime created;
 
   _i2.PublicNotificationDataFriendRequestDeniedSender? sender;
 
+  String? text;
+
   @override
   Map<String, dynamic> toJson() {
     return {
+      'id': id,
       'created': created,
       'sender': sender,
+      'text': text,
     };
   }
 }

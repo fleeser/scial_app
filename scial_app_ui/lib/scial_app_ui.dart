@@ -10,6 +10,7 @@ export 'src/widgets/responsive/sc_padding.dart';
 export 'src/widgets/responsive/sc_gap.dart';
 
 export 'src/widgets/base/sc_icon.dart';
+export 'src/widgets/base/sc_flag.dart';
 export 'src/widgets/base/sc_shimmer.dart';
 export 'src/widgets/base/sc_image.dart';
 export 'src/widgets/base/sc_image_stack.dart';
@@ -68,3 +69,13 @@ export 'src/widgets/popup/sc_popup_time_button.dart';
 export 'src/widgets/editable_users/sc_editable_users.dart';
 
 export 'src/widgets/notifications/sc_notifications_list.dart';
+
+export 'src/widgets/settings/sc_settings_list.dart';
+export 'src/widgets/settings/sc_settings_list_section.dart' hide SCSettingsListSectionWidget;
+export 'src/widgets/settings/sc_settings_list_section_item.dart' hide SCSettingsListSectionItemWidget;
+
+export 'src/widgets/selectable/selectable_list/sc_selectable_list.dart';
+export 'src/widgets/selectable/selectable_list/sc_selectable_list_item.dart' hide SCSelectableListItemWidget;
+
+export 'src/widgets/selectable/selectable_lang_list/sc_selectable_lang_list.dart';
+export 'src/widgets/selectable/selectable_lang_list/sc_selectable_lang_list_item.dart' hide SCSelectableLangListItemWidget;

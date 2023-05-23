@@ -62,7 +62,19 @@ enum SCTextLevel {
 
   // Editable Users
 
-  editableUsersText
+  editableUsersText,
+
+  // Settings
+
+  settingsSectionTitle,
+  settingsSectionItemTitle,
+
+  // Selectable List
+
+  selectableListItemTitleSelected,
+  selectableListItemTitleUnselected,
+  selectableLangListItemTitleSelected,
+  selectableLangListItemTitleUnselected
 }
 
 class SCText extends StatelessWidget {
@@ -679,6 +691,94 @@ class SCText extends StatelessWidget {
     textAlign = null,
     level = SCTextLevel.editableUsersText;
 
+  // Settings
+
+  const SCText.settingsSectionTitle(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = 1,
+    overflow = TextOverflow.ellipsis,
+    textAlign = null,
+    level = SCTextLevel.settingsSectionTitle;
+
+  const SCText.settingsSectionItemTitle(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = 1,
+    overflow = TextOverflow.ellipsis,
+    textAlign = null,
+    level = SCTextLevel.settingsSectionItemTitle;
+
+  // Selectable List
+
+  const SCText.selectableListItemTitleSelected(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = 1,
+    overflow = TextOverflow.ellipsis,
+    textAlign = null,
+    level = SCTextLevel.selectableListItemTitleSelected;
+
+  const SCText.selectableListItemTitleUnselected(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = 1,
+    overflow = TextOverflow.ellipsis,
+    textAlign = null,
+    level = SCTextLevel.selectableListItemTitleUnselected;
+
+  const SCText.selectableLangListItemTitleSelected(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = 1,
+    overflow = TextOverflow.ellipsis,
+    textAlign = null,
+    level = SCTextLevel.selectableLangListItemTitleSelected;
+
+  const SCText.selectableLangListItemTitleUnselected(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = 1,
+    overflow = TextOverflow.ellipsis,
+    textAlign = null,
+    level = SCTextLevel.selectableLangListItemTitleUnselected;
+
   final String text;
   final Color? color;
   final int? maxLines;
@@ -755,6 +855,18 @@ class SCText extends StatelessWidget {
 
         case SCTextLevel.editableUsersText: return theme.colors.editableUsersText;
 
+        // Settings
+
+        case SCTextLevel.settingsSectionTitle: return theme.colors.settingsSectionTitle;
+        case SCTextLevel.settingsSectionItemTitle: return theme.colors.settingsSectionItemTitle;
+
+        // Selectable List
+
+        case SCTextLevel.selectableListItemTitleSelected: return theme.colors.selectableListItemTitleSelected;
+        case SCTextLevel.selectableListItemTitleUnselected: return theme.colors.selectableListItemTitleUnselected;
+        case SCTextLevel.selectableLangListItemTitleSelected: return theme.colors.selectableLangListItemTitleSelected;
+        case SCTextLevel.selectableLangListItemTitleUnselected: return theme.colors.selectableLangListItemTitleUnselected;
+
         default: return null;
       }
     }
@@ -821,6 +933,18 @@ class SCText extends StatelessWidget {
         // Editable Users
 
         case SCTextLevel.editableUsersText: return theme.typography.editableUsersText;
+
+        // Settings
+
+        case SCTextLevel.settingsSectionTitle: return theme.typography.settingsSectionTitle;
+        case SCTextLevel.settingsSectionItemTitle: return theme.typography.settingsSectionItemTitle;
+
+        // Selectable List
+
+        case SCTextLevel.selectableListItemTitleSelected: return theme.typography.selectableListItemTitleSelected;
+        case SCTextLevel.selectableListItemTitleUnselected: return theme.typography.selectableListItemTitleUnselected;
+        case SCTextLevel.selectableLangListItemTitleSelected: return theme.typography.selectableLangListItemTitleSelected;
+        case SCTextLevel.selectableLangListItemTitleUnselected: return theme.typography.selectableLangListItemTitleUnselected;
 
         default: return null;
       }

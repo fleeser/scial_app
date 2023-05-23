@@ -47,8 +47,8 @@ class NotificationsController extends _$NotificationsController {
     }
 
     List<PublicNotification> notifications = List.from(state.value!);
-    PublicNotification notification = notifications[notifications.indexWhere((element) => element is PublicNotificationFriendRequestCreated && (element as PublicNotificationFriendRequestCreated).friendRequest?.id == friendRequestId)];
-    (notification as PublicNotificationFriendRequestCreated).friendRequest!.status = FriendRequestStatus.accepted;
+    PublicNotification notification = notifications[notifications.indexWhere((element) => element.data is PublicNotificationDataFriendRequestCreated && (element.data as PublicNotificationDataFriendRequestCreated).id  == friendRequestId)];
+    (notification.data as PublicNotificationDataFriendRequestCreated).status = FriendRequestStatus.accepted;
     state = AsyncValue.data(notifications);
 
     return true;
@@ -62,8 +62,8 @@ class NotificationsController extends _$NotificationsController {
     }
 
     List<PublicNotification> notifications = List.from(state.value!);
-    PublicNotification notification = notifications[notifications.indexWhere((element) => element is PublicNotificationFriendRequestCreated && (element as PublicNotificationFriendRequestCreated).friendRequest?.id == friendRequestId)];
-    (notification as PublicNotificationFriendRequestCreated).friendRequest!.status = FriendRequestStatus.denied;
+    PublicNotification notification = notifications[notifications.indexWhere((element) => element.data is PublicNotificationDataFriendRequestCreated && (element.data as PublicNotificationDataFriendRequestCreated).id == friendRequestId)];
+    (notification.data as PublicNotificationDataFriendRequestCreated).status = FriendRequestStatus.denied;
     state = AsyncValue.data(notifications);
 
     return true;

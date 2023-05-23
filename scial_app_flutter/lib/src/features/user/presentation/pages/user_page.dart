@@ -175,7 +175,7 @@ class _UserPageState extends ConsumerState<UserPage> {
       enabled: !ref.watch(userControllerProvider(widget.id)).isLoading && !ref.watch(userControllerProvider(widget.id)).hasError
     ),
     if (_isProfile) SCSliverAppBarButton(
-      onPressed: () {},
+      onPressed: _handleSettings,
       icon: SCIcons.settings
     ),
     if (!_isSignedInUser) SCSliverAppBarButton(
@@ -192,5 +192,10 @@ class _UserPageState extends ConsumerState<UserPage> {
   Future<void> _handleFriendship() async {
     final controller = ref.read(userControllerProvider(widget.id).notifier);
     await controller.handleFriendship(context);
+  }
+
+  void _handleSettings() {
+    final controller = ref.read(userControllerProvider(widget.id).notifier);
+    controller.handleSettings(context);
   }
 }

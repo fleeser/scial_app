@@ -1,5 +1,4 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 enum Boxes {
@@ -34,8 +33,7 @@ enum ThemeBoxKeys {
 
 enum LocalizationBoxKeys {
 
-  language('language'),
-  country('country');
+  mode('mode');
 
   const LocalizationBoxKeys(this.title);
 
@@ -106,6 +104,10 @@ class KeyValueStorage {
     return await _themeBox.put(ThemeBoxKeys.mode.title, mode);
   }
 
+  static Future<void> removeThemeMode() async {
+    return await _authBox.delete(ThemeBoxKeys.mode.title);
+  }
+
   static Future<void> openLocalizationBox() async {
     await Hive.openBox(Boxes.localization.title);
   }
@@ -114,17 +116,15 @@ class KeyValueStorage {
     return await _localizationBox.close();
   }
 
-  static Locale? getLocale() {
-    String? language = _localizationBox.get(LocalizationBoxKeys.language.title);
-    String? country = _localizationBox.get(LocalizationBoxKeys.country.title);
-
-    if (language == null) return null;
-
-    return Locale(language, country);
+  static int? getLocaleMode() {
+    return _themeBox.get(LocalizationBoxKeys.mode.title);
   }
 
-  static Future<void> putLocale(Locale locale) async {
-    await _localizationBox.put(LocalizationBoxKeys.language, locale.languageCode);
-    await _localizationBox.put(LocalizationBoxKeys.country, locale.countryCode);
+  static Future<void> putLocaleMode(int mode) async {
+    return await _localizationBox.put(LocalizationBoxKeys.mode.title, mode);
+  }
+
+  static Future<void> removeLocaleMode() async {
+    return await _localizationBox.delete(LocalizationBoxKeys.mode.title);
   }
 }

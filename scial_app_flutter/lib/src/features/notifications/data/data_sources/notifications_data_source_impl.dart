@@ -15,7 +15,10 @@ class NotificationsDataSourceImpl implements NotificationsDataSource {
   Future<List<PublicNotification>> read() async {
     NotificationReadResponse response = await client.notification.read();
 
-    if (response.success) return response.notifications!;
+    if (response.success) {
+      print(response.notifications!);
+      return response.notifications!;
+    }
     
     switch (response.code) {
       case NotificationReadResponseCode.notAuthenticated: throw const ServerException.notAuthenticated();

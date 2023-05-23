@@ -1,6 +1,7 @@
 class: PublicNotificationDataFriendRequestAccepted
 
 fields:
+  id: int
   created: DateTime
   sender: PublicNotificationDataFriendRequestAcceptedSender?
   text: String?

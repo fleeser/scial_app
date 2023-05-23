@@ -7,12 +7,14 @@ class SCNotificationsListItemFriendRequestAccepted extends StatelessWidget {
     super.key,
     required this.read,
     required this.created,
-    required this.data
+    required this.data,
+    required this.formatTime
   });
 
   final bool read;
   final DateTime created;
   final SCNotificationDataFriendRequestAccepted data;
+  final String Function(DateTime) formatTime;
 
   @override
   Widget build(BuildContext context) {

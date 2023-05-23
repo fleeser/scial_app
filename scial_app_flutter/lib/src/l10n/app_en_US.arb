@@ -118,6 +118,22 @@
     "event_tab_bar_general" : "General",
     "event_tab_bar_guests" : "Guests",
 
+    "settings_app_bar_title" : "Settings",
+    "settings_section_appearance_title" : "Appearance",
+    "settings_section_appearance_item_change_theme_title" : "Change theme",
+    "settings_section_language_and_region_title" : "Language & Region",
+    "settings_section_language_and_region_item_change_language_title" : "Change language",
+
+    "change_theme_app_bar_title" : "Change theme",
+    "change_theme_system_title" : "System",
+    "change_theme_light_title" : "Light",
+    "change_theme_dark_title" : "Dark",
+
+    "change_language_app_bar_title" : "Change language",
+    "change_language_system_title" : "System",
+
+    "scial_day_app_bar_title" : "SCIAL DAY 🎉",
+
     "discover_app_bar_title" : "Discover",
     "discover_filters_sheet_title" : "Filter",
     "discover_tab_bar_all" : "All",
@@ -257,7 +273,6 @@
     "location_denied_forever" : "Location permission is denied in devices settings.",
     "location_denied" : "Location permission denied.",
     "location_point_not_found" : "Location not found.",
-    "location_name_not_found" : "Location name not found.",
 
     "search_user_search_invalid_unique_code" : "The code must consist exactly of 8 digits and upper case letters.",
 

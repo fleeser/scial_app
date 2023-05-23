@@ -3,6 +3,8 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mapbox_search/mapbox_search.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:scial_app_flutter/src/features/location/domain/entities/base_location.dart';
 import 'package:scial_app_flutter/src/features/location/domain/entities/local_location.dart';
 import 'package:scial_app_flutter/src/features/location/presentation/controller/location_controller.dart';
 import 'package:scial_app_flutter/src/features/location/presentation/widgets/location_text.dart';
@@ -10,21 +12,24 @@ import 'package:scial_app_flutter/src/services/location_database_helper.dart';
 import 'package:scial_app_ui/scial_app_ui.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+part 'location_page.g.dart';
+
 final locationSearchTextProvider = StateProvider<String>((ref) => '');
-final locationSearchProvider = FutureProvider<List<LocationModel>>((ref) async {
+
+@riverpod
+Future<List<BaseLocation>> locationSearch(LocationSearchRef ref) async {
+  String searchText = ref.watch(locationSearchTextProvider);
+
+  List<BaseLocation> locations = [];
+
   PlacesSearch placesSearch = PlacesSearch(apiKey: dotenv.env['MAPBOX_API_KEY']!);
-
-  final String searchText = ref.watch(locationSearchTextProvider);
-
-  List<LocationModel> locations = [];
-
-  final List<MapBoxPlace>? results = await placesSearch.getPlaces(searchText);
+  List<MapBoxPlace>? results = await placesSearch.getPlaces(searchText);
 
   if (results != null && results.isNotEmpty) {
     for (MapBoxPlace result in results) {
       if (result.center == null) continue;
       
-      LocationModel location = LocationModel(
+      BaseLocation location = BaseLocation(
         lat: result.center![0],
         long: result.center![1],
         name: result.placeName
@@ -35,7 +40,7 @@ final locationSearchProvider = FutureProvider<List<LocationModel>>((ref) async {
   }
 
   return locations;
-});
+}
 
 class LocationPage extends ConsumerStatefulWidget {
 
@@ -63,7 +68,7 @@ class _LocationPageState extends ConsumerState<LocationPage> {
     final bool isExpanded = ref.watch(isExpandedProvider);
     final locationController = ref.watch(locationControllerProvider);
     final String searchText = ref.watch(locationSearchTextProvider);
-    final AsyncValue<List<LocationModel>> searchValue = ref.watch(locationSearchProvider);
+    final AsyncValue<List<BaseLocation>> searchValue = ref.watch(locationSearchProvider);
 
     return SCShimmer(
       linearGradient: scGradient(context),
@@ -74,7 +79,7 @@ class _LocationPageState extends ConsumerState<LocationPage> {
           backButton: const SCAppBarBackButton(),
           actionButtons: [
             SCAppBarButton(
-              onPressed: _handleRefetch,
+              onPressed: () {},
               loading: locationController.isLoading,
               enabled: !locationController.hasError,
               icon: SCIcons.navigation
@@ -89,12 +94,12 @@ class _LocationPageState extends ConsumerState<LocationPage> {
         body: isExpanded
           ? searchText.isNotEmpty
             ? searchValue.when(
-              data: (List<LocationModel> locations) => locations.isNotEmpty
+              data: (List<BaseLocation> locations) => locations.isNotEmpty
                 ? SCLocationList(
                   items: List.generate(locations.length, (int index) => SCLocationListItem(name: locations[index].name!)),
                   addBottomPadding: true,
                   onPressed: (int index) async {
-                    LocationModel selectedLocation = locations[index];
+                    BaseLocation selectedLocation = locations[index];
 
                     ref.read(locationControllerProvider.notifier).setLocation(selectedLocation);
 
@@ -125,7 +130,7 @@ class _LocationPageState extends ConsumerState<LocationPage> {
                 addBottomPadding: true,
                 onPressed: (int index) {
                   LocalLocation selectedLocation = locations[index];
-                  LocationModel location = LocationModel(
+                  BaseLocation location = BaseLocation(
                     lat: selectedLocation.lat, 
                     long: selectedLocation.long,
                     name: selectedLocation.name
@@ -141,12 +146,5 @@ class _LocationPageState extends ConsumerState<LocationPage> {
           )
       )
     );
-  }
-
-  Future<void> _handleRefetch() async {
-    final controller = ref.read(locationControllerProvider.notifier);
-    await controller.refetch();
-    
-    if (context.mounted) context.pop();
   }
 }

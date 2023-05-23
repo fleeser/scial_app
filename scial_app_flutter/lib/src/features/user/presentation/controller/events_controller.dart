@@ -1,5 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:scial_app_client/scial_app_client.dart';
+import 'package:scial_app_flutter/src/features/location/domain/entities/base_location.dart';
 import 'package:scial_app_flutter/src/features/location/presentation/controller/location_controller.dart';
 import 'package:scial_app_flutter/src/features/user/domain/use_cases/user_events_use_case.dart';
 
@@ -14,7 +15,11 @@ class EventsController extends _$EventsController {
   }
 
   Future<List<PublicEvent>> _read(int userId) async {
-    LocationModel? location = await ref.read(locationControllerProvider.future);
+    BaseLocation? location;
+    try {
+      location = await ref.read(locationControllerProvider.future);
+    } catch (_) { }
+
     return await ref.read(userEventsUseCaseProvider).call(UserEventsUseCaseParams(userId: userId, lat: location?.lat, long: location!.long));
   }
 }

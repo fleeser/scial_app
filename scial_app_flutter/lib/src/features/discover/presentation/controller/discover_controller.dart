@@ -5,6 +5,7 @@ import 'package:scial_app_flutter/src/features/discover/domain/use_cases/discove
 import 'package:scial_app_flutter/src/features/discover/presentation/widgets/discover_filters_sheet_distance.dart';
 import 'package:scial_app_flutter/src/features/discover/presentation/widgets/discover_filters_sheet_types.dart';
 import 'package:scial_app_flutter/src/features/discover/presentation/widgets/discover_filters_sheet_visibilities.dart';
+import 'package:scial_app_flutter/src/features/location/domain/entities/base_location.dart';
 import 'package:scial_app_flutter/src/features/location/presentation/controller/location_controller.dart';
 
 part 'discover_controller.g.dart';
@@ -18,7 +19,7 @@ class DiscoverController extends _$DiscoverController {
   }
 
   Future<List<PublicEvent>> _read(BuildContext context) async {
-    final LocationModel? location = await ref.watch(locationControllerProvider.future);
+    BaseLocation location = await ref.watch(locationControllerProvider.future);
 
     if (location == null) return []; // TODO location
 
