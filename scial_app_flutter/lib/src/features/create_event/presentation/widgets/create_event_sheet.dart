@@ -132,90 +132,7 @@ class _CreateEventSheetState extends ConsumerState<CreateEventSheet> {
           const SCGap.semiBig(),
           CreateEventSheetSubtitle(subtitle: AppLocalizations.of(context)!.create_event_sheet_location_subtitle),
           const SCGap.semiBig(),
-          SCPadding(
-            padding: const SCEdgeInsets.symmetric(horizontal: SCGapSize.semiBig),
-            child: locationController.when(
-              data: (BaseLocation location) => Row(
-                children: [
-                  Expanded(
-                    child: Text(
-                      location.name!,
-                      maxLines: 3,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        fontFamily: 'Poppins',
-                        package: 'scial_app_ui',
-                        fontWeight: FontWeight.w400,
-                        color: theme.colors.emptyBadges,
-                        fontSize: 14.0
-                      )
-                    )
-                  ),
-                  const SCGap.regular(),
-                  SizedBox(
-                    width: 46.0,
-                    height: 46.0,
-                    child: RawMaterialButton(
-                      onPressed: _handleChangeLocation,
-                      elevation: 0.0,
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(46.0 / 2.0)),
-                      fillColor: theme.colors.editableUsersButtonBackground,
-                      child: SCIcon(
-                        icon: SCIcons.edit2,
-                        color: theme.colors.editableUsersButtonIcon,
-                        size: 46.0 / 2.0
-                      )
-                    )
-                  )
-                ]
-              ), 
-              error: (Object e, StackTrace s) => Row(
-                children: [
-                  _locationEmptyText(theme.colors.emptyBadges),
-                  const SCGap.regular(),
-                  SizedBox(
-                    width: 46.0,
-                    height: 46.0,
-                    child: RawMaterialButton(
-                      onPressed: _handleChangeLocation,
-                      elevation: 0.0,
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(46.0 / 2.0)),
-                      fillColor: theme.colors.editableUsersButtonBackground,
-                      child: SCIcon(
-                        icon: SCIcons.edit2,
-                        color: theme.colors.editableUsersButtonIcon,
-                        size: 46.0 / 2.0
-                      )
-                    )
-                  )
-                ]
-              ), 
-              loading: () => Row(
-                children: [
-                  const SCCircularProgressIndicator(
-                    size: 20.0,
-                    color: Colors.red,
-                  ),
-                  const Spacer(),
-                  SizedBox(
-                    width: 46.0,
-                    height: 46.0,
-                    child: RawMaterialButton(
-                      onPressed: _handleChangeLocation,
-                      elevation: 0.0,
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(46.0 / 2.0)),
-                      fillColor: theme.colors.editableUsersButtonBackground,
-                      child: SCIcon(
-                        icon: SCIcons.edit2,
-                        color: theme.colors.editableUsersButtonIcon,
-                        size: 46.0 / 2.0
-                      )
-                    )
-                  )
-                ]
-              )
-            )
-          ),
+          CreateEventSheetLocation(location: selectedLocation),
           const SCGap.semiBig(),
           CreateEventSheetSubtitle(subtitle: AppLocalizations.of(context)!.create_event_sheet_hosts_subtitle),
           const SCGap.semiBig(),
@@ -258,25 +175,10 @@ class _CreateEventSheetState extends ConsumerState<CreateEventSheet> {
   }
 
   Future<void> _handleSelectHosts() async {
-    await showSelectUsersSheet(context, selectedHostsProvider);
+    //await showSelectUsersSheet(context, selectedHostsProvider);
   }
 
   Future<void> _handleSelectGuests() async {
-    await showSelectUsersSheet(context, selectedGuestsProvider);
-  }
-
-  Widget _locationEmptyText(Color color) {
-    return Text(
-      AppLocalizations.of(context)!.create_event_sheet_location_no_location,
-      maxLines: 3,
-      overflow: TextOverflow.ellipsis,
-      style: TextStyle(
-        fontFamily: 'Poppins',
-        package: 'scial_app_ui',
-        fontWeight: FontWeight.w400,
-        color: color,
-        fontSize: 14.0
-      )
-    );
+    //await showSelectUsersSheet(context, selectedGuestsProvider);
   }
 }
