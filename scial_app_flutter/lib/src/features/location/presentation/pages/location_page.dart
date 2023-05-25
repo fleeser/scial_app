@@ -79,7 +79,7 @@ class _LocationPageState extends ConsumerState<LocationPage> {
           backButton: const SCAppBarBackButton(),
           actionButtons: [
             SCAppBarButton(
-              onPressed: () {},
+              onPressed: () => _handleRefetch(context),
               loading: locationController.isLoading,
               enabled: !locationController.hasError,
               icon: SCIcons.navigation
@@ -146,5 +146,14 @@ class _LocationPageState extends ConsumerState<LocationPage> {
           )
       )
     );
+  }
+
+  void _handleRefetch(BuildContext context) {
+    final controller = ref.read(locationControllerProvider.notifier);
+    bool success = await controller.refetchLocation();
+
+    if (success) {
+      context.pop();
+    }
   }
 }

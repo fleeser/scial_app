@@ -60,6 +60,12 @@ class LocationController extends _$LocationController {
     );
   }
 
+  Future<bool> refetchLocation() {
+    state = AsyncValue.loading();
+    state = await AsyncValue.guard(() => _fetchCurrentLocation());
+    return !state.hasError;
+  }
+
   void setLocation(BaseLocation location) {
     state = AsyncValue.data(location);
   }
