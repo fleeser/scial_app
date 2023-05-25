@@ -12,10 +12,6 @@ import 'package:scial_app_flutter/src/features/search_user/presentation/widgets/
 import 'package:scial_app_ui/scial_app_ui.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-final AutoDisposeStateProvider<EventType> createEventSelectedEventTypeProvider = AutoDisposeStateProvider<EventType>((ref) => EventType.values.first);
-final AutoDisposeStateProvider<EventVisibility> createEventSelectedEventVisibilityProvider = AutoDisposeStateProvider<EventVisibility>((ref) => EventVisibility.values.first);
-//final AutoDisposeStateProvider<LocationModel?> createEventSelectedLocationProvider = AutoDisposeStateProvider<LocationModel?>((ref) => null);
-
 Future<void> showCreateEventSheet(BuildContext context) async {
   
   SCThemeData theme = SCTheme.of(context);
@@ -32,7 +28,7 @@ Future<void> showCreateEventSheet(BuildContext context) async {
   );
 }
 
-class CreateEventSheet extends ConsumerStatefulWidget {
+class CreateEventSheet extends StatefulHookConsumerWidget {
 
   const CreateEventSheet({ super.key });
 
@@ -42,23 +38,27 @@ class CreateEventSheet extends ConsumerStatefulWidget {
 
 class _CreateEventSheetState extends ConsumerState<CreateEventSheet> {
 
+  late TextEditingController selectedTitleController;
+  late TextEditingController selectedDescriptionController;
+  late AutoDisposeStateProvider<EventType> selectedEventTypeProvider;
+  late AutoDisposeSatetProvider<EventVisibility> selectedEventVisibilityProvider;
   late AutoDisposeStateProvider<DateTime?> selectedStartDateProvider;
   late AutoDisposeStateProvider<DateTime?> selectedEndDateProvider;
   late AutoDisposeStateProvider<TimeOfDay?> selectedStartTimeProvider;
   late AutoDisposeStateProvider<TimeOfDay?> selectedEndTimeProvider;
-  late AutoDisposeStateNotifierProvider<SelectedUsersNotifier, List<PublicUserSearchUser>> selectedHostsProvider;
-  late AutoDisposeStateNotifierProvider<SelectedUsersNotifier, List<PublicUserSearchUser>> selectedGuestsProvider;
+  late AutoDisposeStateProvider<BaseLocation?> selectedLocationProvider;
 
   @override
   void initState() {
     super.initState();
 
+    selectedEventTypeProvider = AutoDisposeStateProvider<EventType>((ref) => EventType.values.first);
+    selectedEventVisibilityProviedr = AutoDisposeStateProvider<EventVisibility>((ref) => EventVisibility.values.first);
     selectedStartDateProvider = AutoDisposeStateProvider<DateTime?>((ref) => null);
     selectedEndDateProvider = AutoDisposeStateProvider<DateTime?>((ref) => null);
     selectedStartTimeProvider = AutoDisposeStateProvider<TimeOfDay?>((ref) => null);
     selectedEndTimeProvider = AutoDisposeStateProvider<TimeOfDay?>((ref) => null);
-    selectedHostsProvider = AutoDisposeStateNotifierProvider<SelectedUsersNotifier, List<PublicUserSearchUser>>((ref) => SelectedUsersNotifier());
-    selectedGuestsProvider = AutoDisposeStateNotifierProvider<SelectedUsersNotifier, List<PublicUserSearchUser>>((ref) => SelectedUsersNotifier());
+    selectedLocationProvider = AutoDisposeStateProvider<BaseLocation?>((ref) => null);
   }
 
   @override
@@ -67,15 +67,17 @@ class _CreateEventSheetState extends ConsumerState<CreateEventSheet> {
     SCThemeData theme = SCTheme.of(context);
 
     final createEventController = ref.watch(createEventControllerProvider);
-    final EventType selectedEventType = ref.watch(createEventSelectedEventTypeProvider);
-    final EventVisibility selectedEventVisibility = ref.watch(createEventSelectedEventVisibilityProvider);
-    final locationController = ref.watch(locationControllerProvider);
-    final List<PublicUserSearchUser> selectedHosts = ref.watch(selectedHostsProvider);
-    final List<PublicUserSearchUser> selectedGuests = ref.watch(selectedGuestsProvider);
+
+    final EventType selectedEventType = ref.watch(selectedEventTypeProvider);
+    final EventVisibility selectedEventVisibility = ref.watch(selectedEventVisibilityProvider);
     final DateTime? selectedStartDate = ref.watch(selectedStartDateProvider);
     final DateTime? selectedEndDate = ref.watch(selectedEndDateProvider);
     final TimeOfDay? selectedStartTime = ref.watch(selectedStartTimeProvider);
     final TimeOfDay? selectedEndTime = ref.watch(selectedEndTimeProvider);
+    final BaseLocation? selectedLocation = ref.watch(selectedLocationProvider);
+
+    selectedTitleController = useTextEditingController();
+    selectedDescriptionController = useTextEditingController();
 
     return SingleChildScrollView(
       child: Column(
@@ -96,90 +98,36 @@ class _CreateEventSheetState extends ConsumerState<CreateEventSheet> {
           const SCGap.semiBig(),
           CreateEventSheetSubtitle(subtitle: AppLocalizations.of(context)!.create_event_sheet_title_subtitle),
           const SCGap.semiBig(),
-          SCPadding(
-            padding: const SCEdgeInsets.symmetric(horizontal: SCGapSize.semiBig),
-            child: SCTextInputField(hint: AppLocalizations.of(context)!.create_event_sheet_title_field_hint)
-          ),
+          CreateEventSheetTitle(controller: selectedTitleController),
           const SCGap.semiBig(),
           CreateEventSheetSubtitle(subtitle: AppLocalizations.of(context)!.create_event_sheet_description_subtitle),
           const SCGap.semiBig(),
-          SCPadding(
-            padding: const SCEdgeInsets.symmetric(horizontal: SCGapSize.semiBig),
-            child: SCTextInputBox(hint: AppLocalizations.of(context)!.create_event_sheet_description_box_hint)
-          ),
+          CreateEventSheetDescription(controller: selectedDescriptionController),
           const SCGap.semiBig(),
           CreateEventSheetSubtitle(subtitle: AppLocalizations.of(context)!.create_event_sheet_type_subtitle),
           const SCGap.semiBig(),
-          SCCircularSelectable(
-            emojis: EventType.values.map((EventType type) => type.emoji).toList(), 
-            selectedIndexes: [ selectedEventType.index ], 
-            onPressed: (int index) => ref.read(createEventSelectedEventTypeProvider.notifier).update((state) => state = EventType.values[index])
-          ),
+          CreateEventSheetEventType(eventType: selectedEventType),
           const SCGap.semiBig(),
           CreateEventSheetSubtitle(subtitle: AppLocalizations.of(context)!.create_event_sheet_visibility_subtitle),
           const SCGap.semiBig(),
-          SCCircularSelectable(
-            emojis: EventVisibility.values.map((EventVisibility visibility) => visibility.emoji).toList(), 
-            selectedIndexes: [ selectedEventVisibility.index ], 
-            onPressed: (int index) => ref.read(createEventSelectedEventVisibilityProvider.notifier).update((state) => state = EventVisibility.values[index])
-          ),
+          CreateEventSheetEventVisibility(eventVisibility: selectedEventVisibility),
           const SCGap.semiBig(),
           CreateEventSheetSubtitle(subtitle: AppLocalizations.of(context)!.create_event_sheet_start_subtitle),
           const SCGap.semiBig(),
-          SCPadding(
-            padding: const SCEdgeInsets.symmetric(horizontal: SCGapSize.semiBig),
-            child: Row(
-              children: [
-                Expanded(
-                  flex: 3,
-                  child: SCPopupDateButton(
-                    emptyDateText: AppLocalizations.of(context)!.create_event_sheet_empty_time,
-                    initialDate: selectedStartDate,
-                    onSelected: (DateTime date) => ref.read(selectedStartDateProvider.notifier).update((state) => state = date),
-                    formatDate: (DateTime date) => date.toDynamicDateText(context)
-                  )
-                ),
-                const SCGap.regular(),
-                Expanded(
-                  flex: 2,
-                  child: SCPopupTimeButton(
-                    emptyTimeText: AppLocalizations.of(context)!.create_event_sheet_empty_time,
-                    initialTime: selectedStartTime,
-                    onSelected: (TimeOfDay time) => ref.read(selectedStartTimeProvider.notifier).update((state) => state = time),
-                    formatTime: (TimeOfDay time) => time.toStaticTimeText(context)
-                  )
-                )
-              ]
-            )
+          CreateEventSheetTime(
+            date: selectedStartDate,
+            time: selectedStartTime,
+            onDateSelected: (DateTime date) => ref.read(selectedStartDateProvider.notifier).update((state) => state = date),
+            onTimeSelected: (TimeOfDay time) => ref.read(selectedStartTimeProvider.notifier).update((state) => state = time)
           ),
           const SCGap.semiBig(),
           CreateEventSheetSubtitle(subtitle: AppLocalizations.of(context)!.create_event_sheet_end_subtitle),
           const SCGap.semiBig(),
-          SCPadding(
-            padding: const SCEdgeInsets.symmetric(horizontal: SCGapSize.semiBig),
-            child: Row(
-              children: [
-                Expanded(
-                  flex: 3,
-                  child: SCPopupDateButton(
-                    emptyDateText: AppLocalizations.of(context)!.create_event_sheet_empty_time,
-                    initialDate: selectedEndDate,
-                    onSelected: (DateTime date) => ref.read(selectedEndDateProvider.notifier).update((state) => state = date),
-                    formatDate: (DateTime date) => date.toDynamicDateText(context)
-                  )
-                ),
-                const SCGap.regular(),
-                Expanded(
-                  flex: 2,
-                  child: SCPopupTimeButton(
-                    emptyTimeText: AppLocalizations.of(context)!.create_event_sheet_empty_time,
-                    initialTime: selectedEndTime,
-                    onSelected: (TimeOfDay time) => ref.read(selectedEndTimeProvider.notifier).update((state) => state = time),
-                    formatTime: (TimeOfDay time) => time.toStaticTimeText(context)
-                  )
-                )
-              ]
-            )
+          CreateEventSheetTime(
+            date: selectedEndDate,
+            time: selectedEndTime,
+            onDateSelected: (DateTime date) => ref.read(selectedEndDateProvider.notifier).update((state) => state = date),
+            onTimeSelected: (TimeOfDay time) => ref.read(selectedEndTimeProvider.notifier).update((state) => state = time)
           ),
           const SCGap.semiBig(),
           CreateEventSheetSubtitle(subtitle: AppLocalizations.of(context)!.create_event_sheet_location_subtitle),
