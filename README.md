@@ -4,10 +4,20 @@
 
 ### scial_app_flutter
 
-- flutter pub run build_runner build --delete-conflicting-outputs
+```shell
+flutter pub run build_runner build --delete-conflicting-outputs
+```
+
+```shell
 - flutter run --dart-define FLAVOR="development"
+```
 
 ### scial_app_server
 
+```shell
 - docker compose down -v
+```
+
+```shell
 - docker compose up --build --detach
+```
