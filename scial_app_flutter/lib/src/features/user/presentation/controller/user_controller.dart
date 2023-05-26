@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:scial_app_client/scial_app_client.dart';
+import 'package:scial_app_flutter/src/exceptions/app_exception.dart';
 import 'package:scial_app_flutter/src/features/user/domain/use_cases/user_answer_friend_request_use_case.dart';
 import 'package:scial_app_flutter/src/features/user/domain/use_cases/user_create_friend_request_use_case.dart';
 import 'package:scial_app_flutter/src/features/user/domain/use_cases/user_read_use_case.dart';
 import 'package:scial_app_flutter/src/features/user/domain/use_cases/user_remove_friendship_use_case.dart';
 import 'package:scial_app_flutter/src/features/user/domain/use_cases/user_take_back_friend_request_use_case.dart';
 import 'package:scial_app_flutter/src/features/user/domain/use_cases/user_update_use_case.dart';
-import 'package:scial_app_flutter/src/features/user/presentation/widgets/user_update_sheet.dart';
-import 'package:scial_app_flutter/src/features/user/presentation/widgets/user_update_user_switch.dart';
 import 'package:scial_app_flutter/src/routing/app_router.dart';
+import 'package:scial_app_shared/scial_app_shared.dart';
 import 'package:scial_app_ui/scial_app_ui.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -32,9 +32,16 @@ class UserController extends _$UserController {
   }
 
   Future<bool> updateUser(String name, bool isPrivate) async {
-    // TODO: Trim before?
+    name = name.trim();
+    
+    if (name.isNotEmpty) {
+      bool nameIsValid = Validator.validateName(name);
+      if (!nameIsValid) throw const AppException.userUpdateInvalidName();
+    }
 
-    bool updateName = (name.isEmpty && state.value!.name != null) || name != state.value!.name;
+    String? newName = name.isEmpty ? null : name;
+
+    bool updateName = newName != state.value!.name;
     bool updatePrivate = isPrivate != state.value!.private;
 
     if (!updateName && !updatePrivate) {

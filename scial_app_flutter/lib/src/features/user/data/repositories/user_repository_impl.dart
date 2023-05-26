@@ -1,10 +1,8 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:scial_app_client/scial_app_client.dart';
-import 'package:scial_app_flutter/src/exceptions/app_exception.dart';
 import 'package:scial_app_flutter/src/features/user/data/data_sources/user_data_source.dart';
 import 'package:scial_app_flutter/src/features/user/data/data_sources/user_data_source_impl.dart';
 import 'package:scial_app_flutter/src/features/user/domain/repositories/user_repository.dart';
-import 'package:scial_app_shared/scial_app_shared.dart';
 
 part 'user_repository_impl.g.dart';
 
@@ -63,12 +61,6 @@ class UserRepositoryImpl implements UserRepository {
 
   @override
   Future<void> updateUser(String? name, bool? isPrivate, bool updateName) async {
-    if (name != null) {
-      name = name.trim();
-      bool nameIsValid = Validator.validateName(name);
-      if (!nameIsValid) throw const AppException.userUpdateInvalidName();
-    }
-
     return await dataSource.updateUser(name, isPrivate, updateName);
   }
 }

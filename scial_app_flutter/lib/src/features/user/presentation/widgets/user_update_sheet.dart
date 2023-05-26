@@ -58,13 +58,6 @@ class _UserUpdateSheetState extends ConsumerState<UserUpdateSheet> {
   }
 
   @override
-  void dispose() {
-    nameController.dispose();
-
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     
     SCThemeData theme = SCTheme.of(context);
@@ -125,12 +118,20 @@ class _UserUpdateSheetState extends ConsumerState<UserUpdateSheet> {
   }
 
   Future<void> _handleUpdate() async {
+    ref.read(isLoadingProvider.notifier).update((state) => true);
+
     final controller = ref.read(userControllerProvider(widget.userId).notifier);
     bool isPrivate = ref.read(isPrivateProvider);
-    bool success = await controller.updateUser(nameController.text, isPrivate);
+
+    bool success = false;
+    try {
+      success = await controller.updateUser(nameController.text, isPrivate);
+    } catch (_) { }
 
     if (success && mounted) {
       context.pop();
+    } else {
+      ref.read(isLoadingProvider.notifier).update((state) => false);
     }
   }
 }

@@ -62,7 +62,7 @@ class UserHandler {
   }
 
   static Future<UserUpdateResponse> update(Session session, String? name, bool? isPrivate, bool updateName) async {
-    if (name != null) {
+    if (updateName && name != null) {
       name = name.trim();
       bool nameIsValid = Validator.validateName(name);
       if (!nameIsValid) {
@@ -90,7 +90,7 @@ class UserHandler {
       );
     }
 
-    if (name != null) {
+    if (updateName) {
       userRow.name = name;
     }
 
