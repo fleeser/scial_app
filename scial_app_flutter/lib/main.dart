@@ -7,16 +7,15 @@ import 'package:scial_app_flutter/src/services/auth_key_manager.dart';
 import 'package:scial_app_flutter/src/services/key_value_storage.dart';
 import 'package:serverpod_flutter/serverpod_flutter.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flutter_web_plugins/url_strategy.dart';
 
 late Client client;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  usePathUrlStrategy();
+  const String environment = String.fromEnvironment('FLAVOR', defaultValue: 'development');
 
-  await dotenv.load(fileName: '.env');
+  await dotenv.load(fileName: '.env.$environment');
 
   await Hive.initFlutter();
   await KeyValueStorage.openAuthBox();
