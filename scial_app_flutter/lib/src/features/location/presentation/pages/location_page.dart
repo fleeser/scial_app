@@ -148,11 +148,11 @@ class _LocationPageState extends ConsumerState<LocationPage> {
     );
   }
 
-  void _handleRefetch(BuildContext context) {
+  Future<void> _handleRefetch(BuildContext context) async {
     final controller = ref.read(locationControllerProvider.notifier);
     bool success = await controller.refetchLocation();
 
-    if (success) {
+    if (success && mounted) {
       context.pop();
     }
   }

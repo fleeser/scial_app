@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:scial_app_client/scial_app_client.dart';
-import 'package:scial_app_flutter/src/extensions/time_text_extensions.dart';
-import 'package:scial_app_flutter/src/extensions/event_type_extension.dart';
-import 'package:scial_app_flutter/src/extensions/event_visibility_extension.dart';
 import 'package:scial_app_flutter/src/features/create_event/presentation/controller/create_event_controller.dart';
+import 'package:scial_app_flutter/src/features/create_event/presentation/widgets/create_event_sheet_description.dart';
+import 'package:scial_app_flutter/src/features/create_event/presentation/widgets/create_event_sheet_event_type.dart';
+import 'package:scial_app_flutter/src/features/create_event/presentation/widgets/create_event_sheet_event_visibility.dart';
+import 'package:scial_app_flutter/src/features/create_event/presentation/widgets/create_event_sheet_location.dart';
 import 'package:scial_app_flutter/src/features/create_event/presentation/widgets/create_event_sheet_subtitle.dart';
+import 'package:scial_app_flutter/src/features/create_event/presentation/widgets/create_event_sheet_time.dart';
+import 'package:scial_app_flutter/src/features/create_event/presentation/widgets/create_event_sheet_title.dart';
 import 'package:scial_app_flutter/src/features/location/domain/entities/base_location.dart';
-import 'package:scial_app_flutter/src/features/location/presentation/controller/location_controller.dart';
-import 'package:scial_app_flutter/src/features/search_user/presentation/widgets/select_users_sheet.dart';
 import 'package:scial_app_ui/scial_app_ui.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -41,7 +43,7 @@ class _CreateEventSheetState extends ConsumerState<CreateEventSheet> {
   late TextEditingController selectedTitleController;
   late TextEditingController selectedDescriptionController;
   late AutoDisposeStateProvider<EventType> selectedEventTypeProvider;
-  late AutoDisposeSatetProvider<EventVisibility> selectedEventVisibilityProvider;
+  late AutoDisposeStateProvider<EventVisibility> selectedEventVisibilityProvider;
   late AutoDisposeStateProvider<DateTime?> selectedStartDateProvider;
   late AutoDisposeStateProvider<DateTime?> selectedEndDateProvider;
   late AutoDisposeStateProvider<TimeOfDay?> selectedStartTimeProvider;
@@ -53,7 +55,7 @@ class _CreateEventSheetState extends ConsumerState<CreateEventSheet> {
     super.initState();
 
     selectedEventTypeProvider = AutoDisposeStateProvider<EventType>((ref) => EventType.values.first);
-    selectedEventVisibilityProviedr = AutoDisposeStateProvider<EventVisibility>((ref) => EventVisibility.values.first);
+    selectedEventVisibilityProvider = AutoDisposeStateProvider<EventVisibility>((ref) => EventVisibility.values.first);
     selectedStartDateProvider = AutoDisposeStateProvider<DateTime?>((ref) => null);
     selectedEndDateProvider = AutoDisposeStateProvider<DateTime?>((ref) => null);
     selectedStartTimeProvider = AutoDisposeStateProvider<TimeOfDay?>((ref) => null);
@@ -106,11 +108,17 @@ class _CreateEventSheetState extends ConsumerState<CreateEventSheet> {
           const SCGap.semiBig(),
           CreateEventSheetSubtitle(subtitle: AppLocalizations.of(context)!.create_event_sheet_type_subtitle),
           const SCGap.semiBig(),
-          CreateEventSheetEventType(eventType: selectedEventType),
+          CreateEventSheetEventType(
+            eventType: selectedEventType,
+            onPressed: (int index) => ref.read(selectedEventTypeProvider.notifier).update((state) => state = EventType.values[index])
+          ),
           const SCGap.semiBig(),
           CreateEventSheetSubtitle(subtitle: AppLocalizations.of(context)!.create_event_sheet_visibility_subtitle),
           const SCGap.semiBig(),
-          CreateEventSheetEventVisibility(eventVisibility: selectedEventVisibility),
+          CreateEventSheetEventVisibility(
+            eventVisibility: selectedEventVisibility,
+            onPressed: (int index) => ref.read(selectedEventVisibilityProvider.notifier).update((state) => state = EventVisibility.values[index])
+          ),
           const SCGap.semiBig(),
           CreateEventSheetSubtitle(subtitle: AppLocalizations.of(context)!.create_event_sheet_start_subtitle),
           const SCGap.semiBig(),
@@ -139,7 +147,7 @@ class _CreateEventSheetState extends ConsumerState<CreateEventSheet> {
           SCEditableUsers(
             onEditPressed: _handleSelectHosts,
             emptyText: AppLocalizations.of(context)!.create_event_sheet_hosts_empty_hosts,
-            imageUrls: selectedHosts.map((user) => user.imageUrl).toList()
+            imageUrls: const []
           ),
           const SCGap.semiBig(),
           CreateEventSheetSubtitle(subtitle: AppLocalizations.of(context)!.create_event_sheet_invitations_subtitle),
@@ -147,7 +155,7 @@ class _CreateEventSheetState extends ConsumerState<CreateEventSheet> {
           SCEditableUsers(
             onEditPressed: _handleSelectGuests,
             emptyText: AppLocalizations.of(context)!.create_event_sheet_invitations_empty_invitations,
-            imageUrls: selectedGuests.map((user) => user.imageUrl).toList()
+            imageUrls: const []
           ),
           const SCGap.semiBig(),
           SCPadding(

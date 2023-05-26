@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:scial_app_flutter/src/extensions/time_text_extensions.dart';
 import 'package:scial_app_ui/scial_app_ui.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -12,7 +13,7 @@ class CreateEventSheetTime extends StatelessWidget {
     required this.onTimeSelected
   });
 
-  final Datetime? date;
+  final DateTime? date;
   final TimeOfDay? time;
   final void Function(DateTime) onDateSelected;
   final void Function(TimeOfDay) onTimeSelected;

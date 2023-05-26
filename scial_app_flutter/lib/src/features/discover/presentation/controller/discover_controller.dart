@@ -21,8 +21,6 @@ class DiscoverController extends _$DiscoverController {
   Future<List<PublicEvent>> _read(BuildContext context) async {
     BaseLocation location = await ref.watch(locationControllerProvider.future);
 
-    if (location == null) return []; // TODO location
-
     final double distanceValue = ref.watch(filtersDistanceProvider);
     Locale locale = Localizations.localeOf(context); // TODO
     bool isEnglishUS = <Locale>[ const Locale('en'), const Locale('en', 'US') ].contains(locale);

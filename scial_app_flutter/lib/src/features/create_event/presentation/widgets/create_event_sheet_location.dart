@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:scial_app_flutter/src/features/location/domain/entities/base_location.dart';
 import 'package:scial_app_ui/scial_app_ui.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -23,15 +24,15 @@ class CreateEventSheetLocation extends StatelessWidget {
           Expanded( // TODO: TextStyle in ui system?
             child: Text(
               location != null
-                ? location.name
+                ? location!.name ?? '???'
                 : AppLocalizations.of(context)!.create_event_sheet_location_no_location,
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
-              style: TextStyle(
+              style: const TextStyle(
                 fontFamily: 'Poppins',
                 package: 'scial_app_ui',
                 fontWeight: FontWeight.w400,
-                color: color,
+                color: Colors.green, // TODO
                 fontSize: 14.0
               )
             )
