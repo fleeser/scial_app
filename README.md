@@ -1,5 +1,7 @@
 # scial
 
+WE ARE HERE TO VIBE TOGETHER! 🔥
+
 ## Commands
 
 ### scial_app_flutter
