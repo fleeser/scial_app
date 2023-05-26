@@ -6,7 +6,3 @@ packages:
   - scial_app_server
   - scial_app_shared
   - scial_app_ui
-
-scripts:
-  analyze:
-    exec: dart analyze .
