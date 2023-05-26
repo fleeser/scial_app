@@ -601,16 +601,6 @@ class Endpoints extends _i1.EndpointDispatch {
               type: _i1.getType<bool?>(),
               nullable: true,
             ),
-            'updateName': _i1.ParameterDescription(
-              name: 'updateName',
-              type: _i1.getType<bool>(),
-              nullable: false,
-            ),
-            'updateIsPrivate': _i1.ParameterDescription(
-              name: 'updateIsPrivate',
-              type: _i1.getType<bool>(),
-              nullable: false,
-            ),
           },
           call: (
             _i1.Session session,
@@ -620,8 +610,6 @@ class Endpoints extends _i1.EndpointDispatch {
             session,
             name: params['name'],
             isPrivate: params['isPrivate'],
-            updateName: params['updateName'],
-            updateIsPrivate: params['updateIsPrivate'],
           ),
         ),
         'events': _i1.MethodConnector(

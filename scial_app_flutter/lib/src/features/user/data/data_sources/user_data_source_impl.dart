@@ -121,13 +121,14 @@ class UserDataSourceImpl implements UserDataSource {
   }
 
   @override
-  Future<void> updateUser(String? name, bool? isPrivate, bool updateName, bool updateIsPrivate) async {
-    UserUpdateResponse response = await client.user.update(name: name, isPrivate: isPrivate, updateName: updateName, updateIsPrivate: updateIsPrivate);
+  Future<void> updateUser(String? name, bool? isPrivate) async {
+    UserUpdateResponse response = await client.user.update(name: name, isPrivate: isPrivate);
 
     if (response.success) return;
 
     switch (response.code) {
       case UserUpdateResponseCode.notAuthenticated: throw const ServerException.notAuthenticated();
+      case UserUpdateResponseCode.invalidName: throw const ServerException.userUpdateInvalidName();
       case UserUpdateResponseCode.userNotFound: throw const ServerException.userUpdateUserNotFound();
       default: throw const ServerException.unknownError();
     }

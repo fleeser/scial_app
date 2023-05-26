@@ -61,7 +61,18 @@ class UserHandler {
     );
   }
 
-  static Future<UserUpdateResponse> update(Session session, String? name, bool? isPrivate, bool updateName, bool updateIsPrivate) async {
+  static Future<UserUpdateResponse> update(Session session, String? name, bool? isPrivate) async {
+    if (name != null) {
+      name = name.trim();
+      bool nameIsValid = Validator.validateName(name);
+      if (!nameIsValid) {
+        return UserUpdateResponse(
+          success: false,
+          code: UserUpdateResponseCode.invalidName
+        ); 
+      }
+    }
+
     int? authUserId = await session.auth.authenticatedUserId;
     if (authUserId == null) {
       return UserUpdateResponse(
@@ -79,17 +90,15 @@ class UserHandler {
       );
     }
 
-    if (updateName) {
+    if (name != null) {
       userRow.name = name;
     }
 
-    if (updateIsPrivate) {
-      userRow.private = isPrivate!;
+    if (isPrivate != null) {
+      userRow.private = isPrivate;
     }
 
     await User.update(session, userRow);
-
-    // TODO transaction
 
     return UserUpdateResponse(success: true);
   }

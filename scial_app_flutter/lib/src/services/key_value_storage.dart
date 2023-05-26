@@ -70,6 +70,10 @@ class KeyValueStorage {
     return _authBox.get(AuthBoxKeys.userId.title);
   }
 
+  static String getUniqueCode() {
+    return _authBox.get(AuthBoxKeys.uniqueCode.title);
+  }
+
   static bool get isAuthenticated => getAuthKey() != null;
 
   static ValueListenable get authState {

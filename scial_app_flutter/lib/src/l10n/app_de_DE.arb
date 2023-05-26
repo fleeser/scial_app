@@ -119,6 +119,7 @@
     "event_tab_bar_guests" : "Gäste",
 
     "settings_app_bar_title" : "Einstellungen",
+    "settings_unique_code_title" : "Dein Code",
     "settings_section_appearance_title" : "Darstellung",
     "settings_section_appearance_item_change_theme_title" : "Farbschema ändern",
     "settings_section_language_and_region_title" : "Sprache & Region",
@@ -178,7 +179,8 @@
     "user_create_friend_request_title" : "Freundschaftsanfrage",
     "user_create_friend_request_send_button_title" : "Senden",
 
-    "user_update_user_title" : "Profil bearbeiten",
+    "user_update_sheet_title" : "Profil bearbeiten",
+    "user_update_sheet_name_hint" : "Name",
     "user_update_user_private" : "Privates Profil",
     "user_update_user_save_button_title" : "Speichern",
 
@@ -264,6 +266,7 @@
 
     "user_create_friend_request_friend_request_already_exists" : "Es existiert bereits eine Freundschaftsanfrage zwischen euch.",
 
+    "user_update_invalid_name" : "Dieser Name darf nicht verwendet werden.",
     "user_update_user_not_found" : "Benutzer nicht gefunden.",
 
     "event_guests_event_not_found" : "Veranstaltung nicht gefunden.",

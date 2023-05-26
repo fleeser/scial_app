@@ -10,6 +10,7 @@ import 'package:serverpod_client/serverpod_client.dart' as _i1;
 
 enum UserUpdateResponseCode with _i1.SerializableEntity {
   notAuthenticated,
+  invalidName,
   userNotFound;
 
   static UserUpdateResponseCode? fromJson(int index) {
@@ -17,6 +18,8 @@ enum UserUpdateResponseCode with _i1.SerializableEntity {
       case 0:
         return notAuthenticated;
       case 1:
+        return invalidName;
+      case 2:
         return userNotFound;
       default:
         return null;

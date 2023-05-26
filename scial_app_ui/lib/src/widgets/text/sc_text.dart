@@ -68,6 +68,8 @@ enum SCTextLevel {
 
   settingsSectionTitle,
   settingsSectionItemTitle,
+  settingsUniqueCodeTitle,
+  settingsUniqueCodeText,
 
   // Selectable List
 
@@ -693,6 +695,34 @@ class SCText extends StatelessWidget {
 
   // Settings
 
+  const SCText.settingsUniqueCodeTitle(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = 1,
+    overflow = null,
+    textAlign = null,
+    level = SCTextLevel.settingsUniqueCodeTitle;
+
+  const SCText.settingsUniqueCodeText(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = 1,
+    overflow = TextOverflow.ellipsis,
+    textAlign = null,
+    level = SCTextLevel.settingsUniqueCodeText;
+
   const SCText.settingsSectionTitle(
     this.text,
     {
@@ -857,6 +887,8 @@ class SCText extends StatelessWidget {
 
         // Settings
 
+        case SCTextLevel.settingsUniqueCodeTitle: return theme.colors.settingsUniqueCodeTitle;
+        case SCTextLevel.settingsUniqueCodeText: return theme.colors.settingsUniqueCodeText;
         case SCTextLevel.settingsSectionTitle: return theme.colors.settingsSectionTitle;
         case SCTextLevel.settingsSectionItemTitle: return theme.colors.settingsSectionItemTitle;
 
@@ -936,6 +968,8 @@ class SCText extends StatelessWidget {
 
         // Settings
 
+        case SCTextLevel.settingsUniqueCodeTitle: return theme.typography.settingsUniqueCodeTitle;
+        case SCTextLevel.settingsUniqueCodeText: return theme.typography.settingsUniqueCodeText;
         case SCTextLevel.settingsSectionTitle: return theme.typography.settingsSectionTitle;
         case SCTextLevel.settingsSectionItemTitle: return theme.typography.settingsSectionItemTitle;
 

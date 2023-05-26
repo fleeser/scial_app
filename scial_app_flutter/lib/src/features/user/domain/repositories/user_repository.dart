@@ -9,5 +9,5 @@ abstract class UserRepository {
   Future<void> answerFriendRequest(int friendRequestId, bool answer);
   Future<void> takeBackFriendRequest(int friendRequestId);
   Future<void> createFriendRequest(int userId, String? text);
-  Future<void> updateUser(String? name, bool? isPrivate, bool updateName, bool updateIsPrivate);
+  Future<void> updateUser(String? name, bool? isPrivate);
 }

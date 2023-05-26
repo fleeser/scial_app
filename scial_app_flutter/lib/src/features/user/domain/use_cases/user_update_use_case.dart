@@ -17,7 +17,7 @@ class UserUpdateUseCase implements FutureUseCase<void, UserUpdateUseCaseParams> 
 
   @override
   Future<void> call(UserUpdateUseCaseParams params) async {
-    return await repository.updateUser(params.name, params.isPrivate, params.updateName, params.updateIsPrivate);
+    return await repository.updateUser(params.name, params.isPrivate);
   }
 }
 
@@ -25,16 +25,12 @@ class UserUpdateUseCaseParams extends Equatable {
 
   const UserUpdateUseCaseParams({ 
     this.name,
-    this.isPrivate,
-    required this.updateName,
-    required this.updateIsPrivate
+    this.isPrivate
   });
 
   final String? name;
   final bool? isPrivate;
-  final bool updateName;
-  final bool updateIsPrivate;
   
   @override
-  List<Object?> get props => [ name, isPrivate, updateName, updateIsPrivate ];
+  List<Object?> get props => [ name, isPrivate ];
 }

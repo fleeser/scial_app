@@ -8,8 +8,8 @@ class UserEndpoint extends Endpoint {
     return await UserHandler.read(session, userId);
   }
 
-  Future<UserUpdateResponse> update(Session session, { String? name, bool? isPrivate, required bool updateName, required bool updateIsPrivate }) async {
-    return await UserHandler.update(session, name, isPrivate, updateName, updateIsPrivate);
+  Future<UserUpdateResponse> update(Session session, { String? name, bool? isPrivate }) async {
+    return await UserHandler.update(session, name, isPrivate);
   }
 
   Future<UserEventsResponse> events(Session session, int userId, double? lat, double? long, { int? limit, int? offset }) async {

@@ -72,6 +72,7 @@ class ServerException with _$ServerException {
 
   const factory ServerException.userCreateFriendRequestFriendRequestAlreadyExists() = UserCreateFriendRequestFriendRequestAlreadyExists;
 
+  const factory ServerException.userUpdateInvalidName() = UserUpdateInvalidName;
   const factory ServerException.userUpdateUserNotFound() = UserUpdateUserNotFound;
 
   const factory ServerException.eventGuestsEventNotFound() = EventGuestsEventNotFound;
@@ -154,6 +155,7 @@ extension ServerExceptionExtension on ServerException {
 
       userCreateFriendRequestFriendRequestAlreadyExists: () => AppLocalizations.of(context)!.user_create_friend_request_friend_request_already_exists,
 
+      userUpdateInvalidName: () => AppLocalizations.of(context)!.user_update_invalid_name,
       userUpdateUserNotFound: () => AppLocalizations.of(context)!.user_update_user_not_found,
 
       eventGuestsEventNotFound: () => AppLocalizations.of(context)!.event_guests_event_not_found,

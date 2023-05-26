@@ -12,8 +12,8 @@ class Validator {
     return RegExp(r'^[0-9]{6}$').hasMatch(verificationCode);
   }
 
-  static bool validateName(String name) { // TODO: Add constrain to updateUser
-    return name.length >= 2 && name.length <= 32;
+  static bool validateName(String name) {
+    return !name.startsWith('#') && name.length >= 2 && name.length <= 32;
   }
 
   static bool validateUniqueCode(String uniqueCode) {

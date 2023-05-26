@@ -119,6 +119,7 @@
     "event_tab_bar_guests" : "Guests",
 
     "settings_app_bar_title" : "Settings",
+    "settings_unique_code_title" : "Your Code",
     "settings_section_appearance_title" : "Appearance",
     "settings_section_appearance_item_change_theme_title" : "Change theme",
     "settings_section_language_and_region_title" : "Language & Region",
@@ -177,7 +178,8 @@
     "user_create_friend_request_title" : "Friend request",
     "user_create_friend_request_send_button_title" : "Send",
 
-    "user_update_user_title" : "Edit profile",
+    "user_update_sheet_title" : "Edit profile",
+    "user_update_sheet_name_hint" : "Name",
     "user_update_user_private" : "Private Profile",
     "user_update_user_save_button_title" : "Save",
 
@@ -263,6 +265,7 @@
 
     "user_create_friend_request_friend_request_already_exists" : "There is already a pending friend request.",
 
+    "user_update_invalid_name" : "This name can not be used.",
     "user_update_user_not_found" : "User not found.",
 
     "event_guests_event_not_found" : "Event not found.",

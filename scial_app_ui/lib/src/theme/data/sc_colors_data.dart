@@ -137,6 +137,9 @@ class SCColorsData {
 
     // Settings
 
+    required this.settingsUniqueCodeBackground,
+    required this.settingsUniqueCodeTitle,
+    required this.settingsUniqueCodeText,
     required this.settingsSectionTitle,
     required this.settingsSectionItemIcon,
     required this.settingsSectionItemTitle,
@@ -289,6 +292,9 @@ class SCColorsData {
 
     // Settings
 
+    settingsUniqueCodeBackground: SCPalette.blue500,
+    settingsUniqueCodeTitle: SCPalette.white,
+    settingsUniqueCodeText: SCPalette.white,
     settingsSectionTitle: SCPalette.gray900,
     settingsSectionItemIcon: SCPalette.gray500,
     settingsSectionItemTitle: SCPalette.gray500,
@@ -441,6 +447,9 @@ class SCColorsData {
 
     // Settings
 
+    settingsUniqueCodeBackground: SCPalette.blue600,
+    settingsUniqueCodeTitle: SCPalette.white,
+    settingsUniqueCodeText: SCPalette.white,
     settingsSectionTitle: SCPalette.gray100,
     settingsSectionItemIcon: SCPalette.gray400,
     settingsSectionItemTitle: SCPalette.gray400,
@@ -592,6 +601,9 @@ class SCColorsData {
 
   // Settings
 
+  final Color settingsUniqueCodeBackground;
+  final Color settingsUniqueCodeTitle;
+  final Color settingsUniqueCodeText;
   final Color settingsSectionTitle;
   final Color settingsSectionItemIcon;
   final Color settingsSectionItemTitle;

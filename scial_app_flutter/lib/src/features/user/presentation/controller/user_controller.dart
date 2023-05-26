@@ -7,6 +7,7 @@ import 'package:scial_app_flutter/src/features/user/domain/use_cases/user_read_u
 import 'package:scial_app_flutter/src/features/user/domain/use_cases/user_remove_friendship_use_case.dart';
 import 'package:scial_app_flutter/src/features/user/domain/use_cases/user_take_back_friend_request_use_case.dart';
 import 'package:scial_app_flutter/src/features/user/domain/use_cases/user_update_use_case.dart';
+import 'package:scial_app_flutter/src/features/user/presentation/widgets/user_update_sheet.dart';
 import 'package:scial_app_flutter/src/features/user/presentation/widgets/user_update_user_switch.dart';
 import 'package:scial_app_flutter/src/routing/app_router.dart';
 import 'package:scial_app_ui/scial_app_ui.dart';
@@ -31,84 +32,7 @@ class UserController extends _$UserController {
   }
 
   Future<void> updateUser(BuildContext context) async {
-    TextEditingController controller = TextEditingController(text: state.value!.name);
-    bool shouldBePrivate = state.value!.private;
-
-    await showSCSheet(
-      context, 
-      title: AppLocalizations.of(context)!.user_update_user_title,
-      button: SCSheetButton(
-        onPressed: () async {
-          String trimmedText = controller.text.trim();
-          String? newName = trimmedText == "" ? null : trimmedText;
-          bool updateName = newName != state.value!.name;
-
-          bool updateIsPrivate = shouldBePrivate != state.value!.private;
-
-          bool updateAnything = updateName || updateIsPrivate;
-
-          if (!updateName) {
-            return true;
-          }
-
-          try {
-            await ref.read(userUpdateUseCaseProvider).call(UserUpdateUseCaseParams(
-              name: newName,
-              isPrivate: updateIsPrivate ? shouldBePrivate : null,
-              updateName: updateName,
-              updateIsPrivate: updateIsPrivate
-            ));
-
-          } catch (e) {
-            return false;
-          }
-
-          if (updateAnything) {
-            state = AsyncValue.data(
-              PublicUser(
-                id: state.value!.id, 
-                name: updateName ? newName : state.value!.name,
-                imageUrl: state.value!.imageUrl,
-                verified: state.value!.verified,
-                private: updateIsPrivate ? shouldBePrivate : state.value!.private,
-                badges: state.value!.badges,
-                friendship: state.value!.friendship,
-                friendRequest: state.value!.friendRequest
-              )
-            );
-          }
-
-          return true;
-        },
-        title: AppLocalizations.of(context)!.user_update_user_save_button_title
-      ),
-      children: (bool isLoading) => [
-        SCPadding(
-          padding: const SCEdgeInsets.symmetric(horizontal: SCGapSize.semiBig),
-          child: Row(
-            children: [
-              Expanded(child: SCText.editUserIsPrivate(AppLocalizations.of(context)!.user_update_user_private)),
-              const SCGap.semiBig(),
-              UserUpdateUserSwitch(
-                initialIsOn: state.value!.private,
-                onChanged: (bool isOn) {
-                  shouldBePrivate = isOn;
-                }
-              )
-            ]
-          )
-        ),
-        const SCGap.semiBig(),
-        SCPadding(
-          padding: const SCEdgeInsets.symmetric(horizontal: SCGapSize.semiBig),
-          child: SCTextInputField.name(
-            controller: controller,
-            hint: AppLocalizations.of(context)!.user_name,
-            enabled: !isLoading
-          )
-        )
-      ]
-    ); 
+    await showUserUpdateSheet(context, state.value!.name, state.value!.private);
   }
 
   Future<void> handleFriendship(BuildContext context) async {

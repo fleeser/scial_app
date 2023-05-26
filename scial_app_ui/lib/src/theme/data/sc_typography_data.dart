@@ -80,6 +80,8 @@ class SCTypographyData {
 
     // Settings
 
+    required this.settingsUniqueCodeTitle,
+    required this.settingsUniqueCodeText,
     required this.settingsSectionTitle,
     required this.settingsSectionItemTitle,
 
@@ -489,6 +491,20 @@ class SCTypographyData {
 
     // Settings
 
+    settingsUniqueCodeTitle: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 14.0,
+      fontWeight: FontWeight.bold,
+      decoration: TextDecoration.none
+    ),
+    settingsUniqueCodeText: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 14.0,
+      fontWeight: FontWeight.w400,
+      decoration: TextDecoration.none
+    ),
     settingsSectionTitle: TextStyle(
       fontFamily: 'Poppins',
       package: 'scial_app_ui',
@@ -613,6 +629,8 @@ class SCTypographyData {
 
   // Settings
 
+  final TextStyle settingsUniqueCodeTitle;
+  final TextStyle settingsUniqueCodeText;
   final TextStyle settingsSectionTitle;
   final TextStyle settingsSectionItemTitle;
 
