@@ -29,9 +29,9 @@ class SCAppBarTitle extends StatelessWidget {
           size: Size(double.infinity, theme.typography.appBarTitle.fontSize!),
           borderRadius: theme.typography.appBarTitle.fontSize! / 2.0
         )
-        : error || title == null
-          ? const SizedBox.shrink()
-          : SCText.appBarTitle(title!)
+        : error && title == null
+          ? const SCText.appBarTitle('')
+          : SCText.appBarTitle(title ?? '')
     );
   }
 }

@@ -78,7 +78,6 @@
     "sign_out_dialog_cancel_button_title" : "Abbrechen",
     "sign_out_dialog_submit_button_title" : "Abmelden",
 
-    "home_app_bar_title" : "Start",
     "home_scial_day_cta_text" : "Der nächste scial Day steht an!",
     "home_scial_day_cta_button_title" : "Teilnehmen",
     "home_location_cta_button_title" : "Anpassen",
@@ -88,6 +87,7 @@
     "location_history_empty" : "Kein Verlauf",
     "location_search_empty_search" : "Gib was ein!",
     "location_search_empty" : "Keine Ergebnisse",
+    "location_no_name" : "Kein Name",
 
     "chats_app_bar_title" : "Posteingang",
 
