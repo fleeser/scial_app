@@ -39,7 +39,7 @@ class SCNotificationsListItemFriendRequestCreated extends StatelessWidget {
               icon: SCIcons.user
             ),
             const SCGap.regular(),
-            Expanded(child: SCText.notificationText('lol')),
+            const Expanded(child: SCText.notificationText('lol')),
             const SCGap.regular(),
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

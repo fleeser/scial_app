@@ -138,12 +138,12 @@ class _SelectUsersSheetState extends ConsumerState<SelectUsersSheet> {
                   );
                 }
 
-                return Text('empty');
+                return const Text('empty');
               }, 
               error: (Object e, StackTrace s) => Text(e.toString()), // TODO fehler nh 
-              loading: () => Text('lädt')
+              loading: () => const Text('lädt')
             )
-            : Text('gib was ein'),
+            : const Text('gib was ein'),
           SizedBox(height: SCGapSize.semiBig.getSpacing(theme) + (MediaQuery.of(context).viewInsets.bottom > 0.0 ? MediaQuery.of(context).viewInsets.bottom : MediaQuery.of(context).padding.bottom))
         ]
       )

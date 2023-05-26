@@ -16,7 +16,6 @@ class NotificationsDataSourceImpl implements NotificationsDataSource {
     NotificationReadResponse response = await client.notification.read();
 
     if (response.success) {
-      print(response.notifications!);
       return response.notifications!;
     }
     

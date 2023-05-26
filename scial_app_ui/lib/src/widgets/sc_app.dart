@@ -14,7 +14,6 @@ class SCApp extends StatelessWidget {
     required this.supportedLocales,
     required this.localizationsDelegates,
     required this.locale,
-    this.useInheritedMediaQuery = false,
     this.debugShowCheckedModeBanner = false
   });
 
@@ -24,11 +23,10 @@ class SCApp extends StatelessWidget {
   final List<Locale> supportedLocales;
   final Iterable<LocalizationsDelegate<dynamic>> localizationsDelegates;
   final Locale locale;
-  final bool useInheritedMediaQuery;
 
   @override
   Widget build(BuildContext context) {
-    Widget result = SCResponsiveTheme(
+    return SCResponsiveTheme(
       colorMode: colorMode, 
       child: cupertino.Builder(builder: (context) {
 
@@ -41,16 +39,9 @@ class SCApp extends StatelessWidget {
           supportedLocales: supportedLocales,
           localizationsDelegates: localizationsDelegates,
           locale: locale,
-          useInheritedMediaQuery: useInheritedMediaQuery,
           color: theme.colors.accent
         );
       })
     );
-
-    if (!useInheritedMediaQuery) {
-      result = MediaQuery.fromWindow(child: result);  
-    }
-
-    return result;
   }
 }

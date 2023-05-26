@@ -57,9 +57,9 @@ class _EventPageState extends ConsumerState<EventPage> {
                   children: [
                     Container(),
                     guestsController.when(
-                      data: (List<PublicEventFullGuest> guests) => Text('geil'),
-                      error: (Object e, StackTrace s) => Text('err'),
-                      loading: () => Text('lädt')
+                      data: (List<PublicEventFullGuest> guests) => const Text('geil'),
+                      error: (Object e, StackTrace s) => const Text('err'),
+                      loading: () => const Text('lädt')
                     )
                   ]
                 )

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:scial_app_ui/scial_app_ui.dart';
-import 'package:scial_app_ui/src/widgets/base/sc_circular_progress_indicator.dart';
 
 class SCButton extends StatelessWidget {
 
