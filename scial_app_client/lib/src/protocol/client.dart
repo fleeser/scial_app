@@ -317,19 +317,6 @@ class _EndpointNotification extends _i1.EndpointRef {
       );
 }
 
-class _EndpointTest extends _i1.EndpointRef {
-  _EndpointTest(_i1.EndpointCaller caller) : super(caller);
-
-  @override
-  String get name => 'test';
-
-  _i2.Future<void> test() => caller.callServerEndpoint<void>(
-        'test',
-        'test',
-        {},
-      );
-}
-
 class _EndpointUser extends _i1.EndpointRef {
   _EndpointUser(_i1.EndpointCaller caller) : super(caller);
 
@@ -440,7 +427,6 @@ class Client extends _i1.ServerpodClient {
     friendRequest = _EndpointFriendRequest(this);
     friendship = _EndpointFriendship(this);
     notification = _EndpointNotification(this);
-    test = _EndpointTest(this);
     user = _EndpointUser(this);
   }
 
@@ -456,8 +442,6 @@ class Client extends _i1.ServerpodClient {
 
   late final _EndpointNotification notification;
 
-  late final _EndpointTest test;
-
   late final _EndpointUser user;
 
   @override
@@ -468,7 +452,6 @@ class Client extends _i1.ServerpodClient {
         'friendRequest': friendRequest,
         'friendship': friendship,
         'notification': notification,
-        'test': test,
         'user': user,
       };
   @override

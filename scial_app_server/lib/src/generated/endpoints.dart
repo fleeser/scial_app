@@ -13,12 +13,11 @@ import '../endpoints/event_endpoint.dart' as _i4;
 import '../endpoints/friend_request_endpoint.dart' as _i5;
 import '../endpoints/friendship_endpoint.dart' as _i6;
 import '../endpoints/notification_endpoint.dart' as _i7;
-import '../endpoints/test_endpoint.dart' as _i8;
-import '../endpoints/user_endpoint.dart' as _i9;
+import '../endpoints/user_endpoint.dart' as _i8;
 import 'package:scial_app_server/src/generated/event/enum/event_type.dart'
-    as _i10;
+    as _i9;
 import 'package:scial_app_server/src/generated/event/enum/event_visibility.dart'
-    as _i11;
+    as _i10;
 
 class Endpoints extends _i1.EndpointDispatch {
   @override
@@ -60,13 +59,7 @@ class Endpoints extends _i1.EndpointDispatch {
           'notification',
           null,
         ),
-      'test': _i8.TestEndpoint()
-        ..initialize(
-          server,
-          'test',
-          null,
-        ),
-      'user': _i9.UserEndpoint()
+      'user': _i8.UserEndpoint()
         ..initialize(
           server,
           'user',
@@ -290,12 +283,12 @@ class Endpoints extends _i1.EndpointDispatch {
             ),
             'eventTypes': _i1.ParameterDescription(
               name: 'eventTypes',
-              type: _i1.getType<List<_i10.EventType>>(),
+              type: _i1.getType<List<_i9.EventType>>(),
               nullable: false,
             ),
             'eventVisibilities': _i1.ParameterDescription(
               name: 'eventVisibilities',
-              type: _i1.getType<List<_i11.EventVisibility>>(),
+              type: _i1.getType<List<_i10.EventVisibility>>(),
               nullable: false,
             ),
           },
@@ -333,12 +326,12 @@ class Endpoints extends _i1.EndpointDispatch {
             ),
             'type': _i1.ParameterDescription(
               name: 'type',
-              type: _i1.getType<_i10.EventType>(),
+              type: _i1.getType<_i9.EventType>(),
               nullable: false,
             ),
             'visibility': _i1.ParameterDescription(
               name: 'visibility',
-              type: _i1.getType<_i11.EventVisibility>(),
+              type: _i1.getType<_i10.EventVisibility>(),
               nullable: false,
             ),
             'start': _i1.ParameterDescription(
@@ -551,21 +544,6 @@ class Endpoints extends _i1.EndpointDispatch {
         ),
       },
     );
-    connectors['test'] = _i1.EndpointConnector(
-      name: 'test',
-      endpoint: endpoints['test']!,
-      methodConnectors: {
-        'test': _i1.MethodConnector(
-          name: 'test',
-          params: {},
-          call: (
-            _i1.Session session,
-            Map<String, dynamic> params,
-          ) async =>
-              (endpoints['test'] as _i8.TestEndpoint).test(session),
-        )
-      },
-    );
     connectors['user'] = _i1.EndpointConnector(
       name: 'user',
       endpoint: endpoints['user']!,
@@ -583,7 +561,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['user'] as _i9.UserEndpoint).read(
+              (endpoints['user'] as _i8.UserEndpoint).read(
             session,
             params['userId'],
           ),
@@ -611,7 +589,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['user'] as _i9.UserEndpoint).update(
+              (endpoints['user'] as _i8.UserEndpoint).update(
             session,
             name: params['name'],
             isPrivate: params['isPrivate'],
@@ -651,7 +629,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['user'] as _i9.UserEndpoint).events(
+              (endpoints['user'] as _i8.UserEndpoint).events(
             session,
             params['userId'],
             params['lat'],
@@ -683,7 +661,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['user'] as _i9.UserEndpoint).friendships(
+              (endpoints['user'] as _i8.UserEndpoint).friendships(
             session,
             params['userId'],
             limit: params['limit'],
@@ -713,7 +691,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['user'] as _i9.UserEndpoint).ratings(
+              (endpoints['user'] as _i8.UserEndpoint).ratings(
             session,
             params['userId'],
             limit: params['limit'],
@@ -743,7 +721,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['user'] as _i9.UserEndpoint).search(
+              (endpoints['user'] as _i8.UserEndpoint).search(
             session,
             params['searchText'],
             limit: params['limit'],
