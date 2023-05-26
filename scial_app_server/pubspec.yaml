@@ -4,10 +4,10 @@ description: Starting point for a Serverpod server.
 # homepage: https://www.example.com
 
 environment:
-  sdk: '>=3.0.0 <4.0.0'
+  sdk: '>=3.0.2 <4.0.0'
 
 dependencies:
-  serverpod: ^1.0.1
+  serverpod: ^1.1.0
 
   scial_app_shared:
     path: ../scial_app_shared
@@ -17,4 +17,4 @@ dependencies:
   mapbox_search: ^3.2.0
 
 dev_dependencies:
-  lints: ^2.0.0
+  lints: ^2.0.1

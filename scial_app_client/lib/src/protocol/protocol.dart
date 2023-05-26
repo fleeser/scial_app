@@ -223,7 +223,7 @@ export 'user/response/user_search_response_code.dart';
 export 'user/response/user_update_response.dart';
 export 'user/response/user_update_response_code.dart';
 export 'user/table/user.dart';
-export 'client.dart'; // ignore_for_file: equal_keys_in_map
+export 'client.dart';
 
 class Protocol extends _i1.SerializationManager {
   Protocol._();

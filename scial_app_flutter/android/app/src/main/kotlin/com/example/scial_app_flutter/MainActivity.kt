@@ -1,4 +1,4 @@
-package com.example.scial_app_flutter
+package app.scial.scial
 
 import io.flutter.embedding.android.FlutterActivity
 
