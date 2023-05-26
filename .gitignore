@@ -1,3 +1,28 @@
-# macOS
-
+# Miscellaneous
+*.class
+*.bak
+*.fvm
+*.log
+*.pyc
+*.swp
 .DS_Store
+.atom/
+.buildlog/
+.history
+.vscode/
+.venv/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# Flutter/Dart/Pub related
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+pubspec.lock
+pubspec_overrides.yaml

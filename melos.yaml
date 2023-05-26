@@ -1,0 +1,15 @@
+name: scial_app
+
+packages:
+  - scial_app_client
+  - scial_app_flutter
+  - scial_app_server
+  - scial_app_shared
+  - scial_app_ui
+
+scripts:
+  analyze:
+    exec: dart analyze .
+  
+  format:
+    run: melos exec dart format . --fix
