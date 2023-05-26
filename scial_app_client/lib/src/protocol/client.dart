@@ -346,6 +346,7 @@ class _EndpointUser extends _i1.EndpointRef {
   _i2.Future<_i24.UserUpdateResponse> update({
     String? name,
     bool? isPrivate,
+    required bool updateName,
   }) =>
       caller.callServerEndpoint<_i24.UserUpdateResponse>(
         'user',
@@ -353,6 +354,7 @@ class _EndpointUser extends _i1.EndpointRef {
         {
           'name': name,
           'isPrivate': isPrivate,
+          'updateName': updateName,
         },
       );
 

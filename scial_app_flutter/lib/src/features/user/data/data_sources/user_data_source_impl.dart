@@ -121,8 +121,8 @@ class UserDataSourceImpl implements UserDataSource {
   }
 
   @override
-  Future<void> updateUser(String? name, bool? isPrivate) async {
-    UserUpdateResponse response = await client.user.update(name: name, isPrivate: isPrivate);
+  Future<void> updateUser(String? name, bool? isPrivate, bool updateName) async {
+    UserUpdateResponse response = await client.user.update(name: name, isPrivate: isPrivate, updateName: updateName);
 
     if (response.success) return;
 

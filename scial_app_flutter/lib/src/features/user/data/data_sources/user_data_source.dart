@@ -9,5 +9,5 @@ abstract class UserDataSource {
   Future<void> answerFriendRequest(int friendRequestId, bool answer);
   Future<void> takeBackFriendRequest(int friendRequestId);
   Future<void> createFriendRequest(int userId, String? text);
-  Future<void> updateUser(String? name, bool? isPrivate);
+  Future<void> updateUser(String? name, bool? isPrivate, bool updateName);
 }

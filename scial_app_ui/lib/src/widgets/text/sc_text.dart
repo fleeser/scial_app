@@ -76,7 +76,11 @@ enum SCTextLevel {
   selectableListItemTitleSelected,
   selectableListItemTitleUnselected,
   selectableLangListItemTitleSelected,
-  selectableLangListItemTitleUnselected
+  selectableLangListItemTitleUnselected,
+
+  // Update User
+
+  updateUserIsPrivate
 }
 
 class SCText extends StatelessWidget {
@@ -809,6 +813,22 @@ class SCText extends StatelessWidget {
     textAlign = null,
     level = SCTextLevel.selectableLangListItemTitleUnselected;
 
+  // Update User
+
+  const SCText.updateUserIsPrivate(
+    this.text,
+    {
+      super.key,
+      this.color
+    }
+  ) 
+  : height = null,
+    style = null,
+    maxLines = 1,
+    overflow = TextOverflow.ellipsis,
+    textAlign = null,
+    level = SCTextLevel.updateUserIsPrivate;
+
   final String text;
   final Color? color;
   final int? maxLines;
@@ -899,6 +919,10 @@ class SCText extends StatelessWidget {
         case SCTextLevel.selectableLangListItemTitleSelected: return theme.colors.selectableLangListItemTitleSelected;
         case SCTextLevel.selectableLangListItemTitleUnselected: return theme.colors.selectableLangListItemTitleUnselected;
 
+        // Update User
+
+        case SCTextLevel.updateUserIsPrivate: return theme.colors.updateUserIsPrivate;
+
         default: return null;
       }
     }
@@ -979,6 +1003,10 @@ class SCText extends StatelessWidget {
         case SCTextLevel.selectableListItemTitleUnselected: return theme.typography.selectableListItemTitleUnselected;
         case SCTextLevel.selectableLangListItemTitleSelected: return theme.typography.selectableLangListItemTitleSelected;
         case SCTextLevel.selectableLangListItemTitleUnselected: return theme.typography.selectableLangListItemTitleUnselected;
+
+        // Update User
+
+        case SCTextLevel.updateUserIsPrivate: return theme.typography.updateUserIsPrivate;
 
         default: return null;
       }

@@ -62,13 +62,13 @@ class UserRepositoryImpl implements UserRepository {
   }
 
   @override
-  Future<void> updateUser(String? name, bool? isPrivate) async {
+  Future<void> updateUser(String? name, bool? isPrivate, bool updateName) async {
     if (name != null) {
       name = name.trim();
       bool nameIsValid = Validator.validateName(name);
       if (!nameIsValid) throw const AppException.userUpdateInvalidName();
     }
 
-    return await dataSource.updateUser(name, isPrivate);
+    return await dataSource.updateUser(name, isPrivate, updateName);
   }
 }

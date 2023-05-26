@@ -61,7 +61,7 @@ class UserHandler {
     );
   }
 
-  static Future<UserUpdateResponse> update(Session session, String? name, bool? isPrivate) async {
+  static Future<UserUpdateResponse> update(Session session, String? name, bool? isPrivate, bool updateName) async {
     if (name != null) {
       name = name.trim();
       bool nameIsValid = Validator.validateName(name);

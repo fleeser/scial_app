@@ -90,7 +90,11 @@ class SCTypographyData {
     required this.selectableListItemTitleSelected,
     required this.selectableListItemTitleUnselected,
     required this.selectableLangListItemTitleSelected,
-    required this.selectableLangListItemTitleUnselected
+    required this.selectableLangListItemTitleUnselected,
+
+    // Update User
+
+    required this.updateUserIsPrivate
   });
 
   factory SCTypographyData.regular() => const SCTypographyData(
@@ -549,6 +553,16 @@ class SCTypographyData {
       fontSize: 14.0,
       fontWeight: FontWeight.w400,
       decoration: TextDecoration.none
+    ),
+
+    // Update User
+
+    updateUserIsPrivate: TextStyle(
+      fontFamily: 'Poppins',
+      package: 'scial_app_ui',
+      fontSize: 14.0,
+      fontWeight: FontWeight.bold,
+      decoration: TextDecoration.none
     )
   );
 
@@ -640,4 +654,8 @@ class SCTypographyData {
   final TextStyle selectableListItemTitleUnselected;
   final TextStyle selectableLangListItemTitleSelected;
   final TextStyle selectableLangListItemTitleUnselected;
+
+  // Update User
+
+  final TextStyle updateUserIsPrivate;
 }

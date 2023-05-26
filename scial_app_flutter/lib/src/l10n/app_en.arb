@@ -180,8 +180,8 @@
 
     "user_update_sheet_title" : "Edit profile",
     "user_update_sheet_name_hint" : "Name",
-    "user_update_user_private" : "Private Profile",
-    "user_update_user_save_button_title" : "Save",
+    "user_update_sheet_update_button_title" : "Save",
+    "user_update_sheet_is_private_text" : "Use private profile",
 
     "user_take_back_friend_request_dialog_title" : "Take back friend request",
     "user_take_back_friend_request_dialog_take_back" : "Take back",

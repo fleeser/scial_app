@@ -155,7 +155,11 @@ class SCColorsData {
     required this.selectableLangListItemTitleSelected,
     required this.selectableLangListItemTitleUnselected,
     required this.selectableLangListItemIndicatorSelected,
-    required this.selectableLangListItemIndicatorUnselected
+    required this.selectableLangListItemIndicatorUnselected,
+
+    // Update User
+
+    required this.updateUserIsPrivate
   });
 
   factory SCColorsData.light() => const SCColorsData(
@@ -310,7 +314,11 @@ class SCColorsData {
     selectableLangListItemTitleSelected: SCPalette.gray900,
     selectableLangListItemTitleUnselected: SCPalette.gray500,
     selectableLangListItemIndicatorSelected: SCPalette.blue500,
-    selectableLangListItemIndicatorUnselected: SCPalette.gray500
+    selectableLangListItemIndicatorUnselected: SCPalette.gray500,
+
+    // Update User
+
+    updateUserIsPrivate: SCPalette.gray900
   );
 
   factory SCColorsData.dark() => const SCColorsData(
@@ -465,7 +473,11 @@ class SCColorsData {
     selectableLangListItemTitleSelected: SCPalette.gray100,
     selectableLangListItemTitleUnselected: SCPalette.gray400,
     selectableLangListItemIndicatorSelected: SCPalette.blue600,
-    selectableLangListItemIndicatorUnselected: SCPalette.gray400
+    selectableLangListItemIndicatorUnselected: SCPalette.gray400,
+
+    // Update User
+
+    updateUserIsPrivate: SCPalette.gray100
   );
 
   final Color accent;
@@ -620,4 +632,8 @@ class SCColorsData {
   final Color selectableLangListItemTitleUnselected;
   final Color selectableLangListItemIndicatorSelected;
   final Color selectableLangListItemIndicatorUnselected;
+
+  // Update User
+
+  final Color updateUserIsPrivate;
 }

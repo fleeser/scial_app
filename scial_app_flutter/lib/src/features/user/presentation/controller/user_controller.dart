@@ -31,8 +31,50 @@ class UserController extends _$UserController {
     context.navigateToSettingsPage();
   }
 
-  Future<void> updateUser(BuildContext context) async {
-    await showUserUpdateSheet(context, state.value!.name, state.value!.private);
+  Future<bool> updateUser(String name, bool isPrivate) async {
+    // TODO: Trim before?
+
+    bool updateName = (name.isEmpty && state.value!.name != null) || name != state.value!.name;
+    bool updatePrivate = isPrivate != state.value!.private;
+
+    if (!updateName && !updatePrivate) {
+      return true;
+    }
+
+    try {
+      await ref.read(userUpdateUseCaseProvider).call(
+        UserUpdateUseCaseParams(
+          name: updateName
+            ? name
+            : null,
+          isPrivate: updatePrivate 
+            ? isPrivate
+            : null,
+          updateName: updateName
+        )
+      );
+
+      if (updateName || updatePrivate) {
+        PublicUser user = PublicUser(
+          id: state.value!.id, 
+          name: updateName
+            ? name
+            : state.value!.name,
+          imageUrl: state.value!.imageUrl,
+          verified: state.value!.verified, 
+          private: updatePrivate
+            ? isPrivate
+            : state.value!.private, 
+          badges: state.value!.badges
+        );
+
+        state = AsyncValue.data(user);
+      }
+
+      return true;
+    } catch (_) { }
+
+    return false;
   }
 
   Future<void> handleFriendship(BuildContext context) async {

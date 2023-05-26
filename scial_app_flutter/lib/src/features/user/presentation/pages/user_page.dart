@@ -16,6 +16,7 @@ import 'package:scial_app_flutter/src/features/user/presentation/widgets/ratings
 import 'package:scial_app_flutter/src/features/user/presentation/widgets/user_badges.dart';
 import 'package:scial_app_flutter/src/features/user/presentation/widgets/friendships/user_friendships_list.dart';
 import 'package:scial_app_flutter/src/features/user/presentation/widgets/user_text.dart';
+import 'package:scial_app_flutter/src/features/user/presentation/widgets/user_update_sheet.dart';
 import 'package:scial_app_flutter/src/routing/app_router.dart';
 import 'package:scial_app_flutter/src/services/key_value_storage.dart';
 import 'package:scial_app_ui/scial_app_ui.dart';
@@ -185,8 +186,8 @@ class _UserPageState extends ConsumerState<UserPage> {
   ];
 
   Future<void> _handleUpdateUser() async {
-    final controller = ref.read(userControllerProvider(widget.id).notifier);
-    await controller.updateUser(context);
+    final AsyncValue<PublicUser> userValue = ref.read(userControllerProvider(widget.id));
+    await showUserUpdateSheet(context, userValue.value!.id, userValue.value!.name, userValue.value!.private);
   }
 
   Future<void> _handleFriendship() async {

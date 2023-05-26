@@ -23,7 +23,7 @@ class SettingsUniqueCode extends StatelessWidget {
         children: [
           SCText.settingsUniqueCodeTitle('${ AppLocalizations.of(context)!.settings_unique_code_title }:'),
           const SCGap.regular(),
-          Expanded(child: SCText.settingsUniqueCodeText(KeyValueStorage.getUniqueCode()))
+          Expanded(child: SCText.settingsUniqueCodeText('#${ KeyValueStorage.getUniqueCode() }'))
         ]
       )
     );

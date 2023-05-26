@@ -180,8 +180,8 @@
 
     "user_update_sheet_title" : "Profil bearbeiten",
     "user_update_sheet_name_hint" : "Name",
-    "user_update_user_private" : "Privates Profil",
-    "user_update_user_save_button_title" : "Speichern",
+    "user_update_sheet_update_button_title" : "Speichern",
+    "user_update_sheet_is_private_text" : "Privates Profil verwenden",
 
     "user_take_back_friend_request_dialog_title" : "Freundschaftsanfrage zurücknehmen",
     "user_take_back_friend_request_dialog_take_back" : "Zurücknehmen",

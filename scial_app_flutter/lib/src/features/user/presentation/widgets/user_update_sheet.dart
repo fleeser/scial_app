@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:scial_app_flutter/src/features/user/presentation/controller/user_controller.dart';
 import 'package:scial_app_ui/scial_app_ui.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-Future<void> showUserUpdateSheet(BuildContext context, String? name, bool isPrivate) async {
+Future<void> showUserUpdateSheet(BuildContext context, int userId, String? name, bool isPrivate) async {
   
   SCThemeData theme = SCTheme.of(context);
 
@@ -17,6 +19,7 @@ Future<void> showUserUpdateSheet(BuildContext context, String? name, bool isPriv
     shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(12.0))),
     backgroundColor: theme.colors.sheetBackground,
     builder: (BuildContext context) => UserUpdateSheet(
+      userId: userId,
       name: name, 
       isPrivate: isPrivate
     )
@@ -27,10 +30,12 @@ class UserUpdateSheet extends StatefulHookConsumerWidget {
 
   const UserUpdateSheet({ 
     super.key,
+    required this.userId,
     this.name,
     required this.isPrivate
   });
 
+  final int userId;
   final String? name;
   final bool isPrivate;
 
@@ -42,12 +47,14 @@ class _UserUpdateSheetState extends ConsumerState<UserUpdateSheet> {
 
   late TextEditingController nameController;
   late AutoDisposeStateProvider<bool> isLoadingProvider;
+  late AutoDisposeStateProvider<bool> isPrivateProvider;
 
   @override
   void initState() {
     super.initState();
 
     isLoadingProvider = AutoDisposeStateProvider<bool>((ref) => false);
+    isPrivateProvider = AutoDisposeStateProvider<bool>((ref) => widget.isPrivate);
   }
 
   @override
@@ -63,6 +70,7 @@ class _UserUpdateSheetState extends ConsumerState<UserUpdateSheet> {
     SCThemeData theme = SCTheme.of(context);
 
     final bool isLoading = ref.watch(isLoadingProvider);
+    final bool isPrivate = ref.watch(isPrivateProvider);
 
     nameController = useTextEditingController(text: widget.name);
 
@@ -83,11 +91,46 @@ class _UserUpdateSheetState extends ConsumerState<UserUpdateSheet> {
             )
           ),
           const SCGap.semiBig(),
-          SCTextInputField.name(hint: AppLocalizations.of(context)!.user_update_sheet_name_hint),
+          SCPadding(
+            padding: const SCEdgeInsets.symmetric(horizontal: SCGapSize.semiBig),
+            child: SCTextInputField.name(hint: AppLocalizations.of(context)!.user_update_sheet_name_hint)
+          ),
           const SCGap.semiBig(),
+          SCPadding(
+            padding: const SCEdgeInsets.symmetric(horizontal: SCGapSize.semiBig),
+            child: Row(
+              children: [
+                Expanded(child: SCText.updateUserIsPrivate(AppLocalizations.of(context)!.user_update_sheet_is_private_text)),
+                const SCGap.semiBig(),
+                SCSwitch(
+                  isOn: isPrivate, 
+                  onChanged: (bool value) => ref.read(isPrivateProvider.notifier).update((state) => value)
+                )
+              ]
+            )
+          ),
+          const SCGap.semiBig(),
+          SCPadding(
+            padding: const SCEdgeInsets.symmetric(horizontal: SCGapSize.semiBig),
+            child: SCButton.filled(
+              onPressed: _handleUpdate,
+              isLoading: isLoading,
+              title: AppLocalizations.of(context)!.user_update_sheet_update_button_title
+            )
+          ),
           SizedBox(height: SCGapSize.semiBig.getSpacing(theme) + (MediaQuery.of(context).viewInsets.bottom > 0.0 ? MediaQuery.of(context).viewInsets.bottom : MediaQuery.of(context).padding.bottom))
         ]
       )
     );
+  }
+
+  Future<void> _handleUpdate() async {
+    final controller = ref.read(userControllerProvider(widget.userId).notifier);
+    bool isPrivate = ref.read(isPrivateProvider);
+    bool success = await controller.updateUser(nameController.text, isPrivate);
+
+    if (success && mounted) {
+      context.pop();
+    }
   }
 }
